@@ -1,4 +1,4 @@
-import Nav from "../../components/Nav/Nav";
+import Nav from '../../components/Nav/Nav'
 
 function Auth() {
   return (
@@ -6,7 +6,7 @@ function Auth() {
       <Nav />
       <h1>Jelou página Auth</h1>
     </div>
-  );
+  )
 }
 
-export default Auth;
+export default Auth

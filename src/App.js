@@ -1,7 +1,7 @@
-import { Routes, Route } from "react-router-dom"
-import Auth from "./UI/views/pages/Auth/Auth"
-import Dashboard from "./UI/views/pages/Dashboard/Dashboard"
-import Profile from "./UI/views/pages/Profile/Profile"
+import { Routes, Route } from 'react-router-dom'
+import Auth from './ui/views/pages/Auth/Auth'
+import Dashboard from './ui/views/pages/Dashboard/Dashboard'
+import Profile from './ui/views/pages/Profile/Profile'
 
 function App() {
   return (
