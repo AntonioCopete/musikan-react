@@ -1,42 +1,38 @@
 {
-	"name": "musikan",
-	"private": true,
-	"workspaces": {
-		"packages": [
-			"packages/*"
-		]
-	},
-	"contributors": [
-		{
-			"name": "Arantza Beitia",
-			"email": "arantza.beitia@gmail.com",
-			"url": "https://www.arantzabeitia.com/"
-		},
-		{
-			"name": "Carlos Velilla",
-			"email": "carlosvelillaf@gmail.com"
-		}
-	],
-	"scripts": {
-		"dev": "yarn workspaces run dev",
-		"dev:web": "yarn workspace web run start",
-		"dev:api": "yarn workspace api run dev",
-		"build": "yarn workspaces run build",
-		"test:web:watch": "yarn workspace web run test:watch",
-		"test:api:watch": "yarn workspace api run test:watch",
-		"test:ci:all": "yarn workspaces run test:ci:all",
-		"lint:js": "yarn workspaces run lint:js",
-		"lint:js:fix": "yarn workspaces run lint:js:fix",
-		"lint:format": "yarn workspaces run lint:format",
-		"lint:format:check": "yarn workspaces run lint:format:check",
-		"precommit": "yarn workspaces run precommit"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "^11.0.0",
-		"@commitlint/config-conventional": "^11.0.0",
-		"commitlint": "^11.0.0",
-		"eslint": "^7.19.0",
-		"husky": "^4.3.8",
-		"lint-staged": "^10.5.3"
-	}
+  "name": "musikan-front",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
