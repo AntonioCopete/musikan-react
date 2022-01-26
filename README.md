@@ -1,4 +1,4 @@
-# Apollofy Music Project
+# Musikan Project
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
@@ -9,7 +9,7 @@
 Server and Client App for the Apollofy Music Project.
 
 ## Repositories links
-- Musikan-react-front --> https://github.com/AranBeitia/musikan
+- Musikan-react-front --> https://github.com/AranBeitia/musikan-front
 - Musikan-node-back --> https://github.com/Jose1i1o/musikan-node-back
 - Musikan-laravel-back -->
 
