@@ -9,9 +9,9 @@
 Server and Client App for the Apollofy Music Project.
 
 ## Repositories links
-Musikan-react-front --> https://github.com/AranBeitia/musikan
-Musikan-node-back --> https://github.com/Jose1i1o/musikan-node-back
-Musikan-laravel-back -->
+- Musikan-react-front --> https://github.com/AranBeitia/musikan
+- Musikan-node-back --> https://github.com/Jose1i1o/musikan-node-back
+- Musikan-laravel-back -->
 
 ## Apps
 
