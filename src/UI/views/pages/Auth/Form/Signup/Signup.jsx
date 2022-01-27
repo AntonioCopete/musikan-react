@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { SignupForm } from './Signup.styles'
@@ -10,20 +10,21 @@ import {
 } from '../../../../../../redux/auth/actions'
 import { authSelector } from '../../../../../../redux/auth/selectors'
 
-function Signup() {
+function Signup({ setUserName }) {
+  const userNameRef = useRef()
   const dispatch = useDispatch()
   const { isSigningUp, signUpError, isAuthenticated } =
     useSelector(authSelector)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [userName, setUserName] = useState('')
+  // const [userName, setUserName] = useState('')
 
   useEffect(() => {
     dispatch(resetAuthState())
     setEmail('')
     setPassword('')
-    setUserName('')
+    // setUserName('')
   }, [dispatch])
 
   const handleLoginWithGoogle = (e) => {
@@ -33,6 +34,7 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setUserName(userNameRef.current.value)
     dispatch(signUpWithEmailRequest(email, password))
   }
 
@@ -43,9 +45,9 @@ function Signup() {
   const handleSetPassword = (e) => {
     setPassword(e.target.value)
   }
-  const handleSetUserName = (e) => {
-    setUserName(e.target.value)
-  }
+  // const handleSetUserName = (e) => {
+  //   setUserName(e.target.value)
+  // }
 
   if (isAuthenticated) {
     return <Navigate to="/" />
@@ -80,8 +82,9 @@ function Signup() {
           type="text"
           placeholder="Name"
           id="name"
-          value={userName}
-          onChange={handleSetUserName}
+          ref={userNameRef}
+          // value={userName}
+          // onChange={handleSetUserName}
         />
       </div>
       <button className="form__submit" type="submit" disabled={isSigningUp}>

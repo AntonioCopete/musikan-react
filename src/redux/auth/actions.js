@@ -48,7 +48,7 @@ export function signInWithEmailRequest(email, password) {
   }
 }
 
-export function syncSignIn() {
+export function syncSignIn(data) {
   return async function syncSignInThunk(dispatch) {
     const token = await auth.getCurrentUserToken()
 
@@ -56,9 +56,12 @@ export function syncSignIn() {
       return dispatch(signOutSuccess())
     }
 
-    const response = await api.signUp({
-      Authorization: `Bearer ${token}`,
-    })
+    const response = await api.signUp(
+      {
+        Authorization: `Bearer ${token}`,
+      },
+      data
+    )
 
     if (response.errorMessage) {
       return dispatch(signUpError(response.errorMessage))
