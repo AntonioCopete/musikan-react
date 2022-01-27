@@ -15,17 +15,13 @@ export const SignupForm = styled.form`
     padding: 0 1.5rem;
   }
 
-  &.form__sign-in {
-    z-index: 2;
-  }
-
   &.form__sign-up {
     z-index: 1;
     opacity: 0;
   }
 
   .form {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 75%;
     display: -ms-grid;
@@ -42,7 +38,7 @@ export const SignupForm = styled.form`
       top: 95%;
       transform: translate(-50%, -100%);
       transition: 1s 0.8s ease-in-out;
-    }
+    } */
 
     &__title {
       font-size: 2.2rem;

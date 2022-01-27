@@ -62,7 +62,7 @@ export const FormStyle = styled.div`
 
     &__title {
       font-size: 2.2rem;
-      color: #444;
+      color: white;
       margin-bottom: 10px;
     }
 
