@@ -73,7 +73,7 @@ function Login() {
         />
       </div>
       <button className="form__submit" type="submit">
-        signup
+        login
       </button>
 
       <p className="form__social-text">Or Sign up with social platforms</p>

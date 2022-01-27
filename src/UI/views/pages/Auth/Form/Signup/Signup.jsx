@@ -17,11 +17,13 @@ function Signup() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [userName, setUserName] = useState('')
 
   useEffect(() => {
     dispatch(resetAuthState())
     setEmail('')
     setPassword('')
+    setUserName('')
   }, [dispatch])
 
   const handleLoginWithGoogle = (e) => {
@@ -40,6 +42,9 @@ function Signup() {
 
   const handleSetPassword = (e) => {
     setPassword(e.target.value)
+  }
+  const handleSetUserName = (e) => {
+    setUserName(e.target.value)
   }
 
   if (isAuthenticated) {
@@ -67,6 +72,16 @@ function Signup() {
           id="password"
           value={password}
           onChange={handleSetPassword}
+        />
+      </div>
+      <div className="form__input-field">
+        <i className="fas fa-lock"></i>
+        <input
+          type="text"
+          placeholder="Name"
+          id="name"
+          value={userName}
+          onChange={handleSetUserName}
         />
       </div>
       <button className="form__submit" type="submit" disabled={isSigningUp}>
