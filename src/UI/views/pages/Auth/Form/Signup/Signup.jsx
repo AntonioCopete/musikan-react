@@ -14,17 +14,26 @@ function Signup() {
     useSelector(authSelector)
 
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   useEffect(() => {
     dispatch(resetAuthState())
+    setEmail('')
+    setPassword('')
   }, [dispatch])
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    dispatch(signUpWithEmailRequest(email, password))
     console.log('sending form...')
   }
 
   const handleSetEmail = (e) => {
     setEmail(e.target.value)
+  }
+
+  const handleSetPassword = (e) => {
+    setPassword(e.target.value)
   }
   return (
     <SignupForm onSubmit={handleSubmit} className="form__sign-up">
@@ -40,12 +49,14 @@ function Signup() {
         />
       </div>
       <div className="form__input-field">
-        <i className="fas fa-envelope"></i>
-        <input type="text" placeholder="Username" />
-      </div>
-      <div className="form__input-field">
         <i className="fas fa-lock"></i>
-        <input type="password" placeholder="Password" />
+        <input
+          type="password"
+          placeholder="Password"
+          id="password"
+          value={password}
+          onChange={handleSetPassword}
+        />
       </div>
       <button className="form__submit" type="submit">
         signup
@@ -53,6 +64,7 @@ function Signup() {
 
       <p className="form__social-text">Or Sign up with social platforms</p>
       {/* <SocialMediaAuth /> */}
+      {signUpError && <p>{signUpError}</p>}
     </SignupForm>
   )
 }

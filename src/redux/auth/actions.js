@@ -1,5 +1,5 @@
 import * as AuthTypes from './types'
-// import api from "../../api";
+import api from '../../api'
 import * as auth from '../../services/auth'
 
 export const resetStoreAndLogOut = () => ({
@@ -48,25 +48,25 @@ export function signInWithEmailRequest(email, password) {
   }
 }
 
-// export function syncSignIn() {
-//   return async function syncSignInThunk(dispatch) {
-//     const token = await auth.getCurrentUserToken()
+export function syncSignIn() {
+  return async function syncSignInThunk(dispatch) {
+    const token = await auth.getCurrentUserToken()
 
-//     if (!token) {
-//       return dispatch(signOutSuccess())
-//     }
+    if (!token) {
+      return dispatch(signOutSuccess())
+    }
 
-//     const response = await api.signUp({
-//       Authorization: `Bearer ${token}`,
-//     })
+    const response = await api.signUp({
+      Authorization: `Bearer ${token}`,
+    })
 
-//     if (response.errorMessage) {
-//       return dispatch(signUpError(response.errorMessage))
-//     }
+    if (response.errorMessage) {
+      return dispatch(signUpError(response.errorMessage))
+    }
 
-//     return dispatch(signUpSuccess(response.data))
-//   }
-// }
+    return dispatch(signUpSuccess(response.data))
+  }
+}
 
 export const signUpSuccess = (user) => ({
   type: AuthTypes.SIGN_UP_SUCCESS,
@@ -77,29 +77,29 @@ export const signOutRequest = () => ({
   type: AuthTypes.SIGN_OUT_REQUEST,
 })
 
-// export function signOut() {
-//   return async function signOutThunk(dispatch) {
-//     dispatch(signOutRequest())
+export function signOut() {
+  return async function signOutThunk(dispatch) {
+    dispatch(signOutRequest())
 
-//     const token = await auth.getCurrentUserToken()
+    const token = await auth.getCurrentUserToken()
 
-//     if (!token) {
-//       return dispatch(signOutSuccess())
-//     }
+    if (!token) {
+      return dispatch(signOutSuccess())
+    }
 
-//     const response = await api.signOut({
-//       Authorization: `Bearer ${token}`,
-//     })
+    const response = await api.signOut({
+      Authorization: `Bearer ${token}`,
+    })
 
-//     if (response.errorMessage) {
-//       return dispatch(signOutError(response.errorMessage))
-//     }
+    if (response.errorMessage) {
+      return dispatch(signOutError(response.errorMessage))
+    }
 
-//     auth.signOut()
+    auth.signOut()
 
-//     return dispatch(signOutSuccess())
-//   }
-// }
+    return dispatch(signOutSuccess())
+  }
+}
 
 export const signOutError = (message) => ({
   type: AuthTypes.SIGN_OUT_ERROR,
