@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 import { SignupForm } from './Signup.styles'
+import './SocialMediaAuth.scss'
 import {
   resetAuthState,
   signUpWithEmailRequest,
@@ -22,10 +24,14 @@ function Signup() {
     setPassword('')
   }, [dispatch])
 
+  const handleLoginWithGoogle = (e) => {
+    e.preventDefault()
+    dispatch(signUpWithGoogleRequest())
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(signUpWithEmailRequest(email, password))
-    console.log('sending form...')
   }
 
   const handleSetEmail = (e) => {
@@ -35,9 +41,14 @@ function Signup() {
   const handleSetPassword = (e) => {
     setPassword(e.target.value)
   }
+
+  if (isAuthenticated) {
+    return <Navigate to="/" />
+  }
   return (
     <SignupForm onSubmit={handleSubmit} className="form__sign-up">
       <h2 className="form__title">Create account</h2>
+      {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
         <i className="fas fa-envelope"></i>
         <input
@@ -58,13 +69,20 @@ function Signup() {
           onChange={handleSetPassword}
         />
       </div>
-      <button className="form__submit" type="submit">
+      <button className="form__submit" type="submit" disabled={isSigningUp}>
         signup
       </button>
 
       <p className="form__social-text">Or Sign up with social platforms</p>
-      {/* <SocialMediaAuth /> */}
-      {signUpError && <p>{signUpError}</p>}
+      <div className="form__social-media">
+        <button
+          className="form__social-icons"
+          onClick={handleLoginWithGoogle}
+          disabled={isSigningUp}
+        >
+          <i className="fab fa-google"></i>
+        </button>
+      </div>
     </SignupForm>
   )
 }

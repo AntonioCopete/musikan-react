@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { LoginForm } from './Login.styles'
+import './SocialMediaAuth.scss'
 
 import {
   resetAuthState,
@@ -30,6 +31,11 @@ function Login() {
     setPassword('')
   }
 
+  const handleLoginWithGoogle = (e) => {
+    e.preventDefault()
+    dispatch(signUpWithGoogleRequest())
+  }
+
   const handleSetEmail = (e) => {
     setEmail(e.target.value)
   }
@@ -45,6 +51,7 @@ function Login() {
   return (
     <LoginForm onSubmit={handleSubmit} className="form__sign-in">
       <h2 className="form__title">Login to Musikan</h2>
+      {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
         <i className="fas fa-envelope"></i>
         <input
@@ -70,8 +77,15 @@ function Login() {
       </button>
 
       <p className="form__social-text">Or Sign up with social platforms</p>
-      {/* <SocialMediaAuth /> */}
-      {signUpError && <p>{signUpError}</p>}
+      <div className="form__social-media">
+        <button
+          className="form__social-icons"
+          onClick={handleLoginWithGoogle}
+          disabled={isSigningUp}
+        >
+          <i className="fab fa-google"></i>
+        </button>
+      </div>
     </LoginForm>
   )
 }
