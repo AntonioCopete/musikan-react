@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import { LoginForm } from './Login.styles'
-import './SocialMediaAuth.scss'
+import { FormGroup } from '../Form.styles'
+import '../../SocialMediaAuth/SocialMediaAuth.scss'
 
 import {
   resetAuthState,
@@ -44,12 +44,12 @@ function Login() {
     setPassword(e.target.value)
   }
 
-  if (isAuthenticated) {
-    return <Navigate to="/" />
-  }
+  // if (isAuthenticated) {
+  //   return <Navigate to="/" />
+  // }
 
   return (
-    <LoginForm onSubmit={handleSubmit} className="form__sign-in">
+    <FormGroup onSubmit={handleSubmit} className="form__sign-in">
       <h2 className="form__title">Login to Musikan</h2>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
@@ -86,7 +86,7 @@ function Login() {
           <i className="fab fa-google"></i>
         </button>
       </div>
-    </LoginForm>
+    </FormGroup>
   )
 }
 
