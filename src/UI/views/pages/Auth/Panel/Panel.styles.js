@@ -1,40 +1,27 @@
 import styled from 'styled-components'
 
-export const PanelContainer = styled.section`
+export const PanelWrapper = styled.section`
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
   @media all and (max-width: 54.375rem) {
-    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
-    -ms-grid-rows: 1fr 2fr 1fr;
     grid-template-rows: 1fr 2fr 1fr;
   }
 `
 
-export const PanelC = styled.div`
-  .panel {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-    text-align: center;
-    z-index: 7;
-  }
+export const PanelContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 7;
 
   .panel__content {
     color: #fff;
@@ -42,12 +29,12 @@ export const PanelC = styled.div`
     transition: 0.9s 0.6s ease-in-out;
   }
 
-  .panel__left {
+  &.panel__left {
     pointer-events: all;
     padding: 3rem 17% 2rem 12%;
   }
 
-  .panel__right {
+  &.panel__right {
     pointer-events: none;
     padding: 3rem 12% 2rem 17%;
   }
@@ -66,7 +53,6 @@ export const PanelC = styled.div`
 
   .panel__image {
     width: 100%;
-    -webkit-transition: 1.1s 0.4s ease-in-out;
     transition: 1.1s 0.4s ease-in-out;
   }
 
@@ -97,7 +83,6 @@ export const PanelC = styled.div`
 
   .container.sign-up-mode .panel__right .panel__content,
   .container.sign-up-mode .panel__right .panel__image {
-    -webkit-transform: translateX(0px);
     transform: translateX(0px);
   }
 

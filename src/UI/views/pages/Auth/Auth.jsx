@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Container } from './Auth.styles'
+// import { Container } from './Auth.styles'
+import './Auth.scss'
 import Panel from './Panel/Panel'
 import Form from './Form/Form'
 
@@ -10,10 +11,10 @@ function Auth() {
     setSignup(!signup)
   }
   return (
-    <Container className={`${signup ? '' : 'sign-up-mode'}`}>
+    <main className={`container ${signup ? '' : 'sign-up-mode'}`}>
       <Form />
       <Panel handleSignin={handleSignin} />
-    </Container>
+    </main>
   )
 }
 
