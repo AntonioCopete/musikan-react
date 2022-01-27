@@ -21,25 +21,6 @@ export const SignupForm = styled.form`
   }
 
   .form {
-    /* position: absolute;
-    top: 50%;
-    left: 75%;
-    display: -ms-grid;
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 50%;
-    z-index: 5;
-    transform: translate(-50%, -50%);
-    transition: 1s 0.7s ease-in-out;
-
-    @media all and(max-width: 870px) {
-      width: 100%;
-      left: 50%;
-      top: 95%;
-      transform: translate(-50%, -100%);
-      transition: 1s 0.8s ease-in-out;
-    } */
-
     &__title {
       font-size: 2.2rem;
       color: #444;

@@ -18,4 +18,75 @@ export const LoginForm = styled.form`
   &.form__sign-in {
     z-index: 2;
   }
+
+  .form {
+    &__title {
+      font-size: 2.2rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    &__input-field {
+      display: -ms-grid;
+      display: grid;
+      grid-template-columns: 15% 85%;
+      max-width: 380px;
+      width: 100%;
+      height: 3.437rem;
+      background-color: #f0f0f0;
+      margin: 10px 0;
+      border-radius: 3.437rem;
+      padding: 0 0.4rem;
+
+      & i {
+        text-align: center;
+        line-height: 3.437rem;
+        color: #acacac;
+        font-size: 1.1rem;
+      }
+
+      & input {
+        background: none;
+        outline: none;
+        border: none;
+        line-height: 1;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #333;
+        border-radius: inherit;
+      }
+    }
+
+    & input::placeholder {
+      color: #aaa;
+      font-weight: 500;
+    }
+  }
+
+  .form__submit {
+    width: 9.375rem;
+    height: 3.0625rem;
+    margin: 10px 0;
+    border-radius: 3.0625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+      background-color: #5a1369;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
 `
