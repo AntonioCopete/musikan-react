@@ -18,13 +18,11 @@ function Signup({ setUserName }) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [userName, setUserName] = useState('')
 
   useEffect(() => {
     dispatch(resetAuthState())
     setEmail('')
     setPassword('')
-    // setUserName('')
   }, [dispatch])
 
   const handleLoginWithGoogle = (e) => {
@@ -45,9 +43,6 @@ function Signup({ setUserName }) {
   const handleSetPassword = (e) => {
     setPassword(e.target.value)
   }
-  // const handleSetUserName = (e) => {
-  //   setUserName(e.target.value)
-  // }
 
   if (isAuthenticated) {
     return <Navigate to="/" />

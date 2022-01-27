@@ -10,6 +10,7 @@ function Auth({ setUserName }) {
   const handleSignin = () => {
     setSignup(!signup)
   }
+
   return (
     <main className={`container ${signup ? '' : 'sign-up-mode'}`}>
       <Form setUserName={setUserName} />

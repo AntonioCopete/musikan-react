@@ -8,11 +8,13 @@ import { onAuthStateChanged } from './services/auth'
 import { syncSignIn, signOut } from './redux/auth/actions'
 
 function App() {
-  const [userName, setUserName] = useState()
+  const [userName, setUserName] = useState(' ')
   const dispatch = useDispatch()
-  const data = { userName: userName }
+
   useEffect(() => {
     let unsubscribeFromAuth = null
+    console.log(userName)
+    const data = { userName: userName }
 
     unsubscribeFromAuth = onAuthStateChanged((user) => {
       if (user) {
@@ -27,11 +29,12 @@ function App() {
         unsubscribeFromAuth()
       }
     }
-  }, [dispatch])
+  }, [dispatch, userName])
+
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      <Route path="/auth" element={<Auth setUsername={setUserName} />} />
+      <Route path="/auth" element={<Auth setUserName={setUserName} />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   )
