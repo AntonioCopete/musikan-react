@@ -1,7 +1,7 @@
-import { Avatar } from "@mui/material";
+import { Avatar } from '@mui/material'
 
-import { AvatarContainer } from "./UserAvatarStyles"
-import defaultPic from "../../../img/default-pic.jpg"
+import { AvatarContainer } from './UserAvatar.styles'
+import defaultPic from '../../../img/default-pic.jpg'
 
 function UserAvatar({ showUserMenu, setShowUserMenu }) {
   return (
@@ -10,10 +10,12 @@ function UserAvatar({ showUserMenu, setShowUserMenu }) {
         src={defaultPic}
         alt="Firstname Lastname"
         sx={{ width: 56, height: 56 }} // TEMPORARY STYLES
-        onClick={() => {setShowUserMenu(!showUserMenu)}}
+        onClick={() => {
+          setShowUserMenu(!showUserMenu)
+        }}
       />
     </AvatarContainer>
-  );
+  )
 }
 
-export default UserAvatar;
+export default UserAvatar

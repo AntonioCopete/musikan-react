@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import { signOut } from '../../../../redux/auth/actions'
 
-import { UserMenuNav, UserMenuElement } from './UserMenuStyles'
+import { UserMenuNav, UserMenuElement } from './UserMenu.styles'
 
 function UserMenu() {
   const navigate = useNavigate()
