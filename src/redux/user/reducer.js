@@ -7,6 +7,9 @@ const UserReducer = (state = UserInitialState, action) => {
     case UserTypes.SET_USERNAME: {
       return action.payload
     }
+    case UserTypes.DELETE_USERNAME: {
+      return UserInitialState
+    }
     default: {
       return state
     }

@@ -37,8 +37,10 @@ const AuthReducer = (state = AuthInitialState, action) => {
         isSigningUp: false,
         signUpError: null,
         currentUser: {
-          email: action.payload.data?.data?.email,
-          userName: action.payload.data?.data?.userName,
+          userName: action.payload.user.userName,
+          email: action.payload.user.email,
+          avatarImage:
+            'http://www.fcaktp.cu/wp-content/uploads/2019/05/default-user-image.png', // ! TEMPORARY SOLUTION
         },
       }
     }
@@ -64,6 +66,8 @@ const AuthReducer = (state = AuthInitialState, action) => {
         isAuthenticated: false,
         currentUser: {
           email: null,
+          userName: null,
+          avatarImage: null,
         },
       }
     }

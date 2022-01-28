@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { signOut } from '../../../../redux/auth/actions'
 
 import { UserMenuNav, UserMenuElement } from './UserMenu.styles'
+import { deleteUserName } from '../../../../redux/user/actions'
 
 function UserMenu() {
   const navigate = useNavigate()
@@ -11,6 +12,7 @@ function UserMenu() {
 
   const handleLogout = async () => {
     await dispatch(signOut())
+    dispatch(deleteUserName())
     navigate('/auth')
   }
 
