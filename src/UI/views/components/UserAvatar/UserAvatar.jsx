@@ -1,0 +1,19 @@
+import { Avatar } from "@mui/material";
+
+import { AvatarContainer } from "./UserAvatarStyles"
+import defaultPic from "../../../img/default-pic.jpg"
+
+function UserAvatar({ showUserMenu, setShowUserMenu }) {
+  return (
+    <AvatarContainer>
+      <Avatar
+        src={defaultPic}
+        alt="Firstname Lastname"
+        sx={{ width: 56, height: 56 }} // TEMPORARY STYLES
+        onClick={() => {setShowUserMenu(!showUserMenu)}}
+      />
+    </AvatarContainer>
+  );
+}
+
+export default UserAvatar;
