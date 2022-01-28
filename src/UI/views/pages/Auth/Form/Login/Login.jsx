@@ -44,9 +44,9 @@ function Login() {
     setPassword(e.target.value)
   }
 
-  // if (isAuthenticated) {
-  //   return <Navigate to="/" />
-  // }
+  if (isAuthenticated) {
+    return <Navigate to="/" />
+  }
 
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-in">

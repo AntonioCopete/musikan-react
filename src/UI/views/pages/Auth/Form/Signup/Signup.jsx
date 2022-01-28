@@ -47,9 +47,9 @@ function Signup() {
     setUserName(e.target.value)
   }
 
-  // if (isAuthenticated) {
-  //   return <Navigate to="/" />
-  // }
+  if (isAuthenticated) {
+    return <Navigate to="/" />
+  }
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-up">
       <h2 className="form__title">Create account</h2>
