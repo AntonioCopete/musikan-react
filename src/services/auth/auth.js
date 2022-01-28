@@ -27,7 +27,6 @@ export function onAuthStateChanged(...props) {
 
 export function singInWithGoogle() {
   const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider()
-
   return auth.signInWithPopup(GoogleAuthProvider)
 }
 

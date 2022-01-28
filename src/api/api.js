@@ -13,7 +13,7 @@ function makeApi(request = makeRequest()) {
   function signOut(headers) {
     return request({
       url: '/user/sign-out',
-      requestMethod: 'POST',
+      requestMethod: 'GET',
       headers: headers,
     })
   }

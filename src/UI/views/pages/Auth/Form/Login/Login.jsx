@@ -22,13 +22,13 @@ function Login() {
 
   useEffect(() => {
     dispatch(resetAuthState())
+    setEmail('')
+    setPassword('')
   }, [dispatch])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(signInWithEmailRequest(email, password))
-    setEmail('')
-    setPassword('')
   }
 
   const handleLoginWithGoogle = (e) => {
