@@ -6,18 +6,20 @@ import Profile from './ui/views/pages/Profile/Profile'
 import { useDispatch, useSelector } from 'react-redux'
 import { onAuthStateChanged } from './services/auth'
 import { syncSignIn, signOut } from './redux/auth/actions'
+import { deleteUserName } from './redux/user/actions'
 
 function App() {
   const dispatch = useDispatch()
   const userName = useSelector((state) => state.user)
 
   useEffect(() => {
-    let unsubscribeFromAuth = null
     const data = { userName: userName }
+    let unsubscribeFromAuth = null
 
     unsubscribeFromAuth = onAuthStateChanged((user) => {
       if (user) {
         dispatch(syncSignIn(data))
+        dispatch(deleteUserName())
       } else {
         dispatch(signOut())
       }
