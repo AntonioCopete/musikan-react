@@ -52,7 +52,7 @@ function Login() {
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-in">
       <Logo />
-      <h2 className="form__title">Login to Musikan</h2>
+      <h2 className="form__title">Login</h2>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
         <i className="fas fa-envelope"></i>

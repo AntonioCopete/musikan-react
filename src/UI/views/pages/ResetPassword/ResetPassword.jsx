@@ -33,7 +33,7 @@ function ResetPassword() {
     setEmail(e.target.value)
   }
 
-  function buttonText(loading, sent) {
+  function buttonText(loading, sent, error) {
     if (loading) return 'Sending...'
     if (sent) return 'Email Sent!'
     return 'Reset password'
