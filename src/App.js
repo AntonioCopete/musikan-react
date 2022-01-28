@@ -6,6 +6,7 @@ import Profile from './ui/views/pages/Profile/Profile'
 import { useDispatch, useSelector } from 'react-redux'
 import { onAuthStateChanged } from './services/auth'
 import { syncSignIn, signOut } from './redux/auth/actions'
+import PrivateRoute from './ui/views/components/PrivateRoute/PrivateRoute'
 
 function App() {
   const dispatch = useDispatch()
@@ -32,9 +33,24 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route
+        exact
+        path="/"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      ></Route>
       <Route path="/auth" element={<Auth />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route
+        path="/profile"
+        element={
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   )
 }
