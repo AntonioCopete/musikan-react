@@ -9,6 +9,8 @@ import { authSelector } from '../../../../redux/auth/selectors'
 
 import { Link } from 'react-router-dom'
 import { FormGroup } from '../Auth/Form/Form.styles'
+import Logo from '../../components/Logo/Logo'
+import { Reset } from './ResetPassword.styles'
 
 function ResetPassword() {
   const dispatch = useDispatch()
@@ -38,7 +40,8 @@ function ResetPassword() {
   }
 
   return (
-    <main>
+    <Reset>
+      <Logo />
       <FormGroup onSubmit={handleSubmit} className="form__sign-in">
         <h2 className="form__title">Recover password</h2>
         {passwordResetError && <p>{passwordResetError}</p>}
@@ -48,7 +51,7 @@ function ResetPassword() {
           <input
             type="email"
             placeholder="Email"
-            id="email"
+            id="resetEmail"
             value={email}
             onChange={handleSetEmail}
           />
@@ -62,7 +65,7 @@ function ResetPassword() {
         </button>
         <Link to="/auth">Login</Link>
       </FormGroup>
-    </main>
+    </Reset>
   )
 }
 

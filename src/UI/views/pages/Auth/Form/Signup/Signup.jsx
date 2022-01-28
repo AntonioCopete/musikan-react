@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
 import '../../SocialMediaAuth/SocialMediaAuth.scss'
+import Logo from '../../../../components/Logo/Logo'
 import {
   resetAuthState,
   signUpWithEmailRequest,
@@ -33,7 +34,7 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(setUserName({userName: userNameRef.current.value}))
+    dispatch(setUserName({ userName: userNameRef.current.value }))
     dispatch(signUpWithEmailRequest(email, password))
   }
 
@@ -50,6 +51,7 @@ function Signup() {
   }
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-up">
+      <Logo />
       <h2 className="form__title">Create account</h2>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
@@ -57,7 +59,7 @@ function Signup() {
         <input
           type="email"
           placeholder="Email"
-          id="email"
+          id="signupEmail"
           value={email}
           onChange={handleSetEmail}
         />
@@ -67,7 +69,7 @@ function Signup() {
         <input
           type="password"
           placeholder="Password"
-          id="password"
+          id="signupPassword"
           value={password}
           onChange={handleSetPassword}
         />

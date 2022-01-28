@@ -12,17 +12,16 @@ const GlobalStyles = createGlobalStyle`
   html {
     font-size: 62.5%;
     scroll-behavior: smooth;
-
   }
 
   body {
+    height: 100vh;
     font-family: ${(props) => props.theme.fonts.main};
     font-size: 1.6rem;
     background: ${({ theme }) => theme.colors.background};
     color: ${(props) => props.theme.colors.primary};
     cursor: default;
 		transition: background-color 0.5s linear;
-
   }
 
   a {

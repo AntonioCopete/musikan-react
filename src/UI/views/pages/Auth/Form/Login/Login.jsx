@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, Link } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
+import Logo from '../../../../components/Logo/Logo'
 import '../../SocialMediaAuth/SocialMediaAuth.scss'
 
 import {
@@ -50,6 +51,7 @@ function Login() {
 
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-in">
+      <Logo />
       <h2 className="form__title">Login to Musikan</h2>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
@@ -57,7 +59,7 @@ function Login() {
         <input
           type="email"
           placeholder="Email"
-          id="email"
+          id="loginEmail"
           value={email}
           onChange={handleSetEmail}
         />
@@ -67,7 +69,7 @@ function Login() {
         <input
           type="password"
           placeholder="Password"
-          id="password"
+          id="loginPassword"
           value={password}
           onChange={handleSetPassword}
         />

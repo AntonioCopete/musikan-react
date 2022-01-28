@@ -34,16 +34,19 @@ export const FormGroup = styled.form`
 
   .form {
     &__title {
-      font-size: 2.2rem;
-      color: #444;
+      font-size: ${({ theme }) => theme.fonts.title};
+      color: ${({ theme }) => theme.colors.text};
       margin-bottom: 10px;
+
+      @media ${(props) => props.theme.breakpoints.sm} {
+        font-size: ${({ theme }) => theme.fonts.titleMobile};
+      }
     }
 
     &__input-field {
-      display: -ms-grid;
       display: grid;
       grid-template-columns: 15% 85%;
-      max-width: 380px;
+      max-width: 23.75rem;
       width: 100%;
       height: 3.437rem;
       background-color: #f0f0f0;
@@ -77,7 +80,8 @@ export const FormGroup = styled.form`
   }
 
   .form__submit {
-    width: 9.375rem;
+    max-width: 23.75rem;
+    width: 100%;
     height: 3.0625rem;
     margin: 10px 0;
     border-radius: 3.0625rem;
