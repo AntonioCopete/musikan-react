@@ -8,9 +8,10 @@ import {
   signUpWithEmailRequest,
   signUpWithGoogleRequest,
 } from '../../../../../../redux/auth/actions'
+import { setUserName } from '../../../../../../redux/user/actions'
 import { authSelector } from '../../../../../../redux/auth/selectors'
 
-function Signup({ setUserName }) {
+function Signup() {
   const userNameRef = useRef()
   const dispatch = useDispatch()
   const { isSigningUp, signUpError, isAuthenticated } =
@@ -32,7 +33,7 @@ function Signup({ setUserName }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setUserName(userNameRef.current.value)
+    dispatch(setUserName({userName: userNameRef.current.value}))
     dispatch(signUpWithEmailRequest(email, password))
   }
 

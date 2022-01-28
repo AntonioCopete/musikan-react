@@ -3,7 +3,7 @@ import './Auth.scss'
 import Panel from './Panel/Panel'
 import Form from './Form/Form'
 
-function Auth({ setUserName }) {
+function Auth() {
   const [signup, setSignup] = useState('false')
 
   const handleSignin = () => {
@@ -12,7 +12,7 @@ function Auth({ setUserName }) {
 
   return (
     <main className={`container ${signup ? '' : 'sign-up-mode'}`}>
-      <Form setUserName={setUserName} />
+      <Form />
       <Panel handleSignin={handleSignin} />
     </main>
   )

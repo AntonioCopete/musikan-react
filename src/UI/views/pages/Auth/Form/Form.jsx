@@ -3,12 +3,12 @@ import Login from './Login/Login'
 import './form.scss'
 import { FormWrapper } from './Form.styles'
 
-function Form({ setUserName }) {
+function Form() {
   return (
     <FormWrapper>
       <div className="form">
         <Login />
-        <Signup setUserName={setUserName} />
+        <Signup />
       </div>
     </FormWrapper>
   )

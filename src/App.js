@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Auth from './ui/views/pages/Auth/Auth'
 import Dashboard from './ui/views/pages/Dashboard/Dashboard'
 import Profile from './ui/views/pages/Profile/Profile'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { onAuthStateChanged } from './services/auth'
 import { syncSignIn, signOut } from './redux/auth/actions'
 
 function App() {
-  const [userName, setUserName] = useState(' ')
   const dispatch = useDispatch()
+  const userName = useSelector((state) => state.user)
 
   useEffect(() => {
     let unsubscribeFromAuth = null
-    console.log(userName)
     const data = { userName: userName }
 
     unsubscribeFromAuth = onAuthStateChanged((user) => {
@@ -34,7 +33,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      <Route path="/auth" element={<Auth setUserName={setUserName} />} />
+      <Route path="/auth" element={<Auth />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   )
