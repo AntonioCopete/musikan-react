@@ -1,16 +1,16 @@
 import Signup from './Signup/Signup'
 import Login from './Login/Login'
-
-import { FormStyle } from './Form.styles'
+import './form.scss'
+import { FormWrapper } from './Form.styles'
 
 function Form({ setUserName }) {
   return (
-    <FormStyle className="form-feed">
+    <FormWrapper>
       <div className="form">
         <Login />
         <Signup setUserName={setUserName} />
       </div>
-    </FormStyle>
+    </FormWrapper>
   )
 }
 

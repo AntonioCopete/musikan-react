@@ -1,5 +1,4 @@
 import { useState } from 'react'
-// import { Container } from './Auth.styles'
 import './Auth.scss'
 import Panel from './Panel/Panel'
 import Form from './Form/Form'

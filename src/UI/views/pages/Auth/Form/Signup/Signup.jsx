@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import { SignupForm } from './Signup.styles'
-import './SocialMediaAuth.scss'
+import { FormGroup } from '../Form.styles'
+import '../../SocialMediaAuth/SocialMediaAuth.scss'
 import {
   resetAuthState,
   signUpWithEmailRequest,
@@ -48,7 +48,7 @@ function Signup({ setUserName }) {
     return <Navigate to="/" />
   }
   return (
-    <SignupForm onSubmit={handleSubmit} className="form__sign-up">
+    <FormGroup onSubmit={handleSubmit} className="form__sign-up">
       <h2 className="form__title">Create account</h2>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
@@ -96,7 +96,7 @@ function Signup({ setUserName }) {
           <i className="fab fa-google"></i>
         </button>
       </div>
-    </SignupForm>
+    </FormGroup>
   )
 }
 
