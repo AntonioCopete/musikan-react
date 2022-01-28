@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
 import '../../SocialMediaAuth/SocialMediaAuth.scss'
 
@@ -72,6 +72,7 @@ function Login() {
           onChange={handleSetPassword}
         />
       </div>
+      <Link to="/reset-password">Forgot password?</Link>
       <button className="form__submit" type="submit">
         login
       </button>

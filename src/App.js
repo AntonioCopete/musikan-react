@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Auth from './ui/views/pages/Auth/Auth'
+import ResetPassword from './ui/views/pages/ResetPassword/ResetPassword'
 import Dashboard from './ui/views/pages/Dashboard/Dashboard'
 import Profile from './ui/views/pages/Profile/Profile'
 import { useDispatch, useSelector } from 'react-redux'
@@ -43,6 +44,7 @@ function App() {
         }
       ></Route>
       <Route path="/auth" element={<Auth />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route
         path="/profile"
         element={
