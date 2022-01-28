@@ -10,6 +10,7 @@ import { authSelector } from '../../../../redux/auth/selectors'
 import { Link } from 'react-router-dom'
 import { FormGroup } from '../Auth/Form/Form.styles'
 import Logo from '../../components/Logo/Logo'
+import { Button } from '../../components/Button/Button.styles'
 import { Reset } from './ResetPassword.styles'
 
 function ResetPassword() {
@@ -56,13 +57,13 @@ function ResetPassword() {
             onChange={handleSetEmail}
           />
         </div>
-        <button
-          className="form__submit"
+        <Button
+          primary
           type="submit"
           disabled={isSendingPasswordReset || passwordResetSent}
         >
           {buttonText(isSendingPasswordReset, passwordResetSent)}
-        </button>
+        </Button>
         <Link to="/auth">Login</Link>
       </FormGroup>
     </Reset>

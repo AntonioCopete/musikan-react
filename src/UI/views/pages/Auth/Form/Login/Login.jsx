@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, Link } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
 import Logo from '../../../../components/Logo/Logo'
+import { Button } from '../../../../components/Button/Button.styles'
 import '../../SocialMediaAuth/SocialMediaAuth.scss'
 
 import {
@@ -52,7 +53,7 @@ function Login() {
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-in">
       <Logo />
-      <h2 className="form__title">Login</h2>
+      <h1 className="form__title">Login</h1>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
         <i className="fas fa-envelope"></i>
@@ -75,9 +76,9 @@ function Login() {
         />
       </div>
       <Link to="/reset-password">Forgot password?</Link>
-      <button className="form__submit" type="submit">
+      <Button primary type="submit">
         login
-      </button>
+      </Button>
 
       <p className="form__social-text">Or Sign up with social platforms</p>
       <div className="form__social-media">

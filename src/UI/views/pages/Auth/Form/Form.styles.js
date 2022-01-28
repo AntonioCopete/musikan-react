@@ -78,32 +78,4 @@ export const FormGroup = styled.form`
       font-weight: 500;
     }
   }
-
-  .form__submit {
-    max-width: 23.75rem;
-    width: 100%;
-    height: 3.0625rem;
-    margin: 10px 0;
-    border-radius: 3.0625rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border: none;
-    outline: none;
-    background-color: red;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.5s;
-
-    &:hover {
-      background-color: #5a1369;
-    }
-
-    &:disabled {
-      opacity: 0.5;
-
-      &:hover {
-        background-color: red;
-      }
-    }
-  }
 `

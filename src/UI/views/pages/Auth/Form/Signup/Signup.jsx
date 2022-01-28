@@ -4,6 +4,8 @@ import { Navigate } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
 import '../../SocialMediaAuth/SocialMediaAuth.scss'
 import Logo from '../../../../components/Logo/Logo'
+import { Button } from '../../../../components/Button/Button.styles'
+
 import {
   resetAuthState,
   signUpWithEmailRequest,
@@ -52,7 +54,7 @@ function Signup() {
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-up">
       <Logo />
-      <h2 className="form__title">Create account</h2>
+      <h1 className="form__title">Create account</h1>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
         <i className="fas fa-envelope"></i>
@@ -85,9 +87,9 @@ function Signup() {
           // onChange={handleSetUserName}
         />
       </div>
-      <button className="form__submit" type="submit" disabled={isSigningUp}>
+      <Button primary type="submit" disabled={isSigningUp}>
         signup
-      </button>
+      </Button>
 
       <p className="form__social-text">Or Sign up with social platforms</p>
       <div className="form__social-media">

@@ -15,7 +15,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    /* display: grid;
     height: 100vh;
+    place-content: center; */
     font-family: ${(props) => props.theme.fonts.main};
     font-size: 1.6rem;
     background: ${({ theme }) => theme.colors.background};
@@ -29,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colors.text}
   }
 	
-  li{
+  li {
     list-style: none;
   }
 `

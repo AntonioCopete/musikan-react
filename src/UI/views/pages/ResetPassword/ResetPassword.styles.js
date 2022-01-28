@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
 export const Reset = styled.main`
-  height: 100vh;
+  padding: 3rem 0;
+
+  form {
+    padding: 3rem 0;
+  }
 `
