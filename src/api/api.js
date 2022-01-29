@@ -18,9 +18,23 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function updateProfileRequest(headers, body) {
+    console.log('HEADERS:')
+    console.log(headers)
+    console.log('BODY')
+    console.log(body)
+    return request({
+      url: '/user/update',
+      requestMethod: 'PATCH',
+      headers: headers,
+      body: body,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
+    updateProfileRequest: updateProfileRequest,
   }
 }
 

@@ -142,3 +142,46 @@ export const sendPasswordResetEmailSuccess = () => ({
 export const resetAuthState = () => ({
   type: AuthTypes.RESET_AUTH_STATE,
 })
+
+export function updateProfile(formInfo) {
+  console.log('UPDATE PROFILE')
+  return async function updateProfileThunk(dispatch) {
+    const token = await auth.getCurrentUserToken()
+
+    console.log('PRE TOKEN')
+    console.log(token)
+    if (!token) return
+    console.log('POST TOKEN')
+
+    const response = await api
+      .updateProfileRequest(
+        {
+          Authorization: `Bearer ${token}`,
+        },
+        {
+          email: formInfo.get('email'),
+          profilePicture: formInfo.get('profilePicture'),
+        }
+      )
+      .then((res) => console.log(res))
+    console.log('RESPONSE:')
+    console.log(response)
+
+    console.log('PRE-RESPONSE.ERRORMESSAGE')
+    if (response.errorMessage) return
+    console.log('POST-RESPONSE.ERRORMESSAGE')
+
+    console.log('PRE-CHANGE USER INFO')
+    dispatch(changeUserInfo(response.user))
+
+    return
+  }
+}
+
+export const changeUserInfo = (userInfo) => {
+  console.log('CHANGE USER INFO')
+  return {
+    type: AuthTypes.CHANGE_USER_INFO,
+    payload: userInfo,
+  }
+}

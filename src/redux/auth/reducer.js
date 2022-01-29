@@ -39,8 +39,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
         currentUser: {
           userName: action.payload.user.userName,
           email: action.payload.user.email,
-          avatarImage:
-            'http://www.fcaktp.cu/wp-content/uploads/2019/05/default-user-image.png', // ! TEMPORARY SOLUTION
+          profilePicture: action.payload.user.profilePicture,
         },
       }
     }
@@ -105,6 +104,12 @@ const AuthReducer = (state = AuthInitialState, action) => {
         isSendingPasswordReset: false,
         passwordResetError: null,
         passwordResetSent: false,
+      }
+    }
+    case AuthTypes.CHANGE_USER_INFO: {
+      return {
+        ...state,
+        currentUser: action.payload,
       }
     }
     default: {
