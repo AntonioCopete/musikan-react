@@ -18,14 +18,10 @@ function makeApi(request = makeRequest()) {
     })
   }
 
-  function updateProfileRequest(headers, body) {
-    console.log('HEADERS:')
-    console.log(headers)
-    console.log('BODY')
-    console.log(body)
+  function updateAvatarRequest(headers, body) {
     return request({
-      url: '/user/update',
-      requestMethod: 'PATCH',
+      url: '/user/update-avatar',
+      requestMethod: 'POST',
       headers: headers,
       body: body,
     })
@@ -34,7 +30,7 @@ function makeApi(request = makeRequest()) {
   return {
     signUp: signUp,
     signOut: signOut,
-    updateProfileRequest: updateProfileRequest,
+    updateAvatarRequest: updateAvatarRequest,
   }
 }
 

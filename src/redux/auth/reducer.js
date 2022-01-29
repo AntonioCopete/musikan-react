@@ -66,7 +66,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
         currentUser: {
           email: null,
           userName: null,
-          avatarImage: null,
+          profilePicture: null,
         },
       }
     }
@@ -106,10 +106,13 @@ const AuthReducer = (state = AuthInitialState, action) => {
         passwordResetSent: false,
       }
     }
-    case AuthTypes.CHANGE_USER_INFO: {
+    case AuthTypes.CHANGE_USER_AVATAR: {
       return {
         ...state,
-        currentUser: action.payload,
+        currentUser: {
+          ...state.currentUser,
+          profilePicture: action.payload,
+        },
       }
     }
     default: {

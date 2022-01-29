@@ -143,45 +143,30 @@ export const resetAuthState = () => ({
   type: AuthTypes.RESET_AUTH_STATE,
 })
 
-export function updateProfile(formInfo) {
-  console.log('UPDATE PROFILE')
-  return async function updateProfileThunk(dispatch) {
+export function updateAvatar(formInfo) {
+  return async function updateAvatarThunk(dispatch) {
     const token = await auth.getCurrentUserToken()
 
-    console.log('PRE TOKEN')
-    console.log(token)
     if (!token) return
-    console.log('POST TOKEN')
 
-    const response = await api
-      .updateProfileRequest(
-        {
-          Authorization: `Bearer ${token}`,
-        },
-        {
-          email: formInfo.get('email'),
-          profilePicture: formInfo.get('profilePicture'),
-        }
-      )
-      .then((res) => console.log(res))
-    console.log('RESPONSE:')
-    console.log(response)
+    const response = await api.updateAvatarRequest(
+      {
+        Authorization: `Bearer ${token}`,
+      },
+      formInfo
+    )
 
-    console.log('PRE-RESPONSE.ERRORMESSAGE')
     if (response.errorMessage) return
-    console.log('POST-RESPONSE.ERRORMESSAGE')
 
-    console.log('PRE-CHANGE USER INFO')
-    dispatch(changeUserInfo(response.user))
+    dispatch(changeUserAvatar(response.data))
 
     return
   }
 }
 
-export const changeUserInfo = (userInfo) => {
-  console.log('CHANGE USER INFO')
+export const changeUserAvatar = (userAvatarURL) => {
   return {
-    type: AuthTypes.CHANGE_USER_INFO,
-    payload: userInfo,
+    type: AuthTypes.CHANGE_USER_AVATAR,
+    payload: userAvatarURL,
   }
 }

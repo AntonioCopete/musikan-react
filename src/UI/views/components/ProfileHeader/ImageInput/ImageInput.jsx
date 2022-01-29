@@ -1,33 +1,48 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { AvatarLabel, AvatarInput, AvatarImage } from "./ImageInput.styles";
-import { updateProfile } from "../../../../../redux/auth/actions"
+
+import { updateAvatar } from "../../../../../redux/auth/actions"
+
+import { Avatar } from '@mui/material'
+
+import { Container, Overlay, AvatarInput } from "./ImageInput.styles";
 
 function ImageInput() {
-  const dispatch = useDispatch()
-  const { profilePicture, email } = useSelector(state => state.auth.currentUser)
+  const { profilePicture } = useSelector(state => state.auth.currentUser)
+  const [isLoading, setIsLoading] = useState(false)
   const fileInputRef = useRef();
+  const dispatch = useDispatch()
 
   const handleChange = (event) => {
     if (event.target.value === "") return
     
+    setIsLoading(true)
+
     const selectedAvatarImage = event.target.files[0]
 
     const formData = new FormData()
-    formData.append("email", email)
     formData.append("profilePicture", selectedAvatarImage, selectedAvatarImage.name)
 
-    dispatch(updateProfile(formData))
+    dispatch(updateAvatar(formData))
 
     fileInputRef.current.value = ''
+
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
 };
 
   return (
     <>
-      <AvatarLabel htmlFor="avatarImageInput">
-        <AvatarImage src={profilePicture} sx={{ width: 125, height: 125, boxShadow: 5 }} />
-      </AvatarLabel>
-      <AvatarInput id="avatarImageInput" type="file" ref={fileInputRef} onChange={handleChange} />
+      <label htmlFor="avatarImageInput">
+        <Container>
+          <Avatar src={profilePicture} sx={{ width: 125, height: 125, boxShadow: 5 }} />
+          <Overlay>
+            <span>Edit</span>
+          </Overlay>
+        </Container>
+      </label>
+      <AvatarInput id="avatarImageInput" type="file" name="profilePicture" ref={fileInputRef} disabled={isLoading} onChange={handleChange} />
     </>
   );
 }
