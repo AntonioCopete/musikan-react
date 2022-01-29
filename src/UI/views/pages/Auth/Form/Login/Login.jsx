@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navigate, Link } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
 import Logo from '../../../../components/Logo/Logo'
 import { Button } from '../../../../../styles/GlobalComponents/Button'
+import { NavLink } from '../../../../../styles/GlobalComponents/NavLink'
 import '../../SocialMediaAuth/SocialMediaAuth.scss'
 
 import {
@@ -75,7 +76,7 @@ function Login() {
           onChange={handleSetPassword}
         />
       </div>
-      <Link to="/reset-password">Forgot password?</Link>
+      <NavLink to="/reset-password">Forgot password?</NavLink>
       <Button primary type="submit">
         login
       </Button>

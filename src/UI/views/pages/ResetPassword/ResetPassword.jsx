@@ -7,10 +7,10 @@ import {
 } from '../../../../redux/auth/actions'
 import { authSelector } from '../../../../redux/auth/selectors'
 
-import { Link } from 'react-router-dom'
 import { FormGroup } from '../Auth/Form/Form.styles'
 import Logo from '../../components/Logo/Logo'
 import { Button } from '../../../styles/GlobalComponents/Button'
+import { NavLink } from '../../../styles/GlobalComponents/NavLink'
 import { Reset } from './ResetPassword.styles'
 
 function ResetPassword() {
@@ -71,7 +71,7 @@ function ResetPassword() {
             passwordResetError
           )}
         </Button>
-        <Link to="/auth">Login</Link>
+        <NavLink to="/auth">Login</NavLink>
       </FormGroup>
     </Reset>
   )

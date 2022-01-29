@@ -57,6 +57,10 @@ function Signup() {
       <h1>Create account</h1>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
+        <i className="fas fa-user"></i>
+        <input type="text" placeholder="Name" id="name" ref={userNameRef} />
+      </div>
+      <div className="form__input-field">
         <i className="fas fa-envelope"></i>
         <input
           type="email"
@@ -74,17 +78,6 @@ function Signup() {
           id="signupPassword"
           value={password}
           onChange={handleSetPassword}
-        />
-      </div>
-      <div className="form__input-field">
-        <i className="fas fa-lock"></i>
-        <input
-          type="text"
-          placeholder="Name"
-          id="name"
-          ref={userNameRef}
-          // value={userName}
-          // onChange={handleSetUserName}
         />
       </div>
       <Button primary type="submit" disabled={isSigningUp}>

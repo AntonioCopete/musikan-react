@@ -35,11 +35,6 @@ const GlobalStyles = createGlobalStyle`
       font-size: ${({ theme }) => theme.fonts.titleMobile};
     }
   }
-
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.text}
-  }
 	
   li {
     list-style: none;
