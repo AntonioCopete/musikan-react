@@ -1,25 +1,24 @@
-import { Avatar } from '@mui/material'
-
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const LabelContainer = styled.label`
   position: relative;
+  margin-right: 2rem;
 `
 export const Overlay = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(71, 71, 71, 0.6);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
-  transition: opacity 0.25s;
   border-radius: 50%;
   cursor: pointer;
+  background: rgba(71, 71, 71, 0.6);
+  transition: opacity 0.25s;
 
   &:hover {
     opacity: 1;
@@ -32,8 +31,4 @@ export const Overlay = styled.div`
 
 export const AvatarInput = styled.input`
   display: none;
-`
-
-export const AvatarImage = styled(Avatar)`
-  /* margin-right: 2rem; */
 `
