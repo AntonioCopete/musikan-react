@@ -37,6 +37,7 @@ function ResetPassword() {
   function buttonText(loading, sent, error) {
     if (loading) return 'Sending...'
     if (sent) return 'Email Sent!'
+    if (error) return 'Error'
     return 'Reset password'
   }
 
@@ -60,9 +61,15 @@ function ResetPassword() {
         <Button
           primary
           type="submit"
-          disabled={isSendingPasswordReset || passwordResetSent}
+          disabled={
+            isSendingPasswordReset || passwordResetSent || passwordResetError
+          }
         >
-          {buttonText(isSendingPasswordReset, passwordResetSent)}
+          {buttonText(
+            isSendingPasswordReset,
+            passwordResetSent,
+            passwordResetError
+          )}
         </Button>
         <Link to="/auth">Login</Link>
       </FormGroup>
