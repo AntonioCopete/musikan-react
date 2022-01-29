@@ -8,7 +8,7 @@ function Dashboard() {
   const [showUserMenu, setShowUserMenu] = useState(false)
 
   return (
-    <div>
+    <>
       <Nav />
       <h1>Jelou página Dashboard</h1>
       <MenuContainer>
@@ -18,7 +18,7 @@ function Dashboard() {
         />
         {showUserMenu && <UserMenu />}
       </MenuContainer>
-    </div>
+    </>
   )
 }
 

@@ -1,25 +1,27 @@
-import { UserInfoContainer, UserName, UserEmail, Breadcrumb } from "./ProfileHeader.styles";
-import { useSelector } from "react-redux";
-
-import ImageInput from "./ImageInput/ImageInput";
-
-import Box from "@mui/material/Box";
+import { useSelector } from 'react-redux'
+import Panel from '../../components/Panel/Panel'
+import ImageInput from './ImageInput/ImageInput'
+import {
+  ProfileInfo,
+  ProfileWrapper,
+  ProfileTitle,
+} from './ProfileHeader.styles'
 
 function ProfileHeader() {
-  const { email, userName } = useSelector(state => state.auth.currentUser)
+  const { email, userName } = useSelector((state) => state.auth.currentUser)
 
   return (
-    <>
-      <Breadcrumb>Profile</Breadcrumb>
-      <UserInfoContainer>
+    <Panel>
+      <ProfileTitle>Profile</ProfileTitle>
+      <ProfileWrapper>
         <ImageInput />
-        <Box>
-          <UserName>{userName}</UserName>
-          <UserEmail>{email}</UserEmail>
-        </Box>
-      </UserInfoContainer>
-    </>
-  );
+        <ProfileInfo>
+          <h1>{userName}</h1>
+          <p>{email}</p>
+        </ProfileInfo>
+      </ProfileWrapper>
+    </Panel>
+  )
 }
 
-export default ProfileHeader;
+export default ProfileHeader

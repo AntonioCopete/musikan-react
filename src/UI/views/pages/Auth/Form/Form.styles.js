@@ -33,16 +33,6 @@ export const FormGroup = styled.form`
   }
 
   .form {
-    &__title {
-      font-size: ${({ theme }) => theme.fonts.title};
-      color: ${({ theme }) => theme.colors.text};
-      margin-bottom: 10px;
-
-      @media ${(props) => props.theme.breakpoints.sm} {
-        font-size: ${({ theme }) => theme.fonts.titleMobile};
-      }
-    }
-
     &__input-field {
       display: grid;
       grid-template-columns: 15% 85%;

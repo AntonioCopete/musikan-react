@@ -26,6 +26,16 @@ const GlobalStyles = createGlobalStyle`
 		transition: background-color 0.5s linear;
   }
 
+  h1 {
+    font-size: ${({ theme }) => theme.fonts.title};
+    margin-bottom: 10px;
+    color: ${({ theme }) => theme.colors.text};
+
+    @media ${(props) => props.theme.breakpoints.sm} {
+      font-size: ${({ theme }) => theme.fonts.titleMobile};
+    }
+  }
+
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.text}

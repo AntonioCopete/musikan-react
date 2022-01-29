@@ -10,7 +10,7 @@ import { authSelector } from '../../../../redux/auth/selectors'
 import { Link } from 'react-router-dom'
 import { FormGroup } from '../Auth/Form/Form.styles'
 import Logo from '../../components/Logo/Logo'
-import { Button } from '../../components/Button/Button.styles'
+import { Button } from '../../../styles/GlobalComponents/Button'
 import { Reset } from './ResetPassword.styles'
 
 function ResetPassword() {
@@ -44,7 +44,7 @@ function ResetPassword() {
     <Reset>
       <Logo />
       <FormGroup onSubmit={handleSubmit} className="form__sign-in">
-        <h2 className="form__title">Recover password</h2>
+        <h1>Recover password</h1>
         {passwordResetError && <p>{passwordResetError}</p>}
 
         <div className="form__input-field">

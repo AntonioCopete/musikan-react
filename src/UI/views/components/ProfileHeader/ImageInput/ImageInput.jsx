@@ -1,17 +1,20 @@
-import { useSelector } from "react-redux";
-import { AvatarLabel, AvatarInput, AvatarImage } from "./ImageInput.styles";
+import { useSelector } from 'react-redux'
+import { AvatarInput, AvatarImage } from './ImageInput.styles'
 
 function ImageInput() {
-  const { avatarImage } = useSelector(state => state.auth.currentUser)
+  const { avatarImage } = useSelector((state) => state.auth.currentUser)
 
   return (
     <>
-      <AvatarLabel htmlFor="avatarImageInput">
-        <AvatarImage src={avatarImage} sx={{ width: 125, height: 125, boxShadow: 5 }} />
-      </AvatarLabel>
+      <label htmlFor="avatarImageInput">
+        <AvatarImage
+          src={avatarImage}
+          sx={{ width: 125, height: 125, boxShadow: 5 }}
+        />
+      </label>
       <AvatarInput id="avatarImageInput" type="file" />
     </>
-  );
+  )
 }
 
-export default ImageInput;
+export default ImageInput

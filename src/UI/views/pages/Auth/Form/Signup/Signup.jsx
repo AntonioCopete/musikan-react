@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
 import '../../SocialMediaAuth/SocialMediaAuth.scss'
 import Logo from '../../../../components/Logo/Logo'
-import { Button } from '../../../../components/Button/Button.styles'
+import { Button } from '../../../../../styles/GlobalComponents/Button'
 
 import {
   resetAuthState,
@@ -54,7 +54,7 @@ function Signup() {
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-up">
       <Logo />
-      <h1 className="form__title">Create account</h1>
+      <h1>Create account</h1>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
         <i className="fas fa-envelope"></i>

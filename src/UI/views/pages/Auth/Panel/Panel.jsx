@@ -3,7 +3,7 @@ import './Panel.scss'
 import imgPanel1 from '../../../../img/bg-image1.svg'
 import imgPanel2 from '../../../../img/bg-image2.svg'
 
-import { Button } from '../../../components/Button/Button.styles'
+import { Button } from '../../../../styles/GlobalComponents/Button'
 
 function Panel({ handleSignin }) {
   return (
