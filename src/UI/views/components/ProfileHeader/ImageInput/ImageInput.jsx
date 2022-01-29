@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { updateAvatar } from "../../../../../redux/auth/actions"
 
-import { Avatar } from '@mui/material'
-
-import { Container, Overlay, AvatarInput } from "./ImageInput.styles";
+import { Container, Overlay, AvatarInput, AvatarImage } from "./ImageInput.styles";
 
 function ImageInput() {
   const { profilePicture } = useSelector(state => state.auth.currentUser)
@@ -36,7 +34,7 @@ function ImageInput() {
     <>
       <label htmlFor="avatarImageInput">
         <Container>
-          <Avatar src={profilePicture} sx={{ width: 125, height: 125, boxShadow: 5 }} />
+          <AvatarImage src={profilePicture} sx={{ width: 125, height: 125, boxShadow: 5 }} />
           <Overlay>
             <span>Edit</span>
           </Overlay>
@@ -44,7 +42,7 @@ function ImageInput() {
       </label>
       <AvatarInput id="avatarImageInput" type="file" name="profilePicture" ref={fileInputRef} disabled={isLoading} onChange={handleChange} />
     </>
-  );
+  )
 }
 
-export default ImageInput;
+export default ImageInput

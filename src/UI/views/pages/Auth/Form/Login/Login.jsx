@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
+import Logo from '../../../../components/Logo/Logo'
+import { Button } from '../../../../../styles/GlobalComponents/Button'
+import { NavLink } from '../../../../../styles/GlobalComponents/NavLink'
 import '../../SocialMediaAuth/SocialMediaAuth.scss'
 
 import {
@@ -50,14 +53,15 @@ function Login() {
 
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-in">
-      <h2 className="form__title">Login to Musikan</h2>
+      <Logo />
+      <h1>Login</h1>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
         <i className="fas fa-envelope"></i>
         <input
           type="email"
           placeholder="Email"
-          id="email"
+          id="loginEmail"
           value={email}
           onChange={handleSetEmail}
         />
@@ -67,14 +71,15 @@ function Login() {
         <input
           type="password"
           placeholder="Password"
-          id="password"
+          id="loginPassword"
           value={password}
           onChange={handleSetPassword}
         />
       </div>
-      <button className="form__submit" type="submit">
+      <NavLink to="/reset-password">Forgot password?</NavLink>
+      <Button primary type="submit">
         login
-      </button>
+      </Button>
 
       <p className="form__social-text">Or Sign up with social platforms</p>
       <div className="form__social-media">

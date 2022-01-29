@@ -120,7 +120,7 @@ export function sendPasswordResetEmail(email) {
       await auth.sendPasswordResetEmail(email)
       dispatch(sendPasswordResetEmailSuccess())
     } catch (error) {
-      dispatch(sendPasswordResetEmailError(error.message))
+      return dispatch(sendPasswordResetEmailError(error.message))
     }
     return dispatch(sendPasswordResetEmailSuccess())
   }

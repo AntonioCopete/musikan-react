@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
 import '../../SocialMediaAuth/SocialMediaAuth.scss'
+import Logo from '../../../../components/Logo/Logo'
+import { Button } from '../../../../../styles/GlobalComponents/Button'
+
 import {
   resetAuthState,
   signUpWithEmailRequest,
@@ -33,7 +36,7 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(setUserName({userName: userNameRef.current.value}))
+    dispatch(setUserName({ userName: userNameRef.current.value }))
     dispatch(signUpWithEmailRequest(email, password))
   }
 
@@ -50,14 +53,19 @@ function Signup() {
   }
   return (
     <FormGroup onSubmit={handleSubmit} className="form__sign-up">
-      <h2 className="form__title">Create account</h2>
+      <Logo />
+      <h1>Create account</h1>
       {signUpError && <p>{signUpError}</p>}
+      <div className="form__input-field">
+        <i className="fas fa-user"></i>
+        <input type="text" placeholder="Name" id="name" ref={userNameRef} />
+      </div>
       <div className="form__input-field">
         <i className="fas fa-envelope"></i>
         <input
           type="email"
           placeholder="Email"
-          id="email"
+          id="signupEmail"
           value={email}
           onChange={handleSetEmail}
         />
@@ -67,25 +75,14 @@ function Signup() {
         <input
           type="password"
           placeholder="Password"
-          id="password"
+          id="signupPassword"
           value={password}
           onChange={handleSetPassword}
         />
       </div>
-      <div className="form__input-field">
-        <i className="fas fa-lock"></i>
-        <input
-          type="text"
-          placeholder="Name"
-          id="name"
-          ref={userNameRef}
-          // value={userName}
-          // onChange={handleSetUserName}
-        />
-      </div>
-      <button className="form__submit" type="submit" disabled={isSigningUp}>
+      <Button primary type="submit" disabled={isSigningUp}>
         signup
-      </button>
+      </Button>
 
       <p className="form__social-text">Or Sign up with social platforms</p>
       <div className="form__social-media">

@@ -1,3 +1,5 @@
+import { Avatar } from '@mui/material'
+
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -30,4 +32,8 @@ export const Overlay = styled.div`
 
 export const AvatarInput = styled.input`
   display: none;
+`
+
+export const AvatarImage = styled(Avatar)`
+  /* margin-right: 2rem; */
 `

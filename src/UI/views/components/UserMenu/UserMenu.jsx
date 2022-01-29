@@ -1,10 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-
+import { deleteUserName } from '../../../../redux/user/actions'
 import { signOut } from '../../../../redux/auth/actions'
 
+import { NavLink, ButtonLink } from '../../../styles/GlobalComponents/NavLink'
 import { UserMenuNav, UserMenuElement } from './UserMenu.styles'
-import { deleteUserName } from '../../../../redux/user/actions'
 
 function UserMenu() {
   const navigate = useNavigate()
@@ -20,10 +20,10 @@ function UserMenu() {
     <UserMenuNav>
       <ul>
         <UserMenuElement>
-          <Link to="/profile">Profile</Link>
+          <NavLink to="/profile">Profile</NavLink>
         </UserMenuElement>
         <UserMenuElement>
-          <span onClick={handleLogout}>Logout</span>
+          <ButtonLink onClick={handleLogout}>Logout</ButtonLink>
         </UserMenuElement>
       </ul>
     </UserMenuNav>
