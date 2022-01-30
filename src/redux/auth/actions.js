@@ -170,3 +170,56 @@ export const changeUserAvatar = (userAvatarURL) => {
     payload: userAvatarURL,
   }
 }
+
+export function updateUserInfo(formInfo) {
+  return async function updateUserInfoThunk(dispatch) {
+    const token = await auth.getCurrentUserToken()
+
+    if (!token) return
+
+    if (Object.keys(formInfo).includes('password')) {
+      const user = auth.getCurrentUser()
+      user
+        .updatePassword(formInfo.password)
+        .then(() => {
+          console.log('Password updated correctly')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+
+    if (Object.keys(formInfo).includes('email')) {
+      const user = auth.getCurrentUser()
+      auth
+        .updateEmail(user, formInfo.email)
+        .then(async () => {
+          const response = await api.updateUserInfoRequest(
+            { Authorization: `Bearer ${token}` },
+            { email: formInfo.email }
+          )
+          if (response.errorMessage) return
+          dispatch(changeUserInfo(response.data))
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+
+    if (Object.keys(formInfo).includes('userName')) {
+      const response = await api.updateUserInfoRequest(
+        { Authorization: `Bearer ${token}` },
+        { userName: formInfo.userName }
+      )
+      if (response.errorMessage) return
+      dispatch(changeUserInfo(response.data))
+    }
+  }
+}
+
+export const changeUserInfo = (userInfo) => {
+  return {
+    type: AuthTypes.CHANGE_USER_INFO,
+    payload: userInfo,
+  }
+}
