@@ -115,6 +115,16 @@ const AuthReducer = (state = AuthInitialState, action) => {
         },
       }
     }
+    case AuthTypes.CHANGE_USER_INFO: {
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          userName: action.payload.userName,
+          email: action.payload.email,
+        },
+      }
+    }
     default: {
       return state
     }

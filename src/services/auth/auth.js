@@ -46,6 +46,10 @@ export function signOut() {
   return auth.signOut()
 }
 
+export function getCurrentUser() {
+  return auth.currentUser
+}
+
 export function getCurrentUserToken() {
   if (!auth.currentUser) {
     return null
@@ -60,4 +64,8 @@ export function getCurrentUserEmail() {
   }
 
   return auth.currentUser.email
+}
+
+export function updateEmail(user, email) {
+  return user.updateEmail(email)
 }

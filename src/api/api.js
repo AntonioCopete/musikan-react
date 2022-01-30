@@ -27,10 +27,20 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function updateUserInfoRequest(headers, body) {
+    return request({
+      url: '/user/update',
+      requestMethod: 'PATCH',
+      headers: headers,
+      body: body,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
     updateAvatarRequest: updateAvatarRequest,
+    updateUserInfoRequest: updateUserInfoRequest,
   }
 }
 
