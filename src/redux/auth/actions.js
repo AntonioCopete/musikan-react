@@ -177,9 +177,17 @@ export function updateUserInfo(formInfo) {
 
     if (!token) return
 
-    // if (Object.keys(formInfo).includes('password')) {
-
-    // }
+    if (Object.keys(formInfo).includes('password')) {
+      const user = auth.getCurrentUser()
+      user
+        .updatePassword(formInfo.password)
+        .then(() => {
+          console.log('Password updated correctly')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
 
     if (Object.keys(formInfo).includes('email')) {
       const user = auth.getCurrentUser()

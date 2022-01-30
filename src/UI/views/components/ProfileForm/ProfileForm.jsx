@@ -13,6 +13,9 @@ function ProfileForm() {
   const navigate = useNavigate()
   const userNameInput = useRef()
   const emailInput = useRef()
+  const oldPasswordRef = useRef()
+  const newPasswordRef = useRef()
+  const confirmPasswordRef = useRef()
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -27,11 +30,15 @@ function ProfileForm() {
 
     const newUserName = userNameInput.current.value
     const newEmail = emailInput.current.value
+    const newPassword = newPasswordRef.current.value
+    const oldPassword = oldPasswordRef.current.value
+    const confirmPassword = confirmPasswordRef.current.value
 
-    if ((newUserName !== userName &&  newUserName !== "") || (newEmail !== email &&  newEmail !== "")) {
+    if ((newUserName !== userName &&  newUserName !== "") || (newEmail !== email &&  newEmail !== "") || (oldPassword !== "" && oldPassword.length >= 6 &&  newPassword === confirmPassword &&  newPassword !== oldPassword) ) {
       const changes = {}
       if (newUserName !== userName) {changes.userName = newUserName}
       if (newEmail !== email) {changes.email = newEmail}
+      if (oldPassword !== "") {changes.password = newPassword}
       setUserDifference(changes)
     }
   }
@@ -46,6 +53,19 @@ function ProfileForm() {
       <div>
         <i className="fas fa-envelope"></i>
         <Input type="email" defaultValue={email} ref={emailInput} />
+      </div>
+      <SectionTitle>Change password</SectionTitle>
+      <div>
+        <i className="fas fa-lock"></i>
+        <Input type="password" ref={oldPasswordRef} placeholder="Old password" />
+      </div>
+      <div>
+        <i className="fas fa-lock"></i>
+        <Input type="password" ref={newPasswordRef} placeholder="New password" />
+      </div>
+      <div>
+        <i className="fas fa-lock"></i>
+        <Input type="password" ref={confirmPasswordRef} placeholder="Confirm password" />
       </div>
       <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
         <CancelButton onClick={() => {navigate(-1)}} >Cancel</CancelButton>
