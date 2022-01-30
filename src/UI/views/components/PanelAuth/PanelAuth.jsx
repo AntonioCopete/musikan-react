@@ -1,8 +1,8 @@
 import { PanelWrapper, PanelContainer, PanelContent } from './PanelAuth.styles'
 
-function PanelAuth({ animated, children }) {
+function PanelAuth({ children }) {
   return (
-    <PanelWrapper animated={animated}>
+    <PanelWrapper>
       <PanelContainer>
         <PanelContent>{children}</PanelContent>
       </PanelContainer>

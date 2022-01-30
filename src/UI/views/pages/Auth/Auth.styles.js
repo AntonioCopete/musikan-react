@@ -1,29 +1,29 @@
-$color-primary: #e41e51;
+import styled from 'styled-components'
 
-.container {
+const AuthContainer = styled.main`
   position: relative;
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
 
-  @media (max-width: 54.375rem) {
+  @media ${(props) => props.theme.breakpoints.lg} {
     min-height: 800px;
     height: 100vh;
   }
 
-  &::before {
-    content: "";
+  ::before {
     position: absolute;
+    content: '';
     width: 2000px;
     height: 2000px;
     right: 48%;
-    transform: translateY(-50%);
-    background: $color-primary;
+    background: ${({ theme }) => theme.colors.primary};
     border-radius: 50%;
-    z-index: 6;
+    transform: translateY(-50%);
     transition: 1.8s ease-in-out;
+    z-index: 6;
 
-    @media (max-width: 54.375rem) {
+    @media ${(props) => props.theme.breakpoints.lg} {
       width: 1500px;
       height: 1500px;
       left: 30%;
@@ -34,4 +34,6 @@ $color-primary: #e41e51;
       transition: 2s ease-in-out;
     }
   }
-}
+`
+
+export default AuthContainer

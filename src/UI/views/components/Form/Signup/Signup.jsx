@@ -1,21 +1,21 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { FormGroup } from '../Form.styles'
-import Logo from '../../../../components/Logo/Logo'
-import { Button } from '../../../../../styles/GlobalComponents/Button'
-import { NavLink } from '../../../../../styles/GlobalComponents/NavLink'
-import '../../SocialMediaAuth/SocialMediaAuth.scss'
+import '../SocialMediaAuth.scss'
+import Logo from '../../Logo/Logo'
+import { Button } from '../../../../styles/GlobalComponents/Button'
 
 import {
   resetAuthState,
-  signInWithEmailRequest,
+  signUpWithEmailRequest,
   signUpWithGoogleRequest,
-} from '../../../../../../redux/auth/actions'
+} from '../../../../../redux/auth/actions'
+import { setUserName } from '../../../../../redux/user/actions'
+import { authSelector } from '../../../../../redux/auth/selectors'
 
-import { authSelector } from '../../../../../../redux/auth/selectors'
-
-function Login() {
+function Signup() {
+  const userNameRef = useRef()
   const dispatch = useDispatch()
   const { isSigningUp, signUpError, isAuthenticated } =
     useSelector(authSelector)
@@ -29,14 +29,15 @@ function Login() {
     setPassword('')
   }, [dispatch])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch(signInWithEmailRequest(email, password))
-  }
-
   const handleLoginWithGoogle = (e) => {
     e.preventDefault()
     dispatch(signUpWithGoogleRequest())
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(setUserName({ userName: userNameRef.current.value }))
+    dispatch(signUpWithEmailRequest(email, password))
   }
 
   const handleSetEmail = (e) => {
@@ -50,18 +51,21 @@ function Login() {
   if (isAuthenticated) {
     return <Navigate to="/" />
   }
-
   return (
-    <FormGroup onSubmit={handleSubmit} className="form__sign-in">
+    <FormGroup onSubmit={handleSubmit} className="form__sign-up">
       <Logo />
-      <h1>Login</h1>
+      <h1>Create account</h1>
       {signUpError && <p>{signUpError}</p>}
+      <div className="form__input-field">
+        <i className="fas fa-user"></i>
+        <input type="text" placeholder="Name" id="name" ref={userNameRef} />
+      </div>
       <div className="form__input-field">
         <i className="fas fa-envelope"></i>
         <input
           type="email"
           placeholder="Email"
-          id="loginEmail"
+          id="signupEmail"
           value={email}
           onChange={handleSetEmail}
         />
@@ -71,14 +75,13 @@ function Login() {
         <input
           type="password"
           placeholder="Password"
-          id="loginPassword"
+          id="signupPassword"
           value={password}
           onChange={handleSetPassword}
         />
       </div>
-      <NavLink to="/reset-password">Forgot password?</NavLink>
-      <Button primary type="submit">
-        login
+      <Button primary type="submit" disabled={isSigningUp}>
+        signup
       </Button>
 
       <p className="form__social-text">Or Sign up with social platforms</p>
@@ -95,4 +98,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Signup

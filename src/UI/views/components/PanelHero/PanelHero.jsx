@@ -1,8 +1,8 @@
 import { PanelWrapper, PanelContainer, PanelContent } from './PanelHero.styles'
 
-function PanelHero({ animated, children }) {
+function PanelHero({ children }) {
   return (
-    <PanelWrapper animated={animated}>
+    <PanelWrapper>
       <PanelContainer>
         <PanelContent>{children}</PanelContent>
       </PanelContainer>

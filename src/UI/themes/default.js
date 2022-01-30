@@ -15,7 +15,7 @@ export default {
   breakpoints: {
     sm: 'all and (max-width: 375px)',
     md: 'all and (max-width: 640px)',
-    lg: 'all and (max-width: 768px)',
+    lg: 'all and (max-width: 870px)',
     xl: 'all and (max-width: 1280px)',
   },
 }

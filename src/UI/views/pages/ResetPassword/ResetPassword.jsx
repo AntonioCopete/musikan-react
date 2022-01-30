@@ -7,7 +7,7 @@ import {
 } from '../../../../redux/auth/actions'
 import { authSelector } from '../../../../redux/auth/selectors'
 
-import { FormGroup } from '../Auth/Form/Form.styles'
+import { FormGroup } from '../../components/Form/Form.styles'
 import Logo from '../../components/Logo/Logo'
 import { Button } from '../../../styles/GlobalComponents/Button'
 import { NavLink } from '../../../styles/GlobalComponents/NavLink'

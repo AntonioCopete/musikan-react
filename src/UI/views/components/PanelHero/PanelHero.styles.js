@@ -3,21 +3,19 @@ import styled from 'styled-components'
 export const PanelWrapper = styled.section`
   position: relative;
   width: 100%;
-  min-height: 800px;
+  min-height: 100vh;
   overflow: hidden;
 
   ::before {
     position: absolute;
     content: '';
-    background: ${({ theme }) => theme.colors.primary};
-    border-radius: 50%;
     width: 3000px;
     height: 1500px;
     bottom: 70%;
     left: 30%;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.colors.primary};
     transform: translateX(-50%);
-    right: initial;
-    top: initial;
     transition: 2s ease-in-out;
   }
 `
