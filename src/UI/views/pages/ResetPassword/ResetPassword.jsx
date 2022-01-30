@@ -44,7 +44,7 @@ function ResetPassword() {
   return (
     <Reset>
       <Logo />
-      <FormItem onSubmit={handleSubmit} className="form__sign-in">
+      <FormItem onSubmit={handleSubmit}>
         <h1>Recover password</h1>
         {passwordResetError && <p>{passwordResetError}</p>}
 

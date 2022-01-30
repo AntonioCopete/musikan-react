@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { FormItem } from '../Form.styles'
-import '../SocialMediaAuth.scss'
+
 import Logo from '../../Logo/Logo'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 

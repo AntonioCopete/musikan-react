@@ -8,7 +8,6 @@ import { NavLink } from '../../../../styles/GlobalComponents/NavLink'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import '../SocialMediaAuth.scss'
 
 import {
   resetAuthState,
