@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import PanelAuth from '../../components/PanelAuth/PanelAuth'
 import './Auth.scss'
-import Panel from './Panel/Panel'
+import PanelA from './PanelA/PanelA'
 import Form from './Form/Form'
 
 function Auth() {
@@ -13,7 +14,7 @@ function Auth() {
   return (
     <main className={`container ${signup ? '' : 'sign-up-mode'}`}>
       <Form />
-      <Panel handleSignin={handleSignin} />
+      <PanelA handleSignin={handleSignin} />
     </main>
   )
 }

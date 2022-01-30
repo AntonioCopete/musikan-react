@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import Panel from '../../components/Panel/Panel'
+import PanelHero from '../PanelHero/PanelHero'
 import ImageInput from './ImageInput/ImageInput'
 import {
   ProfileInfo,
@@ -11,7 +11,7 @@ function ProfileHeader() {
   const { email, userName } = useSelector((state) => state.auth.currentUser)
 
   return (
-    <Panel>
+    <PanelHero>
       <ProfileTitle>Profile</ProfileTitle>
       <ProfileWrapper>
         <ImageInput />
@@ -20,7 +20,7 @@ function ProfileHeader() {
           <p>{email}</p>
         </ProfileInfo>
       </ProfileWrapper>
-    </Panel>
+    </PanelHero>
   )
 }
 

@@ -1,5 +1,5 @@
 // import { PanelWrapper, PanelContent } from './Panel.styles'
-import './Panel.scss'
+import './PanelA.scss'
 import imgPanel1 from '../../../../img/bg-image1.svg'
 import imgPanel2 from '../../../../img/bg-image2.svg'
 
