@@ -7,7 +7,7 @@ import {
 } from '../../../../redux/auth/actions'
 import { authSelector } from '../../../../redux/auth/selectors'
 
-import { FormGroup } from '../../components/Form/Form.styles'
+import { FormItem } from '../../components/Form/Form.styles'
 import Logo from '../../components/Logo/Logo'
 import { Button } from '../../../styles/GlobalComponents/Button'
 import { NavLink } from '../../../styles/GlobalComponents/NavLink'
@@ -44,7 +44,7 @@ function ResetPassword() {
   return (
     <Reset>
       <Logo />
-      <FormGroup onSubmit={handleSubmit} className="form__sign-in">
+      <FormItem onSubmit={handleSubmit} className="form__sign-in">
         <h1>Recover password</h1>
         {passwordResetError && <p>{passwordResetError}</p>}
 
@@ -72,7 +72,7 @@ function ResetPassword() {
           )}
         </Button>
         <NavLink to="/auth">Login</NavLink>
-      </FormGroup>
+      </FormItem>
     </Reset>
   )
 }

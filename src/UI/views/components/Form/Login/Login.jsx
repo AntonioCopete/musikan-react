@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import { FormGroup } from '../Form.styles'
+import { FormItem } from '../Form.styles'
 import Logo from '../../Logo/Logo'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { NavLink } from '../../../../styles/GlobalComponents/NavLink'
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Checkbox from '@mui/material/Checkbox'
 import '../SocialMediaAuth.scss'
 
 import {
@@ -52,7 +55,7 @@ function Login() {
   }
 
   return (
-    <FormGroup onSubmit={handleSubmit} className="form__sign-in">
+    <FormItem onSubmit={handleSubmit} className="form__sign-in">
       <Logo />
       <h1>Login</h1>
       {signUpError && <p>{signUpError}</p>}
@@ -81,6 +84,13 @@ function Login() {
         login
       </Button>
 
+      <FormGroup>
+        <FormControlLabel
+          control={<Checkbox defaultChecked />}
+          label="Remember password"
+        />
+      </FormGroup>
+
       <p className="form__social-text">Or Sign up with social platforms</p>
       <div className="form__social-media">
         <button
@@ -91,7 +101,7 @@ function Login() {
           <i className="fab fa-google"></i>
         </button>
       </div>
-    </FormGroup>
+    </FormItem>
   )
 }
 

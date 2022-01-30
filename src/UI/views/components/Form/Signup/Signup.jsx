@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import { FormGroup } from '../Form.styles'
+import { FormItem } from '../Form.styles'
 import '../SocialMediaAuth.scss'
 import Logo from '../../Logo/Logo'
 import { Button } from '../../../../styles/GlobalComponents/Button'
@@ -52,7 +52,7 @@ function Signup() {
     return <Navigate to="/" />
   }
   return (
-    <FormGroup onSubmit={handleSubmit} className="form__sign-up">
+    <FormItem onSubmit={handleSubmit} className="form__sign-up">
       <Logo />
       <h1>Create account</h1>
       {signUpError && <p>{signUpError}</p>}
@@ -94,7 +94,7 @@ function Signup() {
           <i className="fab fa-google"></i>
         </button>
       </div>
-    </FormGroup>
+    </FormItem>
   )
 }
 

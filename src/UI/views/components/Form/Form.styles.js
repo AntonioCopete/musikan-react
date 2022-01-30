@@ -8,7 +8,7 @@ export const FormWrapper = styled.section`
   left: 0;
 `
 
-export const FormGroup = styled.form`
+export const FormItem = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
