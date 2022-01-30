@@ -3,6 +3,8 @@ export default {
     main: 'Monda, sans-serif',
     title: '5rem',
     titleMobile: '3rem',
+    secondaryTitle: '2.5rem',
+    secondaryTitleMobile: '2rem',
   },
   colors: {
     primary: '#e41e51',
@@ -11,6 +13,8 @@ export default {
     background: '#000000',
     text: '#ffffff',
     darkGrey: '#474747',
+    grey: '#969696',
+    lightGrey: '#bababa',
   },
   breakpoints: {
     sm: 'all and (max-width: 375px)',

@@ -26,13 +26,24 @@ const GlobalStyles = createGlobalStyle`
 		transition: background-color 0.5s linear;
   }
 
+  h1, h2 {
+    margin-bottom: .8rem;
+    color: ${({ theme }) => theme.colors.text};
+  }
+
   h1 {
     font-size: ${({ theme }) => theme.fonts.title};
-    margin-bottom: 10px;
-    color: ${({ theme }) => theme.colors.text};
 
     @media ${(props) => props.theme.breakpoints.sm} {
       font-size: ${({ theme }) => theme.fonts.titleMobile};
+    }
+  }
+
+  h2 {
+    font-size: ${({ theme }) => theme.fonts.secondaryTitle};
+
+    @media ${(props) => props.theme.breakpoints.sm} {
+      font-size: ${({ theme }) => theme.fonts.secondaryTitleMobile};
     }
   }
 	

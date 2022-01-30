@@ -1,14 +1,16 @@
-import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { updateUserInfo } from "../../../../redux/auth/actions";
+import { updateUserInfo } from '../../../../redux/auth/actions'
 
-import { Box } from "@mui/material";
-import { SectionTitle, Input, SaveButton, CancelButton } from "./ProfileForm.styles";
+import { InputGroup } from '../../../styles/GlobalComponents/Input'
+import { Button } from '../../../styles/GlobalComponents/Button'
+import { ButtonLink } from '../../../styles/GlobalComponents/NavLink'
+import { FormProfile } from './ProfileForm.styles'
 
 function ProfileForm() {
-  const { userName, email } = useSelector(state => state.auth.currentUser)
+  const { userName, email } = useSelector((state) => state.auth.currentUser)
   const [userDifference, setUserDifference] = useState()
   const navigate = useNavigate()
   const userNameInput = useRef()
@@ -34,45 +36,81 @@ function ProfileForm() {
     const oldPassword = oldPasswordRef.current.value
     const confirmPassword = confirmPasswordRef.current.value
 
-    if ((newUserName !== userName &&  newUserName !== "") || (newEmail !== email &&  newEmail !== "") || (oldPassword !== "" && oldPassword.length >= 6 &&  newPassword === confirmPassword &&  newPassword !== oldPassword) ) {
+    if (
+      (newUserName !== userName && newUserName !== '') ||
+      (newEmail !== email && newEmail !== '') ||
+      (oldPassword !== '' &&
+        oldPassword.length >= 6 &&
+        newPassword === confirmPassword &&
+        newPassword !== oldPassword)
+    ) {
       const changes = {}
-      if (newUserName !== userName) {changes.userName = newUserName}
-      if (newEmail !== email) {changes.email = newEmail}
-      if (oldPassword !== "") {changes.password = newPassword}
+      if (newUserName !== userName) {
+        changes.userName = newUserName
+      }
+      if (newEmail !== email) {
+        changes.email = newEmail
+      }
+      if (oldPassword !== '') {
+        changes.password = newPassword
+      }
       setUserDifference(changes)
     }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <SectionTitle>Edit profile</SectionTitle>
-      <div>
+    <FormProfile onSubmit={handleSubmit}>
+      <h2>Edit profile</h2>
+      <InputGroup>
         <i className="fas fa-user"></i>
-        <Input type="text" defaultValue={userName} ref={userNameInput} />
-      </div>
-      <div>
+        <input
+          type="text"
+          defaultValue={userName}
+          ref={userNameInput}
+          placeholder={userName}
+        />
+      </InputGroup>
+      <InputGroup>
         <i className="fas fa-envelope"></i>
-        <Input type="email" defaultValue={email} ref={emailInput} />
-      </div>
-      <SectionTitle>Change password</SectionTitle>
-      <div>
+        <input type="email" defaultValue={email} ref={emailInput} />
+      </InputGroup>
+      <h2>Change password</h2>
+      <InputGroup>
         <i className="fas fa-lock"></i>
-        <Input type="password" ref={oldPasswordRef} placeholder="Old password" />
-      </div>
-      <div>
+        <input
+          type="password"
+          ref={oldPasswordRef}
+          placeholder="Old password"
+        />
+      </InputGroup>
+      <InputGroup>
         <i className="fas fa-lock"></i>
-        <Input type="password" ref={newPasswordRef} placeholder="New password" />
-      </div>
-      <div>
+        <input
+          type="password"
+          ref={newPasswordRef}
+          placeholder="New password"
+        />
+      </InputGroup>
+      <InputGroup>
         <i className="fas fa-lock"></i>
-        <Input type="password" ref={confirmPasswordRef} placeholder="Confirm password" />
-      </div>
-      <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-        <CancelButton onClick={() => {navigate(-1)}} >Cancel</CancelButton>
-        <SaveButton type="submit" >Save</SaveButton>
-      </Box>
-    </form>
-  );
+        <input
+          type="password"
+          ref={confirmPasswordRef}
+          placeholder="Confirm password"
+        />
+      </InputGroup>
+      <Button primary type="submit">
+        Save
+      </Button>
+      <ButtonLink
+        onClick={() => {
+          navigate(-1)
+        }}
+      >
+        Cancel
+      </ButtonLink>
+    </FormProfile>
+  )
 }
 
-export default ProfileForm;
+export default ProfileForm
