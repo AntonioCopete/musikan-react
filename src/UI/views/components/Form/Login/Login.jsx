@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { FormItem } from '../Form.styles'
@@ -25,16 +25,26 @@ function Login() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [rememberEmail, setRememberEmail] = useState(true)
 
+  const emailFieldRef = useRef()
+  
   useEffect(() => {
     dispatch(resetAuthState())
     setEmail('')
     setPassword('')
   }, [dispatch])
 
+  useEffect(() => {
+    const userCredentials = localStorage.getItem("credentials") ? JSON.parse(localStorage.getItem("credentials")) : null
+    emailFieldRef.current.value = userCredentials
+    setEmail(userCredentials)
+  }, [])
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(signInWithEmailRequest(email, password))
+    handleRememberEmail()
   }
 
   const handleLoginWithGoogle = (e) => {
@@ -48,6 +58,19 @@ function Login() {
 
   const handleSetPassword = (e) => {
     setPassword(e.target.value)
+  }
+
+  const handleRememberEmailCheck = (e) => {
+    setRememberEmail(e.target.checked)
+  }
+
+  const handleRememberEmail = () => {
+    if (email !== "" && rememberEmail) {
+      localStorage.setItem("credentials", JSON.stringify(email))
+    }
+    if (email !== "" && !rememberEmail) {
+      localStorage.removeItem("credentials")
+    }
   }
 
   if (isAuthenticated) {
@@ -65,7 +88,8 @@ function Login() {
           type="email"
           placeholder="Email"
           id="loginEmail"
-          value={email}
+          ref={emailFieldRef}
+          // value={email}
           onChange={handleSetEmail}
         />
       </div>
@@ -86,8 +110,8 @@ function Login() {
 
       <FormGroup>
         <FormControlLabel
-          control={<Checkbox defaultChecked />}
-          label="Remember password"
+          control={<Checkbox checked={rememberEmail} onChange={handleRememberEmailCheck} />}
+          label="Remember email"
         />
       </FormGroup>
 
