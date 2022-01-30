@@ -8,9 +8,6 @@ function Nav() {
           <NavLink to="/">Dashboard</NavLink>
         </li>
         <li>
-          <NavLink to="/auth">Auth</NavLink>
-        </li>
-        <li>
           <NavLink to="/profile">Profile</NavLink>
         </li>
       </ul>

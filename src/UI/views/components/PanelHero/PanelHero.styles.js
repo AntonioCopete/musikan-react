@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const PanelWrapper = styled.section`
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 200px;
   overflow: hidden;
 
   ::before {
@@ -11,7 +11,7 @@ export const PanelWrapper = styled.section`
     content: '';
     width: 3000px;
     height: 1500px;
-    bottom: 70%;
+    bottom: 0;
     left: 30%;
     border-radius: 50%;
     background: ${({ theme }) => theme.colors.primary};

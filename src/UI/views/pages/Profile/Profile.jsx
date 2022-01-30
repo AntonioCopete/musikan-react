@@ -6,7 +6,6 @@ function Profile() {
   return (
     <>
       <Nav />
-      <h1>Jelou página Profile</h1>
       <ProfileHeader />
       <ProfileForm />
     </>
