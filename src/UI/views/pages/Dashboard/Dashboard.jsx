@@ -1,24 +1,26 @@
 import { useState } from 'react'
-import Nav from '../../components/Nav/Nav'
+import Layout from '../../layout/Layout'
+
+import PanelHero from '../../components/PanelHero/PanelHero'
 import UserAvatar from '../../components/UserAvatar/UserAvatar'
 import UserMenu from '../../components/UserMenu/UserMenu'
-import { MenuContainer } from './Dashboard.styles'
 
 function Dashboard() {
   const [showUserMenu, setShowUserMenu] = useState(false)
 
   return (
-    <>
-      <Nav />
-      <h1>Jelou página Dashboard</h1>
-      <MenuContainer>
-        <UserAvatar
-          showUserMenu={showUserMenu}
-          setShowUserMenu={setShowUserMenu}
-        />
-        {showUserMenu && <UserMenu />}
-      </MenuContainer>
-    </>
+    <Layout
+      hero={
+        <PanelHero>
+          <UserAvatar
+            showUserMenu={showUserMenu}
+            setShowUserMenu={setShowUserMenu}
+          />
+          {showUserMenu && <UserMenu />}
+        </PanelHero>
+      }
+      main={'<p>Home main content</p>'}
+    />
   )
 }
 

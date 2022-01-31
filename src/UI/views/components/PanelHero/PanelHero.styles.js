@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const PanelWrapper = styled.section`
+export const PanelWrapper = styled.div`
   position: relative;
   width: 100%;
   min-height: 200px;
