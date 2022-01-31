@@ -19,7 +19,7 @@ function Dashboard() {
           {showUserMenu && <UserMenu />}
         </PanelHero>
       }
-      main={'<p>Home main content</p>'}
+      main={'Home main content'}
     />
   )
 }
