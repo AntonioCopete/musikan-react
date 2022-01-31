@@ -28,7 +28,7 @@ function Login() {
   const [rememberEmail, setRememberEmail] = useState(true)
 
   const emailFieldRef = useRef()
-  
+
   useEffect(() => {
     dispatch(resetAuthState())
     setEmail('')
@@ -36,7 +36,9 @@ function Login() {
   }, [dispatch])
 
   useEffect(() => {
-    const userCredentials = localStorage.getItem("credentials") ? JSON.parse(localStorage.getItem("credentials")) : null
+    const userCredentials = localStorage.getItem('credentials')
+      ? JSON.parse(localStorage.getItem('credentials'))
+      : null
     emailFieldRef.current.value = userCredentials
     setEmail(userCredentials)
   }, [])
@@ -65,11 +67,11 @@ function Login() {
   }
 
   const handleRememberEmail = () => {
-    if (email !== "" && rememberEmail) {
-      localStorage.setItem("credentials", JSON.stringify(email))
+    if (email !== '' && rememberEmail) {
+      localStorage.setItem('credentials', JSON.stringify(email))
     }
-    if (email !== "" && !rememberEmail) {
-      localStorage.removeItem("credentials")
+    if (email !== '' && !rememberEmail) {
+      localStorage.removeItem('credentials')
     }
   }
 
@@ -110,7 +112,12 @@ function Login() {
 
       <FormGroup>
         <FormControlLabel
-          control={<Checkbox checked={rememberEmail} onChange={handleRememberEmailCheck} />}
+          control={
+            <Checkbox
+              checked={rememberEmail}
+              onChange={handleRememberEmailCheck}
+            />
+          }
           label="Remember email"
         />
       </FormGroup>

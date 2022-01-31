@@ -1,4 +1,4 @@
-export default {
+export const defaultTheme = {
   fonts: {
     main: 'Monda, sans-serif',
     title: '5rem',

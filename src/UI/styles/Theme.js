@@ -1,9 +1,9 @@
 import { ThemeProvider } from 'styled-components'
-import theme from '../themes/default'
+import { defaultTheme } from '../themes/default'
 import GlobalStyles from './Global.styles'
 
 const Theme = ({ children }) => (
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={defaultTheme}>
     <GlobalStyles />
     {children}
   </ThemeProvider>
