@@ -1,4 +1,7 @@
-import * as React from 'react'
+// import { useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { getTracks } from '../../../../redux/track/actions'
+
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -8,7 +11,13 @@ import Checkbox from '@mui/material/Checkbox'
 import Avatar from '@mui/material/Avatar'
 
 function MySongsList() {
-  const [checked, setChecked] = React.useState([1])
+  // const dispatch = useDispatch()
+
+  useEffect(() => {
+    getTracks()
+  }, [])
+
+  const [checked, setChecked] = useState([1])
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value)

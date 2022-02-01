@@ -36,11 +36,20 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function getTracks(headers) {
+    return request({
+      url: '/me/tracks',
+      requestMethod: 'GET',
+      headers: headers,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
     updateAvatarRequest: updateAvatarRequest,
     updateUserInfoRequest: updateUserInfoRequest,
+    getTracks: getTracks,
   }
 }
 
