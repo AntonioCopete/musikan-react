@@ -1,20 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { getTracks } from '../../../../redux/track/actions'
-// import { trackSelector } from '../../../../redux/track/selectors'
 
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import Checkbox from '@mui/material/Checkbox'
 import Avatar from '@mui/material/Avatar'
+import InfoMenu from '../InfoMenu/InfoMenu'
+import { ItemText } from './MySongsList.styles'
 
 function MySongsList() {
   const dispatch = useDispatch()
   const track = useSelector((state) => state.track)
-  console.log(track)
 
   useEffect(() => {
     dispatch(getTracks())
@@ -31,15 +30,14 @@ function MySongsList() {
     } else {
       newChecked.splice(currentIndex, 1)
     }
-
     setChecked(newChecked)
   }
 
   return (
-    <List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
+    <List dense sx={{ width: '100%' }}>
       {track &&
         track.map((value) => {
-          const labelId = `checkbox-list-secondary-label-${value}`
+          const labelId = `checkbox-list-secondary-label-${value._id}`
           return (
             <ListItem
               key={value._id}
@@ -49,7 +47,14 @@ function MySongsList() {
                   onChange={handleToggle(value)}
                   checked={checked.indexOf(value) !== -1}
                   inputProps={{ 'aria-labelledby': labelId }}
-                  sx={{ width: '50px' }}
+                  icon={<i className="fas fa-heart"></i>}
+                  checkedIcon={<i className="fa fa-heart"></i>}
+                  sx={{
+                    color: 'white',
+                    '&.Mui-checked': {
+                      color: '#FD3568',
+                    },
+                  }}
                 />
               }
             >
@@ -61,9 +66,11 @@ function MySongsList() {
                     variant="square"
                   />
                 </ListItemAvatar>
-                <ListItemText id={labelId} primary={`Song ${value.name}`} />
-                <p>genre -{value.genre} </p>
+                <ItemText>{value.name}</ItemText>
+                <ItemText id={labelId} primary={`Song ${value.name}`} />
+                <ItemText>genre -{value.genre} </ItemText>
               </ListItemButton>
+              <InfoMenu />
             </ListItem>
           )
         })}
