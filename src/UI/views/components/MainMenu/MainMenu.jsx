@@ -49,12 +49,19 @@ export default function MainMenu() {
             value="songs"
             icon={<i className="fas fa-music"></i>}
             component={NavLink}
-            to="/profile"
+            to="/my-songs"
           />
           <BottomNavigationAction
             label="Upload"
             value="upload"
             icon={<i className="fas fa-plus"></i>}
+            component={NavLink}
+            to="/profile"
+          />
+          <BottomNavigationAction
+            label="Favourites"
+            value="favourites"
+            icon={<i className="fas fa-heart"></i>}
             component={NavLink}
             to="/profile"
           />

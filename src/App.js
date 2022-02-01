@@ -9,6 +9,7 @@ import { onAuthStateChanged } from './services/auth'
 import { syncSignIn, signOut } from './redux/auth/actions'
 import { deleteUserName } from './redux/user/actions'
 import PrivateRoute from './ui/views/components/PrivateRoute/PrivateRoute'
+import MySongs from './ui/views/pages/MySongs/MySongs'
 
 function App() {
   const dispatch = useDispatch()
@@ -52,6 +53,14 @@ function App() {
         element={
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/my-songs"
+        element={
+          <PrivateRoute>
+            <MySongs />
           </PrivateRoute>
         }
       />

@@ -18,9 +18,13 @@ export default function IconMenu() {
           <i className="fas fa-user"></i>
           <ListItemText>Profile</ListItemText>
         </MenuItem>
-        <MenuItem component={NavLink} to="/">
+        <MenuItem component={NavLink} to="/my-songs">
           <i className="fas fa-music"></i>
           <ListItemText>My song</ListItemText>
+        </MenuItem>
+        <MenuItem component={NavLink} to="/profile">
+          <i className="fas fa-heart"></i>
+          <ListItemText>Favourites</ListItemText>
         </MenuItem>
         <MenuItem component={NavLink} to="/profile">
           <i className="fas fa-plus"></i>
