@@ -35,7 +35,7 @@ function MySongsList() {
 
   return (
     <List dense sx={{ width: '100%' }}>
-      {track &&
+      {track.length > 0 &&
         track.map((value) => {
           const labelId = `checkbox-list-secondary-label-${value._id}`
           return (
