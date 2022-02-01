@@ -10,6 +10,7 @@ import { syncSignIn, signOut } from './redux/auth/actions'
 import { deleteUserName } from './redux/user/actions'
 import PrivateRoute from './ui/views/components/PrivateRoute/PrivateRoute'
 import MySongs from './ui/views/pages/MySongs/MySongs'
+import Favourites from './ui/views/pages/Favourites/Favourites'
 
 function App() {
   const dispatch = useDispatch()
@@ -61,6 +62,14 @@ function App() {
         element={
           <PrivateRoute>
             <MySongs />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/favourites"
+        element={
+          <PrivateRoute>
+            <Favourites />
           </PrivateRoute>
         }
       />

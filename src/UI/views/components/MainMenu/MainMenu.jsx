@@ -35,15 +35,6 @@ export default function MainMenu() {
             component={NavLink}
             to="/"
           />
-
-          <BottomNavigationAction
-            label="Profile"
-            value="profile"
-            icon={<i className="fas fa-user"></i>}
-            component={NavLink}
-            to="/profile"
-          />
-
           <BottomNavigationAction
             label="My songs"
             value="songs"
@@ -52,16 +43,16 @@ export default function MainMenu() {
             to="/my-songs"
           />
           <BottomNavigationAction
-            label="Upload"
-            value="upload"
-            icon={<i className="fas fa-plus"></i>}
-            component={NavLink}
-            to="/profile"
-          />
-          <BottomNavigationAction
             label="Favourites"
             value="favourites"
             icon={<i className="fas fa-heart"></i>}
+            component={NavLink}
+            to="/favourites"
+          />
+          <BottomNavigationAction
+            label="Upload"
+            value="upload"
+            icon={<i className="fas fa-plus"></i>}
             component={NavLink}
             to="/profile"
           />

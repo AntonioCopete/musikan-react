@@ -1,9 +1,9 @@
 import Layout from '../../layout/Layout'
-import MySongsHeader from '../../components/MySongsHeader/MySongsHeader'
-import MySongsList from '../../components/MySongsList/MySongsList'
+import FavouritesHeader from '../../components/FavouritesHeader/FavouritesHeader'
+import FavouritesList from '../../components/FavouritesList/FavouritesList'
 
 function Favourites() {
-  return <Layout hero={<MySongsHeader />} main={<MySongsList />} />
+  return <Layout hero={<FavouritesHeader />} main={<FavouritesList />} />
 }
 
 export default Favourites

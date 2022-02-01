@@ -14,19 +14,15 @@ export default function IconMenu() {
           <i className="fas fa-envelope"></i>
           <ListItemText>Dashboard</ListItemText>
         </MenuItem>
-        <MenuItem component={NavLink} to="/profile">
-          <i className="fas fa-user"></i>
-          <ListItemText>Profile</ListItemText>
-        </MenuItem>
         <MenuItem component={NavLink} to="/my-songs">
           <i className="fas fa-music"></i>
-          <ListItemText>My song</ListItemText>
+          <ListItemText>My songs</ListItemText>
         </MenuItem>
-        <MenuItem component={NavLink} to="/profile">
+        <MenuItem component={NavLink} to="/favourites">
           <i className="fas fa-heart"></i>
           <ListItemText>Favourites</ListItemText>
         </MenuItem>
-        <MenuItem component={NavLink} to="/profile">
+        <MenuItem component={NavLink} to="/">
           <i className="fas fa-plus"></i>
           <ListItemText>Upload</ListItemText>
         </MenuItem>
