@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Layout from '../../layout/Layout'
 import HomeHeader from '../../components/HomeHeader/HomeHeader'
 
