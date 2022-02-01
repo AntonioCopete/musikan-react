@@ -1,6 +1,7 @@
-// import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { getTracks } from '../../../../redux/track/actions'
+import { trackSelector } from '../../../../redux/track/selectors'
 
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -11,10 +12,12 @@ import Checkbox from '@mui/material/Checkbox'
 import Avatar from '@mui/material/Avatar'
 
 function MySongsList() {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  const track = useSelector((state) => state.track)
+  console.log(track)
 
   useEffect(() => {
-    getTracks()
+    dispatch(getTracks())
   }, [])
 
   const [checked, setChecked] = useState([1])
@@ -34,17 +37,18 @@ function MySongsList() {
 
   return (
     <List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
-      {[0, 1, 2, 3].map((value) => {
+      {track.map((value) => {
         const labelId = `checkbox-list-secondary-label-${value}`
         return (
           <ListItem
-            key={value}
+            key={value._id}
             secondaryAction={
               <Checkbox
                 edge="end"
                 onChange={handleToggle(value)}
                 checked={checked.indexOf(value) !== -1}
                 inputProps={{ 'aria-labelledby': labelId }}
+                sx={{ width: '50px' }}
               />
             }
           >
@@ -52,12 +56,12 @@ function MySongsList() {
               <ListItemAvatar>
                 <Avatar
                   alt={`Avatar n°${value + 1}`}
-                  src={`/static/images/avatar/${value + 1}.jpg`}
+                  src={value.thumbnail}
                   variant="square"
                 />
               </ListItemAvatar>
-              <ListItemText id={labelId} primary={`Song ${value + 1}`} />
-              <p>genre - </p>
+              <ListItemText id={labelId} primary={`Song ${value.name}`} />
+              <p>genre -{value.genre} </p>
             </ListItemButton>
           </ListItem>
         )

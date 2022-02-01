@@ -6,10 +6,7 @@ const initialState = {
 const TrackReducer = (state = initialState, action) => {
   switch (action.type) {
     case TrackTypes.TRACK_REQUEST: {
-      return {
-        ...state,
-        tracks: action.payload,
-      }
+      return action.payload
     }
     default: {
       return state

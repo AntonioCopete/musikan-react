@@ -2,19 +2,18 @@ import * as TrackTypes from './types'
 import api from '../../api'
 import * as auth from '../../services/auth'
 
-// export const trackRequest = (values) => ({
-//   type: TrackTypes.TRACK_REQUEST,
-//   payload: values,
-// })
+export const trackRequest = (tracks) => ({
+  type: TrackTypes.TRACK_REQUEST,
+  payload: tracks,
+})
 
-export const getTracks = async () => {
-  const token = await auth.getCurrentUserToken()
+export function getTracks() {
+  return async function getTracksThunk(dispatch) {
+    const token = await auth.getCurrentUserToken()
+    if (!token) return
+    const response = await api.getTracks({ Authorization: `Bearer ${token}` })
 
-  // dispatch(trackRequest(token))
-  try {
-    const he = await api.getTracks(token)
-    console.log(he)
-  } catch (error) {
-    console.log(error)
+    if (response.errorMessage) return
+    dispatch(trackRequest(response.data.tracks))
   }
 }
