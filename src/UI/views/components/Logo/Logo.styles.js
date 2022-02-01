@@ -12,11 +12,10 @@ export const Logotype = styled.div`
 `
 
 export const LogoBrand = styled.span`
-  font-size: 5rem;
+  font-size: ${(props) => (props.main ? '3rem' : '5rem')};
   font-family: Acme, sans-serif;
   color: ${({ theme }) => theme.colors.text};
 
   @media ${(props) => props.theme.breakpoints.sm} {
     font-size: 4rem;
-  }
 `

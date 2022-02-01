@@ -1,11 +1,11 @@
 import LogoImg from '../../../img/logo.svg'
 import { Logotype, LogoBrand } from './Logo.styles'
 
-function Logo() {
+function Logo({ main }) {
   return (
     <Logotype>
       <img src={LogoImg} alt="Musikan" />
-      <LogoBrand>Musikan</LogoBrand>
+      <LogoBrand main={main}>Musikan</LogoBrand>
     </Logotype>
   )
 }

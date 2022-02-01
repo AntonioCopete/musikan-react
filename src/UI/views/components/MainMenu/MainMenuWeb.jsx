@@ -8,7 +8,7 @@ import { MenuWeb } from './MainMenuWeb.styles'
 export default function IconMenu() {
   return (
     <MenuWeb>
-      <Logo />
+      <Logo main />
       <MenuList>
         <MenuItem component={NavLink} to="/">
           <i className="fas fa-envelope"></i>

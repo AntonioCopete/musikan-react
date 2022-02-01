@@ -5,7 +5,7 @@ export const Menu = styled.nav`
     color: ${({ theme }) => theme.colors.primary};
   }
 
-  @media all and (min-width: 376px) {
+  @media all and (min-width: 639px) {
     display: none;
   }
 `
