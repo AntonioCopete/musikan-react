@@ -17,3 +17,17 @@ export function getTracks() {
     dispatch(trackRequest(response.data.tracks))
   }
 }
+
+export function getLikedTracks() {
+  return async function getLikedTracksThunk(dispatch) {
+    const token = await auth.getCurrentUserToken()
+    if (!token) return
+
+    const response = await api.getLikedTracks({
+      Authorization: `Bearer ${token}`,
+    })
+
+    if (response.errorMessage) return
+    dispatch(trackRequest(response.data.tracks))
+  }
+}
