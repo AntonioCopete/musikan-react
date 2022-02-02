@@ -44,12 +44,30 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function getGenres() {
+    return request({
+      url: '/genre',
+      requestMethod: 'GET',
+    })
+  }
+
+  function uploadTrack(headers, body) {
+    return request({
+      url: '/track',
+      requestMethod: 'POST',
+      headers: headers,
+      body: body,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
     updateAvatarRequest: updateAvatarRequest,
     updateUserInfoRequest: updateUserInfoRequest,
     getTracks: getTracks,
+    getGenres: getGenres,
+    uploadTrack: uploadTrack,
   }
 }
 
