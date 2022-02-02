@@ -66,7 +66,6 @@ function MySongsList() {
                     variant="square"
                   />
                 </ListItemAvatar>
-                <ItemText>{value.name}</ItemText>
                 <ItemText id={labelId} primary={`Song ${value.name}`} />
                 <ItemText>genre -{value.genre} </ItemText>
               </ListItemButton>

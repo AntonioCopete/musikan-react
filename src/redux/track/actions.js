@@ -20,3 +20,22 @@ export function getTracks(liked) {
     dispatch(trackRequest(response.data.tracks))
   }
 }
+
+export function deleteTracks(id) {
+  return async function deleteTracksThunk(dispatch) {
+    const token = await auth.getCurrentUserToken()
+    if (!token) return
+    const response = await api.deleteTrack(
+      { Authorization: `Bearer ${token}` },
+      id
+    )
+    console.log(response.data)
+    if (response.errorMessage) return
+    dispatch(renderTracks(response.data))
+  }
+}
+
+export const renderTracks = (tracks) => ({
+  type: TrackTypes.TRACK_RENDER,
+  payload: tracks,
+})

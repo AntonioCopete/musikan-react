@@ -45,9 +45,9 @@ function makeApi(request = makeRequest()) {
     })
   }
 
-  function deleteTrack(headers) {
+  function deleteTrack(headers, id) {
     return request({
-      url: '/track/:id',
+      url: `/track/${id}`,
       requestMethod: 'DELETE',
       headers: headers,
     })
@@ -78,7 +78,6 @@ function makeApi(request = makeRequest()) {
     deleteTrack: deleteTrack,
     getGenres: getGenres,
     uploadTrack: uploadTrack,
-    getLikedTracks: getLikedTracks,
   }
 }
 

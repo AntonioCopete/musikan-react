@@ -1,14 +1,12 @@
 import { useState } from 'react'
-// import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { deleteTracks } from '../../../../redux/track/actions'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import { IconOpen, Item } from './InfoMenu.styles'
 
-const ITEM_HEIGHT = 48
-
 function InfoMenu({ id }) {
-  // const track = useSelector((state) => state.track)
-  // console.log(track)
+  const dispatch = useDispatch()
 
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
@@ -20,7 +18,7 @@ function InfoMenu({ id }) {
   }
 
   const handleDelete = () => {
-    console.log(id)
+    dispatch(deleteTracks(id))
   }
 
   return (
@@ -46,13 +44,12 @@ function InfoMenu({ id }) {
         PaperProps={{
           style: {
             background: '#474747',
-            maxHeight: ITEM_HEIGHT * 4.5,
+            maxHeight: 48 * 4.5,
             width: '20rem',
             color: 'white',
           },
         }}
       >
-        {/* {track && track.map((item) => <p>{item._id}</p>)} */}
         <Item>
           <span>Like</span>
           <i className="fas fa-heart"></i>
