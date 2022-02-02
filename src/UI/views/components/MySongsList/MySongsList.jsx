@@ -70,7 +70,7 @@ function MySongsList() {
                 <ItemText id={labelId} primary={`Song ${value.name}`} />
                 <ItemText>genre -{value.genre} </ItemText>
               </ListItemButton>
-              <InfoMenu />
+              <InfoMenu id={value._id} />
             </ListItem>
           )
         })}

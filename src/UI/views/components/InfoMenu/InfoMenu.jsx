@@ -1,30 +1,16 @@
-import * as React from 'react'
+import { useState } from 'react'
+// import { useSelector } from 'react-redux'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import { IconOpen } from './InfoMenu.styles'
-
-const options = [
-  'None',
-  'Atria',
-  'Callisto',
-  'Dione',
-  'Ganymede',
-  'Hangouts Call',
-  'Luna',
-  'Oberon',
-  'Phobos',
-  'Pyxis',
-  'Sedna',
-  'Titania',
-  'Triton',
-  'Umbriel',
-]
+import { IconOpen, Item } from './InfoMenu.styles'
 
 const ITEM_HEIGHT = 48
 
-function InfoMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null)
+function InfoMenu({ id }) {
+  // const track = useSelector((state) => state.track)
+  // console.log(track)
+
+  const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -33,8 +19,12 @@ function InfoMenu() {
     setAnchorEl(null)
   }
 
+  const handleDelete = () => {
+    console.log(id)
+  }
+
   return (
-    <div>
+    <section>
       <IconButton
         aria-label="more"
         id="long-button"
@@ -55,22 +45,29 @@ function InfoMenu() {
         onClose={handleClose}
         PaperProps={{
           style: {
+            background: '#474747',
             maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch',
+            width: '20rem',
+            color: 'white',
           },
         }}
       >
-        {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === 'Pyxis'}
-            onClick={handleClose}
-          >
-            {option}
-          </MenuItem>
-        ))}
+        {/* {track && track.map((item) => <p>{item._id}</p>)} */}
+        <Item>
+          <span>Like</span>
+          <i className="fas fa-heart"></i>
+        </Item>
+        <Item>
+          <span>Edit</span>
+          <i className="fas fa-pen"></i>
+        </Item>
+        <Item onClick={handleDelete}>
+          <span>Delete</span>
+          <i className="fas fa-trash"></i>
+          {/* <span>{track._id}</span> */}
+        </Item>
       </Menu>
-    </div>
+    </section>
   )
 }
 

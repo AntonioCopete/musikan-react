@@ -36,18 +36,19 @@ function makeApi(request = makeRequest()) {
     })
   }
 
-  function getTracks(headers) {
+  function getTracks(headers, liked) {
+    const url = liked ?? ''
     return request({
-      url: '/me/tracks',
+      url: `/me/tracks/${url}`,
       requestMethod: 'GET',
       headers: headers,
     })
   }
 
-  function getLikedTracks(headers) {
+  function deleteTrack(headers) {
     return request({
-      url: '/me/tracks/liked',
-      requestMethod: 'GET',
+      url: '/track/:id',
+      requestMethod: 'DELETE',
       headers: headers,
     })
   }
@@ -58,7 +59,7 @@ function makeApi(request = makeRequest()) {
     updateAvatarRequest: updateAvatarRequest,
     updateUserInfoRequest: updateUserInfoRequest,
     getTracks: getTracks,
-    getLikedTracks: getLikedTracks,
+    deleteTrack: deleteTrack,
   }
 }
 
