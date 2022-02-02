@@ -120,18 +120,18 @@ function UploadSongModal({ handleClose }) {
   return (
     <>
 
-      <h1>Upload</h1>
+      <h1 style={{ display: "inline-block", float: "left" }}>Upload</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="uploadSongImageInput">
-          <img src={selectedSongImg ? imageSrcPreview : defaultPic} alt="Your song's pic" />
+        <label htmlFor="uploadSongImageInput"  >
+          <img src={selectedSongImg ? imageSrcPreview : defaultPic} style={{ maxWidth: "25vh", display: "inline-block", float: "left" }} alt="Your song's pic" />
         </label>
         <HiddenInput type="file" id="uploadSongImageInput" onChange={handlePic} ref={songImageInputRef} />
-        <label htmlFor="uploadSongFileInput">Click here to select your file</label>
+        <label htmlFor="uploadSongFileInput" style={{ display: "block", float: "left"}}>Select your file</label>
         {selectedSongFile && <p>{selectedSongFile}</p>}
         <HiddenInput type="file" id="uploadSongFileInput" onChange={handleSelectedSongFile} ref={songFileInputRef} />
-        <input type="text" placeholder="Name" ref={songNameInputRef} />
+        <input type="text" placeholder="Name" ref={songNameInputRef} style={{ maxWidth: "25vh", display: "block", float: "left" }}/>
         <select ref={genreInputRef} onChange={() => {defaultGenreRef.current.disabled = true}}>
-          <option ref={defaultGenreRef}>Select a genre</option>
+          <option ref={defaultGenreRef} style={{ maxWidth: "25vh", display: "block", float: "left" }} >Select a genre</option>
           {genres && genres.map((genre) => {
             return <option key={genre} value={genre}>{genre}</option>
           })}
