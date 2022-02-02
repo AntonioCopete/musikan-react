@@ -27,7 +27,9 @@ function MySongsHeader() {
         handleOpen={handleOpen}
         handleClose={handleClose}
         content={<UploadSongModal handleClose={handleClose} />}
-        btnText={"Upload modal"} type={"button"} />
+        btnText={"Upload"}
+        type={"button"}
+      />
     </HeaderWrapper>
   )
 }
