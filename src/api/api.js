@@ -44,6 +44,14 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function getLikedTracks(headers) {
+    return request({
+      url: '/me/tracks/liked',
+      requestMethod: 'GET',
+      headers: headers,
+    })
+  }
+
   function getGenres() {
     return request({
       url: '/genre',
@@ -68,6 +76,7 @@ function makeApi(request = makeRequest()) {
     getTracks: getTracks,
     getGenres: getGenres,
     uploadTrack: uploadTrack,
+    getLikedTracks: getLikedTracks,
   }
 }
 
