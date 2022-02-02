@@ -24,26 +24,17 @@ export const GridLayout = styled.div`
     grid-template-rows: 20rem 1fr 1fr 10rem 10rem;
     grid-template-columns: 1fr;
   }
+`
 
-  header {
-    grid-area: header;
-  }
-
-  main {
-    grid-area: main;
-  }
-
-  nav {
-    grid-area: nav;
-  }
-
-  footer {
-    grid-area: footer;
-    background: pink;
-  }
-
-  aside {
-    grid-area: aside;
-    background: blue;
-  }
+export const Header = styled.header`
+  grid-area: header;
+`
+export const Main = styled.main`
+  grid-area: main;
+`
+export const Footer = styled.footer`
+  grid-area: footer;
+`
+export const Aside = styled.aside`
+  grid-area: aside;
 `
