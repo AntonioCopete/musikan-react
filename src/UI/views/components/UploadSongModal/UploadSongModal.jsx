@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react"
-import { useNavigate } from "react-router-dom"
 
 import api from "../../../../api"
 import * as auth from '../../../../services/auth/auth'
@@ -11,9 +10,7 @@ import { HiddenInput } from "./UploadSongModal.styles"
 
 import defaultPic from "./default-album.jpg"
 
-function UploadSongModal() {
-  const navigate = useNavigate()
-
+function UploadSongModal({ handleClose }) {
   const songNameInputRef = useRef()
   const songImageInputRef = useRef()
   const songFileInputRef = useRef()
@@ -24,6 +21,7 @@ function UploadSongModal() {
   const [selectedSongFile, setSelectedSongFile] = useState()
   const [selectedSongImg, setSelectedSongImg] = useState()
   const [imageSrcPreview, setImageSrcPreview] = useState()
+  const [disableSaveBtn, setDisableSaveBtn] = useState(false)
 
   useEffect(() => {
     getGenres()
@@ -58,6 +56,11 @@ function UploadSongModal() {
     getUserTokenAndRequestUpload()
   }
 
+  const handleCancel = (e) => {
+    e.preventDefault()
+    handleClose()
+  }
+
   const getUserTokenAndRequestUpload = async () => {
     const token = await auth.getCurrentUserToken()
     uploadRequest(token)
@@ -68,6 +71,8 @@ function UploadSongModal() {
     if (songNameInputRef.current.value === "") return setError("Name can't be blank")
     if (songImageInputRef.current.value === "") return setError("You have to select a song image")
     if (songFileInputRef.current.value === "") return setError("You have to select a song file")
+
+    setDisableSaveBtn(true)
 
     const selectedSongName = songNameInputRef.current.value
     const selectedGenre = genreInputRef.current.value
@@ -81,6 +86,13 @@ function UploadSongModal() {
     formData.append("track", selectedSongFile)
 
     api.uploadTrack({Authorization: `Bearer ${token}`}, formData)
+      .then(response => {
+        if (response.data.message === "UPLOADED") {
+          setDisableSaveBtn(false)
+          // ! PENDING CONFIRM TO USER EVERYTHING WAS OK AND SET REDUX TRACKS STATE TO RESPONSE
+          handleClose()
+        }}
+      )
   }
 
   useEffect(() => {
@@ -125,13 +137,12 @@ function UploadSongModal() {
           })}
         </select>
         {error && <p>{error}</p>}
-        <Button primary type="submit">
+        <Button disabled={disableSaveBtn} primary type="submit">
         Save
       </Button>
       <ButtonLink
-        onClick={() => {
-          navigate(-1)
-        }}
+        type="text"
+        onClick={handleCancel}
       >
         Cancel
       </ButtonLink>

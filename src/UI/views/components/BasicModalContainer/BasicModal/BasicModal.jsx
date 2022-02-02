@@ -2,10 +2,9 @@ import Modal from '@mui/material/Modal';
 
 import { Container } from "./BasicModal.styles"
 
-export default function BasicModal({ children, handleClose, open }) {
+export default function BasicModal({ content, handleClose, open }) {
   return (
     <>
-      
       <Modal
         open={open}
         onClose={handleClose}
@@ -13,7 +12,7 @@ export default function BasicModal({ children, handleClose, open }) {
         aria-describedby="modal-modal-description"
       >
         <Container>
-          {children}
+          {content}
         </Container>
       </Modal>
     </>

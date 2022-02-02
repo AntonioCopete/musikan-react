@@ -5,8 +5,8 @@ function TriggerModal({ type, btnText, handleOpen }) {
     <>
       {
         type === "button" ? <Button onClick={handleOpen}>{ btnText }</Button> :
-        type === "link" ? "Link" : null}
-    
+        type === "link" ? "Link" : null
+      }
     </>
   );
 }
