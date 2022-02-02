@@ -67,20 +67,18 @@ function AudioPlayer() {
           <MdArrowForwardIos />
         </ForwardBackwardBtn>
       </AudioGroup>
-      <AudioGroup>
+      <AudioGroup progress>
         {/* current time */}
         <div>{calculateTime(currentTime)}</div>
 
         {/* progress bar */}
-        <div>
-          <ProgressBar
-            type="range"
-            defaultValue="0"
-            progress={46}
-            ref={progressBar}
-            onChange={handleRange}
-          />
-        </div>
+        <ProgressBar
+          type="range"
+          defaultValue="0"
+          progress={46}
+          ref={progressBar}
+          onChange={handleRange}
+        />
 
         {/* duration */}
         <div>{duration && !isNaN(duration) && calculateTime(duration)}</div>

@@ -6,12 +6,12 @@ export const AudioWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  outline: 2px dotted pink;
 `
 
 export const AudioGroup = styled.div`
   display: flex;
-  flex: 1;
+  padding: 0.5rem 0;
+  ${(props) => props.progress && 'width: 100%'};
 `
 
 export const AudioButton = styled.button`
@@ -55,7 +55,6 @@ export const PlayPauseBtn = styled(AudioButton)`
 `
 
 export const ProgressBar = styled.input`
-  duration: 0;
   position: relative;
   width: 100%;
   height: 5px;
