@@ -78,7 +78,7 @@ function App() {
         }
       />
       <Route
-        path="/edit-song/:trackId"
+        path={ROUTES.EDIT_TRACK}
         element={
           <PrivateRoute>
             <EditTrack />
