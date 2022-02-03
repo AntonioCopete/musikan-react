@@ -61,7 +61,7 @@ function makeApi(request = makeRequest()) {
 
   function uploadTrack(headers, body) {
     return request({
-      url: '/track',
+      url: '/tracks',
       requestMethod: 'POST',
       headers: headers,
       body: body,

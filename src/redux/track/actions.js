@@ -28,6 +28,6 @@ export function getLikedTracks() {
     })
 
     if (response.errorMessage) return
-    dispatch(trackRequest(response.data.tracks))
+    dispatch(trackRequest(response.data.data))
   }
 }
