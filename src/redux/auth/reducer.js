@@ -111,7 +111,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
         ...state,
         currentUser: {
           ...state.currentUser,
-          profilePicture: action.payload,
+          profilePicture: action.payload.user.profilePicture,
         },
       }
     }
