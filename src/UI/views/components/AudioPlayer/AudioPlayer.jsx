@@ -69,6 +69,7 @@ function AudioPlayer() {
     //   `${(progressBar.current.value / duration) * 100}%`
     // )
     const width = (progressBar.current.value / duration) * 100
+    console.log(width)
     console.log(progressBar.current.style)
     setCurrentTime(progressBar.current.value)
   }
