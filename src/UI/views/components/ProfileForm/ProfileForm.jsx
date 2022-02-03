@@ -8,6 +8,7 @@ import { InputGroup } from '../../../styles/GlobalComponents/Input'
 import { Button } from '../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../styles/GlobalComponents/NavLink'
 import { FormProfile } from './ProfileForm.styles'
+import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'
 
 function ProfileForm() {
   const { userName, email } = useSelector((state) => state.auth.currentUser)
@@ -62,7 +63,7 @@ function ProfileForm() {
     <FormProfile onSubmit={handleSubmit}>
       <h2>Edit profile</h2>
       <InputGroup>
-        <i className="fas fa-user"></i>
+        <FaUser />
         <input
           type="text"
           defaultValue={userName}
@@ -71,12 +72,12 @@ function ProfileForm() {
         />
       </InputGroup>
       <InputGroup>
-        <i className="fas fa-envelope"></i>
+        <FaEnvelope />
         <input type="email" defaultValue={email} ref={emailInput} />
       </InputGroup>
       <h2>Change password</h2>
       <InputGroup>
-        <i className="fas fa-lock"></i>
+        <FaLock />
         <input
           type="password"
           ref={oldPasswordRef}
@@ -84,7 +85,7 @@ function ProfileForm() {
         />
       </InputGroup>
       <InputGroup>
-        <i className="fas fa-lock"></i>
+        <FaLock />
         <input
           type="password"
           ref={newPasswordRef}
@@ -92,7 +93,7 @@ function ProfileForm() {
         />
       </InputGroup>
       <InputGroup>
-        <i className="fas fa-lock"></i>
+        <FaLock />
         <input
           type="password"
           ref={confirmPasswordRef}

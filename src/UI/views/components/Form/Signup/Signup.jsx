@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { FormItem } from '../Form.styles'
+import { FaUser, FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa'
 
 import Logo from '../../Logo/Logo'
 import { Button } from '../../../../styles/GlobalComponents/Button'
@@ -57,11 +58,11 @@ function Signup() {
       <h1>Create account</h1>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
-        <i className="fas fa-user"></i>
+        <FaUser />
         <input type="text" placeholder="Name" id="name" ref={userNameRef} />
       </div>
       <div className="form__input-field">
-        <i className="fas fa-envelope"></i>
+        <FaEnvelope />
         <input
           type="email"
           placeholder="Email"
@@ -71,7 +72,7 @@ function Signup() {
         />
       </div>
       <div className="form__input-field">
-        <i className="fas fa-lock"></i>
+        <FaLock />
         <input
           type="password"
           placeholder="Password"
@@ -91,7 +92,7 @@ function Signup() {
           onClick={handleLoginWithGoogle}
           disabled={isSigningUp}
         >
-          <i className="fab fa-google"></i>
+          <FaGoogle />
         </button>
       </div>
     </FormItem>

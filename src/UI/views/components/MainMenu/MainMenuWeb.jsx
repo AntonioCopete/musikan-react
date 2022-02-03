@@ -4,6 +4,8 @@ import MenuList from '@mui/material/MenuList'
 import MenuItem from '@mui/material/MenuItem'
 import ListItemText from '@mui/material/ListItemText'
 import { MenuWeb } from './MainMenuWeb.styles'
+import { RiHome2Fill, RiMusicFill, RiHeart3Fill } from 'react-icons/ri'
+import { BsPlusSquare } from 'react-icons/bs'
 
 export default function IconMenu() {
   return (
@@ -11,19 +13,19 @@ export default function IconMenu() {
       <Logo main />
       <MenuList>
         <MenuItem component={NavLink} to="/">
-          <i className="fas fa-envelope"></i>
+          <RiHome2Fill />
           <ListItemText>Dashboard</ListItemText>
         </MenuItem>
         <MenuItem component={NavLink} to="/my-songs">
-          <i className="fas fa-music"></i>
+          <RiMusicFill />
           <ListItemText>My songs</ListItemText>
         </MenuItem>
         <MenuItem component={NavLink} to="/favourites">
-          <i className="fas fa-heart"></i>
+          <RiHeart3Fill />
           <ListItemText>Favourites</ListItemText>
         </MenuItem>
         <MenuItem component={NavLink} to="/">
-          <i className="fas fa-plus"></i>
+          <BsPlusSquare />
           <ListItemText>Upload</ListItemText>
         </MenuItem>
       </MenuList>

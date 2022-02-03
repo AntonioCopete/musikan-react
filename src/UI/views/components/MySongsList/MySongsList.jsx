@@ -10,6 +10,7 @@ import Checkbox from '@mui/material/Checkbox'
 import Avatar from '@mui/material/Avatar'
 import InfoMenu from '../InfoMenu/InfoMenu'
 import { ItemText } from './MySongsList.styles'
+import { RiHeart3Fill, RiHeart3Line } from 'react-icons/ri'
 
 function MySongsList() {
   const dispatch = useDispatch()
@@ -47,8 +48,8 @@ function MySongsList() {
                   onChange={handleToggle(value)}
                   checked={checked.indexOf(value) !== -1}
                   inputProps={{ 'aria-labelledby': labelId }}
-                  icon={<i className="fas fa-heart"></i>}
-                  checkedIcon={<i className="fa fa-heart"></i>}
+                  icon={<RiHeart3Line />}
+                  checkedIcon={<RiHeart3Fill />}
                   sx={{
                     color: 'white',
                     '&.Mui-checked': {

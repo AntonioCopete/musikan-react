@@ -9,6 +9,7 @@ import { NavLink } from '../../../../styles/GlobalComponents/NavLink'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
+import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa'
 
 import {
   resetAuthState,
@@ -85,7 +86,7 @@ function Login() {
       <h1>Login</h1>
       {signUpError && <p>{signUpError}</p>}
       <div className="form__input-field">
-        <i className="fas fa-envelope"></i>
+        <FaEnvelope />
         <input
           type="email"
           placeholder="Email"
@@ -96,7 +97,7 @@ function Login() {
         />
       </div>
       <div className="form__input-field">
-        <i className="fas fa-lock"></i>
+        <FaLock />
         <input
           type="password"
           placeholder="Password"
@@ -129,7 +130,7 @@ function Login() {
           onClick={handleLoginWithGoogle}
           disabled={isSigningUp}
         >
-          <i className="fab fa-google"></i>
+          <FaGoogle />
         </button>
       </div>
     </FormItem>
