@@ -10,12 +10,14 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { FaPlay, FaPause } from 'react-icons/fa'
 
 function AudioPlayer() {
+  // state
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
-
+  // references
   const audioPlayer = useRef()
   const progressBar = useRef()
+  const animationRef = useRef()
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration)
@@ -39,13 +41,25 @@ function AudioPlayer() {
 
     if (!prevValue) {
       audioPlayer.current.play()
+      // animationRef.current = requestAnimationFrame(whilePlaying)
     } else {
       audioPlayer.current.pause()
+      cancelAnimationFrame(animationRef.current)
     }
   }
 
   const handleRange = () => {
     audioPlayer.current.currentTime = progressBar.current.value
+    changePlayerCurrentTime()
+  }
+
+  const beforeWith = (progressBar.current.value / duration) * 100
+  const changePlayerCurrentTime = () => {
+    // progressBar.current.style.setProperty(
+    //   '--seekWith',
+    //   `${(progressBar.current.value / duration) * 100}%`
+    // )
+    setCurrentTime(progressBar.current.value)
   }
   return (
     <AudioWrapper>
@@ -75,7 +89,7 @@ function AudioPlayer() {
         <ProgressBar
           type="range"
           defaultValue="0"
-          progress={46}
+          progressWidth={beforeWith}
           ref={progressBar}
           onChange={handleRange}
         />
