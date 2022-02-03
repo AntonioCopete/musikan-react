@@ -1,44 +1,42 @@
 import { MenuWrapper } from './Menu.styles'
+import { NavLink } from '../../../styles/GlobalComponents/NavLink'
+import * as ROUTES from '../../../../routes/routes'
+import { RiHome2Fill, RiMusicFill, RiHeart3Fill } from 'react-icons/ri'
+import { BsPlusSquare } from 'react-icons/bs'
+
 import './Menu.scss'
+
 function Menu() {
   return (
     <MenuWrapper>
-      <nav class="navbar container">
-        <div class="menu" id="menu">
-          <ul class="menu-list">
-            <li class="menu-item">
-              <a href="#" class="menu-link is-active">
-                <i class="menu-icon ion-md-home"></i>
-                <span class="menu-name">Home</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <i class="menu-icon ion-md-search"></i>
-                <span class="menu-name">Search</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <i class="menu-icon ion-md-cart"></i>
-                <span class="menu-name">Cart</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <i class="menu-icon ion-md-heart"></i>
-                <span class="menu-name">Favorite</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <i class="menu-icon ion-md-contact"></i>
-                <span class="menu-name">Account</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <div class="menu" id="menu">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <NavLink to={ROUTES.DASHBOARD}>
+              <RiHome2Fill />
+              <span class="menu-name">Dashboard</span>
+            </NavLink>
+          </li>
+          <li class="menu-item">
+            <NavLink to={ROUTES.MY_SONGS}>
+              <RiMusicFill />
+              <span class="menu-name">My Songs</span>
+            </NavLink>
+          </li>
+          <li class="menu-item">
+            <NavLink to={ROUTES.FAVOURITES}>
+              <RiHeart3Fill />
+              <span class="menu-name">Favourites</span>
+            </NavLink>
+          </li>
+          <li class="menu-item">
+            <NavLink to={ROUTES.DASHBOARD}>
+              <BsPlusSquare />
+              <span class="menu-name">Upload</span>
+            </NavLink>
+          </li>
+        </ul>
+      </div>
     </MenuWrapper>
   )
 }

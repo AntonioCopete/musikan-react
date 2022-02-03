@@ -11,6 +11,7 @@ import { FormItem } from '../../components/Form/Form.styles'
 import Logo from '../../components/Logo/Logo'
 import { Button } from '../../../styles/GlobalComponents/Button'
 import { NavLink } from '../../../styles/GlobalComponents/NavLink'
+import * as ROUTES from '../../../../routes/routes'
 import { Reset } from './ResetPassword.styles'
 import { FaEnvelope } from 'react-icons/fa'
 
@@ -72,7 +73,7 @@ function ResetPassword() {
             passwordResetError
           )}
         </Button>
-        <NavLink to="/auth">Login</NavLink>
+        <NavLink to={ROUTES.AUTH}>Login</NavLink>
       </FormItem>
     </Reset>
   )

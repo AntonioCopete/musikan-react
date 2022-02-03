@@ -5,6 +5,7 @@ import { FormItem } from '../Form.styles'
 import Logo from '../../Logo/Logo'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { NavLink } from '../../../../styles/GlobalComponents/NavLink'
+import * as ROUTES from '../../../../../routes/routes'
 import { InputGroup } from '../../../../styles/GlobalComponents/Input'
 
 import FormGroup from '@mui/material/FormGroup'
@@ -107,7 +108,7 @@ function Login() {
           onChange={handleSetPassword}
         />
       </InputGroup>
-      <NavLink to="/reset-password">Forgot password?</NavLink>
+      <NavLink to={ROUTES.RESET_PASSWORD}>Forgot password?</NavLink>
       <Button primary type="submit">
         login
       </Button>
