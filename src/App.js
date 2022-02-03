@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { syncSignIn, signOut } from './redux/auth/actions'
 import { onAuthStateChanged } from './services/auth'
 import { deleteUserName } from './redux/user/actions'
 
+import * as ROUTES from './routes/routes'
 import PrivateRoute from './ui/views/components/PrivateRoute/PrivateRoute'
 import Auth from './ui/views/pages/Auth/Auth'
 import ResetPassword from './ui/views/pages/ResetPassword/ResetPassword'
@@ -49,10 +51,10 @@ function App() {
           </PrivateRoute>
         }
       ></Route>
-      <Route path="/auth" element={<Auth />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path={ROUTES.AUTH} element={<Auth />} />
+      <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
       <Route
-        path="/profile"
+        path={ROUTES.PROFILE}
         element={
           <PrivateRoute>
             <Profile />
@@ -60,7 +62,7 @@ function App() {
         }
       />
       <Route
-        path="/my-songs"
+        path={ROUTES.MY_SONGS}
         element={
           <PrivateRoute>
             <MySongs />
@@ -68,7 +70,7 @@ function App() {
         }
       />
       <Route
-        path="/favourites"
+        path={ROUTES.FAVOURITES}
         element={
           <PrivateRoute>
             <Favourites />
