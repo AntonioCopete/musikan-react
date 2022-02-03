@@ -47,7 +47,7 @@ function makeApi(request = makeRequest()) {
 
   function deleteTrack(headers, id) {
     return request({
-      url: `/track/${id}`,
+      url: `/tracks/${id}`,
       requestMethod: 'DELETE',
       headers: headers,
     })
@@ -62,7 +62,7 @@ function makeApi(request = makeRequest()) {
 
   function uploadTrack(headers, body) {
     return request({
-      url: '/track',
+      url: '/tracks',
       requestMethod: 'POST',
       headers: headers,
       body: body,

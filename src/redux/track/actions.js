@@ -17,7 +17,7 @@ export function getTracks(liked) {
     )
 
     if (response.errorMessage) return
-    dispatch(trackRequest(response.data.tracks))
+    dispatch(trackRequest(response.data.data))
   }
 }
 
@@ -31,7 +31,7 @@ export function deleteTracks(id) {
     )
     console.log(response.data)
     if (response.errorMessage) return
-    dispatch(renderTracks(response.data))
+    dispatch(renderTracks(response.data.data))
   }
 }
 
