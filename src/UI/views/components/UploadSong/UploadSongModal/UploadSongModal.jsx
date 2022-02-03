@@ -89,7 +89,7 @@ function UploadSongModal({ open, handleClose }) {
 
     api.uploadTrack({Authorization: `Bearer ${token}`}, formData)
       .then(response => {
-        if (response.data.message === "UPLOADED") {
+        if (response.data.success) {
           setDisableSaveBtn(false)
           // ! PENDING CONFIRM TO USER EVERYTHING WAS OK AND SET REDUX TRACKS STATE TO RESPONSE
           handleClose()
@@ -99,7 +99,7 @@ function UploadSongModal({ open, handleClose }) {
 
   useEffect(() => {
     if (!selectedSongImg) {
-      setImageSrcPreview(undefined)
+      setImageSrcPreview(undefined) // ! PENDING REVIEW: WHEN CANCEL SELECT IMAGE -> RESTORE DEFAULT IMAGE
       return
     }
 
