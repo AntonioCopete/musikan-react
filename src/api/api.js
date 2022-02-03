@@ -86,6 +86,14 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function likeTrack(headers, trackId) {
+    return request({
+      url: `/tracks/${trackId}/like`,
+      requestMethod: 'PUT',
+      headers: headers,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -97,6 +105,7 @@ function makeApi(request = makeRequest()) {
     uploadTrack: uploadTrack,
     getTrackInfo: getTrackInfo,
     updateTrackInfo: updateTrackInfo,
+    likeTrack: likeTrack,
   }
 }
 

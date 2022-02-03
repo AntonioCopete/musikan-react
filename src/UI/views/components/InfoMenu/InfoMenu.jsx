@@ -7,7 +7,7 @@ import { IconOpen, Item } from './InfoMenu.styles'
 import { RiHeart3Fill, RiPencilFill, RiDeleteBinFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
-function InfoMenu({ id }) {
+function InfoMenu({ id, handleLike }) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -17,6 +17,11 @@ function InfoMenu({ id }) {
     setAnchorEl(event.currentTarget)
   }
   const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const handleLikeInMenu = () => {
+    handleLike(id)
     setAnchorEl(null)
   }
 
@@ -57,7 +62,7 @@ function InfoMenu({ id }) {
           },
         }}
       >
-        <Item>
+        <Item onClick={handleLikeInMenu}>
           <span>Like</span>
           <RiHeart3Fill />
         </Item>
