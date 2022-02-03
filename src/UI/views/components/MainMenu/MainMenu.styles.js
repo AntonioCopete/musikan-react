@@ -37,9 +37,14 @@ export const MenuItem = styled(NavigateLink)`
   &.active {
     color: ${({ theme }) => theme.colors.primary};
   }
+`
 
+export const BrandItem = styled(MenuItem)`
+  /* @media ${(props) => props.theme.breakpoints.lg} {
+    display: none;
+  } */
   @media ${(props) => props.theme.breakpoints.md} {
-    display: ${(props) => props.brand && 'none'};
+    display: none;
   }
 `
 

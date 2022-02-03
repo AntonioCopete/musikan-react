@@ -1,4 +1,10 @@
-import { MenuWrapper, MenuItem, MenuName, MenuList } from './MainMenu.styles'
+import {
+  MenuWrapper,
+  MenuItem,
+  MenuName,
+  MenuList,
+  BrandItem,
+} from './MainMenu.styles'
 import Logo from '../Logo/Logo'
 import * as ROUTES from '../../../../routes/routes'
 import { RiHome2Fill, RiMusicFill, RiHeart3Fill } from 'react-icons/ri'
@@ -8,9 +14,9 @@ function MainMenu() {
   return (
     <MenuWrapper>
       <MenuList>
-        <MenuItem brand to={ROUTES.DASHBOARD}>
+        <BrandItem to={ROUTES.DASHBOARD}>
           <Logo main />
-        </MenuItem>
+        </BrandItem>
         <MenuItem to={ROUTES.DASHBOARD}>
           <RiHome2Fill />
           <MenuName>Dashboard</MenuName>

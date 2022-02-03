@@ -9,7 +9,9 @@ function Layout({ hero, main }) {
       <Header>{hero}</Header>
       <Main>{main}</Main>
       <Aside>track info</Aside>
-      <Footer>{/* <AudioPlayer /> */}</Footer>
+      <Footer>
+        <AudioPlayer />
+      </Footer>
     </GridLayout>
   )
 }

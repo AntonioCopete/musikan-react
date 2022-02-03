@@ -16,6 +16,10 @@ export const LogoBrand = styled.span`
   font-family: Acme, sans-serif;
   color: ${({ theme }) => theme.colors.text};
 
+  @media ${(props) => props.theme.breakpoints.lg} {
+    ${(props) => props.main && 'display: none'};
+  }
+
   @media ${(props) => props.theme.breakpoints.sm} {
     font-size: 4rem;
 `

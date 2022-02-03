@@ -1,4 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
+import muzik from '../../../img/ska.mp3'
+import './Audio.scss'
+
 import {
   AudioWrapper,
   AudioGroup,
@@ -14,6 +17,7 @@ function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
+
   // references
   const audioPlayer = useRef()
   const progressBar = useRef()
@@ -41,60 +45,62 @@ function AudioPlayer() {
 
     if (!prevValue) {
       audioPlayer.current.play()
-      // animationRef.current = requestAnimationFrame(whilePlaying)
+      animationRef.current = requestAnimationFrame(whilePlaying)
     } else {
       audioPlayer.current.pause()
       cancelAnimationFrame(animationRef.current)
     }
   }
 
-  const handleRange = () => {
+  const whilePlaying = () => {
+    progressBar.current.value = audioPlayer.current.currentTime
+    changePlayerCurrentTime()
+    animationRef.current = requestAnimationFrame(whilePlaying)
+  }
+
+  const changeRange = () => {
     audioPlayer.current.currentTime = progressBar.current.value
     changePlayerCurrentTime()
   }
 
-  const beforeWith = (progressBar.current.value / duration) * 100
   const changePlayerCurrentTime = () => {
     // progressBar.current.style.setProperty(
-    //   '--seekWith',
+    //   'seek-before-width',
     //   `${(progressBar.current.value / duration) * 100}%`
     // )
+    const width = (progressBar.current.value / duration) * 100
+    console.log(progressBar.current.style)
     setCurrentTime(progressBar.current.value)
   }
+
   return (
     <AudioWrapper>
       <AudioGroup>
-        <audio
-          ref={audioPlayer}
-          src="https://res.cloudinary.com/dmkdsujzh/video/upload/v1643827032/tracks/track-1643827030734_r2krag.mp3"
-          preload="metadata"
-        ></audio>
+        <audio ref={audioPlayer} src={muzik} preload="metadata"></audio>
         <ForwardBackwardBtn>
           <MdArrowBackIosNew />
-          30
         </ForwardBackwardBtn>
         <PlayPauseBtn onClick={togglePlayPause}>
           {isPlaying ? <FaPause /> : <FaPlay />}
         </PlayPauseBtn>
         <ForwardBackwardBtn>
-          30
           <MdArrowForwardIos />
         </ForwardBackwardBtn>
       </AudioGroup>
       <AudioGroup progress>
         {/* current time */}
         <div>{calculateTime(currentTime)}</div>
-
         {/* progress bar */}
         <ProgressBar
+          className="progressBarC"
           type="range"
           defaultValue="0"
-          progressWidth={beforeWith}
+          // progressWidth={90}
           ref={progressBar}
-          onChange={handleRange}
+          onChange={changeRange}
         />
-
         {/* duration */}
+
         <div>{duration && !isNaN(duration) && calculateTime(duration)}</div>
       </AudioGroup>
     </AudioWrapper>
