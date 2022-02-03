@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { getTracks } from '../../../../redux/track/actions'
+import * as auth from '../../../../services/auth'
+import api from '../../../../api/api'
 
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -33,6 +35,17 @@ function FavouritesList() {
     setChecked(newChecked)
   }
 
+  const handleLike = (id) => {
+    getCurrentTokenAndLike(id)
+  }
+
+  const getCurrentTokenAndLike = async (id) => {
+    const token = await auth.getCurrentUserToken()
+    const headers = { Authorization: `Bearer ${token}` }
+    await api.likeTrack(headers, id)
+    dispatch(getTracks('liked'))
+  }
+
   return (
     <List dense sx={{ width: '100%' }}>
       {track.length > 0 &&
@@ -45,6 +58,9 @@ function FavouritesList() {
                 <Checkbox
                   edge="end"
                   onChange={handleToggle(value)}
+                  onClick={() => {
+                    handleLike(value._id)
+                  }}
                   checked={checked.indexOf(value) !== -1}
                   inputProps={{ 'aria-labelledby': labelId }}
                   icon={<RiHeart3Line />}

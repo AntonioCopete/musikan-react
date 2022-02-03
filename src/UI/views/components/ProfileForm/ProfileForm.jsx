@@ -59,6 +59,11 @@ function ProfileForm() {
     }
   }
 
+  const handleCancel = (e) => {
+    e.preventDefault()
+    navigate(-1)
+  }
+
   return (
     <FormProfile onSubmit={handleSubmit}>
       <h2>Edit profile</h2>
@@ -103,13 +108,7 @@ function ProfileForm() {
       <Button primary type="submit">
         Save
       </Button>
-      <ButtonLink
-        onClick={() => {
-          navigate(-1)
-        }}
-      >
-        Cancel
-      </ButtonLink>
+      <ButtonLink onClick={handleCancel}>Cancel</ButtonLink>
     </FormProfile>
   )
 }

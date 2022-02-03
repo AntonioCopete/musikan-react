@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { getTracks } from '../../../../redux/track/actions'
+import * as auth from '../../../../services/auth'
+import api from '../../../../api/api'
 
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -34,6 +36,16 @@ function MySongsList() {
     setChecked(newChecked)
   }
 
+  const handleLike = (id) => {
+    getCurrentTokenAndLike(id)
+  }
+
+  const getCurrentTokenAndLike = async (id) => {
+    const token = await auth.getCurrentUserToken()
+    const headers = { Authorization: `Bearer ${token}` }
+    await api.likeTrack(headers, id)
+  }
+
   return (
     <List dense sx={{ width: '100%' }}>
       {track.length > 0 &&
@@ -46,6 +58,9 @@ function MySongsList() {
                 <Checkbox
                   edge="end"
                   onChange={handleToggle(value)}
+                  onClick={() => {
+                    handleLike(value._id)
+                  }}
                   checked={checked.indexOf(value) !== -1}
                   inputProps={{ 'aria-labelledby': labelId }}
                   icon={<RiHeart3Line />}
@@ -53,7 +68,7 @@ function MySongsList() {
                   sx={{
                     color: 'white',
                     '&.Mui-checked': {
-                      color: '#FD3568',
+                      color: '#FD3568', // ! PENDING STYLES IN CHECKBOX
                     },
                   }}
                 />
@@ -70,7 +85,7 @@ function MySongsList() {
                 <ItemText id={labelId} primary={`Song ${value.name}`} />
                 <ItemText>genre -{value.genre} </ItemText>
               </ListItemButton>
-              <InfoMenu id={value._id} />
+              <InfoMenu id={value._id} handleLike={handleLike} />
             </ListItem>
           )
         })}

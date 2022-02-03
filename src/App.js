@@ -1,17 +1,20 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { syncSignIn, signOut } from './redux/auth/actions'
+import { onAuthStateChanged } from './services/auth'
+import { deleteUserName } from './redux/user/actions'
+
 import * as ROUTES from './routes/routes'
+import PrivateRoute from './ui/views/components/PrivateRoute/PrivateRoute'
 import Auth from './ui/views/pages/Auth/Auth'
 import ResetPassword from './ui/views/pages/ResetPassword/ResetPassword'
 import Dashboard from './ui/views/pages/Dashboard/Dashboard'
 import Profile from './ui/views/pages/Profile/Profile'
-import { useDispatch, useSelector } from 'react-redux'
-import { onAuthStateChanged } from './services/auth'
-import { syncSignIn, signOut } from './redux/auth/actions'
-import { deleteUserName } from './redux/user/actions'
-import PrivateRoute from './ui/views/components/PrivateRoute/PrivateRoute'
 import MySongs from './ui/views/pages/MySongs/MySongs'
 import Favourites from './ui/views/pages/Favourites/Favourites'
+import EditTrack from './ui/views/pages/EditTrack/EditTrack'
 
 function App() {
   const dispatch = useDispatch()
@@ -71,6 +74,14 @@ function App() {
         element={
           <PrivateRoute>
             <Favourites />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/edit-song/:trackId"
+        element={
+          <PrivateRoute>
+            <EditTrack />
           </PrivateRoute>
         }
       />
