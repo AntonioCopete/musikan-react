@@ -1,11 +1,12 @@
-import MainMenu from '../components/MainMenu/MainMenu'
+import Menu from '../components/MainMenu/Menu'
+// import MainMenu from '../components/MainMenu/MainMenu'
 
 import { GridLayout } from './Layout.styles'
 
 function Layout({ hero, main }) {
   return (
     <GridLayout>
-      <MainMenu />
+      <Menu />
       <header>{hero}</header>
       <main>{main}</main>
       {/* <aside>track info</aside>
