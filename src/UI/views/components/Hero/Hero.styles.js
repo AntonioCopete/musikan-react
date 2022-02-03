@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const HeaderWrapper = styled.div`
+export const HeroWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem;

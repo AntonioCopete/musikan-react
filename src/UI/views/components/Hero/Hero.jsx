@@ -1,22 +1,21 @@
 import { useState } from 'react'
-
 import UserAvatar from '../UserAvatar/UserAvatar'
 import UserMenu from '../UserMenu/UserMenu'
-import { HeaderWrapper } from './MySongsHeader.styles'
 
-function FavouritesHeader() {
+import { HeroWrapper } from './Hero.styles'
+
+function Hero({ title }) {
   const [showUserMenu, setShowUserMenu] = useState(false)
-
   return (
-    <HeaderWrapper>
+    <HeroWrapper>
       <UserAvatar
         showUserMenu={showUserMenu}
         setShowUserMenu={setShowUserMenu}
       />
       {showUserMenu && <UserMenu />}
-      <h1>Favourites</h1>
-    </HeaderWrapper>
+      <h1>{title}</h1>
+    </HeroWrapper>
   )
 }
 
-export default FavouritesHeader
+export default Hero
