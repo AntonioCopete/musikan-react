@@ -5,6 +5,7 @@ import { FormItem } from '../Form.styles'
 import Logo from '../../Logo/Logo'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { NavLink } from '../../../../styles/GlobalComponents/NavLink'
+import { InputGroup } from '../../../../styles/GlobalComponents/Input'
 
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -85,7 +86,7 @@ function Login() {
       <Logo />
       <h1>Login</h1>
       {signUpError && <p>{signUpError}</p>}
-      <div className="form__input-field">
+      <InputGroup>
         <FaEnvelope />
         <input
           type="email"
@@ -95,8 +96,8 @@ function Login() {
           // value={email}
           onChange={handleSetEmail}
         />
-      </div>
-      <div className="form__input-field">
+      </InputGroup>
+      <InputGroup>
         <FaLock />
         <input
           type="password"
@@ -105,7 +106,7 @@ function Login() {
           value={password}
           onChange={handleSetPassword}
         />
-      </div>
+      </InputGroup>
       <NavLink to="/reset-password">Forgot password?</NavLink>
       <Button primary type="submit">
         login
