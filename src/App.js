@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import * as ROUTES from './routes/routes'
 import Auth from './ui/views/pages/Auth/Auth'
 import ResetPassword from './ui/views/pages/ResetPassword/ResetPassword'
 import Dashboard from './ui/views/pages/Dashboard/Dashboard'
@@ -47,10 +48,10 @@ function App() {
           </PrivateRoute>
         }
       ></Route>
-      <Route path="/auth" element={<Auth />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path={ROUTES.AUTH} element={<Auth />} />
+      <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
       <Route
-        path="/profile"
+        path={ROUTES.PROFILE}
         element={
           <PrivateRoute>
             <Profile />
@@ -58,7 +59,7 @@ function App() {
         }
       />
       <Route
-        path="/my-songs"
+        path={ROUTES.MY_SONGS}
         element={
           <PrivateRoute>
             <MySongs />
@@ -66,7 +67,7 @@ function App() {
         }
       />
       <Route
-        path="/favourites"
+        path={ROUTES.FAVOURITES}
         element={
           <PrivateRoute>
             <Favourites />

@@ -4,11 +4,14 @@ import { Navigate } from 'react-router-dom'
 import { FormItem } from '../Form.styles'
 import Logo from '../../Logo/Logo'
 import { Button } from '../../../../styles/GlobalComponents/Button'
-import { NavLink } from '../../../../styles/GlobalComponents/NavLink'
+import { NavigateLink } from '../../../../styles/GlobalComponents/NavLink'
+import * as ROUTES from '../../../../../routes/routes'
+import { InputGroup } from '../../../../styles/GlobalComponents/Input'
 
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
+import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa'
 
 import {
   resetAuthState,
@@ -84,8 +87,8 @@ function Login() {
       <Logo />
       <h1>Login</h1>
       {signUpError && <p>{signUpError}</p>}
-      <div className="form__input-field">
-        <i className="fas fa-envelope"></i>
+      <InputGroup>
+        <FaEnvelope />
         <input
           type="email"
           placeholder="Email"
@@ -94,9 +97,9 @@ function Login() {
           // value={email}
           onChange={handleSetEmail}
         />
-      </div>
-      <div className="form__input-field">
-        <i className="fas fa-lock"></i>
+      </InputGroup>
+      <InputGroup>
+        <FaLock />
         <input
           type="password"
           placeholder="Password"
@@ -104,8 +107,8 @@ function Login() {
           value={password}
           onChange={handleSetPassword}
         />
-      </div>
-      <NavLink to="/reset-password">Forgot password?</NavLink>
+      </InputGroup>
+      <NavigateLink to={ROUTES.RESET_PASSWORD}>Forgot password?</NavigateLink>
       <Button primary type="submit">
         login
       </Button>
@@ -129,7 +132,7 @@ function Login() {
           onClick={handleLoginWithGoogle}
           disabled={isSigningUp}
         >
-          <i className="fab fa-google"></i>
+          <FaGoogle />
         </button>
       </div>
     </FormItem>

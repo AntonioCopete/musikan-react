@@ -31,41 +31,4 @@ export const FormItem = styled.form`
     z-index: 1;
     opacity: 0;
   }
-
-  .form {
-    &__input-field {
-      display: grid;
-      grid-template-columns: 15% 85%;
-      max-width: 23.75rem;
-      width: 100%;
-      height: 3.437rem;
-      background-color: #f0f0f0;
-      margin: 10px 0;
-      border-radius: 3.437rem;
-      padding: 0 0.4rem;
-
-      & i {
-        text-align: center;
-        line-height: 3.437rem;
-        color: #acacac;
-        font-size: 1.1rem;
-      }
-
-      & input {
-        background: none;
-        outline: none;
-        border: none;
-        line-height: 1;
-        font-weight: 600;
-        font-size: 1.1rem;
-        color: #333;
-        border-radius: inherit;
-      }
-    }
-
-    & input::placeholder {
-      color: #aaa;
-      font-weight: 500;
-    }
-  }
 `

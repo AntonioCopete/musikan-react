@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from "react"
 
-import api from "../../../../api"
-import * as auth from '../../../../services/auth/auth'
+import api from "../../../../../api"
+import * as auth from '../../../../../services/auth/auth'
 
-import { Button } from '../../../styles/GlobalComponents/Button'
-import { ButtonLink } from '../../../styles/GlobalComponents/NavLink'
+import { Modal } from "@mui/material"
+import { Container } from "./UploadSongModal.styles"
+import { Button } from '../../../../styles/GlobalComponents/Button'
+import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 
 import { HiddenInput } from "./UploadSongModal.styles"
 
 import defaultPic from "./default-album.jpg"
 
-function UploadSongModal({ handleClose }) {
+function UploadSongModal({ open, handleClose }) {
   const songNameInputRef = useRef()
   const songImageInputRef = useRef()
   const songFileInputRef = useRef()
@@ -87,7 +89,7 @@ function UploadSongModal({ handleClose }) {
 
     api.uploadTrack({Authorization: `Bearer ${token}`}, formData)
       .then(response => {
-        if (response.data.message === "UPLOADED") {
+        if (response.data.success) {
           setDisableSaveBtn(false)
           // ! PENDING CONFIRM TO USER EVERYTHING WAS OK AND SET REDUX TRACKS STATE TO RESPONSE
           handleClose()
@@ -97,7 +99,7 @@ function UploadSongModal({ handleClose }) {
 
   useEffect(() => {
     if (!selectedSongImg) {
-      setImageSrcPreview(undefined)
+      setImageSrcPreview(undefined) // ! PENDING REVIEW: WHEN CANCEL SELECT IMAGE -> RESTORE DEFAULT IMAGE
       return
     }
 
@@ -119,35 +121,42 @@ function UploadSongModal({ handleClose }) {
 
   return (
     <>
-
-      <h1 style={{ display: "inline-block", float: "left" }}>Upload</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="uploadSongImageInput"  >
-          <img src={selectedSongImg ? imageSrcPreview : defaultPic} style={{ maxWidth: "25vh", display: "inline-block", float: "left" }} alt="Your song's pic" />
-        </label>
-        <HiddenInput type="file" id="uploadSongImageInput" onChange={handlePic} ref={songImageInputRef} />
-        <label htmlFor="uploadSongFileInput" style={{ display: "block", float: "left"}}>Select your file</label>
-        {selectedSongFile && <p>{selectedSongFile}</p>}
-        <HiddenInput type="file" id="uploadSongFileInput" onChange={handleSelectedSongFile} ref={songFileInputRef} />
-        <input type="text" placeholder="Name" ref={songNameInputRef} style={{ maxWidth: "25vh", display: "block", float: "left" }}/>
-        <select ref={genreInputRef} onChange={() => {defaultGenreRef.current.disabled = true}}>
-          <option ref={defaultGenreRef} style={{ maxWidth: "25vh", display: "block", float: "left" }} >Select a genre</option>
-          {genres && genres.map((genre) => {
-            return <option key={genre} value={genre}>{genre}</option>
-          })}
-        </select>
-        {error && <p>{error}</p>}
-        <Button disabled={disableSaveBtn} primary type="submit">
-        Save
-      </Button>
-      <ButtonLink
-        type="text"
-        onClick={handleCancel}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
-        Cancel
-      </ButtonLink>
-      </form>
-
+        <Container>
+          <h1 style={{ display: "inline-block", float: "left" }}>Upload</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="uploadSongImageInput"  >
+              <img src={selectedSongImg ? imageSrcPreview : defaultPic} style={{ maxWidth: "25vh", display: "inline-block", float: "left" }} alt="Your song's pic" />
+            </label>
+            <HiddenInput type="file" id="uploadSongImageInput" onChange={handlePic} ref={songImageInputRef} />
+            <label htmlFor="uploadSongFileInput" style={{ display: "block", float: "left"}}>Select your file</label>
+            {selectedSongFile && <p>{selectedSongFile}</p>}
+            <HiddenInput type="file" id="uploadSongFileInput" onChange={handleSelectedSongFile} ref={songFileInputRef} />
+            <input type="text" placeholder="Name" ref={songNameInputRef} style={{ maxWidth: "25vh", display: "block", float: "left" }}/>
+            <select ref={genreInputRef} onChange={() => {defaultGenreRef.current.disabled = true}}>
+              <option ref={defaultGenreRef} style={{ maxWidth: "25vh", display: "block", float: "left" }} >Select a genre</option>
+              {genres && genres.map((genre) => {
+                return <option key={genre} value={genre}>{genre}</option>
+              })}
+            </select>
+            {error && <p>{error}</p>}
+            <Button disabled={disableSaveBtn} primary type="submit">
+            Save
+          </Button>
+          <ButtonLink
+            type="text"
+            onClick={handleCancel}
+          >
+            Cancel
+          </ButtonLink>
+          </form>
+        </Container>
+      </Modal>
     </>
   );
 }

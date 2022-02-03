@@ -2,8 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { deleteUserName } from '../../../../redux/user/actions'
 import { signOut } from '../../../../redux/auth/actions'
+import * as ROUTES from '../../../../routes/routes'
 
-import { NavLink, ButtonLink } from '../../../styles/GlobalComponents/NavLink'
+import {
+  NavigateLink,
+  ButtonLink,
+} from '../../../styles/GlobalComponents/NavLink'
 import { UserMenuNav, UserMenuElement } from './UserMenu.styles'
 
 function UserMenu() {
@@ -20,7 +24,7 @@ function UserMenu() {
     <UserMenuNav>
       <ul>
         <UserMenuElement>
-          <NavLink to="/profile">Profile</NavLink>
+          <NavigateLink to={ROUTES.PROFILE}>Profile</NavigateLink>
         </UserMenuElement>
         <UserMenuElement>
           <ButtonLink onClick={handleLogout}>Logout</ButtonLink>

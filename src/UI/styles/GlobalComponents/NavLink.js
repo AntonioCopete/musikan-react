@@ -1,12 +1,17 @@
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const NavLink = styled(Link)`
+export const NavigateLink = styled(NavLink)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.text};
   transition: color 0.2s linear;
 
   &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+
+  &.${(props) => props.activeClassName} {
     color: ${({ theme }) => theme.colors.primary};
   }
 `

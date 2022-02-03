@@ -1,0 +1,6 @@
+export const DASHBOARD = '/'
+export const AUTH = '/auth'
+export const PROFILE = '/profile'
+export const MY_SONGS = '/my-songs'
+export const FAVOURITES = '/favourites'
+export const RESET_PASSWORD = '/reset-password'

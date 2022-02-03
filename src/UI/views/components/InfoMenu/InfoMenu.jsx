@@ -4,6 +4,7 @@ import { deleteTracks } from '../../../../redux/track/actions'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import { IconOpen, Item } from './InfoMenu.styles'
+import { RiHeart3Fill, RiPencilFill, RiDeleteBinFill } from 'react-icons/ri'
 
 function InfoMenu({ id }) {
   const dispatch = useDispatch()
@@ -31,7 +32,7 @@ function InfoMenu({ id }) {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <IconOpen className="fas fa-chevron-down"></IconOpen>
+        <IconOpen />
       </IconButton>
       <Menu
         id="long-menu"
@@ -52,16 +53,15 @@ function InfoMenu({ id }) {
       >
         <Item>
           <span>Like</span>
-          <i className="fas fa-heart"></i>
+          <RiHeart3Fill />
         </Item>
         <Item>
           <span>Edit</span>
-          <i className="fas fa-pen"></i>
+          <RiPencilFill />
         </Item>
         <Item onClick={handleDelete}>
           <span>Delete</span>
-          <i className="fas fa-trash"></i>
-          {/* <span>{track._id}</span> */}
+          <RiDeleteBinFill />
         </Item>
       </Menu>
     </section>

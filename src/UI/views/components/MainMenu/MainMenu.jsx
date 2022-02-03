@@ -1,63 +1,35 @@
-import { NavLink } from '../../../styles/GlobalComponents/NavLink'
-import { Menu } from './MainMenu.styles'
-import { useState } from 'react'
-import BottomNavigation from '@mui/material/BottomNavigation'
-import BottomNavigationAction from '@mui/material/BottomNavigationAction'
-import IconMenu from './MainMenuWeb'
+import { MenuWrapper, MenuItem, MenuName, MenuList } from './MainMenu.styles'
+import Logo from '../Logo/Logo'
+import * as ROUTES from '../../../../routes/routes'
+import { RiHome2Fill, RiMusicFill, RiHeart3Fill } from 'react-icons/ri'
+import { BsPlusSquare } from 'react-icons/bs'
 
-export default function MainMenu() {
-  const [value, setValue] = useState('dashboard')
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue)
-  }
-
+function MainMenu() {
   return (
-    <>
-      <IconMenu />
-      <Menu>
-        <BottomNavigation
-          value={value}
-          onChange={handleChange}
-          sx={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            background: '#000',
-          }}
-          elevation={3}
-        >
-          <BottomNavigationAction
-            label="Dashboard"
-            value="dashboard"
-            icon={<i className="fas fa-envelope"></i>}
-            component={NavLink}
-            to="/"
-          />
-          <BottomNavigationAction
-            label="My songs"
-            value="songs"
-            icon={<i className="fas fa-music"></i>}
-            component={NavLink}
-            to="/my-songs"
-          />
-          <BottomNavigationAction
-            label="Favourites"
-            value="favourites"
-            icon={<i className="fas fa-heart"></i>}
-            component={NavLink}
-            to="/favourites"
-          />
-          <BottomNavigationAction
-            label="Upload"
-            value="upload"
-            icon={<i className="fas fa-plus"></i>}
-            component={NavLink}
-            to="/profile"
-          />
-        </BottomNavigation>
-      </Menu>
-    </>
+    <MenuWrapper>
+      <MenuList>
+        <MenuItem brand to={ROUTES.DASHBOARD}>
+          <Logo main />
+        </MenuItem>
+        <MenuItem to={ROUTES.DASHBOARD}>
+          <RiHome2Fill />
+          <MenuName>Dashboard</MenuName>
+        </MenuItem>
+        <MenuItem to={ROUTES.MY_SONGS}>
+          <RiMusicFill />
+          <MenuName>My Songs</MenuName>
+        </MenuItem>
+        <MenuItem to={ROUTES.FAVOURITES}>
+          <RiHeart3Fill />
+          <MenuName>Favourites</MenuName>
+        </MenuItem>
+        <MenuItem to={ROUTES.DASHBOARD}>
+          <BsPlusSquare />
+          <MenuName>Upload</MenuName>
+        </MenuItem>
+      </MenuList>
+    </MenuWrapper>
   )
 }
+
+export default MainMenu

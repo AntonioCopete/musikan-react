@@ -10,8 +10,10 @@ import { authSelector } from '../../../../redux/auth/selectors'
 import { FormItem } from '../../components/Form/Form.styles'
 import Logo from '../../components/Logo/Logo'
 import { Button } from '../../../styles/GlobalComponents/Button'
-import { NavLink } from '../../../styles/GlobalComponents/NavLink'
+import { NavigateLink } from '../../../styles/GlobalComponents/NavLink'
+import * as ROUTES from '../../../../routes/routes'
 import { Reset } from './ResetPassword.styles'
+import { FaEnvelope } from 'react-icons/fa'
 
 function ResetPassword() {
   const dispatch = useDispatch()
@@ -49,7 +51,7 @@ function ResetPassword() {
         {passwordResetError && <p>{passwordResetError}</p>}
 
         <div className="form__input-field">
-          <i className="fas fa-envelope"></i>
+          <FaEnvelope />
           <input
             type="email"
             placeholder="Email"
@@ -71,7 +73,7 @@ function ResetPassword() {
             passwordResetError
           )}
         </Button>
-        <NavLink to="/auth">Login</NavLink>
+        <NavigateLink to={ROUTES.AUTH}>Login</NavigateLink>
       </FormItem>
     </Reset>
   )

@@ -2,10 +2,11 @@ import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { FormItem } from '../Form.styles'
+import { FaUser, FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa'
 
 import Logo from '../../Logo/Logo'
 import { Button } from '../../../../styles/GlobalComponents/Button'
-
+import { InputGroup } from '../../../../styles/GlobalComponents/Input'
 import {
   resetAuthState,
   signUpWithEmailRequest,
@@ -56,12 +57,13 @@ function Signup() {
       <Logo />
       <h1>Create account</h1>
       {signUpError && <p>{signUpError}</p>}
-      <div className="form__input-field">
-        <i className="fas fa-user"></i>
+
+      <InputGroup>
+        <FaUser />
         <input type="text" placeholder="Name" id="name" ref={userNameRef} />
-      </div>
-      <div className="form__input-field">
-        <i className="fas fa-envelope"></i>
+      </InputGroup>
+      <InputGroup>
+        <FaEnvelope />
         <input
           type="email"
           placeholder="Email"
@@ -69,9 +71,9 @@ function Signup() {
           value={email}
           onChange={handleSetEmail}
         />
-      </div>
-      <div className="form__input-field">
-        <i className="fas fa-lock"></i>
+      </InputGroup>
+      <InputGroup>
+        <FaLock />
         <input
           type="password"
           placeholder="Password"
@@ -79,7 +81,8 @@ function Signup() {
           value={password}
           onChange={handleSetPassword}
         />
-      </div>
+      </InputGroup>
+
       <Button primary type="submit" disabled={isSigningUp}>
         signup
       </Button>
@@ -91,7 +94,7 @@ function Signup() {
           onClick={handleLoginWithGoogle}
           disabled={isSigningUp}
         >
-          <i className="fab fa-google"></i>
+          <FaGoogle />
         </button>
       </div>
     </FormItem>
