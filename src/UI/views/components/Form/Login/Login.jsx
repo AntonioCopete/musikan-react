@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 import { FormItem } from '../Form.styles'
 import Logo from '../../Logo/Logo'
 import { Button } from '../../../../styles/GlobalComponents/Button'
-import { NavLink } from '../../../../styles/GlobalComponents/NavLink'
+import { NavigateLink } from '../../../../styles/GlobalComponents/NavLink'
 import * as ROUTES from '../../../../../routes/routes'
 import { InputGroup } from '../../../../styles/GlobalComponents/Input'
 
@@ -108,7 +108,7 @@ function Login() {
           onChange={handleSetPassword}
         />
       </InputGroup>
-      <NavLink to={ROUTES.RESET_PASSWORD}>Forgot password?</NavLink>
+      <NavigateLink to={ROUTES.RESET_PASSWORD}>Forgot password?</NavigateLink>
       <Button primary type="submit">
         login
       </Button>
