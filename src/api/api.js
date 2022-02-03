@@ -69,6 +69,23 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function getTrackInfo(headers, trackId) {
+    return request({
+      url: `/tracks/${trackId}`,
+      requestMethod: 'GET',
+      headers: headers,
+    })
+  }
+
+  function updateTrackInfo(headers, body, trackId) {
+    return request({
+      url: `/tracks/${trackId}`,
+      requestMethod: 'PATCH',
+      headers: headers,
+      body: body,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -78,6 +95,8 @@ function makeApi(request = makeRequest()) {
     deleteTrack: deleteTrack,
     getGenres: getGenres,
     uploadTrack: uploadTrack,
+    getTrackInfo: getTrackInfo,
+    updateTrackInfo: updateTrackInfo,
   }
 }
 

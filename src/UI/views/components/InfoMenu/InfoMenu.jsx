@@ -5,9 +5,11 @@ import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import { IconOpen, Item } from './InfoMenu.styles'
 import { RiHeart3Fill, RiPencilFill, RiDeleteBinFill } from 'react-icons/ri'
+import { useNavigate } from 'react-router-dom'
 
 function InfoMenu({ id }) {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
@@ -16,6 +18,10 @@ function InfoMenu({ id }) {
   }
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleEdit = () => {
+    navigate(`../edit-song/${id}`)
   }
 
   const handleDelete = () => {
@@ -55,7 +61,7 @@ function InfoMenu({ id }) {
           <span>Like</span>
           <RiHeart3Fill />
         </Item>
-        <Item>
+        <Item onClick={handleEdit}>
           <span>Edit</span>
           <RiPencilFill />
         </Item>
