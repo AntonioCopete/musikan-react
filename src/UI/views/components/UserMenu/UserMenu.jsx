@@ -8,7 +8,7 @@ import {
   NavigateLink,
   ButtonLink,
 } from '../../../styles/GlobalComponents/NavLink'
-import { UserMenuNav, UserMenuElement } from './UserMenu.styles'
+import { UserMenuNav, UserMenuList, UserMenuElement } from './UserMenu.styles'
 
 function UserMenu() {
   const navigate = useNavigate()
@@ -22,14 +22,14 @@ function UserMenu() {
 
   return (
     <UserMenuNav>
-      <ul>
+      <UserMenuList>
         <UserMenuElement>
           <NavigateLink to={ROUTES.PROFILE}>Profile</NavigateLink>
         </UserMenuElement>
         <UserMenuElement>
           <ButtonLink onClick={handleLogout}>Logout</ButtonLink>
         </UserMenuElement>
-      </ul>
+      </UserMenuList>
     </UserMenuNav>
   )
 }
