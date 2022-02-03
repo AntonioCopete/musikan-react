@@ -7,27 +7,35 @@ export const trackRequest = (tracks) => ({
   payload: tracks,
 })
 
-export function getTracks() {
+export function getTracks(liked) {
   return async function getTracksThunk(dispatch) {
     const token = await auth.getCurrentUserToken()
     if (!token) return
-    const response = await api.getTracks({ Authorization: `Bearer ${token}` })
+    const response = await api.getTracks(
+      { Authorization: `Bearer ${token}` },
+      liked
+    )
 
     if (response.errorMessage) return
     dispatch(trackRequest(response.data.data))
   }
 }
 
-export function getLikedTracks() {
-  return async function getLikedTracksThunk(dispatch) {
+export function deleteTracks(id) {
+  return async function deleteTracksThunk(dispatch) {
     const token = await auth.getCurrentUserToken()
     if (!token) return
-
-    const response = await api.getLikedTracks({
-      Authorization: `Bearer ${token}`,
-    })
-
+    const response = await api.deleteTrack(
+      { Authorization: `Bearer ${token}` },
+      id
+    )
+    console.log(response.data)
     if (response.errorMessage) return
-    dispatch(trackRequest(response.data.data))
+    dispatch(renderTracks(response.data.data))
   }
 }
+
+export const renderTracks = (tracks) => ({
+  type: TrackTypes.TRACK_RENDER,
+  payload: tracks,
+})

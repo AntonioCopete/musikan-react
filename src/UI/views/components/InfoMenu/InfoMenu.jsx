@@ -1,30 +1,14 @@
-import * as React from 'react'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { deleteTracks } from '../../../../redux/track/actions'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import { IconOpen } from './InfoMenu.styles'
+import { IconOpen, Item } from './InfoMenu.styles'
 
-const options = [
-  'None',
-  'Atria',
-  'Callisto',
-  'Dione',
-  'Ganymede',
-  'Hangouts Call',
-  'Luna',
-  'Oberon',
-  'Phobos',
-  'Pyxis',
-  'Sedna',
-  'Titania',
-  'Triton',
-  'Umbriel',
-]
+function InfoMenu({ id }) {
+  const dispatch = useDispatch()
 
-const ITEM_HEIGHT = 48
-
-function InfoMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -33,8 +17,12 @@ function InfoMenu() {
     setAnchorEl(null)
   }
 
+  const handleDelete = () => {
+    dispatch(deleteTracks(id))
+  }
+
   return (
-    <div>
+    <section>
       <IconButton
         aria-label="more"
         id="long-button"
@@ -55,22 +43,28 @@ function InfoMenu() {
         onClose={handleClose}
         PaperProps={{
           style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch',
+            background: '#474747',
+            maxHeight: 48 * 4.5,
+            width: '20rem',
+            color: 'white',
           },
         }}
       >
-        {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === 'Pyxis'}
-            onClick={handleClose}
-          >
-            {option}
-          </MenuItem>
-        ))}
+        <Item>
+          <span>Like</span>
+          <i className="fas fa-heart"></i>
+        </Item>
+        <Item>
+          <span>Edit</span>
+          <i className="fas fa-pen"></i>
+        </Item>
+        <Item onClick={handleDelete}>
+          <span>Delete</span>
+          <i className="fas fa-trash"></i>
+          {/* <span>{track._id}</span> */}
+        </Item>
       </Menu>
-    </div>
+    </section>
   )
 }
 

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { getLikedTracks } from '../../../../redux/track/actions'
+import { getTracks } from '../../../../redux/track/actions'
 
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -15,7 +15,7 @@ function FavouritesList() {
   const track = useSelector((state) => state.track)
 
   useEffect(() => {
-    dispatch(getLikedTracks())
+    dispatch(getTracks('liked'))
   }, [dispatch])
 
   const [checked, setChecked] = useState([1])
