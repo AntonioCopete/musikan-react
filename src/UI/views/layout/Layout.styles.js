@@ -7,7 +7,7 @@ export const GridLayout = styled.div`
     'nav main'
     'aside main'
     'aside footer';
-  grid-template-rows: 20rem 1fr 120px 10rem;
+  grid-template-rows: 20rem 1fr 5rem 10rem;
   grid-template-columns: 20% 1fr;
   grid-row-gap: 1rem;
   grid-column-gap: 1rem;
@@ -21,7 +21,7 @@ export const GridLayout = styled.div`
       'aside'
       'footer'
       'nav';
-    grid-template-rows: 20rem 1fr 1fr 10rem 10rem;
+    grid-template-rows: 20rem 1fr 8rem 8rem 5rem;
     grid-template-columns: 1fr;
   }
 `

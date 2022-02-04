@@ -8,7 +8,7 @@ import {
 import Logo from '../Logo/Logo'
 import * as ROUTES from '../../../../routes/routes'
 import { RiHome2Fill, RiMusicFill, RiHeart3Fill } from 'react-icons/ri'
-import { BsPlusSquare } from 'react-icons/bs'
+// import { BsPlusSquare } from 'react-icons/bs'
 
 function MainMenu() {
   return (
@@ -29,10 +29,10 @@ function MainMenu() {
           <RiHeart3Fill />
           <MenuName>Favourites</MenuName>
         </MenuItem>
-        <MenuItem to={ROUTES.DASHBOARD}>
+        {/* <MenuItem to={ROUTES.DASHBOARD}>
           <BsPlusSquare />
           <MenuName>Upload</MenuName>
-        </MenuItem>
+        </MenuItem> */}
       </MenuList>
     </MenuWrapper>
   )

@@ -1,5 +1,6 @@
 import MainMenu from '../components/MainMenu/MainMenu'
-// import AudioPlayer from '../components/AudioPlayer/AudioPlayer'
+import TrackInfo from '../components/TrackInfo/TrackInfo'
+import AudioPlayer from '../components/AudioPlayer/AudioPlayer'
 import { GridLayout, Header, Main, Aside, Footer } from './Layout.styles'
 
 function Layout({ hero, main }) {
@@ -8,8 +9,12 @@ function Layout({ hero, main }) {
       <MainMenu />
       <Header>{hero}</Header>
       <Main>{main}</Main>
-      <Aside>{/*track info */}</Aside>
-      <Footer>{/* {<AudioPlayer />} */}</Footer>
+      <Aside>
+        <TrackInfo />
+      </Aside>
+      <Footer>
+        <AudioPlayer />
+      </Footer>
     </GridLayout>
   )
 }
