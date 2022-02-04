@@ -6,8 +6,9 @@ import * as auth from '../../../../services/auth/auth'
 
 import { Button } from '../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../styles/GlobalComponents/NavLink'
-
-import { HiddenInput } from './EditTrackForm.styles'
+import { InputGroup } from '../../../styles/GlobalComponents/Input'
+import { FormEdit, HiddenInput, SelectGenre } from './EditTrackForm.styles'
+import { FaHeadphonesAlt, FaMusic } from 'react-icons/fa'
 
 function EditTrackForm() {
   const { trackId } = useParams()
@@ -87,8 +88,6 @@ function EditTrackForm() {
       selectedTrackPicFile = trackInfo.thumbnail
     }
 
-    console.log(selectedTrackPicFile)
-
     const formData = new FormData()
     formData.append('name', selectedTrackName)
     formData.append('genre', selectedGenre)
@@ -133,7 +132,7 @@ function EditTrackForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormEdit onSubmit={handleSubmit}>
       <label htmlFor="uploadTrackImageInput">
         <img
           src={selectedTrackImg ? imageSrcPreview : trackInfo?.thumbnail}
@@ -146,22 +145,28 @@ function EditTrackForm() {
         onChange={handlePic}
         ref={trackImageInputRef}
       />
-      <input
-        type="text"
-        placeholder="Name"
-        ref={trackNameInputRef}
-        defaultValue={trackInfo?.name}
-      />
-      <select
-        ref={genreInputRef}
-        value={trackInfo?.genre}
-        onChange={handleChangeGenre}
-      >
-        {genres &&
-          genres.map((genre) => {
-            return <option key={genre}>{genre}</option>
-          })}
-      </select>
+      <InputGroup>
+        <FaMusic />
+        <input
+          type="text"
+          placeholder="Track name"
+          ref={trackNameInputRef}
+          defaultValue={trackInfo?.name}
+        />
+      </InputGroup>
+      <InputGroup>
+        <FaHeadphonesAlt />
+        <select
+          ref={genreInputRef}
+          value={trackInfo?.genre}
+          onChange={handleChangeGenre}
+        >
+          {genres &&
+            genres.map((genre) => {
+              return <option key={genre}>{genre}</option>
+            })}
+        </select>
+      </InputGroup>
       {success && <p>{success}</p>}
       {error && <p>{error}</p>}
       <Button disabled={disableSaveBtn} primary type="submit">
@@ -170,7 +175,7 @@ function EditTrackForm() {
       <ButtonLink type="text" onClick={handleCancel}>
         Cancel
       </ButtonLink>
-    </form>
+    </FormEdit>
   )
 }
 
