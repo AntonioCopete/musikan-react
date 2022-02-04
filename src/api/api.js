@@ -94,6 +94,14 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function getCurrentTrackInfo(headers, trackId) {
+    return request({
+      url: `/tracks/${trackId}/play`,
+      requestMethod: 'GET',
+      headers: headers,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -106,6 +114,7 @@ function makeApi(request = makeRequest()) {
     getTrackInfo: getTrackInfo,
     updateTrackInfo: updateTrackInfo,
     likeTrack: likeTrack,
+    getCurrentTrackInfo: getCurrentTrackInfo,
   }
 }
 
