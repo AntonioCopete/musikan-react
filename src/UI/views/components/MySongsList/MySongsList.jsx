@@ -5,15 +5,7 @@ import { getTracks } from '../../../../redux/track/actions'
 import * as auth from '../../../../services/auth'
 import api from '../../../../api/api'
 
-import InfoMenu from '../InfoMenu/InfoMenu'
-import LikeDislike from '../LikeDislike/LikeDislike'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import Avatar from '@mui/material/Avatar'
-
-import { ItemText } from './MySongsList.styles'
+import TrackList from '../TrackList/TrackList'
 
 function MySongsList() {
   const dispatch = useDispatch()
@@ -33,43 +25,7 @@ function MySongsList() {
     await api.likeTrack(headers, id)
   }
 
-  return (
-    <List dense sx={{ width: '100%' }}>
-      {tracks.length > 0 &&
-        tracks.map((value) => {
-          const labelId = `checkbox-list-secondary-label-${value._id}`
-          return (
-            <ListItem
-              key={value._id}
-              secondaryAction={
-                <LikeDislike
-                  initialState={value.like}
-                  handleLike={handleLike}
-                  id={value._id}
-                />
-              }
-            >
-              <ListItemButton>
-                <ListItemAvatar>
-                  <Avatar
-                    alt={`Avatar n°${value + 1}`}
-                    src={value.thumbnail}
-                    variant="square"
-                  />
-                </ListItemAvatar>
-                <ItemText id={labelId} primary={`Song ${value.name}`} />
-                <ItemText>genre -{value.genre} </ItemText>
-              </ListItemButton>
-              <InfoMenu
-                id={value._id}
-                initialState={value.like}
-                handleLike={handleLike}
-              />
-            </ListItem>
-          )
-        })}
-    </List>
-  )
+  return <TrackList tracks={tracks} handleLike={handleLike} />
 }
 
 export default MySongsList
