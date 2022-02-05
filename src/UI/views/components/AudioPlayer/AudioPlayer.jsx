@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import muzik from '../../../img/ska.mp3'
+// import muzik from '../../../img/ska.mp3'
 import './Audio.scss'
 
 import {
