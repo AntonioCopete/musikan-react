@@ -8,6 +8,7 @@ import api from '../../../../../api/api'
 import TrackList from '../../../components/TrackList/TrackList'
 
 function MyTracksList() {
+  const token = localStorage.getItem('authToken')
   const dispatch = useDispatch()
   const tracks = useSelector((state) => state.track)
 
@@ -20,12 +21,12 @@ function MyTracksList() {
   }
 
   const getCurrentTokenAndLike = async (id) => {
-    const token = await auth.getCurrentUserToken()
+    // const token = await auth.getCurrentUserToken()
     const headers = { Authorization: `Bearer ${token}` }
     await api.likeTrack(headers, id)
   }
 
-  return <TrackList tracks={tracks} handleLike={handleLike} owner={true}/>
+  return <TrackList tracks={tracks} handleLike={handleLike} owner={true} />
 }
 
 export default MyTracksList

@@ -28,9 +28,11 @@ function App() {
 
     unsubscribeFromAuth = onAuthStateChanged((user) => {
       if (user) {
+        localStorage.setItem('authToken', user.Aa)
         dispatch(syncSignIn(data))
         dispatch(deleteUserName())
       } else {
+        localStorage.setItem('authToken', null)
         dispatch(signOut())
       }
     })

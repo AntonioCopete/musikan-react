@@ -16,6 +16,7 @@ import defaultPic from './default-album.jpg'
 import { useDispatch } from 'react-redux'
 
 function UploadSongModal({ open, handleClose }) {
+  const token = localStorage.getItem('authToken')
   const dispatch = useDispatch()
   const songNameInputRef = useRef()
   const songImageInputRef = useRef()
@@ -34,7 +35,7 @@ function UploadSongModal({ open, handleClose }) {
   }, [])
 
   const getGenres = async () => {
-    const response = await api.getGenres()
+    const response = await api.getGenres({ Authorization: `Bearer ${token}` })
     console.log(response.data.data)
     setGenres(response.data.data)
   }
@@ -69,7 +70,7 @@ function UploadSongModal({ open, handleClose }) {
   }
 
   const getUserTokenAndRequestUpload = async () => {
-    const token = await auth.getCurrentUserToken()
+    // const token = await auth.getCurrentUserToken()
     uploadRequest(token)
   }
 

@@ -25,6 +25,8 @@ function EditTrackForm() {
   const [disableSaveBtn, setDisableSaveBtn] = useState(false)
   const [success, setSuccess] = useState('')
 
+  const token = localStorage.getItem('authToken')
+
   useEffect(() => {
     getTokenAndRequest()
     getGenres()
@@ -32,13 +34,12 @@ function EditTrackForm() {
   }, [])
 
   const getTokenAndRequest = async () => {
-    const token = await auth.getCurrentUserToken()
     setUserToken(token)
     getTrackInfo(token)
   }
 
   const getGenres = async () => {
-    const response = await api.getGenres()
+    const response = await api.getGenres({ Authorization: `Bearer ${token}` })
     console.log(response.data)
     setGenres(response.data.data)
   }

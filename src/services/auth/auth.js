@@ -25,9 +25,11 @@ export function onAuthStateChanged(...props) {
   return auth.onAuthStateChanged(...props)
 }
 
-export function singInWithGoogle() {
-  const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider()
-  return auth.signInWithPopup(GoogleAuthProvider)
+export async function singInWithGoogle() {
+  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+    const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider()
+    return auth.signInWithPopup(GoogleAuthProvider)
+  })
 }
 
 export function singInWithEmailAndPassword(email, password) {
