@@ -4,7 +4,10 @@ import FavouritesList from '../../components/FavouritesList/FavouritesList'
 
 function Favourites() {
   return (
-    <Layout hero={<Hero title={'Favourites'} />} main={<FavouritesList />} />
+    <>
+      <Hero title={'Favourites'} />
+      <FavouritesList />
+    </>
   )
 }
 

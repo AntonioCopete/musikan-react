@@ -4,7 +4,10 @@ import EditTrackForm from '../../components/EditTrackForm/EditTrackForm'
 
 function EditTrack() {
   return (
-    <Layout hero={<Hero title={'Edit Track'} />} main={<EditTrackForm />} />
+    <>
+      <Hero title={'Edit Track'} />
+      <EditTrackForm />
+    </>
   )
 }
 

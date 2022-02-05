@@ -1,5 +1,4 @@
 import { useState } from 'react'
-// import PanelAuth from '../../components/PanelAuth/PanelAuth'
 import AuthContainer from './Auth.styles'
 import PanelA from '../../components/PanelAuth/PanelA/PanelA'
 import Form from '../../components/Form/Form'

@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import PanelHero from '../../../components/PanelHero/PanelHero'
+import { Header } from '../../../layout/Layout.styles'
 
 export const ProfileWrapper = styled.div`
   display: flex;
