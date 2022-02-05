@@ -39,7 +39,8 @@ function EditTrackForm() {
 
   const getGenres = async () => {
     const response = await api.getGenres()
-    setGenres(response.data)
+    console.log(response.data)
+    setGenres(response.data.data)
   }
 
   const getTrackInfo = async (token) => {
@@ -163,7 +164,11 @@ function EditTrackForm() {
         >
           {genres &&
             genres.map((genre) => {
-              return <option key={genre}>{genre}</option>
+              return (
+                <option key={genre._id} value={genre._id}>
+                  {genre.name}
+                </option>
+              )
             })}
         </select>
       </InputGroup>

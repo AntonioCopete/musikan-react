@@ -35,7 +35,8 @@ function UploadSongModal({ open, handleClose }) {
 
   const getGenres = async () => {
     const response = await api.getGenres()
-    setGenres(response.data)
+    console.log(response.data.data)
+    setGenres(response.data.data)
   }
 
   const handlePic = (e) => {
@@ -191,8 +192,8 @@ function UploadSongModal({ open, handleClose }) {
               {genres &&
                 genres.map((genre) => {
                   return (
-                    <option key={genre} value={genre}>
-                      {genre}
+                    <option key={genre._id} value={genre._id}>
+                      {genre.name}
                     </option>
                   )
                 })}
