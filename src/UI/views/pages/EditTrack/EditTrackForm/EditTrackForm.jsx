@@ -40,7 +40,6 @@ function EditTrackForm() {
 
   const getGenres = async () => {
     const response = await api.getGenres()
-    console.log(response.data)
     setGenres(response.data.data)
   }
 

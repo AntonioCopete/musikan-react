@@ -1,43 +1,83 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ReactPlayer from 'react-player'
 
-import muzik from '../../../img/ska.mp3'
+import { useSelector } from 'react-redux'
 
 import {
   AudioWrapper,
   AudioGroup,
-  ForwardBackwardBtn,
   PlayPauseBtn,
   ProgressBar,
 } from './AudioPlayer.styles'
-import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
-import { FaPlay, FaPause } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
 
+import { FaPlay, FaPause } from 'react-icons/fa'
 
 function AudioPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false)
   const { url } = useSelector((state) => state.currentTrack)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [playedSeconds, setPlayedSeconds] = useState(0)
+  const [totalSeconds, setTotalSeconds] = useState(0)
+
+  useEffect(() => {
+    if (url) {
+      onStart()
+    }
+  }, [])
+
+  const onStart = () => {
+    setIsPlaying(true)
+  }
+
+  const onPause = () => {
+    setIsPlaying(false)
+  }
+
+  const onProgress = (data) => {
+    setPlayedSeconds(data.playedSeconds)
+    setTotalSeconds(data.loadedSeconds)
+  }
+
+  const calculateTime = (secs) => {
+    const minutes = Math.floor(secs / 60)
+    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`
+
+    const seconds = Math.floor(secs % 60)
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
+
+    return `${returnedMinutes}:${returnedSeconds}`
+  }
 
   return (
     <AudioWrapper>
       <AudioGroup>
-        <audio src={muzik} preload="metadata"></audio>
-        <ForwardBackwardBtn>
-          <MdArrowBackIosNew />
-        </ForwardBackwardBtn>
-        <PlayPauseBtn>{isPlaying ? <FaPause /> : <FaPlay />}</PlayPauseBtn>
-        <ForwardBackwardBtn>
-          <MdArrowForwardIos />
-        </ForwardBackwardBtn>
+        <ReactPlayer
+          className="react-player"
+          url={url}
+          playing={isPlaying}
+          height="0"
+          width="0"
+          onProgress={(e) => onProgress(e)}
+        />
+        <PlayPauseBtn>
+          {isPlaying ? (
+            <FaPause onClick={onPause} />
+          ) : (
+            <FaPlay onClick={onStart} />
+          )}
+        </PlayPauseBtn>
       </AudioGroup>
       <AudioGroup progress>
         {/* current time */}
-        <div>11:00</div>
-        {/* progress bar */}
-        <ProgressBar type="range" currentTime={90} />
+        <span>{calculateTime(playedSeconds)}</span>
+        <ProgressBar
+          type="range"
+          progress="value"
+          value={playedSeconds}
+          onChange={(e) => setPlayedSeconds(Number(e))}
+          total={totalSeconds}
+        />
         {/* duration */}
-        <div>22:00</div>
+        <span>{calculateTime(totalSeconds)}</span>
       </AudioGroup>
     </AudioWrapper>
   )
