@@ -25,7 +25,7 @@ function MyTracksList() {
     await api.likeTrack(headers, id)
   }
 
-  return <TrackList tracks={tracks} handleLike={handleLike} />
+  return <TrackList tracks={tracks} handleLike={handleLike} owner={true}/>
 }
 
 export default MyTracksList

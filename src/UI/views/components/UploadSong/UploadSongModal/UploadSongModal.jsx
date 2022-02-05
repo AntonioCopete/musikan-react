@@ -35,6 +35,7 @@ function UploadSongModal({ open, handleClose }) {
 
   const getGenres = async () => {
     const response = await api.getGenres()
+    console.log(response.data.data)
     setGenres(response.data.data)
   }
 
