@@ -36,6 +36,7 @@ export const InputGroup = styled.div`
   & select {
     appearance: none;
     border: none;
+    width: fit-content;
     background-color: ${(props) => props.theme.colors.darkGrey};
     color: ${(props) => props.theme.colors.text};
     font-size: 1.1rem;

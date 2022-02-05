@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import './Audio.scss'
 
 import {
   AudioWrapper,
@@ -65,8 +64,7 @@ function AudioPlayer() {
   }
 
   const changePlayerCurrentTime = () => {
-    const width = (progressBar.current.value / duration) * 100
-    setCurrentTime(width)
+    setCurrentTime((progressBar.current.value / duration) * 100)
   }
 
   return (
@@ -96,7 +94,6 @@ function AudioPlayer() {
           onChange={changeRange}
         />
         {/* duration */}
-
         <div>{duration && !isNaN(duration) && calculateTime(duration)}</div>
       </AudioGroup>
     </AudioWrapper>
