@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
+// ? MAYBE REFACTOR INTO A FORM GLOBAL COMPONENT
 export const FormEdit = styled.form`
-  // ? MAYBE REFACTOR INTO A FORM GLOBAL COMPONENT
   display: flex;
   align-items: center;
   justify-content: center;

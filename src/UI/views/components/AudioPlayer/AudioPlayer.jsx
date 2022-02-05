@@ -104,7 +104,7 @@ function AudioPlayer() {
         />
         {/* duration */}
 
-        <div>{duration && !isNaN(duration) && calculateTime(duration)}</div>
+        {/* <div>{duration && !isNaN(duration) && calculateTime(duration)}</div> */}
       </AudioGroup>
     </AudioWrapper>
   )

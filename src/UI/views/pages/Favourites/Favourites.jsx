@@ -1,10 +1,17 @@
-import Layout from '../../layout/Layout'
+import { Header, Main } from '../../layout/Layout.styles'
 import Hero from '../../components/Hero/Hero'
 import FavouritesList from '../../components/FavouritesList/FavouritesList'
 
 function Favourites() {
   return (
-    <Layout hero={<Hero title={'Favourites'} />} main={<FavouritesList />} />
+    <>
+      <Header>
+        <Hero title={'Favourites'} />
+      </Header>
+      <Main>
+        <FavouritesList />
+      </Main>
+    </>
   )
 }
 

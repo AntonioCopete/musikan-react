@@ -1,9 +1,18 @@
-import Layout from '../../layout/Layout'
-import ProfileHeader from '../../components/ProfileHeader/ProfileHeader'
-import ProfileForm from '../../components/ProfileForm/ProfileForm'
+import { Header, Main } from '../../layout/Layout.styles'
+import ProfileHeader from './ProfileHeader/ProfileHeader'
+import ProfileForm from './ProfileForm/ProfileForm'
 
 function Profile() {
-  return <Layout hero={<ProfileHeader />} main={<ProfileForm />} />
+  return (
+    <>
+      <Header>
+        <ProfileHeader />
+      </Header>
+      <Main>
+        <ProfileForm />
+      </Main>
+    </>
+  )
 }
 
 export default Profile

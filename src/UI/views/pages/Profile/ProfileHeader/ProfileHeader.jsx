@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import PanelHero from '../PanelHero/PanelHero'
+import PanelHero from '../../../components/PanelHero/PanelHero'
 import ImageInput from './ImageInput/ImageInput'
 import {
   ProfileInfo,
