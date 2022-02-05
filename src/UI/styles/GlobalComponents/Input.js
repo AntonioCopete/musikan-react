@@ -32,4 +32,16 @@ export const InputGroup = styled.div`
     color: ${(props) => props.theme.colors.lightGrey};
     font-weight: 500;
   }
+
+  & select {
+    appearance: none;
+    border: none;
+    background-color: ${(props) => props.theme.colors.darkGrey};
+    color: ${(props) => props.theme.colors.text};
+    font-size: 1.1rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
 `

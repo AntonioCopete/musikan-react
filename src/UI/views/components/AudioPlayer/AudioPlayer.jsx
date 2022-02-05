@@ -11,8 +11,10 @@ import {
 } from './AudioPlayer.styles'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { FaPlay, FaPause } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 
 function AudioPlayer() {
+  const { url } = useSelector((state) => state.currentTrack)
   // state
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
@@ -77,7 +79,7 @@ function AudioPlayer() {
   return (
     <AudioWrapper>
       <AudioGroup>
-        <audio ref={audioPlayer} src={muzik} preload="metadata"></audio>
+        <audio ref={audioPlayer} src={url} preload="metadata"></audio>
         <ForwardBackwardBtn>
           <MdArrowBackIosNew />
         </ForwardBackwardBtn>
@@ -102,7 +104,7 @@ function AudioPlayer() {
         />
         {/* duration */}
 
-        <div>{duration && !isNaN(duration) && calculateTime(duration)}</div>
+        {/* <div>{duration && !isNaN(duration) && calculateTime(duration)}</div> */}
       </AudioGroup>
     </AudioWrapper>
   )

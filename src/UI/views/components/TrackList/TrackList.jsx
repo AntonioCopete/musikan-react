@@ -4,10 +4,17 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import Avatar from '@mui/material/Avatar'
+import { useDispatch } from 'react-redux'
 
 import { ItemText } from './TrackList.styles'
+import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
 
 function TrackList({ tracks, handleLike }) {
+  const dispatch = useDispatch()
+  const handlePlay = (id) => {
+    dispatch(getCurrentTrack(id))
+  }
+
   return (
     <List dense sx={{ width: '100%' }}>
       {tracks.length > 0 &&
@@ -24,7 +31,7 @@ function TrackList({ tracks, handleLike }) {
                 />
               }
             >
-              <ListItemButton>
+              <ListItemButton onClick={() => handlePlay(value._id)}>
                 <ListItemAvatar>
                   <Avatar
                     alt={`Avatar n°${value + 1}`}

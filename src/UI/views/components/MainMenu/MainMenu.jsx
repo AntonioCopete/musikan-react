@@ -21,9 +21,9 @@ function MainMenu() {
           <RiHome2Fill />
           <MenuName>Dashboard</MenuName>
         </MenuItem>
-        <MenuItem to={ROUTES.MY_SONGS}>
+        <MenuItem to={ROUTES.MY_TRACKS}>
           <RiMusicFill />
-          <MenuName>My Songs</MenuName>
+          <MenuName>My Tracks</MenuName>
         </MenuItem>
         <MenuItem to={ROUTES.FAVOURITES}>
           <RiHeart3Fill />

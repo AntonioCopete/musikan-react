@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import PanelHero from '../PanelHero/PanelHero'
-import UserAvatar from '../UserAvatar/UserAvatar'
-import UserMenu from '../UserMenu/UserMenu'
+import PanelHero from '../../../components/PanelHero/PanelHero'
+import UserAvatar from '../../../components/UserAvatar/UserAvatar'
+import UserMenu from '../../../components/UserMenu/UserMenu'
 
 function HomeHeader() {
   const { userName } = useSelector((state) => state.auth.currentUser)

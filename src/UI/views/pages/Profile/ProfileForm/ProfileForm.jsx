@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { updateUserInfo } from '../../../../redux/auth/actions'
+import { updateUserInfo } from '../../../../../redux/auth/actions'
 
-import { InputGroup } from '../../../styles/GlobalComponents/Input'
-import { Button } from '../../../styles/GlobalComponents/Button'
-import { ButtonLink } from '../../../styles/GlobalComponents/NavLink'
+import { InputGroup } from '../../../../styles/GlobalComponents/Input'
+import { Button } from '../../../../styles/GlobalComponents/Button'
+import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 import { FormProfile } from './ProfileForm.styles'
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'
 

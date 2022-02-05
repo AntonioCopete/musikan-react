@@ -12,9 +12,11 @@ import Auth from './ui/views/pages/Auth/Auth'
 import ResetPassword from './ui/views/pages/ResetPassword/ResetPassword'
 import Dashboard from './ui/views/pages/Dashboard/Dashboard'
 import Profile from './ui/views/pages/Profile/Profile'
-import MySongs from './ui/views/pages/MySongs/MySongs'
+import MyTracks from './ui/views/pages/MyTracks/MyTracks'
 import Favourites from './ui/views/pages/Favourites/Favourites'
 import EditTrack from './ui/views/pages/EditTrack/EditTrack'
+
+import Layout from './ui/views/layout/Layout'
 
 function App() {
   const dispatch = useDispatch()
@@ -42,49 +44,51 @@ function App() {
 
   return (
     <Routes>
-      <Route
-        exact
-        path="/"
-        element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        }
-      ></Route>
-      <Route path={ROUTES.AUTH} element={<Auth />} />
+      <Route index path={ROUTES.AUTH} element={<Auth />} />
       <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
-      <Route
-        path={ROUTES.PROFILE}
-        element={
-          <PrivateRoute>
-            <Profile />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={ROUTES.MY_SONGS}
-        element={
-          <PrivateRoute>
-            <MySongs />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={ROUTES.FAVOURITES}
-        element={
-          <PrivateRoute>
-            <Favourites />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={ROUTES.EDIT_TRACK}
-        element={
-          <PrivateRoute>
-            <EditTrack />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/" element={<Layout />}>
+        <Route
+          index
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        ></Route>
+
+        <Route
+          path={ROUTES.PROFILE}
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={ROUTES.MY_TRACKS}
+          element={
+            <PrivateRoute>
+              <MyTracks />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={ROUTES.FAVOURITES}
+          element={
+            <PrivateRoute>
+              <Favourites />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={ROUTES.EDIT_TRACK}
+          element={
+            <PrivateRoute>
+              <EditTrack />
+            </PrivateRoute>
+          }
+        />
+      </Route>
     </Routes>
   )
 }
