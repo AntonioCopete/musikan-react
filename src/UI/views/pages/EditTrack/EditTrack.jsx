@@ -1,10 +1,19 @@
-import Layout from '../../layout/Layout'
-import Hero from '../../components/Hero/Hero'
-import EditTrackForm from '../../components/EditTrackForm/EditTrackForm'
+import { Header, Main } from '../../layout/Layout.styles'
+import PanelHero from '../../components/PanelHero/PanelHero'
+import EditTrackForm from './EditTrackForm/EditTrackForm'
 
 function EditTrack() {
   return (
-    <Layout hero={<Hero title={'Edit Track'} />} main={<EditTrackForm />} />
+    <>
+      <Header>
+        <PanelHero>
+          <h1>Edit Track</h1>
+        </PanelHero>
+      </Header>
+      <Main>
+        <EditTrackForm />
+      </Main>
+    </>
   )
 }
 

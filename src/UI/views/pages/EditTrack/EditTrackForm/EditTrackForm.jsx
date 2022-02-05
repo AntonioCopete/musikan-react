@@ -1,13 +1,15 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 
-import api from '../../../../api'
-import * as auth from '../../../../services/auth/auth'
+import api from '../../../../../api'
+import * as auth from '../../../../../services/auth/auth'
 
-import { Button } from '../../../styles/GlobalComponents/Button'
-import { ButtonLink } from '../../../styles/GlobalComponents/NavLink'
-
-import { HiddenInput } from './EditTrackForm.styles'
+import { Button } from '../../../../styles/GlobalComponents/Button'
+import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
+import { InputGroup } from '../../../../styles/GlobalComponents/Input'
+import { FormEdit, HiddenInput } from './EditTrackForm.styles'
+import { FaMusic } from 'react-icons/fa'
+import { MdOutlineLibraryMusic } from 'react-icons/md'
 
 function EditTrackForm() {
   const { trackId } = useParams()
@@ -38,7 +40,8 @@ function EditTrackForm() {
 
   const getGenres = async () => {
     const response = await api.getGenres()
-    setGenres(response.data)
+    console.log(response.data)
+    setGenres(response.data.data)
   }
 
   const getTrackInfo = async (token) => {
@@ -87,8 +90,6 @@ function EditTrackForm() {
       selectedTrackPicFile = trackInfo.thumbnail
     }
 
-    console.log(selectedTrackPicFile)
-
     const formData = new FormData()
     formData.append('name', selectedTrackName)
     formData.append('genre', selectedGenre)
@@ -133,7 +134,7 @@ function EditTrackForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormEdit onSubmit={handleSubmit}>
       <label htmlFor="uploadTrackImageInput">
         <img
           src={selectedTrackImg ? imageSrcPreview : trackInfo?.thumbnail}
@@ -146,22 +147,32 @@ function EditTrackForm() {
         onChange={handlePic}
         ref={trackImageInputRef}
       />
-      <input
-        type="text"
-        placeholder="Name"
-        ref={trackNameInputRef}
-        defaultValue={trackInfo?.name}
-      />
-      <select
-        ref={genreInputRef}
-        value={trackInfo?.genre}
-        onChange={handleChangeGenre}
-      >
-        {genres &&
-          genres.map((genre) => {
-            return <option key={genre}>{genre}</option>
-          })}
-      </select>
+      <InputGroup>
+        <FaMusic />
+        <input
+          type="text"
+          placeholder="Track name"
+          ref={trackNameInputRef}
+          defaultValue={trackInfo?.name}
+        />
+      </InputGroup>
+      <InputGroup>
+        <MdOutlineLibraryMusic />
+        <select
+          ref={genreInputRef}
+          value={trackInfo?.genre}
+          onChange={handleChangeGenre}
+        >
+          {genres &&
+            genres.map((genre) => {
+              return (
+                <option key={genre._id} value={genre._id}>
+                  {genre.name}
+                </option>
+              )
+            })}
+        </select>
+      </InputGroup>
       {success && <p>{success}</p>}
       {error && <p>{error}</p>}
       <Button disabled={disableSaveBtn} primary type="submit">
@@ -170,7 +181,7 @@ function EditTrackForm() {
       <ButtonLink type="text" onClick={handleCancel}>
         Cancel
       </ButtonLink>
-    </form>
+    </FormEdit>
   )
 }
 

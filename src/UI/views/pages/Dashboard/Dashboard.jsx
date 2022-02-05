@@ -1,8 +1,17 @@
-import Layout from '../../layout/Layout'
-import HomeHeader from '../../components/HomeHeader/HomeHeader'
+import HomeHeader from './HomeHeader/HomeHeader'
+import { Header, Main } from '../../layout/Layout.styles'
 
 function Dashboard() {
-  return <Layout hero={<HomeHeader />} main={'Home main content'} />
+  return (
+    <>
+      <Header>
+        <HomeHeader />
+      </Header>
+      <Main>
+        <h1>home content</h1>
+      </Main>
+    </>
+  )
 }
 
 export default Dashboard

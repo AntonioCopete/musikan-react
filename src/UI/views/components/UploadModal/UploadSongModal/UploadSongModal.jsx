@@ -6,13 +6,23 @@ import * as auth from '../../../../../services/auth/auth'
 import { renderTracks } from '../../../../../redux/track/actions'
 
 import { Modal } from '@mui/material'
-import { Container } from './UploadSongModal.styles'
+import {
+  InputFile,
+  ImageField,
+  ModalContent,
+  SectionModal,
+  LabelFile,
+  FormModal,
+  SectionInputs,
+  FooterModal
+} from './UploadSongModal.styles'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
+import { InputGroup } from '../../../../styles/GlobalComponents/Input'
+import { RiMusicFill } from 'react-icons/ri'
+import { MdOutlineLibraryMusic } from 'react-icons/md'
 
-import { HiddenInput } from './UploadSongModal.styles'
-
-import defaultPic from './default-album.jpg'
+import noImage from '../../../../img/noImage.jpg'
 import { useDispatch } from 'react-redux'
 
 function UploadSongModal({ open, handleClose }) {
@@ -35,7 +45,8 @@ function UploadSongModal({ open, handleClose }) {
 
   const getGenres = async () => {
     const response = await api.getGenres()
-    setGenres(response.data)
+    console.log(response.data.data)
+    setGenres(response.data.data)
   }
 
   const handlePic = (e) => {
@@ -137,75 +148,74 @@ function UploadSongModal({ open, handleClose }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Container>
-          <h1 style={{ display: 'inline-block', float: 'left' }}>Upload</h1>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="uploadSongImageInput">
-              <img
-                src={selectedSongImg ? imageSrcPreview : defaultPic}
-                style={{
-                  maxWidth: '25vh',
-                  display: 'inline-block',
-                  float: 'left',
-                }}
-                alt="Your song's pic"
-              />
-            </label>
-            <HiddenInput
-              type="file"
-              id="uploadSongImageInput"
-              onChange={handlePic}
-              ref={songImageInputRef}
-            />
-            <label
-              htmlFor="uploadSongFileInput"
-              style={{ display: 'block', float: 'left' }}
-            >
-              Select your file
-            </label>
-            {selectedSongFile && <p>{selectedSongFile}</p>}
-            <HiddenInput
+        <ModalContent>
+          <h1>Upload</h1>
+          <FormModal onSubmit={handleSubmit}>
+            <LabelFile htmlFor="uploadSongFileInput">
+              Select track
+            </LabelFile>
+            <InputFile
               type="file"
               id="uploadSongFileInput"
               onChange={handleSelectedSongFile}
               ref={songFileInputRef}
             />
-            <input
-              type="text"
-              placeholder="Name"
-              ref={songNameInputRef}
-              style={{ maxWidth: '25vh', display: 'block', float: 'left' }}
-            />
-            <select
-              ref={genreInputRef}
-              onChange={() => {
-                defaultGenreRef.current.disabled = true
-              }}
-            >
-              <option
-                ref={defaultGenreRef}
-                style={{ maxWidth: '25vh', display: 'block', float: 'left' }}
-              >
-                Select a genre
-              </option>
-              {genres &&
-                genres.map((genre) => {
-                  return (
-                    <option key={genre} value={genre}>
-                      {genre}
-                    </option>
-                  )
-                })}
-            </select>
-            {error && <p>{error}</p>}
-            <Button disabled={disableSaveBtn} primary type="submit">
-              Save
-            </Button>
-            <ButtonLink type="text" onClick={handleCancel}>
-              Cancel
-            </ButtonLink>
-          </form>
-        </Container>
+            {/* {selectedSongFile && <p>File {selectedSongFile}</p>} */}
+            <SectionModal>
+              {/* image */}
+              <label htmlFor="uploadSongImageInput">
+                <ImageField
+                  src={selectedSongImg ? imageSrcPreview : noImage}
+                  alt="Your song's pic"
+                />
+              </label>
+              <InputFile
+                type="file"
+                id="uploadSongImageInput"
+                onChange={handlePic}
+                ref={songImageInputRef}
+              />
+              <SectionInputs>
+                <InputGroup>
+                  <RiMusicFill />
+                  <input
+                    type="text"
+                    placeholder="Track name"
+                    ref={songNameInputRef}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <MdOutlineLibraryMusic />
+                  <select
+                    ref={genreInputRef}
+                    onChange={() => {
+                      defaultGenreRef.current.disabled = true
+                    }}
+                  >
+                    <option ref={defaultGenreRef}>Select genre</option>
+                    {genres &&
+                      genres.map((genre) => {
+                        return (
+                          <option key={genre._id} value={genre._id}>
+                            {genre.name}
+                          </option>
+                        )
+                      })}
+                  </select>
+                </InputGroup>
+                {error && <p>{error}</p>}
+              </SectionInputs>
+            </SectionModal>
+            <FooterModal>
+              <ButtonLink type="text" onClick={handleCancel}>
+                Cancel
+              </ButtonLink>
+              <Button disabled={disableSaveBtn} primary type="submit">
+                Save
+              </Button>
+            </FooterModal>
+          </FormModal>
+        </ModalContent>
       </Modal>
     </>
   )

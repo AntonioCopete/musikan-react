@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import UploadSongModalTrigger from "../UploadSongModalTrigger/UploadSongModalTrigger";
+import UploadTriggerModal from "../UploadTriggerModal/UploadTriggerModal";
 import UploadSongModal from "../UploadSongModal/UploadSongModal";
 
 function UploadSongModalContainer() {
@@ -10,7 +10,7 @@ function UploadSongModalContainer() {
 
   return (
     <>
-      <UploadSongModalTrigger
+      <UploadTriggerModal
         handleOpen={handleOpen}
       />
       <UploadSongModal

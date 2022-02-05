@@ -56,9 +56,8 @@ function InfoMenu({ id, handleLike }) {
         PaperProps={{
           style: {
             background: '#474747',
-            maxHeight: 48 * 4.5,
-            width: '20rem',
-            color: 'white',
+            width: '15rem',
+            color: 'white'
           },
         }}
       >

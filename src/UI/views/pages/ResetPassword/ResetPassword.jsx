@@ -10,6 +10,7 @@ import { authSelector } from '../../../../redux/auth/selectors'
 import { FormItem } from '../../components/Form/Form.styles'
 import Logo from '../../components/Logo/Logo'
 import { Button } from '../../../styles/GlobalComponents/Button'
+import { InputGroup } from '../../../styles/GlobalComponents/Input'
 import { NavigateLink } from '../../../styles/GlobalComponents/NavLink'
 import * as ROUTES from '../../../../routes/routes'
 import { Reset } from './ResetPassword.styles'
@@ -49,8 +50,7 @@ function ResetPassword() {
       <FormItem onSubmit={handleSubmit}>
         <h1>Recover password</h1>
         {passwordResetError && <p>{passwordResetError}</p>}
-
-        <div className="form__input-field">
+        <InputGroup>
           <FaEnvelope />
           <input
             type="email"
@@ -59,7 +59,7 @@ function ResetPassword() {
             value={email}
             onChange={handleSetEmail}
           />
-        </div>
+        </InputGroup>
         <Button
           primary
           type="submit"

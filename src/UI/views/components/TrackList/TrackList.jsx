@@ -4,10 +4,18 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import Avatar from '@mui/material/Avatar'
+import InfoMenu from '../InfoMenu/InfoMenu'
+import { useDispatch } from 'react-redux'
 
 import { ItemText } from './TrackList.styles'
+import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
 
-function TrackList({ tracks, handleLike }) {
+function TrackList({ tracks, handleLike, owner }) {
+  const dispatch = useDispatch()
+  const handlePlay = (id) => {
+    dispatch(getCurrentTrack(id))
+  }
+
   return (
     <List dense sx={{ width: '100%' }}>
       {tracks.length > 0 &&
@@ -24,7 +32,7 @@ function TrackList({ tracks, handleLike }) {
                 />
               }
             >
-              <ListItemButton>
+              <ListItemButton onClick={() => handlePlay(value._id)}>
                 <ListItemAvatar>
                   <Avatar
                     alt={`Avatar n°${value + 1}`}
@@ -36,6 +44,7 @@ function TrackList({ tracks, handleLike }) {
                 <ItemText id={labelId} primary={`Song ${value.name}`} />
                 <ItemText>{value.genre}</ItemText>
               </ListItemButton>
+              {owner && <InfoMenu handleLike={handleLike} id={value._id} />}
             </ListItem>
           )
         })}

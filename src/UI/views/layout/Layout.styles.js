@@ -7,12 +7,16 @@ export const GridLayout = styled.div`
     'nav main'
     'aside main'
     'aside footer';
-  grid-template-rows: 20rem 1fr 5rem 10rem;
-  grid-template-columns: 20% 1fr;
+  grid-template-rows: 20rem 1fr 15rem 10rem;
+  grid-template-columns: 12% 1fr;
   grid-row-gap: 1rem;
   grid-column-gap: 1rem;
   height: 100vh;
   margin: 0;
+
+  @media ${(props) => props.theme.breakpoints.lg} {
+    grid-template-columns: 20% 1fr;
+  }
 
   @media ${(props) => props.theme.breakpoints.md} {
     grid-template-areas:
