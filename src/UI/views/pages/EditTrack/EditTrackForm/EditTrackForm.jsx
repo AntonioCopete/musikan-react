@@ -7,7 +7,7 @@ import * as auth from '../../../../../services/auth/auth'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 import { InputGroup } from '../../../../styles/GlobalComponents/Input'
-import { FormEdit, HiddenInput, SelectGenre } from './EditTrackForm.styles'
+import { FormEdit, HiddenInput } from './EditTrackForm.styles'
 import { FaHeadphonesAlt, FaMusic } from 'react-icons/fa'
 
 function EditTrackForm() {
