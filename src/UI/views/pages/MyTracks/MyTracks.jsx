@@ -1,15 +1,19 @@
+import { Header, Main } from '../../layout/Layout.styles'
+
 import Hero from '../../components/Hero/Hero'
-import MySongsList from '../../components/MySongsList/MySongsList'
+import MyTracksList from './MyTracksList/MyTracksList'
 import UploadSongModalContainer from '../../components/UploadSong/UploadSongModalContainer/UploadSongModalContainer'
 
 function MySongs() {
   return (
     <>
-      <Hero title={'My Songs'} />
-      <main>
+    <Header>
+      <Hero title={'My Tracks'} />
+      </Header>
+      <Main>
         <UploadSongModalContainer />
-        <MySongsList />
-      </main>
+        <MyTracksList />
+      </Main>
     </>
   )
 }

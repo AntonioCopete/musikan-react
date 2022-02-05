@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 
-import api from '../../../../api'
-import * as auth from '../../../../services/auth/auth'
+import api from '../../../../../api'
+import * as auth from '../../../../../services/auth/auth'
 
-import { Button } from '../../../styles/GlobalComponents/Button'
-import { ButtonLink } from '../../../styles/GlobalComponents/NavLink'
-import { InputGroup } from '../../../styles/GlobalComponents/Input'
+import { Button } from '../../../../styles/GlobalComponents/Button'
+import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
+import { InputGroup } from '../../../../styles/GlobalComponents/Input'
 import { FormEdit, HiddenInput, SelectGenre } from './EditTrackForm.styles'
 import { FaHeadphonesAlt, FaMusic } from 'react-icons/fa'
 
