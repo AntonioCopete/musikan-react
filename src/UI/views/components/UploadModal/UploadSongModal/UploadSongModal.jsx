@@ -152,7 +152,7 @@ function UploadSongModal({ open, handleClose }) {
           <h1>Upload</h1>
           <FormModal onSubmit={handleSubmit}>
             <LabelFile htmlFor="uploadSongFileInput">
-              Select your file
+              Select track
             </LabelFile>
             <InputFile
               type="file"

@@ -6,7 +6,7 @@ export const IconOpen = styled(RiMore2Fill)`
 `
 
 export const Item = styled(MenuItem)`
-  i:before {
-    margin-left: 2rem;
+  span {
+    margin-right: 1rem;
   }
 `
