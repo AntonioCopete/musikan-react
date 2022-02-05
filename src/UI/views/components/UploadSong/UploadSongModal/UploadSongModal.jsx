@@ -12,7 +12,7 @@ import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 
 import { HiddenInput } from './UploadSongModal.styles'
 
-import defaultPic from './default-album.jpg'
+import defaultPic from '../../../../img/default-pic.jpg'
 import { useDispatch } from 'react-redux'
 
 function UploadSongModal({ open, handleClose }) {
