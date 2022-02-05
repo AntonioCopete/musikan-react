@@ -33,4 +33,10 @@ export const PanelContent = styled.div`
   padding: 2rem;
   color: white;
   z-index: 1;
+
+  > * {
+    &:first-child {
+      align-self: flex-end;
+    }
+  }
 `

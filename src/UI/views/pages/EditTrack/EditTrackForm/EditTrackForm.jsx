@@ -8,7 +8,8 @@ import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 import { InputGroup } from '../../../../styles/GlobalComponents/Input'
 import { FormEdit, HiddenInput } from './EditTrackForm.styles'
-import { FaHeadphonesAlt, FaMusic } from 'react-icons/fa'
+import { FaMusic } from 'react-icons/fa'
+import { MdOutlineLibraryMusic } from 'react-icons/md'
 
 function EditTrackForm() {
   const { trackId } = useParams()
@@ -40,7 +41,6 @@ function EditTrackForm() {
 
   const getGenres = async () => {
     const response = await api.getGenres({ Authorization: `Bearer ${token}` })
-    console.log(response.data)
     setGenres(response.data.data)
   }
 
@@ -157,7 +157,7 @@ function EditTrackForm() {
         />
       </InputGroup>
       <InputGroup>
-        <FaHeadphonesAlt />
+        <MdOutlineLibraryMusic />
         <select
           ref={genreInputRef}
           value={trackInfo?.genre}

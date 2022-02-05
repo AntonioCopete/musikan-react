@@ -27,3 +27,18 @@ export const Button = styled.button`
     opacity: 0.5;
   }
 `
+
+export const SquaredButton = styled(Button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: ${({ theme }) => theme.colors.primary};
+  border-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 0.5rem;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.text};
+  }
+`

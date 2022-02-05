@@ -1,34 +1,41 @@
-import { useState, useRef, useEffect } from 'react'
-import './Audio.scss'
+import { useState, useEffect } from 'react'
+import ReactPlayer from 'react-player'
+
+import { useSelector } from 'react-redux'
 
 import {
   AudioWrapper,
   AudioGroup,
-  ForwardBackwardBtn,
   PlayPauseBtn,
   ProgressBar,
 } from './AudioPlayer.styles'
-import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
+
 import { FaPlay, FaPause } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
 
 function AudioPlayer() {
   const { url } = useSelector((state) => state.currentTrack)
-  // state
   const [isPlaying, setIsPlaying] = useState(false)
-  const [duration, setDuration] = useState(0)
-  const [currentTime, setCurrentTime] = useState(0)
-
-  // references
-  const audioPlayer = useRef()
-  const progressBar = useRef()
-  const animationRef = useRef()
+  const [playedSeconds, setPlayedSeconds] = useState(0)
+  const [totalSeconds, setTotalSeconds] = useState(0)
 
   useEffect(() => {
-    const seconds = Math.floor(audioPlayer.current.duration)
-    setDuration(seconds)
-    progressBar.current.max = seconds
-  }, [audioPlayer?.current?.loadedMetadata, audioPlayer?.current?.readyState])
+    if (url) {
+      onStart()
+    }
+  }, [])
+
+  const onStart = () => {
+    setIsPlaying(true)
+  }
+
+  const onPause = () => {
+    setIsPlaying(false)
+  }
+
+  const onProgress = (data) => {
+    setPlayedSeconds(data.playedSeconds)
+    setTotalSeconds(data.loadedSeconds)
+  }
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60)
@@ -40,64 +47,37 @@ function AudioPlayer() {
     return `${returnedMinutes}:${returnedSeconds}`
   }
 
-  const togglePlayPause = () => {
-    const prevValue = isPlaying
-    setIsPlaying(!prevValue)
-
-    if (!prevValue) {
-      audioPlayer.current.play()
-      animationRef.current = requestAnimationFrame(whilePlaying)
-    } else {
-      audioPlayer.current.pause()
-      cancelAnimationFrame(animationRef.current)
-    }
-  }
-
-  const whilePlaying = () => {
-    progressBar.current.value = audioPlayer.current.currentTime
-    changePlayerCurrentTime()
-    animationRef.current = requestAnimationFrame(whilePlaying)
-  }
-
-  const changeRange = () => {
-    audioPlayer.current.currentTime = progressBar.current.value
-    changePlayerCurrentTime()
-  }
-
-  const changePlayerCurrentTime = () => {
-    const width = (progressBar.current.value / duration) * 100
-    setCurrentTime(width)
-  }
-
   return (
     <AudioWrapper>
       <AudioGroup>
-        <audio ref={audioPlayer} src={url} preload="metadata"></audio>
-        <ForwardBackwardBtn>
-          <MdArrowBackIosNew />
-        </ForwardBackwardBtn>
-        <PlayPauseBtn onClick={togglePlayPause}>
-          {isPlaying ? <FaPause /> : <FaPlay />}
+        <ReactPlayer
+          className="react-player"
+          url={url}
+          playing={isPlaying}
+          height="0"
+          width="0"
+          onProgress={(e) => onProgress(e)}
+        />
+        <PlayPauseBtn>
+          {isPlaying ? (
+            <FaPause onClick={onPause} />
+          ) : (
+            <FaPlay onClick={onStart} />
+          )}
         </PlayPauseBtn>
-        <ForwardBackwardBtn>
-          <MdArrowForwardIos />
-        </ForwardBackwardBtn>
       </AudioGroup>
       <AudioGroup progress>
         {/* current time */}
-        <div>{calculateTime(currentTime)}</div>
-        {/* progress bar */}
+        <span>{calculateTime(playedSeconds)}</span>
         <ProgressBar
-          className="progressBarC"
           type="range"
-          defaultValue="0"
-          ref={progressBar}
-          currentTime={currentTime}
-          onChange={changeRange}
+          progress="value"
+          value={playedSeconds}
+          onChange={(e) => setPlayedSeconds(Number(e))}
+          total={totalSeconds}
         />
         {/* duration */}
-
-        <div>{duration && !isNaN(duration) && calculateTime(duration)}</div>
+        <span>{calculateTime(totalSeconds)}</span>
       </AudioGroup>
     </AudioWrapper>
   )
