@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import muzik from '../../../img/ska.mp3'
 import './Audio.scss'
 
 import {
@@ -66,14 +65,8 @@ function AudioPlayer() {
   }
 
   const changePlayerCurrentTime = () => {
-    // progressBar.current.style.setProperty(
-    //   'seek-before-width',
-    //   `${(progressBar.current.value / duration) * 100}%`
-    // )
     const width = (progressBar.current.value / duration) * 100
-    console.log(width)
-    console.log(progressBar.current.style)
-    setCurrentTime(progressBar.current.value)
+    setCurrentTime(width)
   }
 
   return (
@@ -98,13 +91,13 @@ function AudioPlayer() {
           className="progressBarC"
           type="range"
           defaultValue="0"
-          // progressWidth={90}
           ref={progressBar}
+          currentTime={currentTime}
           onChange={changeRange}
         />
         {/* duration */}
 
-        {/* <div>{duration && !isNaN(duration) && calculateTime(duration)}</div> */}
+        <div>{duration && !isNaN(duration) && calculateTime(duration)}</div>
       </AudioGroup>
     </AudioWrapper>
   )

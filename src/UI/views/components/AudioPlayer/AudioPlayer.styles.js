@@ -69,14 +69,14 @@ export const ProgressBar = styled.input`
     top: 0;
     left: 0;
     height: 5px;
-    width: ${(props) => props.progressBar}%;
+    width: ${(props) => props.currentTime}%;
     border-radius: 1rem;
     background: ${({ theme }) => theme.colors.primary};
     z-index: 2;
     cursor: pointer;
   }
 
-  &::-webkit-slider-thumb {
+  &::-webkit-slider-thumb:after {
     /* appearance: none; */
   }
 `
