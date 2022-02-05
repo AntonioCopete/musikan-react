@@ -7,6 +7,7 @@ export const UserMenuNav = styled.nav`
 
 export const UserMenuList = styled.ul`
   position: absolute;
+  right: 0;
   width: 20rem;
   border-radius: 5px;
   background-color: ${(props) => props.theme.colors.darkGrey};
