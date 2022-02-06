@@ -11,6 +11,8 @@ import { FormEdit, HiddenInput } from './EditTrackForm.styles'
 import { FaMusic } from 'react-icons/fa'
 import { MdOutlineLibraryMusic } from 'react-icons/md'
 
+import { useSelector } from 'react-redux'
+
 function EditTrackForm() {
   const { trackId } = useParams()
   const navigate = useNavigate()
@@ -28,6 +30,8 @@ function EditTrackForm() {
 
   const token = localStorage.getItem('authToken')
 
+  const { _id } = useSelector((state) => state.auth.currentUser)
+
   useEffect(() => {
     getTokenAndRequest()
     getGenres()
@@ -40,12 +44,12 @@ function EditTrackForm() {
   }
 
   const getGenres = async () => {
-    const response = await api.getGenres({ Authorization: `Bearer ${token}` })
+    const response = await api.getGenres({ _id: _id })
     setGenres(response.data.data)
   }
 
-  const getTrackInfo = async (token) => {
-    const headers = { Authorization: `Bearer ${token}` }
+  const getTrackInfo = async () => {
+    const headers = { _id: _id }
     const response = await api.getTrackInfo(headers, trackId)
     setTrackInfo(response.data.data)
   }
@@ -95,20 +99,14 @@ function EditTrackForm() {
     formData.append('genre', selectedGenre)
     formData.append('thumbnail', selectedTrackPicFile)
 
-    api
-      .updateTrackInfo(
-        { Authorization: `Bearer ${userToken}` },
-        formData,
-        trackId
-      )
-      .then((response) => {
-        if (response.data?.success) {
-          setDisableSaveBtn(false)
-          setSuccess(response.data.success)
-        } else {
-          setError('Something went wrong')
-        }
-      })
+    api.updateTrackInfo({ _id: _id }, formData, trackId).then((response) => {
+      if (response.data?.success) {
+        setDisableSaveBtn(false)
+        setSuccess(response.data.success)
+      } else {
+        setError('Something went wrong')
+      }
+    })
   }
 
   useEffect(() => {

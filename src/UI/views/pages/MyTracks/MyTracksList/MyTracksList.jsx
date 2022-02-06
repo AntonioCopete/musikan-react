@@ -8,12 +8,12 @@ import api from '../../../../../api/api'
 import TrackList from '../../../components/TrackList/TrackList'
 
 function MyTracksList() {
-  const token = localStorage.getItem('authToken')
   const dispatch = useDispatch()
   const tracks = useSelector((state) => state.track)
+  const { _id } = useSelector((state) => state.auth.currentUser)
 
   useEffect(() => {
-    dispatch(getTracks())
+    dispatch(getTracks(null, _id))
   }, [dispatch])
 
   const handleLike = (id) => {
@@ -22,7 +22,7 @@ function MyTracksList() {
 
   const getCurrentTokenAndLike = async (id) => {
     // const token = await auth.getCurrentUserToken()
-    const headers = { Authorization: `Bearer ${token}` }
+    const headers = { _id: _id }
     await api.likeTrack(headers, id)
   }
 

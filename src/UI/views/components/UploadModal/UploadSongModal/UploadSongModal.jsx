@@ -23,7 +23,7 @@ import { RiMusicFill } from 'react-icons/ri'
 import { MdOutlineLibraryMusic } from 'react-icons/md'
 
 import noImage from '../../../../img/noImage.jpg'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 function UploadSongModal({ open, handleClose }) {
   const token = localStorage.getItem('authToken')
@@ -39,6 +39,8 @@ function UploadSongModal({ open, handleClose }) {
   const [selectedSongImg, setSelectedSongImg] = useState()
   const [imageSrcPreview, setImageSrcPreview] = useState()
   const [disableSaveBtn, setDisableSaveBtn] = useState(false)
+
+  const { _id } = useSelector((state) => state.auth.currentUser)
 
   useEffect(() => {
     getGenres()
@@ -106,16 +108,15 @@ function UploadSongModal({ open, handleClose }) {
     formData.append('thumbnail', selectedSongPicFile)
     formData.append('track', selectedSongFile)
 
-    api
-      .uploadTrack({ Authorization: `Bearer ${token}` }, formData)
-      .then((response) => {
-        if (response.data.success) {
-          setDisableSaveBtn(false)
-          // ! PENDING CONFIRM TO USER EVERYTHING WAS OK
-          dispatch(renderTracks(response.data.data))
-          handleClose()
-        }
-      })
+    api.uploadTrack({ _id: _id }, formData).then((response) => {
+      if (response.data.success) {
+        setDisableSaveBtn(false)
+        // ! PENDING CONFIRM TO USER EVERYTHING WAS OK
+        console.log(response.data.data)
+        dispatch(renderTracks(response.data.data))
+        handleClose()
+      }
+    })
   }
 
   useEffect(() => {

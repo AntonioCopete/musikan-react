@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteTracks } from '../../../../redux/track/actions'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom'
 function InfoMenu({ id, handleLike }) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const { _id } = useSelector((state) => state.auth.currentUser)
 
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
@@ -30,7 +32,7 @@ function InfoMenu({ id, handleLike }) {
   }
 
   const handleDelete = () => {
-    dispatch(deleteTracks(id))
+    dispatch(deleteTracks(id, _id))
   }
 
   return (
@@ -57,7 +59,7 @@ function InfoMenu({ id, handleLike }) {
           style: {
             background: '#474747',
             width: '15rem',
-            color: 'white'
+            color: 'white',
           },
         }}
       >

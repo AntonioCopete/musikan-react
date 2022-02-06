@@ -37,9 +37,11 @@ const AuthReducer = (state = AuthInitialState, action) => {
         isSigningUp: false,
         signUpError: null,
         currentUser: {
-          userName: action.payload.user.userName,
-          email: action.payload.user.email,
-          profilePicture: action.payload.user.profilePicture,
+          _id: action.payload.data._id,
+          userName: action.payload.data.userName,
+          email: action.payload.data.email,
+          profilePicture: action.payload.data.profilePicture,
+          auth_provider: action.payload.data.auth_provider,
         },
       }
     }
@@ -64,6 +66,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
         signOutError: null,
         isAuthenticated: false,
         currentUser: {
+          _id: null,
           email: null,
           userName: null,
           profilePicture: null,
@@ -111,7 +114,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
         ...state,
         currentUser: {
           ...state.currentUser,
-          profilePicture: action.payload.user.profilePicture,
+          profilePicture: action.payload.profilePicture,
         },
       }
     }

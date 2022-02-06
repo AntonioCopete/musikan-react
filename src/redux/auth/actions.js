@@ -63,6 +63,7 @@ export function syncSignIn(data) {
       data
     )
 
+    console.log(response.data)
     if (response.errorMessage) {
       return dispatch(signUpError(response.errorMessage))
     }
@@ -143,7 +144,7 @@ export const resetAuthState = () => ({
   type: AuthTypes.RESET_AUTH_STATE,
 })
 
-export function updateAvatar(formInfo) {
+export function updateAvatar(formInfo, id) {
   return async function updateAvatarThunk(dispatch) {
     const token = await auth.getCurrentUserToken()
 
@@ -151,14 +152,15 @@ export function updateAvatar(formInfo) {
 
     const response = await api.updateAvatarRequest(
       {
-        Authorization: `Bearer ${token}`,
+        _id: id,
       },
       formInfo
     )
+    console.log(response.data)
 
     if (response.errorMessage) return
 
-    dispatch(changeUserAvatar(response.data))
+    dispatch(changeUserAvatar(response.data.data))
 
     return
   }
@@ -171,7 +173,7 @@ export const changeUserAvatar = (userAvatarURL) => {
   }
 }
 
-export function updateUserInfo(formInfo) {
+export function updateUserInfo(formInfo, id) {
   return async function updateUserInfoThunk(dispatch) {
     const token = await auth.getCurrentUserToken()
 
@@ -195,11 +197,12 @@ export function updateUserInfo(formInfo) {
         .updateEmail(user, formInfo.email)
         .then(async () => {
           const response = await api.updateUserInfoRequest(
-            { Authorization: `Bearer ${token}` },
+            { _id: id },
             { email: formInfo.email }
           )
+
           if (response.errorMessage) return
-          dispatch(changeUserInfo(response.data))
+          dispatch(changeUserInfo(response.data.data))
         })
         .catch((error) => {
           console.log(error)
@@ -208,11 +211,11 @@ export function updateUserInfo(formInfo) {
 
     if (Object.keys(formInfo).includes('userName')) {
       const response = await api.updateUserInfoRequest(
-        { Authorization: `Bearer ${token}` },
+        { _id: id },
         { userName: formInfo.userName }
       )
       if (response.errorMessage) return
-      dispatch(changeUserInfo(response.data))
+      dispatch(changeUserInfo(response.data.data))
     }
   }
 }

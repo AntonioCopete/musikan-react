@@ -10,6 +10,7 @@ function ImageInput() {
   const [isLoading, setIsLoading] = useState(false)
   const fileInputRef = useRef()
   const dispatch = useDispatch()
+  const { _id } = useSelector((state) => state.auth.currentUser)
 
   const handleChange = (event) => {
     if (event.target.value === '') return
@@ -25,7 +26,7 @@ function ImageInput() {
       selectedAvatarImage.name
     )
 
-    dispatch(updateAvatar(formData))
+    dispatch(updateAvatar(formData, _id))
 
     fileInputRef.current.value = ''
 

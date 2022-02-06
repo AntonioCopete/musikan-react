@@ -11,7 +11,9 @@ import { FormProfile } from './ProfileForm.styles'
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'
 
 function ProfileForm() {
-  const { userName, email } = useSelector((state) => state.auth.currentUser)
+  const { userName, email, _id } = useSelector(
+    (state) => state.auth.currentUser
+  )
   const [userDifference, setUserDifference] = useState()
   const navigate = useNavigate()
   const userNameInput = useRef()
@@ -24,9 +26,9 @@ function ProfileForm() {
   useEffect(() => {
     if (userDifference === null) return
 
-    dispatch(updateUserInfo(userDifference))
+    dispatch(updateUserInfo(userDifference, _id))
     setUserDifference(null)
-  }, [dispatch, userDifference])
+  }, [dispatch, userDifference]) // ! REVISAR USEEFFECT
 
   const handleSubmit = (e) => {
     e.preventDefault()
