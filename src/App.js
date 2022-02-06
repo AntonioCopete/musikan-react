@@ -15,10 +15,12 @@ import Profile from './ui/views/pages/Profile/Profile'
 import MyTracks from './ui/views/pages/MyTracks/MyTracks'
 import Favourites from './ui/views/pages/Favourites/Favourites'
 import EditTrack from './ui/views/pages/EditTrack/EditTrack'
+import { useNavigate } from 'react-router-dom'
 
 import Layout from './ui/views/layout/Layout'
 
 function App() {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const userName = useSelector((state) => state.user)
 
@@ -33,6 +35,7 @@ function App() {
         dispatch(deleteUserName())
       } else {
         localStorage.setItem('authToken', null)
+        // navigate('/')
         dispatch(signOut())
       }
     })
@@ -42,7 +45,7 @@ function App() {
         unsubscribeFromAuth()
       }
     }
-  }, [dispatch, userName])
+  }, [dispatch])
 
   return (
     <Routes>

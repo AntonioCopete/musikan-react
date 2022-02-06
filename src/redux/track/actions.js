@@ -29,7 +29,6 @@ export function deleteTracks(id) {
       { Authorization: `Bearer ${token}` },
       id
     )
-    console.log(response.data)
     if (response.errorMessage) return
     dispatch(renderTracks(response.data.data))
   }

@@ -14,7 +14,7 @@ import {
   LabelFile,
   FormModal,
   SectionInputs,
-  FooterModal
+  FooterModal,
 } from './UploadSongModal.styles'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
@@ -46,7 +46,6 @@ function UploadSongModal({ open, handleClose }) {
 
   const getGenres = async () => {
     const response = await api.getGenres({ Authorization: `Bearer ${token}` })
-    console.log(response.data.data)
     setGenres(response.data.data)
   }
 
@@ -152,9 +151,7 @@ function UploadSongModal({ open, handleClose }) {
         <ModalContent>
           <h1>Upload</h1>
           <FormModal onSubmit={handleSubmit}>
-            <LabelFile htmlFor="uploadSongFileInput">
-              Select track
-            </LabelFile>
+            <LabelFile htmlFor="uploadSongFileInput">Select track</LabelFile>
             <InputFile
               type="file"
               id="uploadSongFileInput"

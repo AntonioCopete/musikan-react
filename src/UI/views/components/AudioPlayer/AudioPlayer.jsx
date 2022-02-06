@@ -17,20 +17,24 @@ function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [playedSeconds, setPlayedSeconds] = useState(0)
   const [totalSeconds, setTotalSeconds] = useState(0)
+  const [playUrl, setPlayUrl] = useState(null)
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  // useEffect(() => {
+  //   if (isPlaying) {
+  //     setPlayUrl(url)
+  //   }
+  // }, [isPlaying, url])
 
   useEffect(() => {
-    if (url) {
-      onStart()
-    }
+    setIsLoaded(true)
   }, [])
 
-  const onStart = () => {
-    setIsPlaying(true)
-  }
-
-  const onPause = () => {
-    setIsPlaying(false)
-  }
+  useEffect(() => {
+    if (isLoaded) {
+      setPlayUrl(url)
+    }
+  }, [isLoaded, url])
 
   const onProgress = (data) => {
     setPlayedSeconds(data.playedSeconds)
@@ -52,17 +56,24 @@ function AudioPlayer() {
       <AudioGroup>
         <ReactPlayer
           className="react-player"
-          url={url}
+          url={playUrl}
           playing={isPlaying}
           height="0"
           width="0"
           onProgress={(e) => onProgress(e)}
+          onReady={() => console.log('asdasd')}
+          config={{
+            file: {
+              attributes: { preload: 'none' },
+              forceAudio: true,
+            },
+          }}
         />
         <PlayPauseBtn>
           {isPlaying ? (
-            <FaPause onClick={onPause} />
+            <FaPause onClick={() => setIsPlaying(false)} />
           ) : (
-            <FaPlay onClick={onStart} />
+            <FaPlay onClick={() => setIsPlaying(true)} />
           )}
         </PlayPauseBtn>
       </AudioGroup>
