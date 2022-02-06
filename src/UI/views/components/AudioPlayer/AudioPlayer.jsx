@@ -20,21 +20,13 @@ function AudioPlayer() {
   const [playUrl, setPlayUrl] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // useEffect(() => {
-  //   if (isPlaying) {
-  //     setPlayUrl(url)
-  //   }
-  // }, [isPlaying, url])
-
   useEffect(() => {
     setIsLoaded(true)
   }, [])
 
   useEffect(() => {
-    if (isLoaded) {
-      setPlayUrl(url)
-    }
-  }, [isLoaded, url])
+    if (isLoaded) setIsPlaying(true)
+  }, [url])
 
   const onProgress = (data) => {
     setPlayedSeconds(data.playedSeconds)
@@ -56,12 +48,11 @@ function AudioPlayer() {
       <AudioGroup>
         <ReactPlayer
           className="react-player"
-          url={playUrl}
+          url={url}
           playing={isPlaying}
           height="0"
           width="0"
           onProgress={(e) => onProgress(e)}
-          onReady={() => console.log('asdasd')}
           config={{
             file: {
               attributes: { preload: 'none' },
