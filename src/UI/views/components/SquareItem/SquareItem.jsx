@@ -1,17 +1,25 @@
-import { ItemWrapper, ItemContent, Icon, Text, Image } from './SquareItem.styles'
+import { NavigateLink } from '../../../styles/GlobalComponents/NavLink'
+import * as ROUTES from '../../../../routes/routes'
+import {
+  ItemWrapper,
+  ItemContent,
+  Icon,
+  Text,
+  Image,
+} from './SquareItem.styles'
 import { useSelector } from 'react-redux'
 
 function SquareItem() {
-	const { name, thumbnail } = useSelector((state) => state.currentTrack)
+  const { name, thumbnail, _id } = useSelector((state) => state.currentTrack)
+  console.log(_id)
 
-  const handleClick = () => {
-    console.log('clicli...')
-  }
   return (
     <ItemWrapper>
       <ItemContent>
-				<Image src={thumbnail} alt={name} />
-        <Icon onClick={() => handleClick()} />
+        <Image src={thumbnail} alt={name} />
+        <NavigateLink to={ROUTES.PLAYLIST_DETAIL}>
+          <Icon />
+        </NavigateLink>
       </ItemContent>
       <Text>{name}</Text>
     </ItemWrapper>

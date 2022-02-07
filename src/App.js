@@ -13,9 +13,10 @@ import ResetPassword from './ui/views/pages/ResetPassword/ResetPassword'
 import Dashboard from './ui/views/pages/Dashboard/Dashboard'
 import Profile from './ui/views/pages/Profile/Profile'
 import MyTracks from './ui/views/pages/MyTracks/MyTracks'
+import MyPlaylists from './ui/views/pages/MyPlaylists/MyPlaylists'
 import Favourites from './ui/views/pages/Favourites/Favourites'
 import EditTrack from './ui/views/pages/EditTrack/EditTrack'
-import MyPlaylists from './ui/views/pages/MyPlaylists/MyPlaylists'
+import PlaylistDetail from './ui/views/pages/PlaylistDetail/PlaylistDetail'
 import { useNavigate } from 'react-router-dom'
 
 import Layout from './ui/views/layout/Layout'
@@ -89,6 +90,14 @@ function App() {
           }
         />
         <Route
+          path={ROUTES.MY_PLAYLISTS}
+          element={
+            <PrivateRoute>
+              <MyPlaylists />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path={ROUTES.EDIT_TRACK}
           element={
             <PrivateRoute>
@@ -97,10 +106,10 @@ function App() {
           }
         />
         <Route
-          path={ROUTES.MY_PLAYLISTS}
+          path={ROUTES.PLAYLIST_DETAIL}
           element={
             <PrivateRoute>
-              <MyPlaylists />
+              <PlaylistDetail />
             </PrivateRoute>
           }
         />
