@@ -44,7 +44,7 @@ function EditTrackForm() {
   }
 
   const getGenres = async () => {
-    const response = await api.getGenres({ _id: _id })
+    const response = await api.getGenres()
     setGenres(response.data.data)
   }
 

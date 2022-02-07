@@ -47,7 +47,7 @@ function UploadSongModal({ open, handleClose }) {
   }, [])
 
   const getGenres = async () => {
-    const response = await api.getGenres({ Authorization: `Bearer ${token}` })
+    const response = await api.getGenres()
     setGenres(response.data.data)
   }
 
