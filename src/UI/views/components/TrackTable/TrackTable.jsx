@@ -89,6 +89,7 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
           </div>
         </div>
       </Table>
+
       <List dense sx={{ width: '100%' }}>
         {tracks.length > 0 &&
           tracks.map((value) => {
