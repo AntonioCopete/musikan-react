@@ -3,6 +3,7 @@ import { RiMore2Fill } from 'react-icons/ri'
 
 export const ItemWrapper = styled.div`
   display: block;
+  margin-right: 2rem;
 `
 export const ItemContent = styled.div`
   position: relative;

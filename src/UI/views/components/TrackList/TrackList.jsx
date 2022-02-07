@@ -1,15 +1,15 @@
-import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
-
-import LikeDislike from '../LikeDislike/LikeDislike'
+import { useDispatch, useSelector } from 'react-redux'
 
 import InfoMenu from '../InfoMenu/InfoMenu'
+import LikeDislike from '../LikeDislike/LikeDislike'
+
+import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
 
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import Avatar from '@mui/material/Avatar'
-import { useDispatch, useSelector } from 'react-redux'
 
 import { ItemText } from './TrackList.styles'
 
