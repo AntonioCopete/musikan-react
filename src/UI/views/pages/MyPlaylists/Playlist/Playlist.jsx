@@ -1,17 +1,13 @@
-import SquareItem from '../../../components/SquareItem/SquareItem'
+import PlaylistItem from '../../../components/PlaylistItem/PlaylistItem'
 // import Swiper from '../../../components/Swiper/Swiper'
 // import { SwiperSlide } from 'swiper/react'
 import { Wrapper } from './Playist.styles'
 
-function MyPlayList() {
+function MyPlaylist({}) {
+  const list = ['hola']
   return (
-    <Wrapper>
-      <SquareItem />
-      <SquareItem />
-      <SquareItem />
-      <SquareItem />
-    </Wrapper>
+    <Wrapper>{list.length > 0 && list.map((item) => <PlaylistItem />)}</Wrapper>
   )
 }
 
-export default MyPlayList
+export default MyPlaylist

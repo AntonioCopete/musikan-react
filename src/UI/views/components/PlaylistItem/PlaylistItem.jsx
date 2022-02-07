@@ -1,23 +1,19 @@
 import { NavigateLink } from '../../../styles/GlobalComponents/NavLink'
-import * as ROUTES from '../../../../routes/routes'
+
 import {
   ItemWrapper,
   ItemContent,
   Icon,
   Text,
   Image,
-} from './SquareItem.styles'
-import { useSelector } from 'react-redux'
+} from './PlaylistItem.styles'
 
-function SquareItem() {
-  const { name, thumbnail, _id } = useSelector((state) => state.currentTrack)
-  console.log(_id)
-
+function PlaylistItem({ name, thumbnail, id }) {
   return (
     <ItemWrapper>
       <ItemContent>
         <Image src={thumbnail} alt={name} />
-        <NavigateLink to={ROUTES.PLAYLIST_DETAIL}>
+        <NavigateLink to={`/playlist/${id}`}>
           <Icon />
         </NavigateLink>
       </ItemContent>
@@ -26,4 +22,4 @@ function SquareItem() {
   )
 }
 
-export default SquareItem
+export default PlaylistItem
