@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const InfoWrapper = styled.div`
   max-width: 20rem;
+  align-self: end;
 `
 
 export const Image = styled.img`

@@ -14,7 +14,7 @@ export const GridLayout = styled.div`
   height: 100vh;
   margin: 0;
 
-  @media ${(props) => props.theme.breakpoints.lg} {
+  @media ${(props) => props.theme.breakpoints.xl} {
     grid-template-columns: 20% 1fr;
   }
 
