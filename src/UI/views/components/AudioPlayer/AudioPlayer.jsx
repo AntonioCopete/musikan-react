@@ -17,7 +17,6 @@ function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [playedSeconds, setPlayedSeconds] = useState(0)
   const [totalSeconds, setTotalSeconds] = useState(0)
-  const [playUrl, setPlayUrl] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -53,12 +52,6 @@ function AudioPlayer() {
           height="0"
           width="0"
           onProgress={(e) => onProgress(e)}
-          config={{
-            file: {
-              attributes: { preload: 'none' },
-              forceAudio: true,
-            },
-          }}
         />
         <PlayPauseBtn>
           {isPlaying ? (
