@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { syncSignIn, signOut } from './redux/auth/actions'
@@ -17,12 +18,11 @@ import MyPlaylists from './ui/views/pages/MyPlaylists/MyPlaylists'
 import Favourites from './ui/views/pages/Favourites/Favourites'
 import EditTrack from './ui/views/pages/EditTrack/EditTrack'
 import PlaylistDetail from './ui/views/pages/PlaylistDetail/PlaylistDetail'
-import { useNavigate } from 'react-router-dom'
 
 import Layout from './ui/views/layout/Layout'
 
 function App() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const dispatch = useDispatch()
   const userName = useSelector((state) => state.user)
 
@@ -49,6 +49,7 @@ function App() {
         unsubscribeFromAuth()
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
 
   return (
