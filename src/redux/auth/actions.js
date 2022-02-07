@@ -63,7 +63,6 @@ export function syncSignIn(data) {
       data
     )
 
-    console.log(response.data)
     if (response.errorMessage) {
       return dispatch(signUpError(response.errorMessage))
     }

@@ -1,17 +1,21 @@
+import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
+
 import LikeDislike from '../LikeDislike/LikeDislike'
+
+import InfoMenu from '../InfoMenu/InfoMenu'
+
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import Avatar from '@mui/material/Avatar'
-import InfoMenu from '../InfoMenu/InfoMenu'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { ItemText } from './TrackList.styles'
-import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
 
-function TrackList({ tracks, handleLike, owner }) {
+function TrackList({ tracks, owner, isFavorites, reload }) {
   const dispatch = useDispatch()
+  const { _id } = useSelector((state) => state.auth.currentUser)
   const handlePlay = (id) => {
     dispatch(getCurrentTrack(id))
   }
@@ -26,9 +30,11 @@ function TrackList({ tracks, handleLike, owner }) {
               key={value._id}
               secondaryAction={
                 <LikeDislike
-                  initialState={value.like}
-                  handleLike={handleLike}
+                  initialState={isFavorites ? true : value.like}
+                  userId={_id}
                   id={value._id}
+                  isFavorites={isFavorites}
+                  reload={reload}
                 />
               }
             >
@@ -44,7 +50,7 @@ function TrackList({ tracks, handleLike, owner }) {
                 <ItemText id={labelId} primary={`Song ${value.name}`} />
                 <ItemText>{value.genre}</ItemText>
               </ListItemButton>
-              {owner && <InfoMenu handleLike={handleLike} id={value._id} />}
+              {owner && <InfoMenu id={value._id} reload={reload} />}
             </ListItem>
           )
         })}

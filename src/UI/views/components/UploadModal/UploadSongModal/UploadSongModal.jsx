@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
 import api from '../../../../../api'
-import * as auth from '../../../../../services/auth/auth'
-
-import { renderTracks } from '../../../../../redux/track/actions'
 
 import { Modal } from '@mui/material'
 import {
@@ -23,11 +20,9 @@ import { RiMusicFill } from 'react-icons/ri'
 import { MdOutlineLibraryMusic } from 'react-icons/md'
 
 import noImage from '../../../../img/noImage.jpg'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-function UploadSongModal({ open, handleClose }) {
-  const token = localStorage.getItem('authToken')
-  const dispatch = useDispatch()
+function UploadSongModal({ open, handleClose, reload }) {
   const songNameInputRef = useRef()
   const songImageInputRef = useRef()
   const songFileInputRef = useRef()
@@ -35,7 +30,7 @@ function UploadSongModal({ open, handleClose }) {
   const defaultGenreRef = useRef()
   const [genres, setGenres] = useState([])
   const [error, setError] = useState('')
-  const [selectedSongFile, setSelectedSongFile] = useState()
+  const [, setSelectedSongFile] = useState()
   const [selectedSongImg, setSelectedSongImg] = useState()
   const [imageSrcPreview, setImageSrcPreview] = useState()
   const [disableSaveBtn, setDisableSaveBtn] = useState(false)
@@ -81,11 +76,10 @@ function UploadSongModal({ open, handleClose }) {
   }
 
   const getUserTokenAndRequestUpload = async () => {
-    // const token = await auth.getCurrentUserToken()
-    uploadRequest(token)
+    uploadRequest()
   }
 
-  const uploadRequest = (token) => {
+  const uploadRequest = () => {
     if (genreInputRef.current.value === 'Select a genre')
       return setError('You have to select a genre')
     if (songNameInputRef.current.value === '')
@@ -110,10 +104,8 @@ function UploadSongModal({ open, handleClose }) {
 
     api.uploadTrack({ _id: _id }, formData).then((response) => {
       if (response.data.success) {
+        reload()
         setDisableSaveBtn(false)
-        // ! PENDING CONFIRM TO USER EVERYTHING WAS OK
-        console.log(response.data.data)
-        dispatch(renderTracks(response.data.data))
         handleClose()
       }
     })

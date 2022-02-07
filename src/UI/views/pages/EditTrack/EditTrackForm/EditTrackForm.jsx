@@ -1,8 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import api from '../../../../../api'
-import * as auth from '../../../../../services/auth/auth'
 
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
@@ -19,7 +18,6 @@ function EditTrackForm() {
   const trackNameInputRef = useRef()
   const trackImageInputRef = useRef()
   const genreInputRef = useRef()
-  const [userToken, setUserToken] = useState()
   const [trackInfo, setTrackInfo] = useState()
   const [genres, setGenres] = useState([])
   const [error, setError] = useState('')
@@ -28,20 +26,17 @@ function EditTrackForm() {
   const [disableSaveBtn, setDisableSaveBtn] = useState(false)
   const [success, setSuccess] = useState('')
 
-  const token = localStorage.getItem('authToken')
-
   const { _id } = useSelector((state) => state.auth.currentUser)
 
-  useEffect(() => {
-    getTokenAndRequest()
+  useLayoutEffect(() => {
     getGenres()
+    getTrackInfo()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const getTokenAndRequest = async () => {
-    setUserToken(token)
-    getTrackInfo(token)
-  }
+  // useEffect(() => {
+
+  // }, [trackInfo])
 
   const getGenres = async () => {
     const response = await api.getGenres()
@@ -158,7 +153,7 @@ function EditTrackForm() {
         <MdOutlineLibraryMusic />
         <select
           ref={genreInputRef}
-          value={trackInfo?.genre}
+          value={trackInfo?.genre._id}
           onChange={handleChangeGenre}
         >
           {genres &&

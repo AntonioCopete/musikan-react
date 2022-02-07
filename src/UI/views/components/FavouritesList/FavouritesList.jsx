@@ -1,33 +1,25 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useLayoutEffect, useState } from 'react'
 
-import { getTracks } from '../../../../redux/track/actions'
-import * as auth from '../../../../services/auth'
 import api from '../../../../api/api'
 
 import TrackList from '../TrackList/TrackList'
 
 function FavouritesList() {
-  const dispatch = useDispatch()
-  const tracks = useSelector((state) => state.track)
   const { _id } = useSelector((state) => state.auth.currentUser)
+  const [tracks, setTracks] = useState([])
 
-  useEffect(() => {
-    dispatch(getTracks('liked', _id))
-  }, [dispatch])
+  useLayoutEffect(() => {
+    getTracks()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  const handleLike = (id) => {
-    getCurrentTokenAndLike(id)
+  const getTracks = async () => {
+    const response = await api.getTracks({ _id: _id }, 'liked')
+    setTracks(response.data.data)
   }
 
-  const getCurrentTokenAndLike = async (id) => {
-    // const token = await auth.getCurrentUserToken()
-    const headers = { _id: _id }
-    await api.likeTrack(headers, id)
-    dispatch(getTracks('liked', _id))
-  }
-
-  return <TrackList tracks={tracks} handleLike={handleLike} />
+  return <TrackList tracks={tracks} isFavorites={true} reload={getTracks} />
 }
 
 export default FavouritesList

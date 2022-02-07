@@ -32,7 +32,9 @@ function App() {
       if (user) {
         localStorage.setItem('authToken', user.Aa)
         dispatch(syncSignIn(data))
-        dispatch(deleteUserName())
+        if (userName) {
+          dispatch(deleteUserName())
+        }
       } else {
         localStorage.setItem('authToken', null)
         // navigate('/')

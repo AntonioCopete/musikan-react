@@ -1,14 +1,17 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { deleteTracks } from '../../../../redux/track/actions'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
+import api from '../../../../api'
+
+import { handleLike } from '../../../utils/handleLike'
+
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import { IconOpen, Item } from './InfoMenu.styles'
 import { RiHeart3Fill, RiPencilFill, RiDeleteBinFill } from 'react-icons/ri'
-import { useNavigate } from 'react-router-dom'
 
-function InfoMenu({ id, handleLike }) {
-  const dispatch = useDispatch()
+function InfoMenu({ id, reload }) {
   const navigate = useNavigate()
 
   const { _id } = useSelector((state) => state.auth.currentUser)
@@ -23,7 +26,8 @@ function InfoMenu({ id, handleLike }) {
   }
 
   const handleLikeInMenu = () => {
-    handleLike(id)
+    handleLike(_id, id)
+    reload()
     setAnchorEl(null)
   }
 
@@ -31,8 +35,9 @@ function InfoMenu({ id, handleLike }) {
     navigate(`../edit-song/${id}`)
   }
 
-  const handleDelete = () => {
-    dispatch(deleteTracks(id, _id))
+  const handleDelete = async () => {
+    await api.deleteTrack({ _id: _id }, id)
+    reload()
   }
 
   return (
