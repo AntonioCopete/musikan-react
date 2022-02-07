@@ -53,11 +53,10 @@ function makeApi(request = makeRequest()) {
     })
   }
 
-  function getGenres(headers) {
+  function getGenres() {
     return request({
       url: '/genre',
       requestMethod: 'GET',
-      headers: headers,
     })
   }
 
