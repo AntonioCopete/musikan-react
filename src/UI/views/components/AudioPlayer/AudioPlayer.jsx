@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import ReactPlayer from 'react-player'
-
 import { useSelector } from 'react-redux'
 
 import {
@@ -9,7 +8,6 @@ import {
   PlayPauseBtn,
   ProgressBar,
 } from './AudioPlayer.styles'
-
 import { FaPlay, FaPause } from 'react-icons/fa'
 
 function AudioPlayer() {

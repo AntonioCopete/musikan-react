@@ -15,6 +15,7 @@ import Profile from './ui/views/pages/Profile/Profile'
 import MyTracks from './ui/views/pages/MyTracks/MyTracks'
 import Favourites from './ui/views/pages/Favourites/Favourites'
 import EditTrack from './ui/views/pages/EditTrack/EditTrack'
+import MyPlaylists from './ui/views/pages/MyPlaylists/MyPlaylists'
 import { useNavigate } from 'react-router-dom'
 
 import Layout from './ui/views/layout/Layout'
@@ -92,6 +93,14 @@ function App() {
           element={
             <PrivateRoute>
               <EditTrack />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={ROUTES.MY_PLAYLISTS}
+          element={
+            <PrivateRoute>
+              <MyPlaylists />
             </PrivateRoute>
           }
         />
