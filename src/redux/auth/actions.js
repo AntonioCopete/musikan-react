@@ -155,7 +155,6 @@ export function updateAvatar(formInfo, id) {
       },
       formInfo
     )
-    console.log(response.data)
 
     if (response.errorMessage) return
 

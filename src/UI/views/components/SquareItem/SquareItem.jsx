@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux'
 
 function SquareItem() {
   const { name, thumbnail, _id } = useSelector((state) => state.currentTrack)
-  console.log(_id)
 
   return (
     <ItemWrapper>
