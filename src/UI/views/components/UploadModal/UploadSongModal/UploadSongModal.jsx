@@ -5,6 +5,7 @@ import * as auth from '../../../../../services/auth/auth'
 
 import { renderTracks } from '../../../../../redux/track/actions'
 
+import Spinner from '../../Spinner/Spinner'
 import { Modal } from '@mui/material'
 import {
   InputFile,
@@ -150,6 +151,8 @@ function UploadSongModal({ open, handleClose }) {
         aria-describedby="modal-modal-description"
       >
         <ModalContent>
+          {disableSaveBtn && <Spinner />}
+          {/* <Spinner /> */}
           <h1>Upload</h1>
           <FormModal onSubmit={handleSubmit}>
             <LabelFile htmlFor="uploadSongFileInput">Select track</LabelFile>
