@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux'
 import api from '../../../../api'
 
 import PanelHero from '../../components/PanelHero/PanelHero'
-import PlayList from './Playlist/Playlist'
+import Playlist from './Playlist/Playlist'
 import CreatePlaylistModalContainer from '../../components/CreatePlaylistModal/CreatePlaylistModalContainer/CreatePlaylistModalContainer'
 
 import { Header, Main } from '../../layout/Layout.styles'
 
 function MyPlaylists() {
   const { _id } = useSelector((state) => state.auth.currentUser)
-  const [playlists, setPlaylists] = useState([])
+  const [playlists, setPlaylists] = useState({})
 
   useLayoutEffect(() => {
     getUserPlaylists()
@@ -31,9 +31,17 @@ function MyPlaylists() {
       </Header>
       <Main>
         <CreatePlaylistModalContainer />
-        <PlayList list={playlists.owned} />
+        {playlists?.owned?.length > 0 ? (
+          <Playlist list={playlists.owned} />
+        ) : (
+          <p>You haven't created any playlist yet</p>
+        )}
         <h2>Playlists you follow</h2>
-        <PlayList list={playlists.following} />
+        {playlists?.followed?.length > 0 ? (
+          <Playlist list={playlists.followed} />
+        ) : (
+          <p>You dont follow any playlist yet</p>
+        )}
       </Main>
     </>
   )
