@@ -119,6 +119,14 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function getPlaylist(headers, id) {
+    return request({
+      url: `/playlist/${id}`,
+      requestMethod: 'GET',
+      headers: headers,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -134,6 +142,7 @@ function makeApi(request = makeRequest()) {
     getCurrentTrackInfo: getCurrentTrackInfo,
     getUserPlaylists: getUserPlaylists,
     createPlaylist: createPlaylist,
+    getPlaylist: getPlaylist,
   }
 }
 
