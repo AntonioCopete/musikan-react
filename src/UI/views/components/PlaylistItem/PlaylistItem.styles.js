@@ -7,14 +7,14 @@ export const ItemWrapper = styled.div`
 `
 export const ItemContent = styled.div`
   position: relative;
-  width: 10rem;
-  height: 10rem;
+  width: 13rem;
+  height: 13rem;
   border-radius: 5px;
   transition: all 1s ease-in-out;
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    width: 7.5rem;
-    height: 7.5rem;
+    width: 10rem;
+    height: 10rem;
   }
 
   :hover {

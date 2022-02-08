@@ -7,6 +7,7 @@ import PanelHero from '../../components/PanelHero/PanelHero'
 import Playlist from './Playlist/Playlist'
 
 import { Header, Main } from '../../layout/Layout.styles'
+import { CreateWrapper } from './MyPlaylists.styles'
 
 function MyPlaylists() {
   const { _id } = useSelector((state) => state.auth.currentUser)
@@ -30,13 +31,15 @@ function MyPlaylists() {
         </PanelHero>
       </Header>
       <Main>
-        <CreatePlaylistModalContainer reload={getUserPlaylists} />
         {playlists?.owned?.length > 0 ? (
-          <Playlist
-            list={playlists.owned}
-            owned={true}
-            reload={getUserPlaylists}
-          />
+          <CreateWrapper>
+            <CreatePlaylistModalContainer reload={getUserPlaylists} />
+            <Playlist
+              list={playlists.owned}
+              owned={true}
+              reload={getUserPlaylists}
+            />
+          </CreateWrapper>
         ) : (
           <p>You haven't created any playlist yet</p>
         )}
