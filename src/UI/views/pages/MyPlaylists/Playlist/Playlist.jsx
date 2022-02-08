@@ -15,7 +15,7 @@ function Playlist({ list }) {
       <Swiper>
         {playlist &&
           playlist.map((item) => (
-            <SwiperSlide>
+            <SwiperSlide key={item._id}>
               <PlaylistItem
                 id={item._id}
                 name={item.name}
