@@ -59,7 +59,11 @@ function Playlist() {
                     ref={draggableProvided.innerRef}
                     {...draggableProvided.dragHandleProps}
                   >
-                    <PlaylistItem name={item.text} thumbnail={item.thumbnail} />
+                    <PlaylistItem
+                      id={item.id}
+                      name={item.text}
+                      thumbnail={item.thumbnail}
+                    />
                   </span>
                 )}
               </Draggable>
