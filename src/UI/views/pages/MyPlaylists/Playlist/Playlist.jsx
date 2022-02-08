@@ -51,6 +51,7 @@ function Playlist() {
             {...droppableProvided.droppableProps}
             ref={droppableProvided.innerRef}
           >
+            <PlaylistItem />
             {playList.map((item, idx) => (
               <Draggable key={item.id} draggableId={item.id} index={idx}>
                 {(draggableProvided) => (
