@@ -1,6 +1,6 @@
 import { useState, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
-
+import CreatePlaylistModalContainer from '../../components/CreatePlaylistModal/CreatePlaylistModalContainer/CreatePlaylistModalContainer'
 import api from '../../../../api'
 
 import PanelHero from '../../components/PanelHero/PanelHero'
@@ -18,6 +18,7 @@ function MyPlaylists() {
 
   const getUserPlaylists = async () => {
     const response = await api.getUserPlaylists(_id)
+    console.log(response)
     setPlaylists(response.data.data)
   }
 
@@ -29,6 +30,7 @@ function MyPlaylists() {
         </PanelHero>
       </Header>
       <Main>
+        <CreatePlaylistModalContainer reload={getUserPlaylists} />
         {playlists?.owned?.length > 0 ? (
           <Playlist
             list={playlists.owned}
