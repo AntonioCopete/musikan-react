@@ -3,7 +3,7 @@ import { BsPlusLg } from 'react-icons/bs'
 
 function CreatePlaylistTriggerModal({ handleOpen }) {
   return (
-    <SquaredButton onClick={handleOpen}>
+    <SquaredButton big onClick={handleOpen}>
       <BsPlusLg />
     </SquaredButton>
   )

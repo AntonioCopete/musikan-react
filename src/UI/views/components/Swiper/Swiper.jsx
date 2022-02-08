@@ -1,23 +1,23 @@
 import { SwiperWrapper } from './Swiper.styles'
 import 'swiper/css'
 
-export default function App({ children }) {
+function Swiper({ children }) {
   return (
     <SwiperWrapper
-      slidesPerView={3}
-      spaceBetween={10}
+      slidesPerView={3.5}
+      spaceBetween={20}
       breakpoints={{
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
+        375: {
+          slidesPerView: 2.5,
+          spaceBetween: 10,
         },
-        768: {
-          slidesPerView: 4,
-          spaceBetween: 40,
+        640: {
+          slidesPerView: 2.5,
+          spaceBetween: 10,
         },
         1024: {
-          slidesPerView: 5,
-          spaceBetween: 50,
+          slidesPerView: 4.5,
+          spaceBetween: 20,
         },
       }}
     >
@@ -25,3 +25,5 @@ export default function App({ children }) {
     </SwiperWrapper>
   )
 }
+
+export default Swiper
