@@ -73,14 +73,12 @@ function CreatePlaylistModal({ open, handleClose, reload }) {
     formData.append('publicAccessible', selectedPlaylistAccess)
 
     api.createPlaylist({ _id: _id }, formData).then((response) => {
-      // if (response.data.success) {
-      //   reload()
-      //   setDisableSaveBtn(false)
-      //   handleClose()
-      // }
-      // ! PENDING REVIEW
-      setDisableSaveBtn(false)
-      handleClose()
+      console.log(response)
+      if (response.data.success) {
+        reload()
+        setDisableSaveBtn(false)
+        handleClose()
+      }
     })
   }
 
@@ -116,7 +114,6 @@ function CreatePlaylistModal({ open, handleClose, reload }) {
       >
         <ModalContent>
           {disableSaveBtn && <Spinner />}
-          {/* <Spinner /> */}
           <h1>Create</h1>
           <FormModal onSubmit={handleSubmit}>
             <SectionModal>

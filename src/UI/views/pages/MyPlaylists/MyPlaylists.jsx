@@ -5,7 +5,6 @@ import api from '../../../../api'
 
 import PanelHero from '../../components/PanelHero/PanelHero'
 import Playlist from './Playlist/Playlist'
-import CreatePlaylistModalContainer from '../../components/CreatePlaylistModal/CreatePlaylistModalContainer/CreatePlaylistModalContainer'
 
 import { Header, Main } from '../../layout/Layout.styles'
 
@@ -30,9 +29,12 @@ function MyPlaylists() {
         </PanelHero>
       </Header>
       <Main>
-        <CreatePlaylistModalContainer />
         {playlists?.owned?.length > 0 ? (
-          <Playlist list={playlists.owned} />
+          <Playlist
+            list={playlists.owned}
+            owned={true}
+            reload={getUserPlaylists}
+          />
         ) : (
           <p>You haven't created any playlist yet</p>
         )}

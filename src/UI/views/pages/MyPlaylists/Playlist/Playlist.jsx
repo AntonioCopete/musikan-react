@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 import PlaylistItem from '../../../components/PlaylistItem/PlaylistItem'
+import CreatePlaylistModalContainer from '../../../components/CreatePlaylistModal/CreatePlaylistModalContainer/CreatePlaylistModalContainer'
 import { Wrapper } from './Playist.styles'
 
 const reorder = (list, startIndex, endIndex) => {
@@ -12,8 +13,12 @@ const reorder = (list, startIndex, endIndex) => {
   return result
 }
 
-function Playlist({ list }) {
+function Playlist({ list, owned, reload }) {
   const [playlist, setPlaylist] = useState(list)
+
+  useEffect(() => {
+    setPlaylist(list)
+  }, [list])
 
   return (
     <DragDropContext
@@ -40,7 +45,7 @@ function Playlist({ list }) {
             {...droppableProvided.droppableProps}
             ref={droppableProvided.innerRef}
           >
-            {console.log(playlist)}
+            {owned && <CreatePlaylistModalContainer reload={reload} />}
             {playlist &&
               playlist.map((item, idx) => (
                 <Draggable key={item._id} draggableId={item._id} index={idx}>
