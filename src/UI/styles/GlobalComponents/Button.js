@@ -32,11 +32,20 @@ export const SquaredButton = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: ${(props) => (props.big ? '13rem' : '3.5rem')};
+  height: ${(props) => (props.big ? '13rem' : '3.5rem')};
+  margin: 2rem;
   color: ${({ theme }) => theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
   border-radius: 0.5rem;
+
+  svg {
+    ${(props) => props.big && 'font-size: 5rem'};
+  }
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    ${(props) => props.big && 'width: 10rem; height: 10rem'};
+  }
 
   &:hover {
     color: ${({ theme }) => theme.colors.text};

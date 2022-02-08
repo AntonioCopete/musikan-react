@@ -38,7 +38,7 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
       </Table> */}
 
       <List dense sx={{ width: '100%' }}>
-        {tracks.length > 0 &&
+        {tracks?.length > 0 &&
           tracks.map((value) => {
             const labelId = `checkbox-list-secondary-label-${value._id}`
             return (
