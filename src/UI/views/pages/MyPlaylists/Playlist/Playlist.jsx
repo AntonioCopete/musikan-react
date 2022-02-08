@@ -23,7 +23,7 @@ const reorder = (list, startIndex, endIndex) => {
 
 function Playlist() {
   const [playList, setPlaylist] = useState(initial)
-  console.log(playList)
+  // console.log(playList)
 
   return (
     <DragDropContext

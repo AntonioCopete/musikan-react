@@ -104,9 +104,18 @@ function makeApi(request = makeRequest()) {
 
   function getUserPlaylists(userId) {
     return request({
-      url: `/playlists/`,
+      url: `/playlist`,
       requestMethod: 'GET',
       headers: { _id: userId },
+    })
+  }
+
+  function createPlaylist(headers, body) {
+    return request({
+      url: `/playlist`,
+      requestMethod: 'POST',
+      headers: headers,
+      body: body,
     })
   }
 
@@ -124,6 +133,7 @@ function makeApi(request = makeRequest()) {
     likeTrack: likeTrack,
     getCurrentTrackInfo: getCurrentTrackInfo,
     getUserPlaylists: getUserPlaylists,
+    createPlaylist: createPlaylist,
   }
 }
 

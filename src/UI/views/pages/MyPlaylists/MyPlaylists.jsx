@@ -1,11 +1,13 @@
 import { useState, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
+
 import api from '../../../../api'
 
 import PanelHero from '../../components/PanelHero/PanelHero'
 import PlayList from './Playlist/Playlist'
+import CreatePlaylistModalContainer from '../../components/CreatePlaylistModal/CreatePlaylistModalContainer/CreatePlaylistModalContainer'
+
 import { Header, Main } from '../../layout/Layout.styles'
-import UploadSongModalContainer from '../../components/UploadModal/UploadSongModalContainer/UploadSongModalContainer'
 
 function MyPlaylists() {
   const { _id } = useSelector((state) => state.auth.currentUser)
@@ -28,7 +30,7 @@ function MyPlaylists() {
         </PanelHero>
       </Header>
       <Main>
-        <UploadSongModalContainer />
+        <CreatePlaylistModalContainer />
         <PlayList list={playlists.owned} />
         <h2>Playlists you follow</h2>
         <PlayList list={playlists.following} />

@@ -33,7 +33,8 @@ export const InputGroup = styled.div`
     font-weight: 500;
   }
 
-  & select {
+  & select,
+  textarea {
     appearance: none;
     border: none;
     width: fit-content;
@@ -44,5 +45,9 @@ export const InputGroup = styled.div`
     &:focus {
       outline: none;
     }
+  }
+
+  & textarea {
+    color: red;
   }
 `
