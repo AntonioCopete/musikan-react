@@ -24,6 +24,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.colors.primary};
     cursor: default;
 		transition: background-color 0.5s linear;
+    accent-color: ${(props) => props.theme.colors.primary};
   }
 
   h1, h2 {
