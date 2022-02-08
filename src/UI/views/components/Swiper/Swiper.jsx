@@ -5,14 +5,14 @@ function Swiper({ children }) {
   return (
     <SwiperWrapper
       slidesPerView={3.5}
-      spaceBetween={10}
+      spaceBetween={20}
       breakpoints={{
-        640: {
-          slidesPerView: 3.5,
+        375: {
+          slidesPerView: 2.5,
           spaceBetween: 10,
         },
-        768: {
-          slidesPerView: 4.5,
+        640: {
+          slidesPerView: 2.5,
           spaceBetween: 10,
         },
         1024: {

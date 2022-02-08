@@ -33,12 +33,12 @@ function MyPlaylists() {
       <Main>
         {playlists?.owned?.length > 0 ? (
           <CreateWrapper>
-            <CreatePlaylistModalContainer reload={getUserPlaylists} />
             <Playlist
               list={playlists.owned}
               owned={true}
               reload={getUserPlaylists}
             />
+            <CreatePlaylistModalContainer reload={getUserPlaylists} />
           </CreateWrapper>
         ) : (
           <p>You haven't created any playlist yet</p>
