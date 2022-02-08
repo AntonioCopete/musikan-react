@@ -127,6 +127,14 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function deletePlaylist(headers, id) {
+    return request({
+      url: `/playlist/${id}`,
+      requestMethod: 'DELETE',
+      headers: headers,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -143,6 +151,7 @@ function makeApi(request = makeRequest()) {
     getUserPlaylists: getUserPlaylists,
     createPlaylist: createPlaylist,
     getPlaylist: getPlaylist,
+    deletePlaylist: deletePlaylist,
   }
 }
 
