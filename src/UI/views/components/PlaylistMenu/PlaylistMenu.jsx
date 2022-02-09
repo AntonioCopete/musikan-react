@@ -52,7 +52,7 @@ function PlaylistMenu({ playlistId, reload, owner }) {
   }
 
   return (
-    <section>
+    <>
       <IconButton
         aria-label="more"
         id="long-button"
@@ -96,7 +96,7 @@ function PlaylistMenu({ playlistId, reload, owner }) {
           </Item>
         )}
       </Menu>
-    </section>
+    </>
   )
 }
 

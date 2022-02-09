@@ -10,7 +10,14 @@ import AddTracksModalContainer from '../../components/AddTracksModal/AddTracksMo
 import FollowItem from '../../components/FollowItem/FollowItem'
 
 import { Header, Main } from '../../layout/Layout.styles'
-import { PlaylistWrapper, Hero, HeroDetails } from './PlaylistDetail.styles.js'
+import {
+  PlaylistWrapper,
+  Hero,
+  HeroInfoWrapper,
+  HeroInfoContent,
+  HeroTitle,
+  HeroInfo,
+} from './PlaylistDetail.styles.js'
 
 function PlaylistDetail() {
   const { id } = useParams()
@@ -35,15 +42,26 @@ function PlaylistDetail() {
     <>
       <Header>
         <Hero bgImage={playlist?.thumbnail}>
-          <HeroDetails>
-            {!owned && (
-              <FollowItem userId={_id} id={id} initialState={follow} />
-            )}
+          <HeroInfoWrapper>
+            <HeroInfoContent>
+              <img src={playlist?.thumbnail} alt={playlist?.thumbnail} />
 
-            <h1>{playlist?.name}</h1>
-            <PlaylistMenu playlistId={id} owner={owned} reload={getPlaylist} />
+              <HeroInfo>
+                {!owned && (
+                  <FollowItem userId={_id} id={id} initialState={follow} />
+                )}
+                <HeroTitle>
+                  <h1>{playlist?.name}</h1>
+                  <PlaylistMenu
+                    playlistId={id}
+                    owner={owned}
+                    reload={getPlaylist}
+                  />
+                </HeroTitle>
+              </HeroInfo>
+            </HeroInfoContent>
             <p>{playlist?.description}</p>
-          </HeroDetails>
+          </HeroInfoWrapper>
         </Hero>
       </Header>
       <Main>
