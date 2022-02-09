@@ -5,6 +5,7 @@ import HomeHeader from './HomeHeader/HomeHeader'
 import { Header, Main } from '../../layout/Layout.styles'
 
 import Playlist from '../MyPlaylists/Playlist/Playlist'
+import PopularUsers from './PopularUsers/PopularUsers'
 
 function Dashboard() {
   const { _id } = useSelector((state) => state.auth.currentUser)
@@ -25,8 +26,9 @@ function Dashboard() {
         <HomeHeader />
       </Header>
       <Main>
-        {/* <h2>Popular profiles</h2>
-        <h2>Top playlists</h2>
+        <h2>Popular profiles</h2>
+        <PopularUsers />
+        {/*   <h2>Top playlists</h2>
 
         <h2>Popular artists</h2>*/}
         <h2>Playlists you follow</h2>
