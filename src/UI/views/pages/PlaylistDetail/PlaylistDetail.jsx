@@ -1,10 +1,11 @@
 import { useState, useLayoutEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+import pic from '../../../img/noImage.jpg'
 import api from '../../../../api'
 
 import TrackTable from '../../components/TrackTable/TrackTable'
+import TrackItem from '../../components/TrackTable/TrackItem'
 import PlaylistMenu from '../../components/PlaylistMenu/PlaylistMenu'
 import AddTracksModalContainer from '../../components/AddTracksModal/AddTracksModalContainer/AddTracksModalContainer'
 import FollowItem from '../../components/FollowItem/FollowItem'
@@ -25,6 +26,7 @@ function PlaylistDetail() {
   const [owned, setOwned] = useState()
   const [follow, setFollow] = useState(true)
   const { _id } = useSelector((state) => state.auth.currentUser)
+  const [tracks, setTracks] = useState([])
 
   useLayoutEffect(() => {
     getPlaylist()
@@ -36,6 +38,8 @@ function PlaylistDetail() {
     setPlaylist(response.data.data.playlistDetails)
     setOwned(response.data.data.owned)
     setFollow(response.data.data.followed)
+    setTracks(response.data.data.playlistDetails.tracks)
+    console.log(response.data.data.playlistDetails)
   }
 
   return (
@@ -65,9 +69,47 @@ function PlaylistDetail() {
         </Hero>
       </Header>
       <Main>
-        <AddTracksModalContainer />
         <PlaylistWrapper>
-          <TrackTable tracks={playlist?.tracks} reload={getPlaylist} />
+          <TrackTable button={<AddTracksModalContainer />}>
+            <TrackItem
+              id={1}
+              name={'titulo de cancion'}
+              thumbnail={pic}
+              genre={'roca'}
+              user={'Pepis band'}
+              action={'like'}
+            />
+            <TrackItem
+              id={1}
+              name={'titulo de cancion'}
+              thumbnail={pic}
+              genre={'roca'}
+              user={'Pepis band'}
+              action={'add'}
+            />
+            <TrackItem
+              id={1}
+              name={'titulo de cancion'}
+              thumbnail={pic}
+              genre={'roca'}
+              user={'Pepis band'}
+              action={'add'}
+            />
+
+            {/* {tracks && tracks.length > 0 ? (
+              tracks.map((track) => (
+                <TrackItem
+                  id={track._id}
+                  name={track.name}
+                  thumbnail={track.thumbnail}
+                />
+              ))
+            ) : (
+              <tr>
+                <td>No tracks yet in this playlist</td>
+              </tr>
+            )} */}
+          </TrackTable>
         </PlaylistWrapper>
       </Main>
     </>

@@ -32,7 +32,7 @@ function MySongs() {
       </Header>
       <Main>
         <UploadSongModalContainer reload={getTracks} />
-        <TrackList tracks={tracks} owner={true} reload={getTracks} />
+        {<TrackList tracks={tracks} owner={true} reload={getTracks} />}
       </Main>
     </>
   )
