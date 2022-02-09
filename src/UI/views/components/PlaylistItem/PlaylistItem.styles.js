@@ -44,10 +44,6 @@ export const Text = styled.span`
   color: ${({ theme }) => theme.colors.text};
 `
 
-export const CheckFavourite = styled.div`
-  cursor: pointer;
-`
-
 export const Footer = styled.footer`
   margin-top: 1rem;
   display: flex;

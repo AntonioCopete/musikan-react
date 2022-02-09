@@ -6,15 +6,17 @@ import api from '../../../../api'
 
 import TrackTable from '../../components/TrackTable/TrackTable'
 import PlaylistMenu from '../../components/PlaylistMenu/PlaylistMenu'
+import AddTracksModalContainer from '../../components/AddTracksModal/AddTracksModalContainer/AddTracksModalContainer'
+import FollowItem from '../../components/FollowItem/FollowItem'
 
 import { Header, Main } from '../../layout/Layout.styles'
 import { PlaylistWrapper, Hero, HeroDetails } from './PlaylistDetail.styles.js'
-import AddTracksModalContainer from '../../components/AddTracksModal/AddTracksModalContainer/AddTracksModalContainer'
 
 function PlaylistDetail() {
   const { id } = useParams()
   const [playlist, setPlaylist] = useState()
   const [owned, setOwned] = useState()
+  const [follow, setFollow] = useState(true)
   const { _id } = useSelector((state) => state.auth.currentUser)
 
   useLayoutEffect(() => {
@@ -26,6 +28,7 @@ function PlaylistDetail() {
     const response = await api.getPlaylist({ _id: _id }, id)
     setPlaylist(response.data.data.playlistDetails)
     setOwned(response.data.data.owned)
+    setFollow(response.data.data.followed)
   }
 
   return (
@@ -33,6 +36,10 @@ function PlaylistDetail() {
       <Header>
         <Hero bgImage={playlist?.thumbnail}>
           <HeroDetails>
+            {!owned && (
+              <FollowItem userId={_id} id={id} initialState={follow} />
+            )}
+
             <h1>{playlist?.name}</h1>
             <PlaylistMenu playlistId={id} owner={owned} reload={getPlaylist} />
             <p>{playlist?.description}</p>
