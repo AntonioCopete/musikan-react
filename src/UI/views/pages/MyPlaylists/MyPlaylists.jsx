@@ -19,7 +19,6 @@ function MyPlaylists() {
 
   const getUserPlaylists = async () => {
     const response = await api.getUserPlaylists(_id)
-    console.log(response)
     setPlaylists(response.data.data)
   }
 
@@ -45,7 +44,11 @@ function MyPlaylists() {
         )}
         <h2>Playlists you follow</h2>
         {playlists?.followed?.length > 0 ? (
-          <Playlist list={playlists.followed} />
+          <Playlist
+            list={playlists.followed}
+            followed={true}
+            reload={getUserPlaylists}
+          />
         ) : (
           <p>You dont follow any playlist yet</p>
         )}

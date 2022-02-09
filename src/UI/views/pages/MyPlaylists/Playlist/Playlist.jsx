@@ -3,7 +3,7 @@ import { SwiperSlide } from 'swiper/react'
 import PlaylistItem from '../../../components/PlaylistItem/PlaylistItem'
 import { Wrapper } from './Playist.styles'
 import Swiper from '../../../components/Swiper/Swiper'
-function Playlist({ list }) {
+function Playlist({ list, followed, reload }) {
   const [playlist, setPlaylist] = useState(list)
 
   useEffect(() => {
@@ -20,6 +20,8 @@ function Playlist({ list }) {
                 id={item._id}
                 name={item.name}
                 thumbnail={item.thumbnail}
+                followed={followed}
+                reload={reload}
               />
             </SwiperSlide>
           ))}

@@ -152,6 +152,14 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function followPlaylist(headers, id) {
+    return request({
+      url: `/playlist/${id}/follow`,
+      requestMethod: 'PUT',
+      headers: headers,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -171,6 +179,7 @@ function makeApi(request = makeRequest()) {
     addTrackstoPlaylist: addTrackstoPlaylist,
     getTracksForPlaylist: getTracksForPlaylist,
     deletePlaylist: deletePlaylist,
+    followPlaylist: followPlaylist,
   }
 }
 
