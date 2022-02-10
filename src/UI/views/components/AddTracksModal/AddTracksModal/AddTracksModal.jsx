@@ -8,20 +8,14 @@ import AddTrackCheck from './AddTrackCheck/AddTrackCheck'
 import Spinner from '../../Spinner/Spinner'
 
 import { Modal } from '@mui/material'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import Avatar from '@mui/material/Avatar'
-import {
-  ModalContent,
-  SectionModal,
-  FormModal,
-  FooterModal,
-} from './AddTracksModal.styles'
+
+import { TrackWrapper, TrackGrid } from '../../TrackTable/TrackTable.styles'
+import { Image } from '../../TrackTable/TrackItem.styles'
+import { ActionContent } from '../../TrackList/TrackList.styles'
+
+import { ModalContent, FormModal, FooterModal } from './AddTracksModal.styles'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
-import { ItemText } from './AddTracksModal.styles'
 
 function AddTracksModal({ open, handleClose, reload, tracks }) {
   const { id } = useParams()
@@ -85,37 +79,26 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
           {disableSaveBtn && <Spinner />}
           <h1>Add track to my playlist</h1>
           <FormModal onSubmit={handleSubmit}>
-            <SectionModal>
-              <List>
-                {tracksToAdd?.map((track, index) => {
-                  const labelId = `checkbox-list-secondary-label-${track._id}`
-                  return (
-                    <ListItem
-                      key={index}
-                      secondaryAction={
-                        <AddTrackCheck
-                          trackId={track._id}
-                          setSelectedTracksToAdd={setSelectedTracksToAdd}
-                        />
-                      }
-                    >
-                      <ListItemButton>
-                        <ListItemAvatar>
-                          <Avatar
-                            alt={`Avatar n°${track + 1}`}
-                            src={track.thumbnail}
-                            variant="square"
-                          />
-                        </ListItemAvatar>
-                        <ItemText>{track.name}</ItemText>
-                        <ItemText id={labelId} primary={`Song ${track.name}`} />
-                        <ItemText>{track.genre}</ItemText>
-                      </ListItemButton>
-                    </ListItem>
-                  )
-                })}
-              </List>
-            </SectionModal>
+            <TrackWrapper>
+              {tracksToAdd?.map((track, index) => (
+                <TrackGrid key={index}>
+                  <span>{index + 1}</span>
+                  <span>
+                    <Image src={track.thumbnail} alt={track.thumbnail} />
+                  </span>
+                  <span>{track.name}</span>
+                  {/* <span>{'user'}</span> */}
+                  <span>{track.genre}</span>
+                  <ActionContent>
+                    <AddTrackCheck
+                      trackId={track._id}
+                      setSelectedTracksToAdd={setSelectedTracksToAdd}
+                    />
+                  </ActionContent>
+                </TrackGrid>
+              ))}
+            </TrackWrapper>
+
             <FooterModal>
               <ButtonLink type="text" onClick={handleCancel}>
                 Cancel

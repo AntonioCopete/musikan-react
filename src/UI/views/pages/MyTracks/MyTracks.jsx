@@ -7,7 +7,6 @@ import UserAvatar from '../../components/UserAvatar/UserAvatar'
 import UserMenu from '../../components/UserMenu/UserMenu'
 import TrackList from '../../components/TrackList/TrackList'
 import PanelHero from '../../components/PanelHero/PanelHero'
-import UploadSongModalContainer from '../../components/UploadModal/UploadSongModalContainer/UploadSongModalContainer'
 
 import { Header, Main } from '../../layout/Layout.styles'
 
@@ -39,7 +38,6 @@ function MySongs() {
         </PanelHero>
       </Header>
       <Main>
-        <UploadSongModalContainer reload={getTracks} />
         {<TrackList tracks={tracks} owner={true} reload={getTracks} />}
       </Main>
     </>

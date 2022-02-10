@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import pic from '../../../img/noImage.jpg'
+
 import api from '../../../../api'
 
 import TrackTable from '../../components/TrackTable/TrackTable'
@@ -65,29 +65,29 @@ function PlaylistDetail() {
       </Header>
       <Main>
         <PlaylistWrapper>
-          <TrackTable
-            button={
-              tracks.length > 0 ? (
-                <AddTracksModalContainer tracks={tracks} reload={getPlaylist} />
-              ) : null
-            }
-          >
-            {tracks && tracks.length > 0 ? (
-              tracks.map((track, index) => (
+          {tracks && tracks.length > 0 ? (
+            <TrackTable
+              button={
+                tracks.length > 0 ? (
+                  <AddTracksModalContainer
+                    tracks={tracks}
+                    reload={getPlaylist}
+                  />
+                ) : null
+              }
+            >
+              {tracks.map((track, index) => (
                 <TrackItem
-                  // key={track._id}
                   key={index}
                   index={index + 1}
                   name={track.name}
                   thumbnail={track.thumbnail}
                 />
-              ))
-            ) : (
-              <tr>
-                <td>No tracks yet in this playlist</td>
-              </tr>
-            )}
-          </TrackTable>
+              ))}
+            </TrackTable>
+          ) : (
+            <p>No tracks yet in this playlist</p>
+          )}
         </PlaylistWrapper>
       </Main>
     </>

@@ -2,16 +2,16 @@ import { Image } from './TrackItem.styles'
 
 function TrackItem({ index, name, thumbnail, genre, user, action }) {
   return (
-    <tr>
-      <td>{index}</td>
-      <td>
+    <>
+      <span>{index}</span>
+      <span>
         <Image src={thumbnail} alt={thumbnail} />
-      </td>
-      <td>{name}</td>
-      <td>{user}</td>
-      <td>{genre}</td>
-      <td>{action}</td>
-    </tr>
+      </span>
+      <span>{name}</span>
+      <span>{user}</span>
+      <span>{genre}</span>
+      <span>{action}</span>
+    </>
   )
 }
 

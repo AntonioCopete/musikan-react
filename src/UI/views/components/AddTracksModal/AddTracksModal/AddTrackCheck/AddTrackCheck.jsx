@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { RiAddBoxLine, RiAddBoxFill } from 'react-icons/ri'
+import { IconLine, IconFill } from './AddTrackCheck.styles'
 
 function AddTrackCheck({ trackId, setSelectedTracksToAdd }) {
   const [addTrackCheck, setAddTrackCheck] = useState(false)
@@ -19,13 +19,13 @@ function AddTrackCheck({ trackId, setSelectedTracksToAdd }) {
   return (
     <>
       {addTrackCheck ? (
-        <RiAddBoxFill
+        <IconFill
           onClick={() => {
             handleClick('remove')
           }}
         />
       ) : (
-        <RiAddBoxLine
+        <IconLine
           onClick={() => {
             handleClick('add')
           }}

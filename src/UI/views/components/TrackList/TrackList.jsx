@@ -1,60 +1,61 @@
 import { useDispatch, useSelector } from 'react-redux'
+import UploadSongModalContainer from '../UploadModal/UploadSongModalContainer/UploadSongModalContainer'
 
 import InfoMenu from '../InfoMenu/InfoMenu'
 import LikeDislike from '../LikeDislike/LikeDislike'
 
 import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
 
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import Avatar from '@mui/material/Avatar'
-
-import { ItemText } from './TrackList.styles'
+import { ActionContent } from './TrackList.styles'
+import { TrackWrapper, TrackGrid } from '../TrackTable/TrackTable.styles'
+import { Image } from '../TrackTable/TrackItem.styles'
 
 function TrackList({ tracks, owner, isFavorites, reload }) {
   const dispatch = useDispatch()
   const { _id } = useSelector((state) => state.auth.currentUser)
+
   const handlePlay = (id) => {
     dispatch(getCurrentTrack(id))
   }
 
   return (
-    <List dense sx={{ width: '100%' }}>
+    <TrackWrapper>
+      <TrackGrid header>
+        <span>{owner && <UploadSongModalContainer reload={reload} />}</span>
+        <span>COVER</span>
+        <span>TRACK</span>
+        <span>ARTIST</span>
+        <span>GENRE</span>
+        <span></span>
+      </TrackGrid>
+
       {tracks.length > 0 &&
-        tracks.map((value) => {
-          const labelId = `checkbox-list-secondary-label-${value._id}`
-          return (
-            <ListItem
-              key={value._id}
-              secondaryAction={
-                <LikeDislike
-                  initialState={isFavorites ? true : value.like}
-                  userId={_id}
-                  id={value._id}
-                  isFavorites={isFavorites}
-                  reload={reload}
-                />
-              }
-            >
-              <ListItemButton onClick={() => handlePlay(value._id)}>
-                <ListItemAvatar>
-                  <Avatar
-                    alt={`Avatar n°${value + 1}`}
-                    src={value.thumbnail}
-                    variant="square"
-                  />
-                </ListItemAvatar>
-                <ItemText>{value.name}</ItemText>
-                <ItemText id={labelId} primary={`Song ${value.name}`} />
-                <ItemText>{value.genre}</ItemText>
-              </ListItemButton>
+        tracks.map((value, index) => (
+          <TrackGrid>
+            <span>{index + 1}</span>
+            <span onClick={() => handlePlay(value._id)}>
+              <Image
+                src={value.thumbnail}
+                alt={value.thumbnail}
+                onClick={() => handlePlay(value._id)}
+              />
+            </span>
+            <span>{value.name}</span>
+            <span>{'user'}</span>
+            <span>{value.genre}</span>
+            <ActionContent>
+              <LikeDislike
+                initialState={isFavorites ? true : value.like}
+                userId={_id}
+                id={value._id}
+                isFavorites={isFavorites}
+                reload={reload}
+              />
               {owner && <InfoMenu id={value._id} reload={reload} />}
-            </ListItem>
-          )
-        })}
-    </List>
+            </ActionContent>
+          </TrackGrid>
+        ))}
+    </TrackWrapper>
   )
 }
 

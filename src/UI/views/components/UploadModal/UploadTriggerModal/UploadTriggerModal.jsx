@@ -3,7 +3,7 @@ import { BsPlusLg } from 'react-icons/bs'
 
 function UploadTriggerModal({ handleOpen }) {
   return (
-    <SquaredButton onClick={handleOpen}>
+    <SquaredButton small onClick={handleOpen}>
       <BsPlusLg />
     </SquaredButton>
   )
