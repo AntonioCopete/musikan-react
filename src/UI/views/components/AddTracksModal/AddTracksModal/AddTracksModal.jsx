@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react'
+import { useState, useLayoutEffect, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -35,6 +35,11 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(() => {
+    getTracksToAdd()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tracks])
+
   const getTracksToAdd = async () => {
     const headers = { _id: _id }
     const tracksIds = tracks.map((track) => track._id)
@@ -50,7 +55,7 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
       .addTrackstoPlaylist({ _id: _id }, { tracks: selectedTracksToAdd }, id)
       .then((response) => {
         if (response.data.success) {
-          getTracksToAdd()
+          setSelectedTracksToAdd([])
           reload()
           setDisableSaveBtn(false)
           handleClose()
