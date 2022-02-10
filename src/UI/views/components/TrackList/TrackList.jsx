@@ -42,7 +42,7 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
             </span>
             <span>{value.name}</span>
             <span>{'user'}</span>
-            <span>{value.genre}</span>
+            <span>{value.genre.name}</span>
             <ActionContent>
               <LikeDislike
                 initialState={isFavorites ? true : value.like}
