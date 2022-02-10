@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useState, useLayoutEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import api from '../../../../../api'
 
@@ -22,7 +22,6 @@ import {
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 import { ItemText } from './AddTracksModal.styles'
-import { useEffect } from 'react'
 
 function AddTracksModal({ open, handleClose, reload, tracks }) {
   const { id } = useParams()
@@ -31,14 +30,16 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
   const [disableSaveBtn, setDisableSaveBtn] = useState(false)
   const [tracksToAdd, setTracksToAdd] = useState()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getTracksToAdd()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getTracksToAdd = async () => {
     const headers = { _id: _id }
-    const response = await api.getTracksToAdd(headers, tracks)
+    const tracksIds = tracks.map((track) => track._id)
+    const body = { tracks: tracksIds }
+    const response = await api.getTracksToAdd(headers, body)
     setTracksToAdd(response.data.data)
   }
 
@@ -48,8 +49,8 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
     api
       .addTrackstoPlaylist({ _id: _id }, { tracks: selectedTracksToAdd }, id)
       .then((response) => {
-        console.log(response)
         if (response.data.success) {
+          getTracksToAdd()
           reload()
           setDisableSaveBtn(false)
           handleClose()

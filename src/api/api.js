@@ -127,12 +127,12 @@ function makeApi(request = makeRequest()) {
     })
   }
 
-  function getTracksToAdd(headers, tracks) {
+  function getTracksToAdd(headers, body) {
     return request({
       url: `/tracks/filter`,
       requestMethod: 'GET',
       headers: headers,
-      body: { tracks: tracks },
+      body: body,
     })
   }
 
