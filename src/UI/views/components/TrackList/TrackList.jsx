@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+import UploadSongModalContainer from '../UploadModal/UploadSongModalContainer/UploadSongModalContainer'
 
 import InfoMenu from '../InfoMenu/InfoMenu'
 import LikeDislike from '../LikeDislike/LikeDislike'
@@ -20,7 +21,7 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
   return (
     <TrackWrapper>
       <TrackGrid header>
-        <span></span>
+        <span>{owner && <UploadSongModalContainer reload={reload} />}</span>
         <span>COVER</span>
         <span>TRACK</span>
         <span>ARTIST</span>
