@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import pic from '../../../img/noImage.jpg'
+
 import api from '../../../../api'
 
 import TrackTable from '../../components/TrackTable/TrackTable'
