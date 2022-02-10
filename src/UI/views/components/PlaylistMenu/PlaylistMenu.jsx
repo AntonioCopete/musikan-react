@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import api from '../../../../api'
 
@@ -13,9 +13,10 @@ import {
   RiDeleteBinFill,
 } from 'react-icons/ri'
 
-function PlaylistMenu({ playlistId, reload, owner }) {
+function PlaylistMenu({ playlistId, owner }) {
   const { _id } = useSelector((state) => state.auth.currentUser)
-  // const navigate = useNavigate()
+  const { id } = useParams()
+  const navigate = useNavigate()
   const [shareMessage, setShareMessage] = useState('Share')
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -30,7 +31,7 @@ function PlaylistMenu({ playlistId, reload, owner }) {
   }
 
   const handleEdit = () => {
-    // navigate(`../edit-song/${id}`)
+    navigate(`../edit-playlist/${id}`)
   }
 
   const handleShare = () => {
@@ -45,7 +46,7 @@ function PlaylistMenu({ playlistId, reload, owner }) {
   const handleDelete = async () => {
     const response = await api.deletePlaylist({ _id: _id }, playlistId)
     if (response.data.success) {
-      reload()
+      navigate(-1)
     } else {
       console.log('Something went wrong')
     }

@@ -39,7 +39,7 @@ function PlaylistDetail() {
     setOwned(response.data.data.owned)
     setFollow(response.data.data.followed)
     setTracks(response.data.data.playlistDetails.tracks)
-    console.log(response.data.data.playlistDetails)
+    // console.log(response)
   }
 
   return (
@@ -56,11 +56,7 @@ function PlaylistDetail() {
                 )}
                 <HeroTitle>
                   <h1>{playlist?.name}</h1>
-                  <PlaylistMenu
-                    playlistId={id}
-                    owner={owned}
-                    reload={getPlaylist}
-                  />
+                  <PlaylistMenu playlistId={id} owner={owned} />
                 </HeroTitle>
               </HeroInfo>
             </HeroInfoContent>

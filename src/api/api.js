@@ -160,6 +160,15 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function updatePlaylistInfo(headers, body, id) {
+    return request({
+      url: `/playlist/update/${id}`,
+      requestMethod: 'PATCH',
+      headers: headers,
+      body: body,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -180,6 +189,7 @@ function makeApi(request = makeRequest()) {
     getTracksForPlaylist: getTracksForPlaylist,
     deletePlaylist: deletePlaylist,
     followPlaylist: followPlaylist,
+    updatePlaylistInfo: updatePlaylistInfo,
   }
 }
 

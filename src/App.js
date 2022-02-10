@@ -11,15 +11,15 @@ import * as ROUTES from './routes/routes'
 import PrivateRoute from './ui/views/components/PrivateRoute/PrivateRoute'
 import Auth from './ui/views/pages/Auth/Auth'
 import ResetPassword from './ui/views/pages/ResetPassword/ResetPassword'
+import Layout from './ui/views/layout/Layout'
 import Dashboard from './ui/views/pages/Dashboard/Dashboard'
 import Profile from './ui/views/pages/Profile/Profile'
 import MyTracks from './ui/views/pages/MyTracks/MyTracks'
-import MyPlaylists from './ui/views/pages/MyPlaylists/MyPlaylists'
 import Favourites from './ui/views/pages/Favourites/Favourites'
 import EditTrack from './ui/views/pages/EditTrack/EditTrack'
+import MyPlaylists from './ui/views/pages/MyPlaylists/MyPlaylists'
 import PlaylistDetail from './ui/views/pages/PlaylistDetail/PlaylistDetail'
-
-import Layout from './ui/views/layout/Layout'
+import EditPlaylist from './ui/views/pages/EditPlaylist/EditPlaylist'
 
 function App() {
   // const navigate = useNavigate()
@@ -111,6 +111,14 @@ function App() {
           element={
             <PrivateRoute>
               <PlaylistDetail />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={ROUTES.EDIT_PLAYLIST}
+          element={
+            <PrivateRoute>
+              <EditPlaylist />
             </PrivateRoute>
           }
         />
