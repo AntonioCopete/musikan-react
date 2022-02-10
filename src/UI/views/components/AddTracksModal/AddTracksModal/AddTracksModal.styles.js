@@ -2,20 +2,20 @@ import styled from 'styled-components'
 import ListItemText from '@mui/material/ListItemText'
 
 export const ModalContent = styled.div`
-position: relative
-  display: flex;
-  flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  height: 90vh;
   max-width: 800px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  transform: translate(-50%, -50%);
   background-color: ${({ theme }) =>
     theme ? theme.colors.background : 'transparent'};
   color: ${({ theme }) => theme.colors.text};
   border-radius: 5px;
-  padding: 3rem;
   border: 3px solid ${({ theme }) => theme.colors.primary};
 
   @media ${(props) => props.theme.breakpoints.md} {
@@ -27,12 +27,14 @@ position: relative
 export const FormModal = styled.form`
   width: 100%;
   padding: 4rem;
+  overflow: auto;
 `
 
 export const SectionModal = styled.section`
   display: flex;
   justify-content: space-between;
   margin: 3rem 0;
+  overflow: auto;
 
   @media ${(props) => props.theme.breakpoints.md} {
     flex-direction: column;
