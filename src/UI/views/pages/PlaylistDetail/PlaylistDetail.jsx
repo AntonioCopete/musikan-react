@@ -67,35 +67,11 @@ function PlaylistDetail() {
       <Main>
         <PlaylistWrapper>
           <TrackTable button={<AddTracksModalContainer />}>
-            <TrackItem
-              id={1}
-              name={'titulo de cancion'}
-              thumbnail={pic}
-              genre={'roca'}
-              user={'Pepis band'}
-              action={'like'}
-            />
-            <TrackItem
-              id={1}
-              name={'titulo de cancion'}
-              thumbnail={pic}
-              genre={'roca'}
-              user={'Pepis band'}
-              action={'add'}
-            />
-            <TrackItem
-              id={1}
-              name={'titulo de cancion'}
-              thumbnail={pic}
-              genre={'roca'}
-              user={'Pepis band'}
-              action={'add'}
-            />
-
-            {/* {tracks && tracks.length > 0 ? (
-              tracks.map((track) => (
+            {tracks && tracks.length > 0 ? (
+              tracks.map((track, index) => (
                 <TrackItem
-                  id={track._id}
+                  key={track._id}
+                  index={index + 1}
                   name={track.name}
                   thumbnail={track.thumbnail}
                 />
@@ -104,7 +80,7 @@ function PlaylistDetail() {
               <tr>
                 <td>No tracks yet in this playlist</td>
               </tr>
-            )} */}
+            )}
           </TrackTable>
         </PlaylistWrapper>
       </Main>

@@ -1,9 +1,9 @@
 import { Image } from './TrackItem.styles'
 
-function TrackItem({ id, name, thumbnail, genre, user, action }) {
+function TrackItem({ index, name, thumbnail, genre, user, action }) {
   return (
     <tr>
-      <td>{id}</td>
+      <td>{index}</td>
       <td>
         <Image src={thumbnail} alt={thumbnail} />
       </td>
