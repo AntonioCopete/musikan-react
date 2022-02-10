@@ -41,7 +41,7 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
               />
             </span>
             <span>{value.name}</span>
-            <span>{'user'}</span>
+            <span>{value.userId.userName}</span>
             <span>{value.genre.name}</span>
             <ActionContent>
               <LikeDislike
