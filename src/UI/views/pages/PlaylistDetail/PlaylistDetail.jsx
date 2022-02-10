@@ -39,7 +39,6 @@ function PlaylistDetail() {
     setOwned(response.data.data.owned)
     setFollow(response.data.data.followed)
     setTracks(response.data.data.playlistDetails.tracks)
-    // console.log(response)
   }
 
   return (
@@ -66,7 +65,11 @@ function PlaylistDetail() {
       </Header>
       <Main>
         <PlaylistWrapper>
-          <TrackTable button={<AddTracksModalContainer />}>
+          <TrackTable
+            button={
+              <AddTracksModalContainer tracks={tracks} reload={getPlaylist} />
+            }
+          >
             <TrackItem
               id={1}
               name={'titulo de cancion'}

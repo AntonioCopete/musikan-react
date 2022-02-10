@@ -127,11 +127,12 @@ function makeApi(request = makeRequest()) {
     })
   }
 
-  function getTracksForPlaylist(headers) {
+  function getTracksToAdd(headers, tracks) {
     return request({
-      // url: `/playlist/${id}`,
+      url: `/tracks/filter`,
       requestMethod: 'GET',
       headers: headers,
+      body: { tracks: tracks },
     })
   }
 
@@ -143,10 +144,10 @@ function makeApi(request = makeRequest()) {
     })
   }
 
-  function addTrackstoPlaylist(headers, body) {
+  function addTrackstoPlaylist(headers, body, id) {
     return request({
-      // url: `/playlist/${id}`,
-      requestMethod: 'POST',
+      url: `/playlist/${id}`,
+      requestMethod: 'PATCH',
       headers: headers,
       body: body,
     })
@@ -186,7 +187,7 @@ function makeApi(request = makeRequest()) {
     createPlaylist: createPlaylist,
     getPlaylist: getPlaylist,
     addTrackstoPlaylist: addTrackstoPlaylist,
-    getTracksForPlaylist: getTracksForPlaylist,
+    getTracksToAdd: getTracksToAdd,
     deletePlaylist: deletePlaylist,
     followPlaylist: followPlaylist,
     updatePlaylistInfo: updatePlaylistInfo,

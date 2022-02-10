@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import ListItemText from '@mui/material/ListItemText'
 
 export const ModalContent = styled.div`
 position: relative
@@ -83,4 +84,8 @@ export const FooterModal = styled.footer`
   button {
     margin-left: 2rem;
   }
+`
+
+export const ItemText = styled(ListItemText)`
+  color: ${({ theme }) => theme.colors.text};
 `
