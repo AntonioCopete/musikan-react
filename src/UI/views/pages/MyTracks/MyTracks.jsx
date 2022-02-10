@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 
 import api from '../../../../api'
 
+import UserAvatar from '../../components/UserAvatar/UserAvatar'
+import UserMenu from '../../components/UserMenu/UserMenu'
 import TrackList from '../../components/TrackList/TrackList'
 import PanelHero from '../../components/PanelHero/PanelHero'
 import UploadSongModalContainer from '../../components/UploadModal/UploadSongModalContainer/UploadSongModalContainer'
@@ -12,6 +14,7 @@ import { Header, Main } from '../../layout/Layout.styles'
 function MySongs() {
   const { _id } = useSelector((state) => state.auth.currentUser)
   const [tracks, setTracks] = useState([])
+  const [showUserMenu, setShowUserMenu] = useState(false)
 
   useLayoutEffect(() => {
     getTracks()
@@ -27,6 +30,11 @@ function MySongs() {
     <>
       <Header>
         <PanelHero>
+          <UserAvatar
+            showUserMenu={showUserMenu}
+            setShowUserMenu={setShowUserMenu}
+          />
+          {showUserMenu && <UserMenu />}
           <h1>My Tracks</h1>
         </PanelHero>
       </Header>
