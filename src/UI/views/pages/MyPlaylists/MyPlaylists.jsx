@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import CreatePlaylistModalContainer from '../../components/CreatePlaylistModal/CreatePlaylistModalContainer/CreatePlaylistModalContainer'
 import api from '../../../../api'
 
+import UserAvatar from '../../components/UserAvatar/UserAvatar'
+import UserMenu from '../../components/UserMenu/UserMenu'
 import PanelHero from '../../components/PanelHero/PanelHero'
 import Playlist from './Playlist/Playlist'
 
@@ -12,6 +14,7 @@ import { CreateWrapper } from './MyPlaylists.styles'
 function MyPlaylists() {
   const { _id } = useSelector((state) => state.auth.currentUser)
   const [playlists, setPlaylists] = useState({})
+  const [showUserMenu, setShowUserMenu] = useState(false)
 
   useLayoutEffect(() => {
     getUserPlaylists()
@@ -26,6 +29,11 @@ function MyPlaylists() {
     <>
       <Header>
         <PanelHero>
+          <UserAvatar
+            showUserMenu={showUserMenu}
+            setShowUserMenu={setShowUserMenu}
+          />
+          {showUserMenu && <UserMenu />}
           <h1>My Playlists</h1>
         </PanelHero>
       </Header>
