@@ -36,6 +36,7 @@ export const Header = styled.header`
 export const Main = styled.main`
   grid-area: main;
   padding: 2rem;
+  overflow: auto;
 `
 export const Footer = styled.footer`
   grid-area: footer;

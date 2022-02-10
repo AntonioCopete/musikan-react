@@ -41,7 +41,7 @@ function InfoMenu({ id, reload }) {
   }
 
   return (
-    <section>
+    <>
       <IconButton
         aria-label="more"
         id="long-button"
@@ -81,7 +81,7 @@ function InfoMenu({ id, reload }) {
           <RiDeleteBinFill />
         </Item>
       </Menu>
-    </section>
+    </>
   )
 }
 

@@ -39,7 +39,6 @@ function PlaylistDetail() {
     setOwned(response.data.data.owned)
     setFollow(response.data.data.followed)
     setTracks(response.data.data.playlistDetails.tracks)
-    // console.log(response)
   }
 
   return (
@@ -77,9 +76,7 @@ function PlaylistDetail() {
                 />
               ))
             ) : (
-              <tr>
-                <td>No tracks yet in this playlist</td>
-              </tr>
+              <p>No tracks yet in this playlist</p>
             )}
           </TrackTable>
         </PlaylistWrapper>

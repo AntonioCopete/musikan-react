@@ -63,5 +63,5 @@ export const HeroTitle = styled.div`
 `
 
 export const PlaylistWrapper = styled.div`
-  outline: 1px dashed white;
+  /* outline: 1px dashed white; */
 `

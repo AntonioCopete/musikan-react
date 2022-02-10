@@ -1,21 +1,19 @@
-import { Table } from './TrackTable.styles'
+import { TrackWrapper, TrackGrid } from './TrackTable.styles'
 
 function TrackTable({ button, children }) {
   return (
-    <Table>
-      <thead>
-        <tr>
-          <td>{button}</td>
-          <td>COVER</td>
-          <td>TRACK</td>
-          <td>ARTIST</td>
-          <td>GENRE</td>
-          <td>{'action'}</td>
-        </tr>
-      </thead>
+    <TrackWrapper>
+      <TrackGrid header>
+        <span>{button}</span>
+        <span>COVER</span>
+        <span>TRACK</span>
+        <span>ARTIST</span>
+        <span>GENRE</span>
+        <span>{'action'}</span>
+      </TrackGrid>
 
-      <tbody>{children}</tbody>
-    </Table>
+      <TrackGrid>{children}</TrackGrid>
+    </TrackWrapper>
   )
 }
 

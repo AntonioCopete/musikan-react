@@ -1,55 +1,17 @@
 import styled from 'styled-components'
-import ListItemText from '@mui/material/ListItemText'
 
-export const ItemText = styled(ListItemText)`
-  color: ${({ theme }) => theme.colors.text};
+export const TrackWrapper = styled.ul`
+  padding: 1rem 0;
 `
-
-export const Table = styled.table`
+export const TrackGrid = styled.li`
   display: grid;
-  border-collapse: collapse;
-  min-width: 100%;
-  grid-template-columns:
-    minmax(3rem, 7rem)
-    minmax(6rem, 10rem)
-    minmax(6rem, 1fr)
-    minmax(6rem, 1fr)
-    minmax(6rem, 1fr)
-    minmax(3rem, 7rem);
+  grid-template-columns: 5rem 10rem repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: ${(props) => props.header && '1px solid white'};
+  color: ${({ theme }) => theme.colors.text};
 
-  thead,
-  tbody,
-  tr {
-    display: contents;
-    cursor: pointer;
-  }
-
-  th,
-  td {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 1rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  th {
-    position: sticky;
-    top: 0;
-    text-align: left;
-  }
-
-  th:last-child {
-    border: 0;
-  }
-
-  td {
-    color: white;
-  }
-
-  tr:hover {
-    background: ${({ theme }) => theme.colors.primaryDark};
+  @media ${(props) => props.theme.breakpoints.md} {
+    ${(props) => props.header && 'display: none'};
   }
 `
