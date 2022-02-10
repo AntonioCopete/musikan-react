@@ -65,11 +65,18 @@ function PlaylistDetail() {
       </Header>
       <Main>
         <PlaylistWrapper>
-          <TrackTable button={<AddTracksModalContainer />}>
+          <TrackTable
+            button={
+              tracks.length > 0 ? (
+                <AddTracksModalContainer tracks={tracks} reload={getPlaylist} />
+              ) : null
+            }
+          >
             {tracks && tracks.length > 0 ? (
               tracks.map((track, index) => (
                 <TrackItem
-                  key={track._id}
+                  // key={track._id}
+                  key={index}
                   index={index + 1}
                   name={track.name}
                   thumbnail={track.thumbnail}

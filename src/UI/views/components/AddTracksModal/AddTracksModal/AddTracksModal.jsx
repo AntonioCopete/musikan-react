@@ -1,10 +1,18 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useState, useLayoutEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import api from '../../../../../api'
 
+import AddTrackCheck from './AddTrackCheck/AddTrackCheck'
 import Spinner from '../../Spinner/Spinner'
+
 import { Modal } from '@mui/material'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemAvatar from '@mui/material/ListItemAvatar'
+import Avatar from '@mui/material/Avatar'
 import {
   ModalContent,
   SectionModal,
@@ -13,54 +21,51 @@ import {
 } from './AddTracksModal.styles'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
+import { ItemText } from './AddTracksModal.styles'
 
-function AddTracksModal({ open, handleClose, reload }) {
-  const playlistAccessInputRef = useRef()
-  const [tracks, setTracks] = useState([])
-  const [error, setError] = useState('')
-  const [disableSaveBtn, setDisableSaveBtn] = useState(false)
-
+function AddTracksModal({ open, handleClose, reload, tracks }) {
+  const { id } = useParams()
   const { _id } = useSelector((state) => state.auth.currentUser)
+  const [selectedTracksToAdd, setSelectedTracksToAdd] = useState([])
+  const [disableSaveBtn, setDisableSaveBtn] = useState(false)
+  const [tracksToAdd, setTracksToAdd] = useState()
 
   useLayoutEffect(() => {
-    // getTracksForPlaylist()
+    getTracksToAdd()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const getTracksForPlaylist = () => {
-    const response = api.getTracksForPlaylist({ _id: _id })
-    setTracks(response.data.data)
+  const getTracksToAdd = async () => {
+    const headers = { _id: _id }
+    const tracksIds = tracks.map((track) => track._id)
+    const body = { tracks: tracksIds }
+    const response = await api.getTracksToAdd(headers, body)
+    setTracksToAdd(response.data.data)
+  }
+
+  const addTrackstoPlaylist = () => {
+    setDisableSaveBtn(true)
+
+    api
+      .addTrackstoPlaylist({ _id: _id }, { tracks: selectedTracksToAdd }, id)
+      .then((response) => {
+        if (response.data.success) {
+          getTracksToAdd()
+          reload()
+          setDisableSaveBtn(false)
+          handleClose()
+        }
+      })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setError('')
-    createPlaylistRequest()
+    addTrackstoPlaylist()
   }
 
   const handleCancel = (e) => {
     e.preventDefault()
     handleClose()
-  }
-
-  const createPlaylistRequest = () => {
-    // if (playlistImageInputRef.current.value === '')
-    //   return setError('You have to select a playlist image')
-
-    setDisableSaveBtn(true)
-
-    const selectedPlaylistAccess = playlistAccessInputRef.current.checked
-
-    const formData = new FormData()
-    formData.append('publicAccessible', selectedPlaylistAccess)
-
-    api.addTrackstoPlaylist({ _id: _id }, formData).then((response) => {
-      console.log(response)
-      if (response.data.success) {
-        reload()
-        setDisableSaveBtn(false)
-        handleClose()
-      }
-    })
   }
 
   return (
@@ -75,7 +80,37 @@ function AddTracksModal({ open, handleClose, reload }) {
           {disableSaveBtn && <Spinner />}
           <h1>Add track to my playlist</h1>
           <FormModal onSubmit={handleSubmit}>
-            <SectionModal></SectionModal>
+            <SectionModal>
+              <List>
+                {tracksToAdd?.map((track, index) => {
+                  const labelId = `checkbox-list-secondary-label-${track._id}`
+                  return (
+                    <ListItem
+                      key={index}
+                      secondaryAction={
+                        <AddTrackCheck
+                          trackId={track._id}
+                          setSelectedTracksToAdd={setSelectedTracksToAdd}
+                        />
+                      }
+                    >
+                      <ListItemButton>
+                        <ListItemAvatar>
+                          <Avatar
+                            alt={`Avatar n°${track + 1}`}
+                            src={track.thumbnail}
+                            variant="square"
+                          />
+                        </ListItemAvatar>
+                        <ItemText>{track.name}</ItemText>
+                        <ItemText id={labelId} primary={`Song ${track.name}`} />
+                        <ItemText>{track.genre}</ItemText>
+                      </ListItemButton>
+                    </ListItem>
+                  )
+                })}
+              </List>
+            </SectionModal>
             <FooterModal>
               <ButtonLink type="text" onClick={handleCancel}>
                 Cancel
