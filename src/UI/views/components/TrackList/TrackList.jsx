@@ -31,7 +31,7 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
 
       {tracks.length > 0 &&
         tracks.map((value, index) => (
-          <TrackGrid>
+          <TrackGrid key={value._id}>
             <span>{index + 1}</span>
             <span onClick={() => handlePlay(value._id)}>
               <Image
@@ -41,8 +41,8 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
               />
             </span>
             <span>{value.name}</span>
-            <span>{value.userId.userName}</span>
-            <span>{value.genre.name}</span>
+            <span>{value.user.userName}</span>
+            <span>{value.genre}</span>
             <ActionContent>
               <LikeDislike
                 initialState={isFavorites ? true : value.like}

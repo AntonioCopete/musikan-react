@@ -36,9 +36,7 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
 
   const getTracksToAdd = async () => {
     const headers = { _id: _id }
-    const tracksIds = tracks.map((track) => track._id)
-    const body = { tracks: tracksIds }
-    const response = await api.getTracksToAdd(headers, body)
+    const response = await api.getTracksToAdd(headers, id)
     setTracksToAdd(response.data.data)
   }
 

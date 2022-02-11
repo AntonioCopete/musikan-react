@@ -127,12 +127,11 @@ function makeApi(request = makeRequest()) {
     })
   }
 
-  function getTracksToAdd(headers, body) {
+  function getTracksToAdd(headers, playlistId) {
     return request({
-      url: `/tracks/filter`,
-      requestMethod: 'PUT', // AXIOS CAN'T HANDLE GETS WITH BODY
+      url: `/tracks/filter/${playlistId}`,
+      requestMethod: 'GET',
       headers: headers,
-      body: body,
     })
   }
 
