@@ -38,18 +38,18 @@ function MyPlaylists() {
         </PanelHero>
       </Header>
       <Main>
-        {playlists?.owned?.length > 0 ? (
-          <CreateWrapper>
+        <CreateWrapper>
+          {playlists?.owned?.length > 0 ? (
             <Playlist
               list={playlists.owned}
               owned={true}
               reload={getUserPlaylists}
             />
-            <CreatePlaylistModalContainer reload={getUserPlaylists} />
-          </CreateWrapper>
-        ) : (
-          <p>You haven't created any playlist yet</p>
-        )}
+          ) : (
+            <p>You haven't created any playlist yet</p>
+          )}
+          <CreatePlaylistModalContainer reload={getUserPlaylists} />
+        </CreateWrapper>
         <h2>Playlists you follow</h2>
         {playlists?.followed?.length > 0 ? (
           <Playlist
