@@ -11,7 +11,7 @@ import { FormProfile } from './ProfileForm.styles'
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'
 
 function ProfileForm() {
-  const { userName, email, _id } = useSelector(
+  const { userName, email, _id, auth_provider } = useSelector(
     (state) => state.auth.currentUser
   )
   const [userDifference, setUserDifference] = useState()
@@ -23,12 +23,15 @@ function ProfileForm() {
   const confirmPasswordRef = useRef()
   const dispatch = useDispatch()
 
+  const isAuthWithEmail = auth_provider === 'password' ? true : false
+
   useEffect(() => {
     if (userDifference === null) return
 
     dispatch(updateUserInfo(userDifference, _id))
     setUserDifference(null)
-  }, [dispatch, userDifference]) // ! REVISAR USEEFFECT
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, userDifference])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -78,10 +81,12 @@ function ProfileForm() {
           placeholder={userName}
         />
       </InputGroup>
-      <InputGroup>
-        <FaEnvelope />
-        <input type="email" defaultValue={email} ref={emailInput} />
-      </InputGroup>
+      {isAuthWithEmail && (
+        <InputGroup>
+          <FaEnvelope />
+          <input type="email" defaultValue={email} ref={emailInput} />
+        </InputGroup>
+      )}
       <h2>Change password</h2>
       <InputGroup>
         <FaLock />
