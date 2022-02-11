@@ -82,3 +82,11 @@ export const ProgressBar = styled.input`
     appearance: none;
   }
 `
+
+export const PlayedTime = styled.span`
+  padding-right: 01rem;
+`
+
+export const TotalTime = styled.span`
+  padding-left: 1rem;
+`
