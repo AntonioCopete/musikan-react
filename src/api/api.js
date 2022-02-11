@@ -169,6 +169,15 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function orderPlaylistTracks(headers, body, id) {
+    return request({
+      url: `/playlist/order/${id}`,
+      requestMethod: 'PUT',
+      headers: headers,
+      body: body,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -190,6 +199,7 @@ function makeApi(request = makeRequest()) {
     deletePlaylist: deletePlaylist,
     followPlaylist: followPlaylist,
     updatePlaylistInfo: updatePlaylistInfo,
+    orderPlaylistTracks: orderPlaylistTracks,
   }
 }
 

@@ -19,6 +19,7 @@ import {
   HeroTitle,
   HeroInfo,
 } from './PlaylistDetail.styles.js'
+import Playlist from '../MyPlaylists/Playlist/_PlaylisDraggable'
 
 function PlaylistDetail() {
   const { id } = useParams()
@@ -65,7 +66,7 @@ function PlaylistDetail() {
       </Header>
       <Main>
         <PlaylistWrapper>
-          <TrackTable
+          {/* <TrackTable
             button={
               <AddTracksModalContainer tracks={tracks} reload={getPlaylist} />
             }
@@ -80,7 +81,9 @@ function PlaylistDetail() {
                 user={track.user.userName}
               />
             ))}
-          </TrackTable>
+          </TrackTable> */}
+
+          <Playlist list={tracks} />
         </PlaylistWrapper>
       </Main>
     </>
