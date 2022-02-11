@@ -1,6 +1,6 @@
 import { useState, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
-import CreatePlaylistModalContainer from '../../components/CreatePlaylistModal/CreatePlaylistModalContainer/CreatePlaylistModalContainer'
+import PlaylistModal from '../../components/PlaylistModal/CreatePlaylistModalContainer/CreatePlaylistModalContainer'
 import api from '../../../../api'
 
 import UserAvatar from '../../components/UserAvatar/UserAvatar'
@@ -9,7 +9,7 @@ import PanelHero from '../../components/PanelHero/PanelHero'
 import Playlist from './Playlist/Playlist'
 
 import { Header, Main } from '../../layout/Layout.styles'
-import { CreateWrapper } from './MyPlaylists.styles'
+import { CreateWrapper, ButtonModal } from './MyPlaylists.styles'
 
 function MyPlaylists() {
   const { _id } = useSelector((state) => state.auth.currentUser)
@@ -39,16 +39,16 @@ function MyPlaylists() {
       </Header>
       <Main>
         <CreateWrapper>
-          {playlists?.owned?.length > 0 ? (
+          {playlists?.owned?.length > 0 && (
             <Playlist
               list={playlists.owned}
               owned={true}
               reload={getUserPlaylists}
             />
-          ) : (
-            <p>You haven't created any playlist yet</p>
           )}
-          <CreatePlaylistModalContainer reload={getUserPlaylists} />
+          <ButtonModal>
+            <PlaylistModal reload={getUserPlaylists} />
+          </ButtonModal>
         </CreateWrapper>
         <h2>Playlists you follow</h2>
         {playlists?.followed?.length > 0 ? (

@@ -34,7 +34,7 @@ export const SquaredButton = styled(Button)`
   align-items: center;
   width: ${(props) => (props.big ? '13rem' : '3.5rem')};
   height: ${(props) => (props.big ? '13rem' : '3.5rem')};
-  margin: ${(props) => (props.small ? '0' : '2rem')};
+  margin: 0;
   color: ${({ theme }) => theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
   border-radius: 0.5rem;
