@@ -29,15 +29,17 @@ function Playlist({ list, owned, reload }) {
   const playlistId = useParams().id
 
   useEffect(() => {
+    // console.log(list)
     setPlaylist(list)
   }, [list])
 
-  const handleDragEnd = (result) => {
+  const handleDragEnd = async (result) => {
+    // console.log(result)
     const newOrder = {
       track: result.draggableId,
       index: result.destination.index,
     }
-    api.orderPlaylistTracks({ _id: _id }, newOrder, playlistId)
+    await api.orderPlaylistTracks({ _id: _id }, newOrder, playlistId)
   }
 
   return (

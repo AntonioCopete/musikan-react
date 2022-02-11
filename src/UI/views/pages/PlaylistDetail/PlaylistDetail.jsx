@@ -36,10 +36,13 @@ function PlaylistDetail() {
 
   const getPlaylist = async () => {
     const response = await api.getPlaylist({ _id: _id }, id)
+    const orderedTracks = response.data.data.tracks.sort(
+      (a, b) => a.order - b.order
+    )
     setPlaylist(response.data.data)
     setOwned(response.data.data.owned)
     setFollow(response.data.data.followed)
-    setTracks(response.data.data.tracks)
+    setTracks(orderedTracks)
   }
 
   return (
