@@ -51,6 +51,7 @@ function AudioPlayer() {
           width="0"
           onProgress={(e) => onProgress(e)}
         />
+        <span>{calculateTime(playedSeconds)}</span>
         <PlayPauseBtn>
           {isPlaying ? (
             <FaPause onClick={() => setIsPlaying(false)} />
@@ -58,10 +59,9 @@ function AudioPlayer() {
             <FaPlay onClick={() => setIsPlaying(true)} />
           )}
         </PlayPauseBtn>
+        <span>{calculateTime(totalSeconds)}</span>
       </AudioGroup>
       <AudioGroup progress>
-        {/* current time */}
-        <span>{calculateTime(playedSeconds)}</span>
         <ProgressBar
           type="range"
           progress="value"
@@ -69,8 +69,6 @@ function AudioPlayer() {
           onChange={(e) => setPlayedSeconds(Number(e))}
           total={totalSeconds}
         />
-        {/* duration */}
-        <span>{calculateTime(totalSeconds)}</span>
       </AudioGroup>
     </AudioWrapper>
   )

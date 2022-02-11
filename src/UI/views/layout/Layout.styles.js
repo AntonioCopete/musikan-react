@@ -9,8 +9,7 @@ export const GridLayout = styled.div`
     'aside footer';
   grid-template-rows: 20rem 1fr 15rem 10rem;
   grid-template-columns: 12% 1fr;
-  grid-row-gap: 1rem;
-  grid-column-gap: 1rem;
+  gap: 1rem;
   height: 100vh;
   margin: 0;
 
@@ -27,6 +26,7 @@ export const GridLayout = styled.div`
       'nav';
     grid-template-rows: 20rem 1fr 8rem 8rem 5rem;
     grid-template-columns: 1fr;
+    gap: 0;
   }
 `
 
