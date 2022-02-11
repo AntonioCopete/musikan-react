@@ -24,7 +24,7 @@ export const GridLayout = styled.div`
       'aside'
       'footer'
       'nav';
-    grid-template-rows: 20rem 1fr 8rem 8rem 5rem;
+    grid-template-rows: 20rem 1fr 6rem 7rem 5rem;
     grid-template-columns: 1fr;
     gap: 0;
   }
@@ -40,7 +40,12 @@ export const Main = styled.main`
 `
 export const Footer = styled.footer`
   grid-area: footer;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    align-self: end;
+  }
 `
 export const Aside = styled.aside`
   grid-area: aside;
+  align-self: end;
 `
