@@ -1,15 +1,17 @@
 import { Avatar } from '@mui/material'
 import { AvatarContainer } from './UserAvatar.styles'
 
-import { useSelector } from "react-redux"
+import { useSelector } from 'react-redux'
 
 function UserAvatar({ showUserMenu, setShowUserMenu }) {
-  const { profilePicture } = useSelector(state => state.auth.currentUser)
+  const { userName, profilePicture } = useSelector(
+    (state) => state.auth.currentUser
+  )
   return (
     <AvatarContainer>
       <Avatar
         src={profilePicture}
-        alt="Firstname Lastname"
+        alt={`${userName}'s profile pic`}
         sx={{ width: 56, height: 56 }}
         onClick={() => {
           setShowUserMenu(!showUserMenu)
