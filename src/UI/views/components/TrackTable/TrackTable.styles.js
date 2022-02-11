@@ -11,7 +11,7 @@ export const TrackGrid = styled.li`
   border-bottom: ${(props) => props.header && '1px solid white'};
   color: ${({ theme }) => theme.colors.text};
 
-  @media ${(props) => props.theme.breakpoints.md} {
+  /* @media ${(props) => props.theme.breakpoints.md} {
     ${(props) => props.header && 'display: none'};
-  }
+  } */
 `

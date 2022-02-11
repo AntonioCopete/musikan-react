@@ -44,13 +44,13 @@ function AudioPlayer() {
     <AudioWrapper>
       <AudioGroup>
         <ReactPlayer
-          className="react-player"
           url={url}
           playing={isPlaying}
           height="0"
           width="0"
           onProgress={(e) => onProgress(e)}
         />
+
         <PlayPauseBtn>
           {isPlaying ? (
             <FaPause onClick={() => setIsPlaying(false)} />
@@ -60,7 +60,6 @@ function AudioPlayer() {
         </PlayPauseBtn>
       </AudioGroup>
       <AudioGroup progress>
-        {/* current time */}
         <span>{calculateTime(playedSeconds)}</span>
         <ProgressBar
           type="range"
@@ -69,7 +68,6 @@ function AudioPlayer() {
           onChange={(e) => setPlayedSeconds(Number(e))}
           total={totalSeconds}
         />
-        {/* duration */}
         <span>{calculateTime(totalSeconds)}</span>
       </AudioGroup>
     </AudioWrapper>

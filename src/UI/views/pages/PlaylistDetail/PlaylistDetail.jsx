@@ -12,7 +12,6 @@ import FollowItem from '../../components/FollowItem/FollowItem'
 
 import { Header, Main } from '../../layout/Layout.styles'
 import {
-  PlaylistWrapper,
   Hero,
   HeroInfoWrapper,
   HeroInfoContent,
@@ -64,24 +63,22 @@ function PlaylistDetail() {
         </Hero>
       </Header>
       <Main>
-        <PlaylistWrapper>
-          <TrackTable
-            button={
-              <AddTracksModalContainer tracks={tracks} reload={getPlaylist} />
-            }
-          >
-            {tracks.map((track, index) => (
-              <TrackItem
-                key={index}
-                index={index + 1}
-                name={track.name}
-                thumbnail={track.thumbnail}
-                genre={track.genre.name}
-                user={track.user.userName}
-              />
-            ))}
-          </TrackTable>
-        </PlaylistWrapper>
+        <TrackTable
+          button={
+            <AddTracksModalContainer tracks={tracks} reload={getPlaylist} />
+          }
+        >
+          {tracks.map((track, index) => (
+            <TrackItem
+              key={index}
+              index={index + 1}
+              name={track.name}
+              thumbnail={track.thumbnail}
+              genre={track.genre.name}
+              user={track.user.userName}
+            />
+          ))}
+        </TrackTable>
       </Main>
     </>
   )

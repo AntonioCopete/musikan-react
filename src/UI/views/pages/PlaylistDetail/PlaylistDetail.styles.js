@@ -61,7 +61,3 @@ export const HeroTitle = styled.div`
     font-size: 5rem;
   }
 `
-
-export const PlaylistWrapper = styled.div`
-  /* outline: 1px dashed white; */
-`
