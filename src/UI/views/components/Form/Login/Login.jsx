@@ -1,17 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import { FormItem } from '../Form.styles'
-import Logo from '../../Logo/Logo'
-import { Button } from '../../../../styles/GlobalComponents/Button'
-import { NavigateLink } from '../../../../styles/GlobalComponents/NavLink'
+import { useDispatch, useSelector } from 'react-redux'
 import * as ROUTES from '../../../../../routes/routes'
-import { InputGroup } from '../../../../styles/GlobalComponents/Input'
-
-import FormGroup from '@mui/material/FormGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
-import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa'
 
 import {
   resetAuthState,
@@ -20,6 +10,16 @@ import {
 } from '../../../../../redux/auth/actions'
 
 import { authSelector } from '../../../../../redux/auth/selectors'
+
+import Logo from '../../Logo/Logo'
+
+import { Button } from '../../../../styles/GlobalComponents/Button'
+import { InputGroup } from '../../../../styles/GlobalComponents/Input'
+import { NavigateLink } from '../../../../styles/GlobalComponents/NavLink'
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa'
+import { FormItem } from '../Form.styles'
 
 function Login() {
   const dispatch = useDispatch()
@@ -116,7 +116,8 @@ function Login() {
       <FormGroup>
         <FormControlLabel
           control={
-            <Checkbox
+            <input
+              type="checkbox"
               checked={rememberEmail}
               onChange={handleRememberEmailCheck}
             />
