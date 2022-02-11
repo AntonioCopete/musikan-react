@@ -89,7 +89,6 @@ function EditPlaylistForm() {
         if (response.data?.success) {
           setDisableSaveBtn(false)
           setSuccess(response.data.success)
-          console.log(response)
           navigate(-1)
         } else {
           setError('Something went wrong')

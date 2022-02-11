@@ -73,7 +73,6 @@ function CreatePlaylistModal({ open, handleClose, reload }) {
     formData.append('publicAccessible', selectedPlaylistAccess)
 
     api.createPlaylist({ _id: _id }, formData).then((response) => {
-      console.log(response)
       if (response.data.success) {
         reload()
         setDisableSaveBtn(false)

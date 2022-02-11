@@ -80,7 +80,6 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
             <TrackWrapper>
               {tracksToAdd?.map((track, index) => (
                 <TrackGrid key={index}>
-                  {console.log(track)}
                   <span>{index + 1}</span>
                   <span>
                     <Image src={track.thumbnail} alt={track.thumbnail} />

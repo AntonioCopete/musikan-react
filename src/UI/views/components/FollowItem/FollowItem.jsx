@@ -9,7 +9,6 @@ function FollowItem({ initialState, userId, id, reload }) {
   const handleClick = async () => {
     const response = await api.followPlaylist({ _id: userId }, id)
     setFollow(response.data.data.followed)
-    console.log(response.data.data.followed)
     if (reload) reload()
   }
 
