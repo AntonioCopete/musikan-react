@@ -80,13 +80,13 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
             <TrackWrapper>
               {tracksToAdd?.map((track, index) => (
                 <TrackGrid key={index}>
+                  {console.log(track)}
                   <span>{index + 1}</span>
                   <span>
                     <Image src={track.thumbnail} alt={track.thumbnail} />
                   </span>
                   <span>{track.name}</span>
-                  {/* <span>{'user'}</span> */}
-                  <span>{track.genre}</span>
+                  <span>{track.userId.userName}</span>
                   <ActionContent>
                     <AddTrackCheck
                       trackId={track._id}

@@ -35,10 +35,10 @@ function PlaylistDetail() {
 
   const getPlaylist = async () => {
     const response = await api.getPlaylist({ _id: _id }, id)
-    setPlaylist(response.data.data.playlistDetails)
+    setPlaylist(response.data.data)
     setOwned(response.data.data.owned)
     setFollow(response.data.data.followed)
-    setTracks(response.data.data.playlistDetails.tracks)
+    setTracks(response.data.data.tracks)
   }
 
   return (
@@ -82,6 +82,8 @@ function PlaylistDetail() {
                   index={index + 1}
                   name={track.name}
                   thumbnail={track.thumbnail}
+                  genre={track.genre.name}
+                  user={track.user.userName}
                 />
               ))}
             </TrackTable>
