@@ -3,17 +3,9 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import api from '../../../../../api'
-import LikeDislike from '../../../components/LikeDislike/LikeDislike'
+import { TrackGrid, TrackWrapper } from './TrackListDraggable.styles'
 
-import PlaylistItem from '../../../components/PlaylistItem/PlaylistItem'
-import { ActionContent } from '../../../components/TrackList/TrackList.styles'
-import { Image } from '../../../components/TrackTable/TrackItem.styles'
-import {
-  TrackGrid,
-  TrackWrapper,
-} from '../../../components/TrackTable/TrackTable.styles'
-// import CreatePlaylistModalContainer from '../../../components/CreatePlaylistModal/CreatePlaylistModalContainer/CreatePlaylistModalContainer'
-import { Wrapper } from './Playist.styles'
+import AddTracksModalContainer from '../../../components/AddTracksModal/AddTracksModalContainer/AddTracksModalContainer'
 
 const reorder = (list, startIndex, endIndex) => {
   const result = [...list]
@@ -30,6 +22,7 @@ function Playlist({ list, owned, reload }) {
 
   useEffect(() => {
     setPlaylist(list)
+    console.log(playlist)
   }, [list])
 
   const handleDragEnd = (result) => {
@@ -62,7 +55,9 @@ function Playlist({ list, owned, reload }) {
       }}
     >
       <TrackGrid header>
-        {/* <span>{owner && <UploadSongModalContainer reload={reload} />}</span> */}
+        <span>
+          <AddTracksModalContainer reload={reload} />
+        </span>
         <span>COVER</span>
         <span>TRACK</span>
         <span>ARTIST</span>
@@ -75,7 +70,6 @@ function Playlist({ list, owned, reload }) {
             {...droppableProvided.droppableProps}
             ref={droppableProvided.innerRef}
           >
-            {/* {owned && <CreatePlaylistModalContainer reload={reload} />} */}
             {playlist &&
               playlist.map((value, index) => {
                 return (
@@ -90,33 +84,11 @@ function Playlist({ list, owned, reload }) {
                         ref={draggableProvided.innerRef}
                         {...draggableProvided.dragHandleProps}
                       >
-                        {/* <PlaylistItem
-                        id={item._id}
-                        name={item.name}
-                        thumbnail={item.thumbnail}
-                      /> */}
                         <TrackGrid key={value._id}>
                           <span>{index + 1}</span>
-                          {/* <span onClick={() => handlePlay(value._id)}>
-                          <Image
-                            src={value.thumbnail}
-                            alt={value.thumbnail}
-                            onClick={() => handlePlay(value._id)}
-                          />
-                        </span> */}
                           <span>{value.name}</span>
                           <span>{value.user.userName}</span>
                           <span>{value.genre.name}</span>
-                          {/* <ActionContent>
-              <LikeDislike
-                initialState={isFavorites ? true : value.like}
-                userId={_id}
-                id={value._id}
-                isFavorites={isFavorites}
-                reload={reload}
-              />
-              {owner && <InfoMenu id={value._id} reload={reload} />}
-            </ActionContent> */}
                         </TrackGrid>
                       </span>
                     )}

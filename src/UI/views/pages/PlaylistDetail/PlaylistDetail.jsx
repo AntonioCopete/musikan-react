@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux'
 
 import api from '../../../../api'
 
-import TrackTable from '../../components/TrackTable/TrackTable'
-import TrackItem from '../../components/TrackTable/TrackItem'
+// import TrackTable from '../../components/TrackTable/TrackTable'
+// import TrackItem from '../../components/TrackTable/TrackItem'
 import PlaylistMenu from '../../components/PlaylistMenu/PlaylistMenu'
-import AddTracksModalContainer from '../../components/AddTracksModal/AddTracksModalContainer/AddTracksModalContainer'
+// import AddTracksModalContainer from '../../components/AddTracksModal/AddTracksModalContainer/AddTracksModalContainer'
 import FollowItem from '../../components/FollowItem/FollowItem'
 
 import { Header, Main } from '../../layout/Layout.styles'
@@ -19,7 +19,7 @@ import {
   HeroTitle,
   HeroInfo,
 } from './PlaylistDetail.styles.js'
-import Playlist from '../MyPlaylists/Playlist/_PlaylisDraggable'
+import TrackListDraggable from './TrackListDraggable/TrackListDraggable'
 
 function PlaylistDetail() {
   const { id } = useParams()
@@ -83,7 +83,7 @@ function PlaylistDetail() {
             ))}
           </TrackTable> */}
 
-          <Playlist list={tracks} />
+          <TrackListDraggable list={tracks} />
         </PlaylistWrapper>
       </Main>
     </>
