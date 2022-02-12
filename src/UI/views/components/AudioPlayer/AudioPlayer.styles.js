@@ -10,6 +10,8 @@ export const AudioWrapper = styled.div`
 
 export const AudioGroup = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 0.5rem 0;
   ${(props) => props.progress && 'width: 100%'};
 `
@@ -79,4 +81,12 @@ export const ProgressBar = styled.input`
   &::-webkit-slider-thumb {
     appearance: none;
   }
+`
+
+export const PlayedTime = styled.span`
+  padding-right: 01rem;
+`
+
+export const TotalTime = styled.span`
+  padding-left: 1rem;
 `

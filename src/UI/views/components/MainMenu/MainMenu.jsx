@@ -33,10 +33,6 @@ function MainMenu() {
           <RiHeart3Fill />
           <MenuName>Favourites</MenuName>
         </MenuItem>
-        {/* <MenuItem to={ROUTES.DASHBOARD}>
-          <BsPlusSquare />
-          <MenuName>Upload</MenuName>
-        </MenuItem> */}
       </MenuList>
     </MenuWrapper>
   )

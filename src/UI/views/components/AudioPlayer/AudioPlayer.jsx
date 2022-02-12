@@ -7,6 +7,8 @@ import {
   AudioGroup,
   PlayPauseBtn,
   ProgressBar,
+  PlayedTime,
+  TotalTime,
 } from './AudioPlayer.styles'
 import { FaPlay, FaPause } from 'react-icons/fa'
 
@@ -44,13 +46,13 @@ function AudioPlayer() {
     <AudioWrapper>
       <AudioGroup>
         <ReactPlayer
-          className="react-player"
           url={url}
           playing={isPlaying}
           height="0"
           width="0"
           onProgress={(e) => onProgress(e)}
         />
+
         <PlayPauseBtn>
           {isPlaying ? (
             <FaPause onClick={() => setIsPlaying(false)} />
@@ -60,8 +62,7 @@ function AudioPlayer() {
         </PlayPauseBtn>
       </AudioGroup>
       <AudioGroup progress>
-        {/* current time */}
-        <span>{calculateTime(playedSeconds)}</span>
+        <PlayedTime>{calculateTime(playedSeconds)}</PlayedTime>
         <ProgressBar
           type="range"
           progress="value"
@@ -69,8 +70,7 @@ function AudioPlayer() {
           onChange={(e) => setPlayedSeconds(Number(e))}
           total={totalSeconds}
         />
-        {/* duration */}
-        <span>{calculateTime(totalSeconds)}</span>
+        <TotalTime>{calculateTime(totalSeconds)}</TotalTime>
       </AudioGroup>
     </AudioWrapper>
   )
