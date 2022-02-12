@@ -6,7 +6,7 @@ import LikeDislike from '../LikeDislike/LikeDislike'
 
 import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
 
-import { ActionContent } from './TrackList.styles'
+import { TrackIndex, ActionContent } from './TrackList.styles'
 import { TrackWrapper, TrackGrid } from '../TrackTable/TrackTable.styles'
 import { Image } from '../TrackTable/TrackItem.styles'
 
@@ -32,7 +32,7 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
       {tracks.length > 0 &&
         tracks.map((value, index) => (
           <TrackGrid key={value._id}>
-            <span>{index + 1}</span>
+            <TrackIndex>{index + 1}</TrackIndex>
             <span onClick={() => handlePlay(value._id)}>
               <Image
                 src={value.thumbnail}
@@ -51,7 +51,7 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
                 isFavorites={isFavorites}
                 reload={reload}
               />
-              {owner && <InfoMenu id={value._id} reload={reload} />}
+              {owner && <InfoMenu white id={value._id} reload={reload} />}
             </ActionContent>
           </TrackGrid>
         ))}

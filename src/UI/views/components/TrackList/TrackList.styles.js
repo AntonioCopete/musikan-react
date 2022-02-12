@@ -5,3 +5,7 @@ export const ActionContent = styled.span`
   justify-content: flex-end;
   align-items: center;
 `
+
+export const TrackIndex = styled.span`
+  align-self: center;
+`
