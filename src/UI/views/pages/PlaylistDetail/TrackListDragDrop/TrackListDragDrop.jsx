@@ -61,7 +61,7 @@ function Playlist({ list, owned, reload }) {
       <TrackHeader button={<AddTracksModalContainer />}>
         <Droppable droppableId="playlists">
           {(droppableProvided) => (
-            <li
+            <div
               {...droppableProvided.droppableProps}
               ref={droppableProvided.innerRef}
             >
@@ -93,7 +93,7 @@ function Playlist({ list, owned, reload }) {
                 })}
 
               {droppableProvided.placeholder}
-            </li>
+            </div>
           )}
         </Droppable>
       </TrackHeader>
