@@ -16,10 +16,12 @@ export const MenuWrapper = styled.nav`
 
 export const MenuList = styled.ul`
   padding: 1rem;
+
   @media ${(props) => props.theme.breakpoints.md} {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 0 1rem;
   }
 `
 

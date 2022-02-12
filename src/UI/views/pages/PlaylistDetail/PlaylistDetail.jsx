@@ -4,22 +4,18 @@ import { useSelector } from 'react-redux'
 
 import api from '../../../../api'
 
-// import TrackTable from '../../components/TrackTable/TrackTable'
-// import TrackItem from '../../components/TrackTable/TrackItem'
 import PlaylistMenu from '../../components/PlaylistMenu/PlaylistMenu'
-// import AddTracksModalContainer from '../../components/AddTracksModal/AddTracksModalContainer/AddTracksModalContainer'
 import FollowItem from '../../components/FollowItem/FollowItem'
 
 import { Header, Main } from '../../layout/Layout.styles'
 import {
-  PlaylistWrapper,
   Hero,
   HeroInfoWrapper,
   HeroInfoContent,
   HeroTitle,
   HeroInfo,
 } from './PlaylistDetail.styles.js'
-import TrackListDraggable from './TrackListDraggable/TrackListDraggable'
+import TrackListDragDrop from './TrackListDragDrop/TrackListDragDrop'
 
 function PlaylistDetail() {
   const { id } = useParams()
@@ -65,26 +61,7 @@ function PlaylistDetail() {
         </Hero>
       </Header>
       <Main>
-        <PlaylistWrapper>
-          {/* <TrackTable
-            button={
-              <AddTracksModalContainer tracks={tracks} reload={getPlaylist} />
-            }
-          >
-            {tracks.map((track, index) => (
-              <TrackItem
-                key={index}
-                index={index + 1}
-                name={track.name}
-                thumbnail={track.thumbnail}
-                genre={track.genre.name}
-                user={track.user.userName}
-              />
-            ))}
-          </TrackTable> */}
-
-          <TrackListDraggable list={tracks} />
-        </PlaylistWrapper>
+        <TrackListDragDrop list={tracks} />
       </Main>
     </>
   )
