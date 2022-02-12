@@ -6,3 +6,9 @@ export const Image = styled.img`
   border-radius: 5px;
   cursor: pointer;
 `
+
+export const Icon = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  font-size: 3rem;
+`
