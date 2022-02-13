@@ -14,10 +14,11 @@ import { authSelector } from '../../../../../redux/auth/selectors'
 import Logo from '../../Logo/Logo'
 
 import { Button } from '../../../../styles/GlobalComponents/Button'
-import { InputGroup } from '../../../../styles/GlobalComponents/Input'
+import {
+  InputGroup,
+  CheckboxGroup,
+} from '../../../../styles/GlobalComponents/Input'
 import { NavigateLink } from '../../../../styles/GlobalComponents/NavLink'
-import FormGroup from '@mui/material/FormGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
 import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa'
 import { FormItem } from '../Form.styles'
 
@@ -112,20 +113,15 @@ function Login() {
       <Button primary type="submit">
         login
       </Button>
-
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <input
-              type="checkbox"
-              checked={rememberEmail}
-              onChange={handleRememberEmailCheck}
-            />
-          }
-          label="Remember email"
+      <CheckboxGroup>
+        <input
+          id="remember"
+          type="checkbox"
+          checked={rememberEmail}
+          onChange={handleRememberEmailCheck}
         />
-      </FormGroup>
-
+        <label htmlFor="remember">Remember email</label>
+      </CheckboxGroup>
       <p className="form__social-text">Or Sign up with social platforms</p>
       <div className="form__social-media">
         <button

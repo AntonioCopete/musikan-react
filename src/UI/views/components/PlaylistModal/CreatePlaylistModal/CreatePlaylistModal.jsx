@@ -16,7 +16,11 @@ import {
 } from './CreatePlaylistModal.styles'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
-import { InputGroup } from '../../../../styles/GlobalComponents/Input'
+import {
+  CheckboxGroup,
+  InputGroup,
+  Textarea,
+} from '../../../../styles/GlobalComponents/Input'
 import { RiMusicFill } from 'react-icons/ri'
 
 import noImage from '../../../../img/noImage.jpg'
@@ -138,23 +142,24 @@ function CreatePlaylistModal({ open, handleClose, reload }) {
                     ref={playlistNameInputRef}
                   />
                 </InputGroup>
-                <InputGroup>
-                  <RiMusicFill />
-                  <textarea
-                    placeholder="Playlist description"
-                    ref={playlistDescriptionInputRef}
-                  />
-                </InputGroup>
-                <input
-                  type="checkbox"
-                  id="accessCheckbox"
-                  checked={accessChecked}
-                  ref={playlistAccessInputRef}
-                  onChange={() => {
-                    setAccessChecked(!accessChecked)
-                  }}
+                <Textarea
+                  placeholder="Playlist description"
+                  ref={playlistDescriptionInputRef}
                 />
-                <label htmlFor="accessCheckbox">This playlist is public</label>
+                <CheckboxGroup>
+                  <input
+                    type="checkbox"
+                    id="accessCheckbox"
+                    checked={accessChecked}
+                    ref={playlistAccessInputRef}
+                    onChange={() => {
+                      setAccessChecked(!accessChecked)
+                    }}
+                  />
+                  <label htmlFor="accessCheckbox">
+                    This playlist is public
+                  </label>
+                </CheckboxGroup>
                 {error && <p>{error}</p>}
               </SectionInputs>
             </SectionModal>

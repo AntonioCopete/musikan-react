@@ -33,8 +33,7 @@ export const InputGroup = styled.div`
     font-weight: 500;
   }
 
-  & select,
-  textarea {
+  & select {
     appearance: none;
     border: none;
     width: fit-content;
@@ -46,8 +45,41 @@ export const InputGroup = styled.div`
       outline: none;
     }
   }
+`
 
-  & textarea {
-    color: red;
+export const CheckboxGroup = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 1rem;
+
+  label {
+    padding-left: 1rem;
+    color: ${(props) => props.theme.colors.text};
+  }
+`
+
+export const Textarea = styled.textarea`
+  max-width: 23.75rem;
+  width: 100%;
+  height: 10rem;
+  padding: 1rem;
+  font-family: ${(props) => props.theme.fonts.main};
+  border-radius: 1.8rem;
+  border: 2px solid transparent;
+  outline: none;
+  background: ${(props) => props.theme.colors.darkGrey};
+  transition: all 0.2s;
+
+  :hover {
+    cursor: pointer;
+    background: ${(props) => props.theme.colors.grey};
+  }
+
+  :focus {
+    color: ${(props) => props.theme.colors.text};
+    background: ${(props) => props.theme.colors.grey};
+    border-color: ${(props) => props.theme.colors.grey};
+    cursor: text;
   }
 `

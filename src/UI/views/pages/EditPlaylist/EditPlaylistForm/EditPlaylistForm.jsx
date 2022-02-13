@@ -5,7 +5,10 @@ import api from '../../../../../api'
 
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
-import { InputGroup } from '../../../../styles/GlobalComponents/Input'
+import {
+  CheckboxGroup,
+  InputGroup,
+} from '../../../../styles/GlobalComponents/Input'
 import { FormEdit, HiddenInput } from './EditPlaylistForm.styles'
 import { FaMusic } from 'react-icons/fa'
 
@@ -149,7 +152,7 @@ function EditPlaylistForm() {
           defaultValue={playlistInfo?.description}
         />
       </InputGroup>
-      <div>
+      <CheckboxGroup>
         <input
           type="checkbox"
           id="accessCheckbox"
@@ -160,7 +163,7 @@ function EditPlaylistForm() {
           }}
         />
         <label htmlFor="accessCheckbox">This playlist is public</label>
-      </div>
+      </CheckboxGroup>
       {success && <p>{success}</p>}
       {error && <p>{error}</p>}
       <Button disabled={disableSaveBtn} primary type="submit">
