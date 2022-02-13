@@ -27,6 +27,7 @@ function AudioPlayer() {
 
   useEffect(() => {
     if (isLoaded) setIsPlaying(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url])
 
   const calculateTotalDuration = (e) => {
@@ -50,6 +51,10 @@ function AudioPlayer() {
     return `${returnedMinutes}:${returnedSeconds}`
   }
 
+  const onTrackEnding = () => {
+    setIsPlaying(false)
+  }
+
   return (
     <AudioWrapper>
       <AudioGroup>
@@ -60,6 +65,7 @@ function AudioPlayer() {
           width="0"
           onProgress={(e) => onProgress(e)}
           onDuration={(e) => calculateTotalDuration(e)}
+          onEnded={onTrackEnding}
         />
 
         <PlayPauseBtn>

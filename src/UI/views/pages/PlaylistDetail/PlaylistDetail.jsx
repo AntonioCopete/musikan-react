@@ -47,7 +47,10 @@ function PlaylistDetail() {
         <Hero bgImage={playlist?.thumbnail}>
           <HeroInfoWrapper>
             <HeroInfoContent>
-              <img src={playlist?.thumbnail} alt={playlist?.thumbnail} />
+              <img
+                src={playlist?.thumbnail}
+                alt={`${playlist?.name} playlist pic`}
+              />
 
               <HeroInfo>
                 {!owned && (
