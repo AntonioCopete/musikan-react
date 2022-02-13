@@ -58,6 +58,7 @@ function ResetPassword() {
             id="resetEmail"
             value={email}
             onChange={handleSetEmail}
+            autoFocus
           />
         </InputGroup>
         <Button
