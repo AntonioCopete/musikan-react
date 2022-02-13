@@ -7,7 +7,7 @@ import { updateUserInfo } from '../../../../../redux/auth/actions'
 import { InputGroup } from '../../../../styles/GlobalComponents/Input'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
-import { FormProfile } from './ProfileForm.styles'
+import { BasicForm } from '../../../../styles/GlobalComponents/BasicForm'
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'
 
 function ProfileForm() {
@@ -61,7 +61,7 @@ function ProfileForm() {
   }
 
   return (
-    <FormProfile onSubmit={handleSubmit}>
+    <BasicForm onSubmit={handleSubmit}>
       <h2>Edit profile</h2>
       <InputGroup>
         <FaUser />
@@ -107,7 +107,7 @@ function ProfileForm() {
         Save
       </Button>
       <ButtonLink onClick={handleCancel}>Cancel</ButtonLink>
-    </FormProfile>
+    </BasicForm>
   )
 }
 

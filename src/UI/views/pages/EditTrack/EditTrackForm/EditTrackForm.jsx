@@ -6,7 +6,8 @@ import api from '../../../../../api'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 import { InputGroup } from '../../../../styles/GlobalComponents/Input'
-import { FormEdit, HiddenInput } from './EditTrackForm.styles'
+import { BasicForm } from '../../../../styles/GlobalComponents/BasicForm'
+import { HiddenInput } from './EditTrackForm.styles'
 import { FaMusic } from 'react-icons/fa'
 import { MdOutlineLibraryMusic } from 'react-icons/md'
 
@@ -33,10 +34,6 @@ function EditTrackForm() {
     getTrackInfo()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  // useEffect(() => {
-
-  // }, [trackInfo])
 
   const getGenres = async () => {
     const response = await api.getGenres()
@@ -127,7 +124,7 @@ function EditTrackForm() {
   }
 
   return (
-    <FormEdit onSubmit={handleSubmit}>
+    <BasicForm onSubmit={handleSubmit}>
       <label htmlFor="uploadTrackImageInput">
         <img
           src={selectedTrackImg ? imageSrcPreview : trackInfo?.thumbnail}
@@ -174,7 +171,7 @@ function EditTrackForm() {
       <ButtonLink type="text" onClick={handleCancel}>
         Cancel
       </ButtonLink>
-    </FormEdit>
+    </BasicForm>
   )
 }
 
