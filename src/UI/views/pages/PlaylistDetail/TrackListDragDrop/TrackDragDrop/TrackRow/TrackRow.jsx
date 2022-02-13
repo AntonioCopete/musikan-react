@@ -7,7 +7,6 @@ function TrackRow({ id, index, name, thumbnail, genre, user }) {
   const dispatch = useDispatch()
 
   const handlePlay = (id) => {
-    console.log(id)
     dispatch(getCurrentTrack(id))
   }
 
