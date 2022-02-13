@@ -72,6 +72,7 @@ export const ProgressBar = styled.input`
     left: 0;
     height: 5px;
     width: ${(props) => props.value}%;
+    /* width: 50%; */
     border-radius: 1rem;
     background: ${({ theme }) => theme.colors.primary};
     z-index: 2;
