@@ -64,7 +64,7 @@ function PlaylistDetail() {
         </Hero>
       </Header>
       <Main>
-        <TrackListDragDrop list={tracks} />
+        <TrackListDragDrop list={tracks} reload={getPlaylist} />
       </Main>
     </>
   )
