@@ -8,7 +8,7 @@ import TrackRow from './TrackDragDrop/TrackRow/TrackRow'
 
 import { TrackGrid } from './TrackDragDrop/TrackHeader/TrackHeader.styles'
 
-import AddTracksModalContainer from '../../../components/AddTracksModal/AddTracksModalContainer/AddTracksModalContainer'
+import AddTracksModal from '../../../components/AddTracksModal/AddTracksModalContainer/AddTracksModalContainer'
 import api from '../../../../../api'
 
 const reorder = (list, startIndex, endIndex) => {
@@ -26,7 +26,7 @@ function Playlist({ list, owned, reload }) {
 
   useEffect(() => {
     setPlaylist(list)
-    console.log(list)
+    if (reload) reload()
   }, [list])
 
   const handleDragEnd = (result) => {
@@ -58,7 +58,9 @@ function Playlist({ list, owned, reload }) {
         )
       }}
     >
-      <TrackHeader button={<AddTracksModalContainer />}>
+      <TrackHeader
+        button={owned && <AddTracksModal reload={reload} tracks={playlist} />}
+      >
         <Droppable droppableId="playlists">
           {(droppableProvided) => (
             <div
@@ -69,7 +71,7 @@ function Playlist({ list, owned, reload }) {
                 playlist.map((value, index) => {
                   return (
                     <Draggable
-                      key={value._id}
+                      key={index}
                       draggableId={value._id}
                       index={index}
                     >
