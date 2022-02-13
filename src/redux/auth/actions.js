@@ -201,6 +201,7 @@ export function updateUserInfo(formInfo, id) {
 
           if (response.errorMessage) return
           dispatch(changeUserInfo(response.data.data))
+          localStorage.setItem('credentials', JSON.stringify(formInfo.email))
         })
         .catch((error) => {
           console.log(error)

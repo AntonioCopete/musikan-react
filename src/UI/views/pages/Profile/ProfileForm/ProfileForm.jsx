@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,7 +14,6 @@ function ProfileForm() {
   const { userName, email, _id, auth_provider } = useSelector(
     (state) => state.auth.currentUser
   )
-  const [userDifference, setUserDifference] = useState()
   const navigate = useNavigate()
   const userNameInput = useRef()
   const emailInput = useRef()
@@ -24,14 +23,6 @@ function ProfileForm() {
   const dispatch = useDispatch()
 
   const isAuthWithEmail = auth_provider === 'password' ? true : false
-
-  useEffect(() => {
-    if (userDifference === null) return
-
-    dispatch(updateUserInfo(userDifference, _id))
-    setUserDifference(null)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, userDifference])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -60,7 +51,7 @@ function ProfileForm() {
       if (oldPassword !== '') {
         changes.password = newPassword
       }
-      setUserDifference(changes)
+      dispatch(updateUserInfo(changes, _id))
     }
   }
 
