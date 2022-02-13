@@ -17,7 +17,7 @@ import { ModalContent, FormModal, FooterModal } from './AddTracksModal.styles'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 
-function AddTracksModal({ open, handleClose, reload, tracks }) {
+function AddTracksModal({ open, handleClose, tracks, reload }) {
   const { id } = useParams()
   const { _id } = useSelector((state) => state.auth.currentUser)
   const [selectedTracksToAdd, setSelectedTracksToAdd] = useState([])
@@ -48,7 +48,7 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
       .then((response) => {
         if (response.data.success) {
           setSelectedTracksToAdd([])
-          reload()
+          if (reload) reload()
           setDisableSaveBtn(false)
           handleClose()
         }
@@ -66,48 +66,46 @@ function AddTracksModal({ open, handleClose, reload, tracks }) {
   }
 
   return (
-    <>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <ModalContent>
-          {disableSaveBtn && <Spinner />}
-          <h1>Add track to my playlist</h1>
-          <FormModal onSubmit={handleSubmit}>
-            <TrackWrapper>
-              {tracksToAdd?.map((track, index) => (
-                <TrackGrid key={index}>
-                  <span>{index + 1}</span>
-                  <span>
-                    <Image src={track.thumbnail} alt={track.thumbnail} />
-                  </span>
-                  <span>{track.name}</span>
-                  <span>{track.userId.userName}</span>
-                  <ActionContent>
-                    <AddTrackCheck
-                      trackId={track._id}
-                      setSelectedTracksToAdd={setSelectedTracksToAdd}
-                    />
-                  </ActionContent>
-                </TrackGrid>
-              ))}
-            </TrackWrapper>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <ModalContent>
+        {disableSaveBtn && <Spinner />}
+        <h1>Add track to my playlist</h1>
+        <FormModal onSubmit={handleSubmit}>
+          <TrackWrapper>
+            {tracksToAdd?.map((track, index) => (
+              <TrackGrid key={index}>
+                <span>{index + 1}</span>
+                <span>
+                  <Image src={track.thumbnail} alt={track.thumbnail} />
+                </span>
+                <span>{track.name}</span>
+                <span>{track.userId.userName}</span>
+                <ActionContent>
+                  <AddTrackCheck
+                    trackId={track._id}
+                    setSelectedTracksToAdd={setSelectedTracksToAdd}
+                  />
+                </ActionContent>
+              </TrackGrid>
+            ))}
+          </TrackWrapper>
 
-            <FooterModal>
-              <ButtonLink type="text" onClick={handleCancel}>
-                Cancel
-              </ButtonLink>
-              <Button disabled={disableSaveBtn} primary type="submit">
-                Save
-              </Button>
-            </FooterModal>
-          </FormModal>
-        </ModalContent>
-      </Modal>
-    </>
+          <FooterModal>
+            <ButtonLink type="text" onClick={handleCancel}>
+              Cancel
+            </ButtonLink>
+            <Button disabled={disableSaveBtn} primary type="submit">
+              Save
+            </Button>
+          </FooterModal>
+        </FormModal>
+      </ModalContent>
+    </Modal>
   )
 }
 
