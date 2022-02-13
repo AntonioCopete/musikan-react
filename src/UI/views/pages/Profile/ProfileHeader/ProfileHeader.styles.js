@@ -9,6 +9,10 @@ export const ProfileWrapper = styled.div`
 export const ProfileInfo = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const ProfileTitle = styled.p`

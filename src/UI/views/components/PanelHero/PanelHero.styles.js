@@ -25,6 +25,11 @@ export const PanelWrapper = styled.div`
       width: calc(${width}px * 2);
       height: calc(${height}px * 2);
     }
+
+    @media ${(props) => props.theme.breakpoints.sm} {
+      left: 0;
+      bottom: 15%;
+    }
   }
 `
 
@@ -39,8 +44,12 @@ export const PanelContent = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   z-index: 1;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    padding: 1rem;
+  }
 
   > * {
     &:first-child {

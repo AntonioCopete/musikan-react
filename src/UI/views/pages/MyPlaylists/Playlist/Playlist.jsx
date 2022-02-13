@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { SwiperSlide } from 'swiper/react'
+import { Wrapper, SwiperWrapper } from './Playlist.styles'
+import 'swiper/css'
 import PlaylistItem from '../../../components/PlaylistItem/PlaylistItem'
-import { Wrapper } from './Playist.styles'
-import Swiper from '../../../components/Swiper/Swiper'
+
 function Playlist({ list, followed, reload }) {
   const [playlist, setPlaylist] = useState(list)
 
@@ -12,7 +13,24 @@ function Playlist({ list, followed, reload }) {
 
   return (
     <Wrapper>
-      <Swiper>
+      <SwiperWrapper
+        slidesPerView={1.5}
+        spaceBetween={10}
+        breakpoints={{
+          780: {
+            slidesPerView: 2.5,
+            spaceBetween: 10,
+          },
+          880: {
+            slidesPerView: 3.5,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 4.5,
+            spaceBetween: 20,
+          },
+        }}
+      >
         {playlist &&
           playlist.map((item) => (
             <SwiperSlide key={item._id}>
@@ -25,7 +43,7 @@ function Playlist({ list, followed, reload }) {
               />
             </SwiperSlide>
           ))}
-      </Swiper>
+      </SwiperWrapper>
     </Wrapper>
   )
 }

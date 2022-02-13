@@ -7,7 +7,7 @@ export const GridLayout = styled.div`
     'nav main'
     'aside main'
     'aside footer';
-  grid-template-rows: 20rem 1fr 15rem 10rem;
+  grid-template-rows: 19rem 1fr 15rem 10rem;
   grid-template-columns: 12% 1fr;
   gap: 1rem;
   height: 100vh;
@@ -24,9 +24,13 @@ export const GridLayout = styled.div`
       'aside'
       'footer'
       'nav';
-    grid-template-rows: 20rem 1fr 6rem 7rem 5rem;
+    grid-template-rows: 18rem 1fr 6rem 7rem 5rem;
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    grid-template-rows: 16rem 1fr 6rem 7rem 5rem;
   }
 `
 

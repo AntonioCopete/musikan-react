@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Avatar } from '@mui/material'
+
 import { updateAvatar } from '../../../../../../redux/auth/actions'
 
 import { LabelContainer, Overlay, AvatarInput } from './ImageInput.styles'
