@@ -16,7 +16,9 @@ function AudioPlayer() {
   const { url } = useSelector((state) => state.currentTrack)
   const [isPlaying, setIsPlaying] = useState(false)
   const [playedSeconds, setPlayedSeconds] = useState(0)
-  const [totalSeconds, setTotalSeconds] = useState(0)
+  const [totalSecondsLoaded, setTotalSecondsLoaded] = useState(0)
+  const [totalSecondsDuration, setTotalSecondsDuration] = useState(0)
+  const [percentPlayed, setPercentPlayed] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -27,9 +29,15 @@ function AudioPlayer() {
     if (isLoaded) setIsPlaying(true)
   }, [url])
 
+  const calculateTotalDuration = (e) => {
+    setTotalSecondsDuration(e)
+  }
+
   const onProgress = (data) => {
     setPlayedSeconds(data.playedSeconds)
-    setTotalSeconds(data.loadedSeconds)
+    setTotalSecondsLoaded(data.loadedSeconds)
+    const percentCalc = (data.playedSeconds * 100) / totalSecondsDuration
+    setPercentPlayed(percentCalc)
   }
 
   const calculateTime = (secs) => {
@@ -51,6 +59,7 @@ function AudioPlayer() {
           height="0"
           width="0"
           onProgress={(e) => onProgress(e)}
+          onDuration={(e) => calculateTotalDuration(e)}
         />
 
         <PlayPauseBtn>
@@ -66,11 +75,11 @@ function AudioPlayer() {
         <ProgressBar
           type="range"
           progress="value"
-          value={playedSeconds}
+          value={percentPlayed}
           onChange={(e) => setPlayedSeconds(Number(e))}
-          total={totalSeconds}
+          total={totalSecondsLoaded}
         />
-        <TotalTime>{calculateTime(totalSeconds)}</TotalTime>
+        <TotalTime>{calculateTime(totalSecondsDuration)}</TotalTime>
       </AudioGroup>
     </AudioWrapper>
   )
