@@ -1,10 +1,5 @@
 import styled from 'styled-components'
 
-export const PopularWrapper = styled.section`
-  display: flex;
-  padding: 1.5rem 0;
-`
-
 export const ItemWrapper = styled.div`
   display: block;
   width: 20rem;
