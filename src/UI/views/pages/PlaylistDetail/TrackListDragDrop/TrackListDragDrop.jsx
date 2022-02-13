@@ -80,6 +80,7 @@ function Playlist({ list, owned, reload }) {
                         >
                           <TrackRow
                             index={index + 1}
+                            id={value._id}
                             name={value.name}
                             thumbnail={value.thumbnail}
                             genre={value.genre.name}

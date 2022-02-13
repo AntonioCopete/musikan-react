@@ -33,13 +33,11 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
         tracks.map((value, index) => (
           <TrackGrid key={value._id}>
             <TrackIndex>{index + 1}</TrackIndex>
-            <span onClick={() => handlePlay(value._id)}>
-              <Image
-                src={value.thumbnail}
-                alt={value.thumbnail}
-                onClick={() => handlePlay(value._id)}
-              />
-            </span>
+            <Image
+              src={value.thumbnail}
+              alt={value.thumbnail}
+              onClick={() => handlePlay(value._id)}
+            />
             <span>{value.name}</span>
             <span>{value.user.userName}</span>
             <span>{value.genre}</span>
