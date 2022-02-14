@@ -41,6 +41,8 @@ export const Main = styled.main`
   grid-area: main;
   padding: 2rem;
   overflow: auto;
+  max-width: ${(props) => (props.container ? '100rem' : 'auto')};
+  width: 100%;
 `
 export const Footer = styled.footer`
   grid-area: footer;
