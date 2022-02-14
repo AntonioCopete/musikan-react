@@ -43,6 +43,11 @@ export const Main = styled.main`
   overflow: auto;
   max-width: ${(props) => (props.container ? '100rem' : 'auto')};
   width: 100%;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 export const Footer = styled.footer`
   grid-area: footer;
