@@ -68,7 +68,7 @@ function Playlist({ list, owned, reload }) {
                 playlist.map((value, index) => {
                   return (
                     <Draggable
-                      key={index}
+                      key={value._id}
                       draggableId={value._id}
                       index={index}
                     >
