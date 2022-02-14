@@ -1,23 +1,11 @@
-import { useEffect, useState } from 'react'
 import PlaylistItem from '../../../components/PlaylistItem/PlaylistItem'
 import { PlaylistWrapper } from './SearchPlaylist.styles'
-import pic from '../../../../img/noImage.jpg'
-const data = [
-  { _id: '1', name: 'tup', thumbnail: pic },
-  { _id: '2', name: 'tip', thumbnail: pic },
-]
 
-function SearchPlaylist() {
-  const [playlist, setPlaylist] = useState([])
-  console.log(playlist)
-
-  useEffect(() => {
-    setPlaylist(data)
-  })
+function SearchPlaylist({ playlists }) {
   return (
     <PlaylistWrapper>
-      {playlist.length > 0 ? (
-        playlist.map((item) => (
+      {playlists?.length > 0 ? (
+        playlists.map((item) => (
           <PlaylistItem
             id={item._id}
             name={item.name}
@@ -27,7 +15,7 @@ function SearchPlaylist() {
           />
         ))
       ) : (
-        <p>No playlist found in your search</p>
+        <p>No playlists</p>
       )}
     </PlaylistWrapper>
   )

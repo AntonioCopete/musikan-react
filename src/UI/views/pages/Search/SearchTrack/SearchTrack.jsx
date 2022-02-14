@@ -1,25 +1,24 @@
-import { useState } from 'react'
-import PlaylistItem from '../../../components/PlaylistItem/PlaylistItem'
+import { useState, useEffect } from 'react'
+import TrackItem from '../../../components/TrackItem/TrackItem'
+import { TrackWrapper } from './SearchTrack.styles'
 
-function SearchUser() {
-  const [playlist, setPlaylist] = useState([])
+function SearchTrack({ tracks }) {
   return (
-    <>
-      {playlist.length > 0 ? (
-        playlist.map(
-          <PlaylistItem
-            id={playlist._id}
-            name={playlist.name}
-            thumbnail={playlist.thumbnail}
-            // followed={followed}
-            // reload={reload}
+    <TrackWrapper>
+      {tracks?.length > 0 ? (
+        tracks.map((item) => (
+          <TrackItem
+            id={item.id}
+            name={item.name}
+            artist={item.user}
+            thumbnail={item.thumbnail}
           />
-        )
+        ))
       ) : (
-        <p>No playlist found in your search</p>
+        <p>No tracks</p>
       )}
-    </>
+    </TrackWrapper>
   )
 }
 
-export default SearchUser
+export default SearchTrack

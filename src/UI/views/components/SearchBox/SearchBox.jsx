@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import {
   SearchBoxWrapper,
   SearchInput,
   SearchIcon,
 } from './SearchBox.styles.js'
 
-function SearchBox() {
+function SearchBox({ setQuery }) {
   const [show, setShow] = useState(false)
+  const searchRef = useRef()
 
   const toggleVisibility = () => {
     setShow(!show)
@@ -19,6 +20,8 @@ function SearchBox() {
         type="text"
         id="box"
         placeholder="Search anything..."
+        ref={searchRef}
+        onChange={() => setQuery(searchRef.current.value)}
       />
       <SearchIcon onClick={toggleVisibility} />
     </SearchBoxWrapper>

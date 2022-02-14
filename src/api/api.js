@@ -178,6 +178,14 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function searchQuery(headers, query) {
+    return request({
+      url: `/search?q=${query}`,
+      requestMethod: 'GET',
+      headers: headers,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -200,6 +208,7 @@ function makeApi(request = makeRequest()) {
     followPlaylist: followPlaylist,
     updatePlaylistInfo: updatePlaylistInfo,
     orderPlaylistTracks: orderPlaylistTracks,
+    searchQuery: searchQuery,
   }
 }
 

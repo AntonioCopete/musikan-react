@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import api from '../../../../api'
 
 import UserAvatar from '../../components/UserAvatar/UserAvatar'
 import UserMenu from '../../components/UserMenu/UserMenu'
@@ -11,6 +13,19 @@ import SearchUser from './SearchUser/SearchUser'
 
 function Search() {
   const [showUserMenu, setShowUserMenu] = useState(false)
+  const [query, setQuery] = useState()
+  const [result, setResult] = useState()
+  const { _id } = useSelector((state) => state.auth.currentUser)
+
+  useEffect(() => {
+    searchQuery()
+  }, [query])
+
+  const searchQuery = async () => {
+    const response = await api.searchQuery({ _id: _id }, query)
+    setResult(response.data)
+  }
+
   return (
     <>
       <Header>
@@ -24,13 +39,13 @@ function Search() {
         </PanelHero>
       </Header>
       <Main>
-        <SearchBox />
+        <SearchBox setQuery={setQuery} />
         <h2>Playlists</h2>
-        <SearchPlaylist />
+        <SearchPlaylist playlists={result?.playlists} />
         <h2>Tracks</h2>
-        <SearchTrack />
+        <SearchTrack tracks={result?.tracks} />
         <h2>Users</h2>
-        <SearchUser />
+        <SearchUser users={result?.users} />
       </Main>
     </>
   )
