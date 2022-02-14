@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -17,7 +17,7 @@ import { ModalContent, FormModal, FooterModal } from './AddTracksModal.styles'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 
-function AddTracksModal({ open, handleClose, tracks, reload }) {
+function AddTracksModal({ open, handleClose, reload }) {
   const { id } = useParams()
   const { _id } = useSelector((state) => state.auth.currentUser)
   const [selectedTracksToAdd, setSelectedTracksToAdd] = useState([])
@@ -28,11 +28,6 @@ function AddTracksModal({ open, handleClose, tracks, reload }) {
     getTracksToAdd()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  useEffect(() => {
-    getTracksToAdd()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tracks])
 
   const getTracksToAdd = async () => {
     const headers = { _id: _id }
@@ -49,6 +44,7 @@ function AddTracksModal({ open, handleClose, tracks, reload }) {
         if (response.data.success) {
           setSelectedTracksToAdd([])
           if (reload) reload()
+          getTracksToAdd()
           setDisableSaveBtn(false)
           handleClose()
         }
