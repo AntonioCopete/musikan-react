@@ -44,6 +44,7 @@ function UserDetail() {
             setShowUserMenu={setShowUserMenu}
           />
           {showUserMenu && <UserMenu />}
+          <h1>User</h1>
         </PanelHero>
       </Header>
       <Main>
@@ -55,7 +56,7 @@ function UserDetail() {
           />
           <h1>{userInfo?.userName}</h1>
         </UserInfoContainer>
-        <h2>Public playlists by {userInfo?.userName}</h2>
+        <h2>Playlists by {userInfo?.userName}</h2>
         <ElementsGrid>
           {userPlaylists &&
             userPlaylists?.map((playlist) => (
@@ -69,7 +70,7 @@ function UserDetail() {
               />
             ))}
         </ElementsGrid>
-        <h2>Tracks uploaded by {userInfo?.userName}</h2>
+        <h2>Tracks by {userInfo?.userName}</h2>
         <ElementsGrid>
           {userTracks &&
             userTracks?.map((track) => (

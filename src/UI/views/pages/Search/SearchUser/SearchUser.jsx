@@ -6,7 +6,11 @@ function SearchUser({ users }) {
     <UserWrapper>
       {users?.length > 0 ? (
         users.map((item) => (
-          <UserItem id={item.id} user={item.user} thumbnail={item.thumbnail} />
+          <UserItem
+            id={item.id}
+            user={item.userName}
+            thumbnail={item.thumbnail}
+          />
         ))
       ) : (
         <p>No users</p>
