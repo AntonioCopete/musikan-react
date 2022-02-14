@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
-import UploadSongModalContainer from '../UploadModal/UploadSongModalContainer/UploadSongModalContainer'
+import { NavigateLink } from '../../../styles/GlobalComponents/NavLink'
 
+import UploadSongModalContainer from '../UploadModal/UploadSongModalContainer/UploadSongModalContainer'
 import InfoMenu from '../InfoMenu/InfoMenu'
 import LikeDislike from '../LikeDislike/LikeDislike'
 
@@ -39,7 +40,9 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
               onClick={() => handlePlay(value._id)}
             />
             <span>{value.name}</span>
-            <span>{value.user.userName}</span>
+            <NavigateLink to={`/user/${value.user._id}`}>
+              <span>{value.user.userName}</span>
+            </NavigateLink>
             <span>{value.genre}</span>
             <ActionContent>
               <LikeDislike

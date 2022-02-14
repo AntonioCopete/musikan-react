@@ -186,6 +186,27 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function getUserInfo(userId) {
+    return request({
+      url: `/user/${userId}`,
+      requestMethod: 'GET',
+    })
+  }
+
+  function getUserTracks(userId) {
+    return request({
+      url: `/user/${userId}/tracks`,
+      requestMethod: 'GET',
+    })
+  }
+
+  function getUserPublicPlaylists(userId) {
+    return request({
+      url: `/user/${userId}/playlist`,
+      requestMethod: 'GET',
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -209,6 +230,9 @@ function makeApi(request = makeRequest()) {
     updatePlaylistInfo: updatePlaylistInfo,
     orderPlaylistTracks: orderPlaylistTracks,
     searchQuery: searchQuery,
+    getUserInfo: getUserInfo,
+    getUserTracks: getUserTracks,
+    getUserPublicPlaylists: getUserPublicPlaylists,
   }
 }
 

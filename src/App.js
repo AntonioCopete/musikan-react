@@ -21,6 +21,7 @@ import MyPlaylists from './ui/views/pages/MyPlaylists/MyPlaylists'
 import PlaylistDetail from './ui/views/pages/PlaylistDetail/PlaylistDetail'
 import EditPlaylist from './ui/views/pages/EditPlaylist/EditPlaylist'
 import Search from './ui/views/pages/Search/Search'
+import UserDetail from './ui/views/pages/UserDetail/UserDetail'
 
 function App() {
   // const navigate = useNavigate()
@@ -128,6 +129,14 @@ function App() {
           element={
             <PrivateRoute>
               <Search />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={ROUTES.USER_DETAIL}
+          element={
+            <PrivateRoute>
+              <UserDetail />
             </PrivateRoute>
           }
         />

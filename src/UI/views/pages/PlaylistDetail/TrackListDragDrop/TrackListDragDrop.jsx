@@ -85,6 +85,7 @@ function Playlist({ list, owned, reload }) {
                             thumbnail={value.thumbnail}
                             genre={value.genre.name}
                             user={value.user.userName}
+                            userId={value.user._id}
                           />
                         </TrackGrid>
                       )}

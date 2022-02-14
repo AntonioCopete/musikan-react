@@ -1,9 +1,12 @@
 import { TrackIndex, Image, Icon } from './TrackRow.styles'
 import { useDispatch } from 'react-redux'
-import { getCurrentTrack } from '../../../../../../../redux/currentTrack/actions'
 import { MdDragIndicator } from 'react-icons/md'
 
-function TrackRow({ id, index, name, thumbnail, genre, user }) {
+import { getCurrentTrack } from '../../../../../../../redux/currentTrack/actions'
+
+import { NavigateLink } from '../../../../../../styles/GlobalComponents/NavLink'
+
+function TrackRow({ id, index, name, thumbnail, genre, user, userId }) {
   const dispatch = useDispatch()
 
   const handlePlay = (id) => {
@@ -15,7 +18,9 @@ function TrackRow({ id, index, name, thumbnail, genre, user }) {
       <TrackIndex>{index}</TrackIndex>
       <Image src={thumbnail} alt={thumbnail} onClick={() => handlePlay(id)} />
       <span>{name}</span>
-      <span>{user}</span>
+      <NavigateLink to={`/user/${userId}`}>
+        <span>{user}</span>
+      </NavigateLink>
       <span>{genre}</span>
       <Icon>
         <MdDragIndicator />

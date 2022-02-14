@@ -39,7 +39,6 @@ function EditPlaylistForm() {
   const getPlaylist = async () => {
     const headers = { _id: _id }
     const response = await api.getPlaylist(headers, playlistId)
-    console.log(response)
     if (!response.data.data.owned) navigate(-1) // IF USER IS NOT OWNER, RETURN BACK
     setPlaylistInfo(response.data.data)
     setAccessChecked(response.data.data.publicAccessible)
