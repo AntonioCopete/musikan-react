@@ -18,7 +18,6 @@ export const SearchInput = styled.input`
   border-radius: 2rem;
   outline: none;
   border: none;
-  position: relative;
   opacity: 1;
   transition: all 0.75s ease-in;
   cursor: pointer;
@@ -29,10 +28,10 @@ export const SearchInput = styled.input`
 `
 
 export const SearchIcon = styled(FaSearch)`
-  display: inline-block;
+  /* display: inline-block; */
   box-sizing: border-box;
   font-size: 2rem;
-  margin-left: 0.8rem;
+  margin: 0.8rem;
   /* margin-left: 0.8rem;
   margin-top: 0; */
   cursor: pointer;
