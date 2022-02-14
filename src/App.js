@@ -20,6 +20,7 @@ import EditTrack from './ui/views/pages/EditTrack/EditTrack'
 import MyPlaylists from './ui/views/pages/MyPlaylists/MyPlaylists'
 import PlaylistDetail from './ui/views/pages/PlaylistDetail/PlaylistDetail'
 import EditPlaylist from './ui/views/pages/EditPlaylist/EditPlaylist'
+import Search from './ui/views/pages/Search/Search'
 
 function App() {
   // const navigate = useNavigate()
@@ -119,6 +120,14 @@ function App() {
           element={
             <PrivateRoute>
               <EditPlaylist />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={ROUTES.SEARCH}
+          element={
+            <PrivateRoute>
+              <Search />
             </PrivateRoute>
           }
         />

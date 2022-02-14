@@ -8,7 +8,7 @@ import {
 import Logo from '../Logo/Logo'
 import * as ROUTES from '../../../../routes/routes'
 import { RiHome2Fill, RiMusicFill, RiHeart3Fill } from 'react-icons/ri'
-import { FaHeadphones } from 'react-icons/fa'
+import { FaHeadphones, FaSearch } from 'react-icons/fa'
 
 function MainMenu() {
   return (
@@ -32,6 +32,10 @@ function MainMenu() {
         <MenuItem to={ROUTES.FAVOURITES}>
           <RiHeart3Fill />
           <MenuName>Favourites</MenuName>
+        </MenuItem>
+        <MenuItem to={ROUTES.SEARCH}>
+          <FaSearch />
+          <MenuName>Search</MenuName>
         </MenuItem>
       </MenuList>
     </MenuWrapper>
