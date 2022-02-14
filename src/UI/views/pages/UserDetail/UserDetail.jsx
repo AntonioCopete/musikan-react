@@ -6,12 +6,11 @@ import TrackItem from '../../components/TrackItem/TrackItem'
 import PanelHero from '../../components/PanelHero/PanelHero'
 import UserAvatar from '../../components/UserAvatar/UserAvatar'
 import UserMenu from '../../components/UserMenu/UserMenu'
-import { Avatar } from '@mui/material'
 
 import api from '../../../../api'
 
 import { Header, Main } from '../../layout/Layout.styles'
-import { ElementsGrid, UserInfoContainer } from './UserDetail.styles'
+import { ElementsGrid, TitleInfo, ImageContent } from './UserDetail.styles'
 
 function UserDetail() {
   const { userId } = useParams()
@@ -44,18 +43,11 @@ function UserDetail() {
             setShowUserMenu={setShowUserMenu}
           />
           {showUserMenu && <UserMenu />}
-          <h1>User</h1>
+          <h1>{userInfo?.userName}</h1>
         </PanelHero>
       </Header>
       <Main>
-        <UserInfoContainer>
-          <Avatar
-            src={userInfo?.profilePicture}
-            alt={`${userInfo?.userName}'s profile pic`}
-            sx={{ width: 200, height: 200 }}
-          />
-          <h1>{userInfo?.userName}</h1>
-        </UserInfoContainer>
+        <ImageContent bgImage={userInfo?.profilePicture} />
         <h2>Playlists by {userInfo?.userName}</h2>
         <ElementsGrid>
           {userPlaylists &&

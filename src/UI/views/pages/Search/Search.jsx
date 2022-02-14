@@ -10,6 +10,7 @@ import SearchBox from '../../components/SearchBox/SearchBox'
 import SearchPlaylist from './SearchPlaylist/SearchPlaylist'
 import SearchTrack from './SearchTrack/SearchTrack'
 import SearchUser from './SearchUser/SearchUser'
+import { SearchTitle } from './Search.styles'
 
 function Search() {
   const [showUserMenu, setShowUserMenu] = useState(false)
@@ -35,17 +36,19 @@ function Search() {
             setShowUserMenu={setShowUserMenu}
           />
           {showUserMenu && <UserMenu />}
-          <h1>Search</h1>
+          <SearchTitle>
+            <h1>Search</h1>
+            <SearchBox setQuery={setQuery} />
+          </SearchTitle>
         </PanelHero>
       </Header>
       <Main>
-        <SearchBox setQuery={setQuery} />
         <h2>Playlists</h2>
         <SearchPlaylist playlists={result?.playlists} />
         <h2>Tracks</h2>
         <SearchTrack tracks={result?.tracks} />
         <h2>Users</h2>
-        <SearchUser users={result?.users} />
+        <SearchUser />
       </Main>
     </>
   )

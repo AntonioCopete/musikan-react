@@ -30,7 +30,6 @@ function Dashboard() {
       <Main container>
         <HomeContent title={'Popular profiles'} content={<PopularUsers />} />
         <HomeContent title={'Top playlists'} content={<TopPlaylists />} />
-        <HomeContent title={'Popular artists'} content={<PopularUsers />} />
         <HomeContent
           title={'Playlists you follow'}
           content={

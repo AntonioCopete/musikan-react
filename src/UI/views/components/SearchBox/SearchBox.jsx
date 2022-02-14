@@ -18,8 +18,7 @@ function SearchBox({ setQuery }) {
       <SearchInput
         className={show ? '--show' : ''}
         type="text"
-        id="box"
-        placeholder="Search anything..."
+        placeholder="Find anything..."
         ref={searchRef}
         onChange={() => setQuery(searchRef.current.value)}
       />

@@ -1,15 +1,13 @@
 import { useSelector } from 'react-redux'
 
-import { NavigateLink } from '../../../styles/GlobalComponents/NavLink'
-
 import { ItemWrapper, ItemContent, Footer } from './UserItem.styles'
 
-function UserItem({ name, thumbnail }) {
+function UserItem({ id, user, thumbnail }) {
   return (
-    <ItemWrapper>
+    <ItemWrapper to={`/user/${id}`}>
       <ItemContent bgImage={thumbnail} />
       <Footer>
-        <span>{name}</span>
+        <span>{user}</span>
       </Footer>
     </ItemWrapper>
   )

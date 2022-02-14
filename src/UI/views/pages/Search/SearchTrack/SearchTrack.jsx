@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import TrackItem from '../../../components/TrackItem/TrackItem'
 import { TrackWrapper } from './SearchTrack.styles'
 
@@ -8,7 +7,8 @@ function SearchTrack({ tracks }) {
       {tracks?.length > 0 ? (
         tracks.map((item) => (
           <TrackItem
-            id={item.id}
+            key={item._id}
+            id={item._id}
             name={item.name}
             artist={item.user}
             thumbnail={item.thumbnail}

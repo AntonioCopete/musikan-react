@@ -2,18 +2,22 @@ import styled from 'styled-components'
 import { FaSearch } from 'react-icons/fa'
 
 export const SearchBoxWrapper = styled.div`
-  width: 350px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 33rem;
   height: auto;
-  background-color: #1e272e;
+  background-color: ${({ theme }) => theme.colors.darkGrey};
   border-radius: 4rem;
-  padding: 10px;
+  padding: 0 1rem;
+  margin-left: 1rem;
 `
 
 export const SearchInput = styled.input`
   width: 0;
   height: 4rem;
   background: none;
-  color: #f7f7f7;
+  color: ${({ theme }) => theme.colors.text};
   font-size: 1.5rem;
   border-radius: 2rem;
   outline: none;
@@ -28,12 +32,9 @@ export const SearchInput = styled.input`
 `
 
 export const SearchIcon = styled(FaSearch)`
-  /* display: inline-block; */
   box-sizing: border-box;
   font-size: 2rem;
   margin: 0.8rem;
-  /* margin-left: 0.8rem;
-  margin-top: 0; */
   cursor: pointer;
   transition: all 0.25s ease-in;
 `

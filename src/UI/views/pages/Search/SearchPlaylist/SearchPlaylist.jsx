@@ -7,6 +7,7 @@ function SearchPlaylist({ playlists }) {
       {playlists?.length > 0 ? (
         playlists.map((item) => (
           <PlaylistItem
+            key={item._id}
             id={item._id}
             name={item.name}
             thumbnail={item.thumbnail}

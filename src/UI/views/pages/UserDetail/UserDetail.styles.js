@@ -8,12 +8,16 @@ export const ElementsGrid = styled.section`
   margin: 2rem 0;
 `
 
-export const UserInfoContainer = styled.section`
-  display: flex;
-  align-items: center;
-  margin-bottom: 3rem;
+export const ImageContent = styled.div`
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: ${(props) => `url(${props.bgImage})`};
+  background-size: cover;
+  background-position: center;
 
-  & h1 {
-    margin-left: 2rem;
+  @media ${(props) => props.theme.breakpoints.sm} {
+    width: 13rem;
+    height: 13rem;
   }
 `
