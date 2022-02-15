@@ -11,7 +11,11 @@ export const TrackGrid = styled.li`
   border-bottom: ${(props) => props.header && '1px solid white'};
   color: ${({ theme }) => theme.colors.text};
 
-  /* @media ${(props) => props.theme.breakpoints.md} {
-    ${(props) => props.header && 'display: none'};
-  } */
+  @media ${(props) => props.theme.breakpoints.md} {
+    grid-template-columns: repeat(4, 1fr);
+    & > :not(.--visible) {
+      display: none;
+      /* ${(props) => props.header && 'display: none'}; */
+    }
+  }
 `

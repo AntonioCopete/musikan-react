@@ -22,7 +22,9 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
   return (
     <TrackWrapper>
       <TrackGrid header>
-        <span>{owner && <UploadSongModalContainer reload={reload} />}</span>
+        <span className="--visible">
+          {owner && <UploadSongModalContainer reload={reload} />}
+        </span>
         <span>COVER</span>
         <span>TRACK</span>
         <span>ARTIST</span>
@@ -34,15 +36,19 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
         tracks.map((value, index) => (
           <TrackGrid key={value._id}>
             <TrackIndex>{index + 1}</TrackIndex>
-            <Image bgImage={value.thumbnail} alt={value.thumbnail}>
+            <Image
+              bgImage={value.thumbnail}
+              alt={value.thumbnail}
+              className="--visible"
+            >
               <Icon onClick={() => handlePlay(value._id)} />
             </Image>
-            <span>{value.name}</span>
-            <NavigateLink to={`/user/${value.user._id}`}>
+            <span className="--visible">{value.name}</span>
+            <NavigateLink to={`/user/${value.user._id}`} className="--visible">
               <span>{value.user.userName}</span>
             </NavigateLink>
             <span>{value.genre}</span>
-            <ActionContent>
+            <ActionContent className="--visible">
               <LikeDislike
                 initialState={isFavorites ? true : value.like}
                 userId={_id}
