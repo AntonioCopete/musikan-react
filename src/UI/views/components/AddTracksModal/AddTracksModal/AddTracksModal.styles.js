@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-import ListItemText from '@mui/material/ListItemText'
 
 export const ModalContent = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   height: 90vh;
-  max-width: 800px;
+  max-width: 80rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -26,7 +25,6 @@ export const ModalContent = styled.div`
 
 export const FormModal = styled.form`
   width: 100%;
-  padding: 4rem;
   overflow: auto;
 `
 
@@ -39,8 +37,10 @@ export const FooterModal = styled.footer`
   }
 `
 
-export const ItemText = styled(ListItemText)`
-  color: ${({ theme }) => theme.colors.text};
+export const ItemText = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const Image = styled.img`

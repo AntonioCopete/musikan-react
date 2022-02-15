@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const ItemWrapper = styled(Link)`
   display: grid;
-  grid-template-columns: 10rem 1fr;
+  grid-template-columns: 10rem repeat(auto-fill, 200px);
   /* width: 35rem; */
   margin: 0 1rem;
   border-radius: 10px;

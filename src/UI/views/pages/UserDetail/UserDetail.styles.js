@@ -21,3 +21,9 @@ export const ImageContent = styled.div`
     height: 13rem;
   }
 `
+
+export const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: end;
+`

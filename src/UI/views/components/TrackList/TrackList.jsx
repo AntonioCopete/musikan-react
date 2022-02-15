@@ -7,7 +7,7 @@ import LikeDislike from '../LikeDislike/LikeDislike'
 
 import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
 
-import { TrackIndex, ActionContent } from './TrackList.styles'
+import { ActionContent, ItemText } from './TrackList.styles'
 import { TrackWrapper, TrackGrid } from '../TrackTable/TrackTable.styles'
 import { Image, Icon } from '../TrackTable/TrackItem.styles'
 
@@ -35,7 +35,7 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
       {tracks.length > 0 &&
         tracks.map((value, index) => (
           <TrackGrid key={value._id}>
-            <TrackIndex>{index + 1}</TrackIndex>
+            <span>{index + 1}</span>
             <Image
               bgImage={value.thumbnail}
               alt={value.thumbnail}
@@ -43,11 +43,11 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
             >
               <Icon onClick={() => handlePlay(value._id)} />
             </Image>
-            <span className="--visible">{value.name}</span>
+            <ItemText className="--visible">{value.name}</ItemText>
             <NavigateLink to={`/user/${value.user._id}`} className="--visible">
-              <span>{value.user.userName}</span>
+              <ItemText>{value.user.userName}</ItemText>
             </NavigateLink>
-            <span>{value.genre}</span>
+            <ItemText>{value.genre}</ItemText>
             <ActionContent className="--visible">
               <LikeDislike
                 initialState={isFavorites ? true : value.like}
