@@ -62,7 +62,7 @@ function TopPlaylists() {
                 )
               default:
                 return (
-                  <ItemBlue>
+                  <ItemBlue key={playlist._id}>
                     <ItemContent bgImage={playlist.thumbnail} />
                     <Text>{playlist.name}</Text>
                   </ItemBlue>

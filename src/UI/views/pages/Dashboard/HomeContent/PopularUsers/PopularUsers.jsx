@@ -20,16 +20,17 @@ function PopularUsers() {
   return (
     <>
       {users &&
+        // eslint-disable-next-line array-callback-return
         users?.map((user, index) => {
-          if (index > amountUsersToDisplay) return <></>
-          return (
-            <UserItem
-              key={user._id}
-              id={user._id}
-              user={user.userName}
-              thumbnail={user.profilePicture}
-            />
-          )
+          if (index < amountUsersToDisplay)
+            return (
+              <UserItem
+                key={user._id}
+                id={user._id}
+                user={user.userName}
+                thumbnail={user.profilePicture}
+              />
+            )
         })}
     </>
   )
