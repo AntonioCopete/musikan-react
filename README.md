@@ -9,6 +9,10 @@ community of independent artists and music lovers.
 This project was made by a team of passionate developers from Assembler Institute
 of Technology using continuous integration and SCRUM
 
+## Figma
+[Figma views](https://www.figma.com/file/4DEBPErJp0ujMokzmDwOET/MUSIKAN?node-id=0%3A1)
+
+
 ## Musikan Frontend repository
 This is the Frontend repository for musikan app, this repository renders the react views
 for the Musikan project
@@ -54,6 +58,5 @@ Install dependencies.
 
 
 ## Repositories links
-
 - Musikan-react-front --> https://github.com/AranBeitia/musikan-front
 - Musikan-node-back --> https://github.com/Jose1i1o/musikan-node-back
