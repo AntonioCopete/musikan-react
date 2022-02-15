@@ -48,7 +48,7 @@ function Search() {
         <h2>Tracks</h2>
         <SearchTrack tracks={result?.tracks} />
         <h2>Users</h2>
-        <SearchUser />
+        <SearchUser users={result?.users} />
       </Main>
     </>
   )

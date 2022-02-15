@@ -1,5 +1,3 @@
-import { useSelector } from 'react-redux'
-
 import { ItemWrapper, ItemContent, Footer } from './UserItem.styles'
 
 function UserItem({ id, user, thumbnail }) {
