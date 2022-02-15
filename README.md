@@ -45,12 +45,6 @@ Install dependencies.
 - Firebase
 
 ## 🔗 Authors
-- [@Antonio](https://github.com/AntonioCopete)
-- [@Carlos](https://github.com/CarlosVelilla)
-- [@Jose](https://github.com/Jose1i1o)
-- [@Arantza](https://github.com/aranbeitia)
-
-
 | Contributor | Github profile
 | ------------------------| -----------------------------------------------------------------------|
 | [![](https://avatars2.githubusercontent.com/u/12766483?s=90&v=4)](https://github.com/aranbeitia) | [@AranBeitia](https://www.github.com/AranBeitia) |
