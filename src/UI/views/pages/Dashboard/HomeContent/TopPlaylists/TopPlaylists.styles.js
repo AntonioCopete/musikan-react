@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-export const ItemWrapper = styled.div`
+export const ItemWrapper = styled(Link)`
   display: flex;
   align-items: center;
   width: 35rem;
