@@ -5,9 +5,3 @@ export const ActionContent = styled.span`
   justify-content: flex-end;
   align-items: center;
 `
-
-export const ItemText = styled.span`
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`

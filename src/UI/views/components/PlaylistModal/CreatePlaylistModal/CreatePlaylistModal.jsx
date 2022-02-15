@@ -120,7 +120,6 @@ function CreatePlaylistModal({ open, handleClose, reload }) {
           <h1>Create</h1>
           <FormModal onSubmit={handleSubmit}>
             <SectionModal>
-              {/* image */}
               <label htmlFor="createPlaylistImageInput">
                 <ImageField
                   src={selectedPlaylistImg ? imageSrcPreview : noImage}

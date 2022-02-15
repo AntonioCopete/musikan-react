@@ -9,14 +9,15 @@ import Spinner from '../../Spinner/Spinner'
 
 import { Modal } from '@mui/material'
 
-import { TrackWrapper, TrackGrid } from '../../TrackTable/TrackTable.styles'
-import { ActionContent } from '../../TrackList/TrackList.styles'
+import { TrackWrapper, TrackGrid } from './TrackTable.styles'
+import { ActionContent } from './TrackList.styles'
 
 import {
   ModalContent,
   FormModal,
   FooterModal,
   Image,
+  ItemText,
 } from './AddTracksModal.styles'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
@@ -74,15 +75,14 @@ function AddTracksModal({ open, handleClose, reload }) {
     >
       <ModalContent>
         {disableSaveBtn && <Spinner />}
-        <h1>Add track to my playlist</h1>
+        <h1>Add track</h1>
         <FormModal onSubmit={handleSubmit}>
           <TrackWrapper>
             {tracksToAdd?.map((track, index) => (
               <TrackGrid key={index}>
-                <span>{index + 1}</span>
                 <Image src={track.thumbnail} />
-                <span>{track.name}</span>
-                <span>{track.userId.userName}</span>
+                <ItemText>{track.name}</ItemText>
+                <ItemText>{track.userId.userName}</ItemText>
                 <ActionContent>
                   <AddTrackCheck
                     trackId={track._id}
