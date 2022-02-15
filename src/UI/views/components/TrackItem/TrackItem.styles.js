@@ -1,12 +1,13 @@
 import styled from 'styled-components'
-import { ImEyePlus } from 'react-icons/im'
+import { FaPlay } from 'react-icons/fa'
 
 export const ItemWrapper = styled.div`
   display: flex;
   justify-content: start;
-  width: 20rem;
+  width: 22rem;
 `
 export const ItemContent = styled.div`
+  display: inline-block;
   position: relative;
   width: 8rem;
   height: 8rem;
@@ -31,7 +32,7 @@ export const ItemContent = styled.div`
   }
 `
 
-export const Icon = styled(ImEyePlus)`
+export const Icon = styled(FaPlay)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -45,13 +46,16 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-left: 0.5rem;
+  padding-left: 1rem;
 `
 
 export const Text = styled.span`
-  color: ${({ theme }) => theme.colors.text};
+  display: inline-block;
+  width: 12rem;
   font-size: ${(props) => (props.small ? '1rem' : 'inherit')};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  color: ${({ theme }) => theme.colors.text};
 `

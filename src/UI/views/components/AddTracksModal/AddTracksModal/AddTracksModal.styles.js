@@ -42,3 +42,15 @@ export const FooterModal = styled.footer`
 export const ItemText = styled(ListItemText)`
   color: ${({ theme }) => theme.colors.text};
 `
+
+export const Image = styled.img`
+  display: inline-block;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 5px;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    width: 6rem;
+    height: 6rem;
+  }
+`

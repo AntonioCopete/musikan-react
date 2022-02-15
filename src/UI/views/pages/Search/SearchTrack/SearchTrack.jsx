@@ -2,6 +2,7 @@ import TrackItem from '../../../components/TrackItem/TrackItem'
 import { TrackWrapper } from './SearchTrack.styles'
 
 function SearchTrack({ tracks }) {
+  console.log(tracks)
   return (
     <TrackWrapper>
       {tracks?.length > 0 ? (

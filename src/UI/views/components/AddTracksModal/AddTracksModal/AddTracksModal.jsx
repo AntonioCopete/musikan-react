@@ -10,10 +10,14 @@ import Spinner from '../../Spinner/Spinner'
 import { Modal } from '@mui/material'
 
 import { TrackWrapper, TrackGrid } from '../../TrackTable/TrackTable.styles'
-import { Image } from '../../TrackTable/TrackItem.styles'
 import { ActionContent } from '../../TrackList/TrackList.styles'
 
-import { ModalContent, FormModal, FooterModal } from './AddTracksModal.styles'
+import {
+  ModalContent,
+  FormModal,
+  FooterModal,
+  Image,
+} from './AddTracksModal.styles'
 import { Button } from '../../../../styles/GlobalComponents/Button'
 import { ButtonLink } from '../../../../styles/GlobalComponents/NavLink'
 
@@ -76,9 +80,7 @@ function AddTracksModal({ open, handleClose, reload }) {
             {tracksToAdd?.map((track, index) => (
               <TrackGrid key={index}>
                 <span>{index + 1}</span>
-                <span>
-                  <Image src={track.thumbnail} alt={track.thumbnail} />
-                </span>
+                <Image src={track.thumbnail} />
                 <span>{track.name}</span>
                 <span>{track.userId.userName}</span>
                 <ActionContent>

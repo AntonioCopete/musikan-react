@@ -9,7 +9,7 @@ import { getCurrentTrack } from '../../../../redux/currentTrack/actions'
 
 import { TrackIndex, ActionContent } from './TrackList.styles'
 import { TrackWrapper, TrackGrid } from '../TrackTable/TrackTable.styles'
-import { Image } from '../TrackTable/TrackItem.styles'
+import { Image, Icon } from '../TrackTable/TrackItem.styles'
 
 function TrackList({ tracks, owner, isFavorites, reload }) {
   const dispatch = useDispatch()
@@ -34,11 +34,9 @@ function TrackList({ tracks, owner, isFavorites, reload }) {
         tracks.map((value, index) => (
           <TrackGrid key={value._id}>
             <TrackIndex>{index + 1}</TrackIndex>
-            <Image
-              src={value.thumbnail}
-              alt={value.thumbnail}
-              onClick={() => handlePlay(value._id)}
-            />
+            <Image bgImage={value.thumbnail} alt={value.thumbnail}>
+              <Icon onClick={() => handlePlay(value._id)} />
+            </Image>
             <span>{value.name}</span>
             <NavigateLink to={`/user/${value.user._id}`}>
               <span>{value.user.userName}</span>

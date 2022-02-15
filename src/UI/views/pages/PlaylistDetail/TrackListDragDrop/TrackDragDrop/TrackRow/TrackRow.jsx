@@ -1,4 +1,4 @@
-import { TrackIndex, Image, Icon } from './TrackRow.styles'
+import { TrackIndex, ItemContent, Icon, PlayIcon } from './TrackRow.styles'
 import { useDispatch } from 'react-redux'
 import { MdDragIndicator } from 'react-icons/md'
 
@@ -16,7 +16,9 @@ function TrackRow({ id, index, name, thumbnail, genre, user, userId }) {
   return (
     <>
       <TrackIndex>{index}</TrackIndex>
-      <Image src={thumbnail} alt={thumbnail} onClick={() => handlePlay(id)} />
+      <ItemContent bgImage={thumbnail}>
+        <PlayIcon onClick={() => handlePlay(id)} />
+      </ItemContent>
       <span>{name}</span>
       <NavigateLink to={`/user/${userId}`}>
         <span>{user}</span>

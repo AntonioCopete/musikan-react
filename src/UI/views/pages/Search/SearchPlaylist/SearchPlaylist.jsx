@@ -4,6 +4,7 @@ import { PlaylistWrapper } from './SearchPlaylist.styles'
 function SearchPlaylist({ playlists }) {
   return (
     <PlaylistWrapper>
+      {console.log(playlists)}
       {playlists?.length > 0 ? (
         playlists.map((item) => (
           <PlaylistItem
@@ -11,8 +12,7 @@ function SearchPlaylist({ playlists }) {
             id={item._id}
             name={item.name}
             thumbnail={item.thumbnail}
-            // followed={followed}
-            // reload={reload}
+            followed={item.isFollowed}
           />
         ))
       ) : (
