@@ -10,7 +10,7 @@ import UserMenu from '../../components/UserMenu/UserMenu'
 import api from '../../../../api'
 
 import { Header, Main } from '../../layout/Layout.styles'
-import { ElementsGrid, TitleInfo, ImageContent } from './UserDetail.styles'
+import { ElementsGrid, ImageContent } from './UserDetail.styles'
 
 function UserDetail() {
   const { userId } = useParams()
