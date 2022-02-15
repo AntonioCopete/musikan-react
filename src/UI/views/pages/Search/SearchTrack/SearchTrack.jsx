@@ -11,8 +11,9 @@ function SearchTrack({ tracks }) {
             key={item._id}
             id={item._id}
             name={item.name}
-            artist={item.user}
+            artist={item.userId.userName}
             thumbnail={item.thumbnail}
+            isLiked={item.isLiked}
           />
         ))
       ) : (

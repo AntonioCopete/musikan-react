@@ -19,7 +19,7 @@ function Search() {
   const { _id } = useSelector((state) => state.auth.currentUser)
 
   useEffect(() => {
-    searchQuery()
+    if (query?.length >= 3) searchQuery()
   }, [query])
 
   const searchQuery = async () => {

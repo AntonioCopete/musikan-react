@@ -28,11 +28,9 @@ function TrackItem({ name, artist, thumbnail, isLiked, id }) {
           initialState={isLiked ? true : isLiked}
           userId={_id}
           id={id}
-          // isFavorites={isFavorites}
-          // reload={reload}
         />
         <Text>{name}</Text>
-        <Text small>{'artist'}</Text>
+        <Text small>{artist}</Text>
       </TextWrapper>
     </ItemWrapper>
   )

@@ -13,6 +13,7 @@ function SearchPlaylist({ playlists }) {
             name={item.name}
             thumbnail={item.thumbnail}
             followed={item.isFollowed}
+            showFollow={true}
           />
         ))
       ) : (
