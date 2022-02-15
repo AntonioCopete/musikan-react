@@ -15,7 +15,6 @@ export const TrackGrid = styled.li`
     grid-template-columns: repeat(4, 1fr);
     & > :not(.--visible) {
       display: none;
-      /* ${(props) => props.header && 'display: none'}; */
     }
   }
 `

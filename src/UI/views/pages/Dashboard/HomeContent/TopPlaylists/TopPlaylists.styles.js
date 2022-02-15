@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 export const ItemWrapper = styled(Link)`
   display: grid;
-  grid-template-columns: repeat(2, 10rem 1fr);
-  width: 35rem;
+  grid-template-columns: 10rem 1fr;
+  /* width: 35rem; */
   margin: 0 1rem;
   border-radius: 10px;
   text-decoration: none;

@@ -68,6 +68,7 @@ function UserDetail() {
             userTracks?.map((track) => (
               <TrackItem
                 key={track._id}
+                id={track._id}
                 name={track.name}
                 artist={track.userId.userName}
                 thumbnail={track.thumbnail}
