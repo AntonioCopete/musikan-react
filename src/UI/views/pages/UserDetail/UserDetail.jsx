@@ -10,7 +10,7 @@ import UserMenu from '../../components/UserMenu/UserMenu'
 import api from '../../../../api'
 
 import { Header, Main } from '../../layout/Layout.styles'
-import { ElementsGrid, ImageContent } from './UserDetail.styles'
+import { ElementsGrid, ImageContent, ImageWrapper } from './UserDetail.styles'
 
 function UserDetail() {
   const { userId } = useParams()
@@ -43,11 +43,14 @@ function UserDetail() {
             setShowUserMenu={setShowUserMenu}
           />
           {showUserMenu && <UserMenu />}
-          <h1>{userInfo?.userName}</h1>
+          <h1>Artist details</h1>
         </PanelHero>
       </Header>
       <Main>
-        <ImageContent bgImage={userInfo?.profilePicture} />
+        <ImageWrapper>
+          <ImageContent bgImage={userInfo?.profilePicture} />
+          <h1>{userInfo?.userName}</h1>
+        </ImageWrapper>
         <h2>Playlists</h2>
         <ElementsGrid>
           {userPlaylists &&
