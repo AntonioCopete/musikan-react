@@ -1,16 +1,36 @@
+import { useEffect, useState } from 'react'
+
+import api from '../../../../../../api/api'
+
 import UserItem from '../../../../components/UserItem/UserItem'
 
-import user1 from '../../../../../img/user1.png'
-import user2 from '../../../../../img/user2.png'
-import user3 from '../../../../../img/user3.png'
-
 function PopularUsers() {
+  const [users, setUsers] = useState([])
+  const amountUsersToDisplay = 4
+
+  useEffect(() => {
+    getRandomUsers()
+  }, [])
+
+  const getRandomUsers = async () => {
+    const response = await api.getAllUsers()
+    setUsers(response.data.data)
+  }
+
   return (
     <>
-      <UserItem id={4} user={'Pepa'} thumbnail={user1} />
-      <UserItem id={1} user={'Pepe'} thumbnail={user1} />
-      <UserItem id={2} user={'Pepi'} thumbnail={user2} />
-      <UserItem id={3} user={'Pepo'} thumbnail={user3} />
+      {users &&
+        users?.map((user, index) => {
+          if (index > amountUsersToDisplay) return <></>
+          return (
+            <UserItem
+              key={user._id}
+              id={user._id}
+              user={user.userName}
+              thumbnail={user.profilePicture}
+            />
+          )
+        })}
     </>
   )
 }

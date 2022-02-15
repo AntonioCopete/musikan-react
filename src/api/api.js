@@ -207,6 +207,21 @@ function makeApi(request = makeRequest()) {
     })
   }
 
+  function getPopularPlaylists(headers) {
+    return request({
+      url: `/playlist/public`,
+      requestMethod: 'GET',
+      headers: headers,
+    })
+  }
+
+  function getAllUsers() {
+    return request({
+      url: `/user`,
+      requestMethod: 'GET',
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -233,6 +248,8 @@ function makeApi(request = makeRequest()) {
     getUserInfo: getUserInfo,
     getUserTracks: getUserTracks,
     getUserPublicPlaylists: getUserPublicPlaylists,
+    getPopularPlaylists: getPopularPlaylists,
+    getAllUsers: getAllUsers,
   }
 }
 
