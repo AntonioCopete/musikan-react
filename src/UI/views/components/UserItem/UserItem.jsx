@@ -1,12 +1,10 @@
-import { ItemWrapper, ItemContent, Footer } from './UserItem.styles'
+import { ItemWrapper, ItemContent, ItemText } from './UserItem.styles'
 
 function UserItem({ id, user, thumbnail }) {
   return (
     <ItemWrapper to={`/user/${id}`}>
       <ItemContent bgImage={thumbnail} />
-      <Footer>
-        <span>{user}</span>
-      </Footer>
+      <ItemText>{user}</ItemText>
     </ItemWrapper>
   )
 }

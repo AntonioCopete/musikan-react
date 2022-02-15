@@ -9,6 +9,10 @@ export const PanelWrapper = styled.div`
   min-height: 200px;
   overflow: hidden;
 
+  @media ${(props) => props.theme.breakpoints.sm} {
+    min-height: 140px;
+  }
+
   ::before {
     position: absolute;
     content: '';
@@ -28,7 +32,7 @@ export const PanelWrapper = styled.div`
 
     @media ${(props) => props.theme.breakpoints.sm} {
       left: 0;
-      bottom: 15%;
+      /* bottom: 15%; */
     }
   }
 `

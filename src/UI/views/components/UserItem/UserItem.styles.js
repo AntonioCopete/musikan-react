@@ -5,6 +5,7 @@ export const ItemWrapper = styled(Link)`
   display: block;
   width: 20rem;
   margin: 0 2rem;
+  text-decoration: none;
 `
 
 export const ItemContent = styled.div`
@@ -15,6 +16,11 @@ export const ItemContent = styled.div`
   background: ${(props) => `url(${props.bgImage})`};
   background-size: cover;
   background-position: center;
+  transition: 0.3s ease-in-out;
+
+  :hover {
+    filter: blur(1px);
+  }
 
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 13rem;
@@ -22,7 +28,7 @@ export const ItemContent = styled.div`
   }
 `
 
-export const Footer = styled.footer`
+export const ItemText = styled.p`
   margin-top: 1rem;
   text-align: center;
   color: ${({ theme }) => theme.colors.text};
