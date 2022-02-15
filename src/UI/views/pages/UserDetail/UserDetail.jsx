@@ -10,7 +10,7 @@ import UserMenu from '../../components/UserMenu/UserMenu'
 import api from '../../../../api'
 
 import { Header, Main } from '../../layout/Layout.styles'
-import { ElementsGrid, TitleInfo, ImageContent } from './UserDetail.styles'
+import { ElementsGrid, ImageContent } from './UserDetail.styles'
 
 function UserDetail() {
   const { userId } = useParams()
@@ -48,7 +48,7 @@ function UserDetail() {
       </Header>
       <Main>
         <ImageContent bgImage={userInfo?.profilePicture} />
-        <h2>Playlists by {userInfo?.userName}</h2>
+        <h2>Playlists</h2>
         <ElementsGrid>
           {userPlaylists &&
             userPlaylists?.map((playlist) => (
@@ -62,7 +62,7 @@ function UserDetail() {
               />
             ))}
         </ElementsGrid>
-        <h2>Tracks by {userInfo?.userName}</h2>
+        <h2>Tracks</h2>
         <ElementsGrid>
           {userTracks &&
             userTracks?.map((track) => (
