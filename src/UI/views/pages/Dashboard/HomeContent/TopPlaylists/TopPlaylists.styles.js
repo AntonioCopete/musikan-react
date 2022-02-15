@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const ItemWrapper = styled(Link)`
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 10rem 1fr);
   width: 35rem;
   margin: 0 1rem;
   border-radius: 10px;
+  text-decoration: none;
 `
 
 export const ItemBlue = styled(ItemWrapper)`
@@ -20,7 +21,6 @@ export const ItemMagenta = styled(ItemWrapper)`
 `
 
 export const ItemContent = styled.div`
-  width: 15rem;
   height: 10rem;
   border-radius: 10px 0 0 10px;
   background: ${(props) => `url(${props.bgImage})`};
@@ -34,6 +34,7 @@ export const ItemContent = styled.div`
 `
 
 export const Text = styled.p`
+  align-self: center;
   margin: 1rem;
   color: ${({ theme }) => theme.colors.text};
 `

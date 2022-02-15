@@ -30,7 +30,7 @@ export const GridLayout = styled.div`
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    grid-template-rows: 16rem 1fr 6rem 7rem 5rem;
+    grid-template-rows: 14rem 1fr 6rem 7rem 5rem;
   }
 `
 

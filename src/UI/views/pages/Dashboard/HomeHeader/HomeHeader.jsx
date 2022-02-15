@@ -3,6 +3,7 @@ import { useState } from 'react'
 import UserAvatar from '../../../components/UserAvatar/UserAvatar'
 import UserMenu from '../../../components/UserMenu/UserMenu'
 import PanelHero from '../../../components/PanelHero/PanelHero'
+import { Title } from './HomeHeader.styles'
 
 function HomeHeader() {
   const { userName } = useSelector((state) => state.auth.currentUser)
@@ -15,9 +16,9 @@ function HomeHeader() {
         setShowUserMenu={setShowUserMenu}
       />
       {showUserMenu && <UserMenu />}
-      <h1>
+      <Title>
         <span>hello</span> {userName}
-      </h1>
+      </Title>
     </PanelHero>
   )
 }
