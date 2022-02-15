@@ -26,18 +26,20 @@ import UserDetail from './ui/views/pages/UserDetail/UserDetail'
 function App() {
   // const navigate = useNavigate()
   const dispatch = useDispatch()
-  const userName = useSelector((state) => state.user)
+  // const userName = useSelector((state) => state.user)
+  // const data = { userName: userName }
 
   useEffect(() => {
-    const data = { userName: userName }
     let unsubscribeFromAuth = null
 
     unsubscribeFromAuth = onAuthStateChanged((user) => {
       if (user) {
         localStorage.setItem('authToken', user.Aa)
-        dispatch(syncSignIn(data))
-        if (userName) {
+        const localUserName = localStorage.getItem('userName')
+        dispatch(syncSignIn({ userName: localUserName }))
+        if (localUserName) {
           dispatch(deleteUserName())
+          localStorage.removeItem('userName')
         }
       } else {
         localStorage.setItem('authToken', null)

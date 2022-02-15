@@ -38,6 +38,7 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(setUserName({ userName: userNameRef.current.value }))
+    localStorage.setItem('userName', userNameRef.current.value)
     dispatch(signUpWithEmailRequest(email, password))
   }
 

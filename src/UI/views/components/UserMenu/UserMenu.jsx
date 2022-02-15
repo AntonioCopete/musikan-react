@@ -17,6 +17,7 @@ function UserMenu() {
   const handleLogout = async () => {
     await dispatch(signOut())
     dispatch(deleteUserName())
+    localStorage.removeItem('userName')
     navigate('/auth')
   }
 
