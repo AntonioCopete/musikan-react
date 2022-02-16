@@ -21,7 +21,7 @@ function PlaylistDetail() {
   const { id } = useParams()
   const [playlist, setPlaylist] = useState()
   const [owned, setOwned] = useState()
-  const [follow, setFollow] = useState(true)
+  const [follow, setFollow] = useState()
   const { _id } = useSelector((state) => state.auth.currentUser)
   const [tracks, setTracks] = useState([])
 
@@ -37,7 +37,7 @@ function PlaylistDetail() {
     )
     setPlaylist(response.data.data)
     setOwned(response.data.data.owned)
-    setFollow(response.data.data.followed)
+    setFollow(response.data.data.isFollowed)
     setTracks(orderedTracks)
   }
 
