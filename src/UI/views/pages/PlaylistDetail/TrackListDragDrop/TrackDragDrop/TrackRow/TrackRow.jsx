@@ -6,7 +6,7 @@ import { getCurrentTrack } from '../../../../../../../redux/currentTrack/actions
 
 import { NavigateLink } from '../../../../../../styles/GlobalComponents/NavLink'
 
-function TrackRow({ id, index, name, thumbnail, genre, user, userId }) {
+function TrackRow({ id, index, name, thumbnail, genre, user, userId, owned }) {
   const dispatch = useDispatch()
 
   const handlePlay = (id) => {
@@ -24,9 +24,11 @@ function TrackRow({ id, index, name, thumbnail, genre, user, userId }) {
         <span>{user}</span>
       </NavigateLink>
       <span>{genre}</span>
-      <Icon>
-        <MdDragIndicator />
-      </Icon>
+      {owned && (
+        <Icon>
+          <MdDragIndicator />
+        </Icon>
+      )}
     </>
   )
 }

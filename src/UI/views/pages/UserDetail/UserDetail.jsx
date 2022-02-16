@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import PlaylistItem from '../../components/PlaylistItem/PlaylistItem'
 import TrackItem from '../../components/TrackItem/TrackItem'
@@ -14,6 +15,7 @@ import { ElementsGrid, ImageContent, ImageWrapper } from './UserDetail.styles'
 
 function UserDetail() {
   const { userId } = useParams()
+  const { _id } = useSelector((state) => state.auth.currentUser)
   const [userInfo, setUserInfo] = useState()
   const [userTracks, setUserTracks] = useState()
   const [userPlaylists, setUserPlaylists] = useState()
@@ -25,11 +27,12 @@ function UserDetail() {
   }, [])
 
   const getUserInfo = async () => {
-    const responseInfo = await api.getUserInfo(userId)
+    const headers = { _id: _id }
+    const responseInfo = await api.getUserInfo(headers, userId)
     if (responseInfo.data.success) setUserInfo(responseInfo.data.data)
-    const responseTracks = await api.getUserTracks(userId)
+    const responseTracks = await api.getUserTracks(headers, userId)
     if (responseTracks.data.success) setUserTracks(responseTracks.data.data)
-    const responsePlaylists = await api.getUserPublicPlaylists(userId)
+    const responsePlaylists = await api.getUserPublicPlaylists(headers, userId)
     if (responsePlaylists.data.success)
       setUserPlaylists(responsePlaylists.data.data)
   }

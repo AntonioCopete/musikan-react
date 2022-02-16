@@ -71,6 +71,7 @@ function Playlist({ list, owned, reload }) {
                       key={value._id}
                       draggableId={value._id}
                       index={index}
+                      isDragDisabled={!owned}
                     >
                       {(draggableProvided) => (
                         <TrackGrid
@@ -86,6 +87,7 @@ function Playlist({ list, owned, reload }) {
                             genre={value.genre.name}
                             user={value.user.userName}
                             userId={value.user._id}
+                            owned={owned}
                           />
                         </TrackGrid>
                       )}

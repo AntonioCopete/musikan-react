@@ -186,24 +186,27 @@ function makeApi(request = makeRequest()) {
     })
   }
 
-  function getUserInfo(userId) {
+  function getUserInfo(headers, userId) {
     return request({
       url: `/user/${userId}`,
       requestMethod: 'GET',
+      headers: headers,
     })
   }
 
-  function getUserTracks(userId) {
+  function getUserTracks(headers, userId) {
     return request({
       url: `/user/${userId}/tracks`,
       requestMethod: 'GET',
+      headers: headers,
     })
   }
 
-  function getUserPublicPlaylists(userId) {
+  function getUserPublicPlaylists(headers, userId) {
     return request({
       url: `/user/${userId}/playlist`,
       requestMethod: 'GET',
+      headers: headers,
     })
   }
 

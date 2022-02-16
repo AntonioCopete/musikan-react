@@ -10,7 +10,15 @@ import {
   Footer,
 } from './PlaylistItem.styles'
 
-function PlaylistItem({ name, thumbnail, id, followed, reload, showFollow }) {
+function PlaylistItem({
+  name,
+  thumbnail,
+  id,
+  followed,
+  reload,
+  showFollow,
+  isOwner,
+}) {
   const { _id } = useSelector((state) => state.auth.currentUser)
 
   return (
@@ -22,7 +30,7 @@ function PlaylistItem({ name, thumbnail, id, followed, reload, showFollow }) {
       </ItemContent>
       <Footer>
         <Text>{name}</Text>
-        {(followed || showFollow) && (
+        {(followed || (showFollow && !isOwner)) && (
           <FollowItem
             reload={reload}
             userId={_id}
