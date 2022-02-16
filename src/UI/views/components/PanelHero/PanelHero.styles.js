@@ -6,11 +6,14 @@ const height = '1500'
 export const PanelWrapper = styled.div`
   position: relative;
   width: 100%;
-  min-height: 200px;
+  min-height: 20rem;
   overflow: hidden;
 
+  @media ${(props) => props.theme.breakpoints.md} {
+    min-height: 18rem;
+  }
   @media ${(props) => props.theme.breakpoints.sm} {
-    min-height: 140px;
+    min-height: 14rem;
   }
 
   ::before {

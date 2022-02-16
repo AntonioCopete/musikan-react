@@ -21,7 +21,11 @@ function Playlist({ list, followed, reload }) {
             slidesPerView: 3.5,
             spaceBetween: 10,
           },
-          1024: {
+          920: {
+            slidesPerView: 4.5,
+            spaceBetween: 10,
+          },
+          1224: {
             slidesPerView: 6.5,
             spaceBetween: 20,
           },

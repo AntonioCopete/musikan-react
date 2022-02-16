@@ -2,15 +2,16 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const ItemWrapper = styled(Link)`
-  display: block;
-  width: 20rem;
-  margin: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
 `
 
 export const ItemContent = styled.div`
   position: relative;
-  width: inherit;
+  width: 20rem;
   height: 20rem;
   border-radius: 50%;
   background: ${(props) => `url(${props.bgImage})`};
@@ -18,13 +19,17 @@ export const ItemContent = styled.div`
   background-position: center;
   transition: 0.3s ease-in-out;
 
-  :hover {
-    filter: blur(1px);
+  @media ${(props) => props.theme.breakpoints.md} {
+    width: 15rem;
+    height: 15rem;
   }
-
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 13rem;
     height: 13rem;
+  }
+
+  :hover {
+    filter: blur(1px);
   }
 `
 

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import api from '../../../../../../api/api'
 
 import {
+  Wrapper,
   ItemBlue,
   ItemGreen,
   ItemMagenta,
@@ -27,7 +28,7 @@ function TopPlaylists() {
   }
 
   return (
-    <>
+    <Wrapper>
       {playlists &&
         // eslint-disable-next-line array-callback-return
         playlists?.map((playlist, index) => {
@@ -70,7 +71,7 @@ function TopPlaylists() {
             }
           }
         })}
-    </>
+    </Wrapper>
   )
 }
 
