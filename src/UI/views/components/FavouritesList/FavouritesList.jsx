@@ -19,7 +19,12 @@ function FavouritesList() {
     setTracks(response.data.data)
   }
 
-  return <TrackList tracks={tracks} isFavorites={true} reload={getTracks} />
+  return (
+    <>
+      <TrackList tracks={tracks} isFavorites={true} reload={getTracks} />
+      {tracks?.length === 0 && <p>No favorites yet, go explore new tracks!</p>}
+    </>
+  )
 }
 
 export default FavouritesList
