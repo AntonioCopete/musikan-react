@@ -53,7 +53,7 @@ function UserDetail() {
         </ImageWrapper>
         <h2>Playlists</h2>
         <ElementsGrid>
-          {userPlaylists &&
+          {userPlaylists?.length > 0 ? (
             userPlaylists?.map((playlist) => (
               <PlaylistItem
                 key={playlist._id}
@@ -61,13 +61,17 @@ function UserDetail() {
                 name={playlist.name}
                 thumbnail={playlist.thumbnail}
                 reload={getUserInfo}
-                // followed={}
+                followed={playlist.followedBy}
+                showFollow={true}
               />
-            ))}
+            ))
+          ) : (
+            <p>There are no playlist yet</p>
+          )}
         </ElementsGrid>
         <h2>Tracks</h2>
         <ElementsGrid>
-          {userTracks &&
+          {userTracks?.length > 0 ? (
             userTracks?.map((track) => (
               <TrackItem
                 key={track._id}
@@ -75,8 +79,12 @@ function UserDetail() {
                 name={track.name}
                 artist={track.userId.userName}
                 thumbnail={track.thumbnail}
+                isLiked={track.likedBy}
               />
-            ))}
+            ))
+          ) : (
+            <p>There are no tracks yet</p>
+          )}
         </ElementsGrid>
       </Main>
     </>
